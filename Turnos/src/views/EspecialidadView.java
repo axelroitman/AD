@@ -1,14 +1,11 @@
-package modelo;
+package views;
 
-//Faltan métodos (16/03)
-
-public class Especialidad {
-	
-   	private int id;
+public class EspecialidadView {
+	private int id;
 	private String nombre;
     private String dia;
     
-    public Especialidad(int id, String nombre, String dia) {
+    public EspecialidadView(int id, String nombre, String dia) {
 		this.id = id;
 		this.nombre = nombre;
 		this.dia = dia;
@@ -29,5 +26,4 @@ public class Especialidad {
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
-    
 }

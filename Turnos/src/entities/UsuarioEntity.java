@@ -1,32 +1,48 @@
-package modelo;
-import java.util.*;
+package entities;
 
-//Faltan métodos (16/03)
+import java.util.Date;
 
-public class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table (name= "usuarios")
 
-    public Usuario(int id, String usr, String pass, String nombre, String telefono, int dni, Date fechaNac) {
-		this.id = id;
-    	this.usr = usr;
-		this.pass = pass;
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.dni = dni;
-		this.fechaNac = fechaNac;
-	}
-    
-    private int id;
+public class UsuarioEntity {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private int id;
 	private String usr;
 	private String pass;
 	private String nombre;
 	private String telefono;
 	private int dni;
 	private Date fechaNac;
-    
-    
+	
+	
+	public UsuarioEntity(int id, String usr, String pass, String nombre, String telefono, int dni, Date fechaNac) {
+		super();
+		this.id = id;
+		this.usr = usr;
+		this.pass = pass;
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.dni = dni;
+		this.fechaNac = fechaNac;
+	}
+	
+	public UsuarioEntity() {}
+	
+	
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUsr() {
 		return usr;
@@ -64,6 +80,5 @@ public class Usuario {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-
-    
+	
 }

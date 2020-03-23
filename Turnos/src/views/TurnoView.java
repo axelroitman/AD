@@ -1,14 +1,16 @@
-package modelo;
+package views;
+
 import java.time.LocalTime;
-import java.util.*;
+import java.util.Date;
 
-//Faltan métodos (16/03)
+import modelo.Asistencia;
+import modelo.Disponibilidad;
 
-public class Turno {
+public class TurnoView {
 
 
-    public Turno(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
-    		String justifInasistencia, Disponibilidad disponibilidad, Especialidad especialidad) {
+    public TurnoView(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
+    		String justifInasistencia, Disponibilidad disponibilidad, EspecialidadView especialidad) {
     	
     	this.id = id;
 		this.fecha = fecha;
@@ -28,7 +30,7 @@ public class Turno {
     private Asistencia asistencia;
     private String justifInasistencia;
     private Disponibilidad disponibilidad;
-    private Especialidad especialidad;
+    private EspecialidadView especialidad;
     
     
 	public int getId() {
@@ -70,11 +72,10 @@ public class Turno {
 	public void setDisponibilidad(Disponibilidad disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
-	public Especialidad getEspecialidad() {
+	public EspecialidadView getEspecialidad() {
 		return especialidad;
 	}
-	public void setEspecialidad(Especialidad especialidad) {
+	public void setEspecialidad(EspecialidadView especialidad) {
 		this.especialidad = especialidad;
 	}
-    
 }
