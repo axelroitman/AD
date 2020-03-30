@@ -5,9 +5,16 @@ import java.util.*;
 
 public class Usuario {
 
-
-    public Usuario(int id, String usr, String pass, String nombre, String telefono, int dni, Date fechaNac) {
-		this.id = id;
+	private int id;
+	private String usr;
+	private String pass;
+	private String nombre;
+	private String telefono;
+	private String dni;
+	private Date fechaNac;
+	
+	
+    public Usuario(String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
     	this.usr = usr;
 		this.pass = pass;
 		this.nombre = nombre;
@@ -16,14 +23,7 @@ public class Usuario {
 		this.fechaNac = fechaNac;
 	}
     
-    private int id;
-	private String usr;
-	private String pass;
-	private String nombre;
-	private String telefono;
-	private int dni;
-	private Date fechaNac;
-    
+   
     
 	public int getId() {
 		return id;
@@ -52,10 +52,10 @@ public class Usuario {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public Date getFechaNac() {

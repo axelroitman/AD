@@ -20,11 +20,11 @@ public class UsuarioEntity {
 	private String pass;
 	private String nombre;
 	private String telefono;
-	private int dni;
+	private String dni;
 	private Date fechaNac;
 	
 	
-	public UsuarioEntity(int id, String usr, String pass, String nombre, String telefono, int dni, Date fechaNac) {
+	public UsuarioEntity(int id, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
 		super();
 		this.id = id;
 		this.usr = usr;
@@ -68,10 +68,10 @@ public class UsuarioEntity {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public Date getFechaNac() {
