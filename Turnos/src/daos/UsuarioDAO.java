@@ -34,7 +34,7 @@ public class UsuarioDAO {
 	public Usuario findById(int id) throws UsuarioException{
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		UsuarioEntity usuario = (UsuarioEntity) s.createQuery("from UsuarioEntity u where p.id = ?")
+		UsuarioEntity usuario = (UsuarioEntity) s.createQuery("from UsuarioEntity u where u.id = ?")
 				.setInteger(0, id)
 				.uniqueResult();
 		if(usuario == null)

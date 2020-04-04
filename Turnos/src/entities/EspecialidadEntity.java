@@ -15,13 +15,11 @@ public class EspecialidadEntity {
 	private int id;
 	
 	private String nombre;
-    private String dia;
 	
-    public EspecialidadEntity(int id, String nombre, String dia) {
+    public EspecialidadEntity(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.dia = dia;
 	}
     
     public EspecialidadEntity() {}
@@ -32,14 +30,6 @@ public class EspecialidadEntity {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getDia() {
-		return dia;
-	}
-
-	public void setDia(String dia) {
-		this.dia = dia;
 	}
 
 	public int getId() {
