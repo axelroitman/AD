@@ -5,10 +5,10 @@ import java.util.*;
 
 public class Medico extends Usuario {
 
-	public Medico(String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
+	public Medico(int idUsr, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
 			String matricula, Collection<Especialidad> especialidades, Agenda agenda) {
 		
-		super(usr, pass, nombre, telefono, dni, fechaNac);
+		super(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 		this.matricula = matricula;
 		this.especialidades = especialidades;
 		this.agenda = agenda;

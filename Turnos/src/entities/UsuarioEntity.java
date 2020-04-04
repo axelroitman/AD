@@ -41,7 +41,7 @@ public class UsuarioEntity {
 	public UsuarioEntity() {}
 	
 	
-	public int getId() {
+	public int getIdUsr() {
 		return id;
 	}
 	public void setId(int id) {

@@ -7,10 +7,10 @@ import modelo.Agenda;
 import modelo.Especialidad;
 
 public class MedicoView extends UsuarioView {
-	public MedicoView(String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
+	public MedicoView(int idUsr,String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
 			String matricula, Collection<Especialidad> especialidades, Agenda agenda) {
     	
-		super(usr, pass, nombre, telefono, dni, fechaNac);
+		super(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 		this.matricula = matricula;
 		this.especialidades = especialidades;
 		this.agenda = agenda;

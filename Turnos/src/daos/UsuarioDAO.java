@@ -26,8 +26,8 @@ public class UsuarioDAO {
 		List<UsuarioEntity> usuarios = s.createQuery("from UsuarioEntity order by nombre").list();
 		s.getTransaction().commit();
 		s.close();
-		for(UsuarioEntity pe : usuarios)
-			resultado.add(toNegocio(pe));
+		for(UsuarioEntity ue : usuarios)
+			resultado.add(toNegocio(ue));
 		return resultado;
 	}
 	
@@ -81,7 +81,7 @@ public class UsuarioDAO {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		UsuarioEntity aEliminar = (UsuarioEntity) s.createQuery("from UsuarioEntity u where u.id = ?")
-				.setInteger(0, usuario.getId())
+				.setInteger(0, usuario.getIdUsr())
 				.uniqueResult();
 		s.delete(aEliminar);
 		s.getTransaction().commit();
@@ -89,10 +89,10 @@ public class UsuarioDAO {
 	}
 	
 	UsuarioEntity toEntity(Usuario usuario){
-		return new UsuarioEntity(usuario.getId(),usuario.getUsr(),usuario.getPass(),usuario.getNombre(),usuario.getTelefono(),usuario.getDni(),usuario.getFechaNac());
+		return new UsuarioEntity(usuario.getIdUsr(),usuario.getUsr(),usuario.getPass(),usuario.getNombre(),usuario.getTelefono(),usuario.getDni(),usuario.getFechaNac());
 	} 
 	
 	Usuario toNegocio(UsuarioEntity entity){
-		return new Usuario (entity.getUsr(),entity.getPass(),entity.getNombre(),entity.getTelefono(),entity.getDni(),entity.getFechaNac());
+		return new Usuario (entity.getIdUsr(),entity.getUsr(),entity.getPass(),entity.getNombre(),entity.getTelefono(),entity.getDni(),entity.getFechaNac());
 	}
 }

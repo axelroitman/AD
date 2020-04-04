@@ -5,11 +5,12 @@ import java.util.*;
 
 public class Paciente extends Usuario {
 
-    public Paciente(String usr, String pass, String nombre, String telefono,
+    public Paciente(int id, int idUsr, String usr, String pass, String nombre, String telefono,
     		String dni, Date fechaNac,Date fechaVtoCuota) {
     	
-		super(usr, pass, nombre, telefono, dni, fechaNac);
+		super(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 		this.fechaVtoCuota = fechaVtoCuota;
+		this.id = id;
 	}
     
     private int id;

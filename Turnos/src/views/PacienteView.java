@@ -3,11 +3,12 @@ package views;
 import java.util.Date;
 
 public class PacienteView extends UsuarioView {
-	public PacienteView(String usr, String pass, String nombre, String telefono,
+	public PacienteView(int id, int idUsr, String usr, String pass, String nombre, String telefono,
     		String dni, Date fechaNac,Date fechaVtoCuota) {
     	
-		super(usr, pass, nombre, telefono, dni, fechaNac);
+		super(idUsr,usr, pass, nombre, telefono, dni, fechaNac);
 		this.fechaVtoCuota = fechaVtoCuota;
+		this.id = id;
 	}
     private int id;
 	private Date fechaVtoCuota;

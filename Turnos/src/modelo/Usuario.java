@@ -14,7 +14,8 @@ public class Usuario {
 	private Date fechaNac;
 	
 	
-    public Usuario(String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
+    public Usuario(int id, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
+    	this.id = id;
     	this.usr = usr;
 		this.pass = pass;
 		this.nombre = nombre;
@@ -25,7 +26,7 @@ public class Usuario {
     
    
     
-	public int getId() {
+	public int getIdUsr() {
 		return id;
 	}
 	public String getUsr() {
