@@ -63,5 +63,13 @@ public class MedicoEntity {
 	public void setAgenda(AgendaEntity agenda) {
 		this.agenda = agenda;
 	}
+
+	public UsuarioEntity getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
+	}
     
 }
