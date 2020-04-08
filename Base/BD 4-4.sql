@@ -59,6 +59,8 @@ create table turnos(
 )
 go
 
+
+-------------------------Usuarios---------------------------
 insert into usuarios (usr,pass,nombre,telefono,dni,fechaNac) values ('jalmeida','pepitox','Jose Almeida', '55354000','10256365','1984-12-24')
 go
 insert into usuarios (usr,pass,nombre,telefono,dni,fechaNac) values ('ldanton','1234','Luis Danton', '435612345','15236589','1956-10-02')
@@ -92,4 +94,18 @@ go
 insert into usuarios (usr,pass,nombre,telefono,dni,fechaNac) values ('efitzgerald','blu32dad','Ella Fitzgerald', '13456795','35753753','2000-04-13')
 go
 insert into usuarios (usr,pass,nombre,telefono,dni,fechaNac) values ('lpetruccelli','opywon2','Ludovico Petruccelli', '89546321','12951357','2000-06-14')
+go
+
+------------------------Especialidades-----------------------------
+insert into especialidades (nombre) values ('Cardiologo')
+go
+insert into especialidades (nombre) values ('Oftalmologo')
+go
+insert into especialidades (nombre) values ('Neurologo')
+go
+insert into especialidades (nombre) values ('Dermatologo')
+go
+insert into especialidades (nombre) values ('Dentista')
+go
+insert into especialidades (nombre) values ('Neumonologo')
 go

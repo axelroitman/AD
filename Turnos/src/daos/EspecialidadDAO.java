@@ -49,38 +49,6 @@ public class EspecialidadDAO {
 		}	
 		return toNegocio(especialidad);
     }
-    
-    public void save(Especialidad especialidad){
-		EspecialidadEntity aGrabar = toEntity(especialidad);
-		Session s = HibernateUtil.getSessionFactory().openSession();
-		s.beginTransaction();
-		s.save(aGrabar);
-		s.getTransaction().commit();
-		s.close();
-	}
-	
-	public void update(Epecialidad especialidad){
-
-		EspecialidadEntity aGrabar = toEntity(especialidad);
-		Session s = HibernateUtil.getSessionFactory().openSession();
-		s.beginTransaction();
-		s.update(aGrabar);
-		s.getTransaction().commit();
-		s.close();
-    }
-    
-    public void delete(Epecialidad especialidad) throws EspecialidadException {
-		Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        
-		EspecialidadEntity aEliminar = (EspecialidadEntity) s.createQuery("from EspecialidadEntity e where e.id = ?")
-				.setInteger(0, usuario.getIdUsr())
-				.uniqueResult();
-		s.delete(aEliminar);
-		s.getTransaction().commit();
-		s.close();
-	}
-	
 
     /*
         EspecialidadEntity toEntity(Especialidad especialidad){
