@@ -1,7 +1,7 @@
 package modelo;
 import java.util.*;
 
-//Faltan métodos (16/03)
+import views.UsuarioView;
 
 public class Usuario {
 
@@ -66,5 +66,9 @@ public class Usuario {
 		this.fechaNac = fechaNac;
 	}
 
-    
+	public UsuarioView toView() {
+		
+		return new UsuarioView(id, usr, pass, nombre, telefono, dni, fechaNac);
+	}
+
 }

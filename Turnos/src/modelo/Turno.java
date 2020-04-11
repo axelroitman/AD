@@ -2,6 +2,8 @@ package modelo;
 import java.time.LocalTime;
 import java.util.*;
 
+import views.TurnoView;
+
 //Faltan métodos (16/03)
 
 public class Turno {
@@ -92,6 +94,8 @@ public class Turno {
 		this.medico = medico;
 	}
 	
-	
+	public TurnoView toView() {
+		return new TurnoView(id, fecha, hora, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
+	}
     
 }

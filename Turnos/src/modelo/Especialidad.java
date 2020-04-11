@@ -1,5 +1,7 @@
 package modelo;
 
+import views.EspecialidadView;
+
 //Faltan métodos (16/03)
 
 public class Especialidad {
@@ -22,5 +24,8 @@ public class Especialidad {
 		this.nombre = nombre;
 	}
 	
-    
+	public EspecialidadView toView() {
+		return new EspecialidadView(id, nombre);
+	}
+
 }

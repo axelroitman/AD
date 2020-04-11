@@ -1,6 +1,10 @@
 package modelo;
 import java.util.*;
 
+import views.EspecialidadView;
+import views.MedicoView;
+
+
 //Faltan metodos (16/03)
 
 public class Medico extends Usuario {
@@ -17,8 +21,7 @@ public class Medico extends Usuario {
 	private String matricula;
     //private Usuario usuario;
 	
-	//private Collection<Especialidad> especialidades;
-    //private Agenda agenda;
+	private Collection<Especialidad> especialidades;
     
     
 	public String getMatricula() {
@@ -32,12 +35,16 @@ public class Medico extends Usuario {
 	}
 	public void setEspecialidades(Collection<Especialidad> especialidades) {
 		this.especialidades = especialidades;
-	}
-	public Agenda getAgenda() {
-		return agenda;
-	}
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
 	}*/
-    
+	public MedicoView toView() {
+		
+		List<EspecialidadView> esp = new ArrayList<EspecialidadView>();
+		for(Especialidad e : especialidades) 
+		{
+			 esp.add(e.toView());
+		}
+
+		return new MedicoView(super.getIdUsr(), super.getUsr(), super.getPass(), super.getNombre(), super.getTelefono(), super.getDni(), super.getFechaNac(), matricula, esp);
+	}
+
 }

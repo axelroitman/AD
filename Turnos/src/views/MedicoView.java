@@ -1,13 +1,13 @@
 package views;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Date;
 
 import modelo.Especialidad;
 
 public class MedicoView extends UsuarioView {
 	public MedicoView(int idUsr,String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
-			String matricula, Collection<Especialidad> especialidades) {
+			String matricula, List<EspecialidadView> especialidades) {
     	
 		super(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 		this.matricula = matricula;
@@ -15,17 +15,17 @@ public class MedicoView extends UsuarioView {
 	}
 	
 	private String matricula;
-    private Collection<Especialidad> especialidades;
+    private List<EspecialidadView> especialidades;
 	public String getMatricula() {
 		return matricula;
 	}
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public Collection<Especialidad> getEspecialidades() {
+	public List<EspecialidadView> getEspecialidades() {
 		return especialidades;
 	}
-	public void setEspecialidades(Collection<Especialidad> especialidades) {
+	public void setEspecialidades(List<EspecialidadView> especialidades) {
 		this.especialidades = especialidades;
 	}
 	

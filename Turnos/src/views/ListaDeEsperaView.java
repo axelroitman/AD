@@ -1,18 +1,20 @@
 package views;
 
 import java.util.Collection;
+import java.util.List;
 
 public class ListaDeEsperaView {
 	private int id;
 	private EspecialidadView esp;
-	private Collection<UsuarioView> pacientes;
+	private List<PacienteView> pacientes;
+	private MedicoView medico;
 	
-	
-	public ListaDeEsperaView(int id, EspecialidadView esp, Collection<UsuarioView> pacientes) {
+	public ListaDeEsperaView(int id, EspecialidadView esp, List<PacienteView> pacientes, MedicoView medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
 		this.pacientes = pacientes;
+		this.medico = medico;
 	}
 	
 	
@@ -25,10 +27,18 @@ public class ListaDeEsperaView {
 	public void setEsp(EspecialidadView esp) {
 		this.esp = esp;
 	}
-	public Collection<UsuarioView> getPacientes() {
+	public List<PacienteView> getPacientes() {
 		return pacientes;
 	}
-	public void setPacientes(Collection<UsuarioView> pacientes) {
+	public void setPacientes(List<PacienteView> pacientes) {
 		this.pacientes = pacientes;
 	}
+	public MedicoView getMedico() {
+		return medico;
+	}
+	public void setMedico(MedicoView medico) {
+		this.medico = medico;
+	}
+	
+	
 }

@@ -1,6 +1,8 @@
 package modelo;
 import java.util.*;
 
+import views.PacienteView;
+
 //Faltan metodos (16/03)
 
 public class Paciente extends Usuario {
@@ -25,5 +27,11 @@ public class Paciente extends Usuario {
 	public int getId() {
 		return id;
 	}
+	
+	public PacienteView toView() {
+		
+		return new PacienteView(id, super.getIdUsr(), super.getUsr(), super.getPass(), super.getNombre(), super.getTelefono(), super.getDni(), super.getFechaNac(), fechaVtoCuota);
+	}
+
 
 }

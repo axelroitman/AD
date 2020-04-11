@@ -1,16 +1,21 @@
 package modelo;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+
+import views.ListaDeEsperaView;
+import views.PacienteView;
+
 
 public class ListaDeEspera {
 	
 	private int id;
 	private Especialidad esp;
-	private Collection<Usuario> pacientes;
+	private List<Paciente> pacientes;
 	private Medico medico;
 	
 	
-	public ListaDeEspera(int id, Especialidad esp, Collection<Usuario> pacientes, Medico medico) {
+	public ListaDeEspera(int id, Especialidad esp, List<Paciente> pacientes, Medico medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
@@ -34,11 +39,22 @@ public class ListaDeEspera {
 	public void setEsp(Especialidad esp) {
 		this.esp = esp;
 	}
-	public Collection<Usuario> getPacientes() {
+	public List<Paciente> getPacientes() {
 		return pacientes;
 	}
-	public void setPacientes(Collection<Usuario> pacientes) {
+	public void setPacientes(List<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
+	
+	public ListaDeEsperaView toView() {
+		List<PacienteView> pac = new ArrayList<PacienteView>();
+		for(Paciente p : pacientes) 
+		{
+			pac.add(p.toView());
+		}
+
+		return new ListaDeEsperaView(id, esp.toView(), pac, medico.toView());
+	}
+
 
 }
