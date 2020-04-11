@@ -3,7 +3,6 @@ package hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import entities.AgendaEntity;
 import entities.EspecialidadEntity;
 import entities.ListaDeEsperaEntity;
 import entities.MedicoEntity;
@@ -22,7 +21,6 @@ public class HibernateUtil
         try
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
-             config.addAnnotatedClass(AgendaEntity.class);
              config.addAnnotatedClass(EspecialidadEntity.class);
              config.addAnnotatedClass(ListaDeEsperaEntity.class);
              config.addAnnotatedClass(MedicoEntity.class);

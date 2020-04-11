@@ -6,9 +6,11 @@ import java.util.List;
 import org.hibernate.Session;
 
 import entities.EspecialidadEntity;
+import entities.UsuarioEntity;
 import exceptions.EspecialidadException;
 import hibernate.HibernateUtil;
 import modelo.Especialidad;
+import modelo.Usuario;
 
 public class EspecialidadDAO {
 
@@ -36,7 +38,7 @@ public class EspecialidadDAO {
 		return resultado;
     }
     
-    public Epecialidad findById(int id) throws EspecialidadException{
+    public Especialidad findById(int id) throws EspecialidadException{
 		Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         
@@ -49,16 +51,13 @@ public class EspecialidadDAO {
 		}	
 		return toNegocio(especialidad);
     }
+	EspecialidadEntity toEntity(Especialidad especialidad){
+		return new EspecialidadEntity(especialidad.getId(), especialidad.getNombre());
+	} 
+	
+    Especialidad toNegocio(EspecialidadEntity entity){
+        return new Especialidad(entity.getId(), entity.getNombre());
+    }
 
-    /*
-        EspecialidadEntity toEntity(Especialidad especialidad){
-            return new EspecialidadEntity();
-        }
-
-        Especialidad toNegocio(UsuarioEntity entity){
-            return new Especialidad();
-        }
-    
-    */ 
 
 }

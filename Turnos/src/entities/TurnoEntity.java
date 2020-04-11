@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,14 +31,22 @@ public class TurnoEntity {
     private Disponibilidad disponibilidad;
     
     @OneToOne
-	@JoinColumn(name="nombre")
+	@JoinColumn(name="idEspecialidad")
     private EspecialidadEntity especialidad;
 
+    @ManyToOne
+	@JoinColumn(name="idPaciente")
+    private PacienteEntity paciente;
+
+
+    @ManyToOne
+	@JoinColumn(name="idMedico")
+    private MedicoEntity medico;
     
     public TurnoEntity() {}
     
 	public TurnoEntity(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
-			String justifInasistencia, Disponibilidad disponibilidad, EspecialidadEntity especialidad) {
+			String justifInasistencia, Disponibilidad disponibilidad, EspecialidadEntity especialidad, MedicoEntity medico, PacienteEntity paciente) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
@@ -47,6 +56,8 @@ public class TurnoEntity {
 		this.justifInasistencia = justifInasistencia;
 		this.disponibilidad = disponibilidad;
 		this.especialidad = especialidad;
+		this.medico = medico;
+		this.paciente = paciente;
 	}
 
 	public Date getFecha() {
@@ -107,6 +118,22 @@ public class TurnoEntity {
 
 	public int getId() {
 		return id;
+	}
+
+	public PacienteEntity getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(PacienteEntity paciente) {
+		this.paciente = paciente;
+	}
+
+	public MedicoEntity getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoEntity medico) {
+		this.medico = medico;
 	}
     
    

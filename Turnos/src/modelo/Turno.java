@@ -8,7 +8,7 @@ public class Turno {
 
 
     public Turno(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
-    		String justifInasistencia, Disponibilidad disponibilidad, Especialidad especialidad) {
+    		String justifInasistencia, Disponibilidad disponibilidad, Especialidad especialidad, Medico medico, Paciente paciente) {
     	
     	this.id = id;
 		this.fecha = fecha;
@@ -18,6 +18,8 @@ public class Turno {
 		this.justifInasistencia = justifInasistencia;
 		this.disponibilidad = disponibilidad;
 		this.especialidad = especialidad;
+		this.paciente = paciente;
+		this.medico = medico;
 		
 	}
     
@@ -29,7 +31,8 @@ public class Turno {
     private String justifInasistencia;
     private Disponibilidad disponibilidad;
     private Especialidad especialidad;
-    
+    private Paciente paciente;
+    private Medico medico;
     
 	public int getId() {
 		return id;
@@ -76,5 +79,19 @@ public class Turno {
 	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+	public Medico getMedico() {
+		return medico;
+	}
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+	
+	
     
 }

@@ -10,7 +10,7 @@ public class TurnoView {
 
 
     public TurnoView(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
-    		String justifInasistencia, Disponibilidad disponibilidad, EspecialidadView especialidad) {
+    		String justifInasistencia, Disponibilidad disponibilidad, EspecialidadView especialidad, MedicoView medico, PacienteView paciente) {
     	
     	this.id = id;
 		this.fecha = fecha;
@@ -20,6 +20,8 @@ public class TurnoView {
 		this.justifInasistencia = justifInasistencia;
 		this.disponibilidad = disponibilidad;
 		this.especialidad = especialidad;
+		this.medico = medico;
+		this.paciente = paciente;
 		
 	}
     
@@ -31,7 +33,9 @@ public class TurnoView {
     private String justifInasistencia;
     private Disponibilidad disponibilidad;
     private EspecialidadView especialidad;
-    
+    private PacienteView paciente;
+    private MedicoView medico;
+
     
 	public int getId() {
 		return id;
@@ -78,4 +82,17 @@ public class TurnoView {
 	public void setEspecialidad(EspecialidadView especialidad) {
 		this.especialidad = especialidad;
 	}
+	public PacienteView getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(PacienteView paciente) {
+		this.paciente = paciente;
+	}
+	public MedicoView getMedico() {
+		return medico;
+	}
+	public void setMedico(MedicoView medico) {
+		this.medico = medico;
+	}
+	
 }

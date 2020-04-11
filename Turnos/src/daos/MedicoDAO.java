@@ -1,6 +1,8 @@
 package daos;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,6 +12,7 @@ import entities.UsuarioEntity;
 import exceptions.MedicoException;
 import exceptions.UsuarioException;
 import hibernate.HibernateUtil;
+import modelo.Especialidad;
 import modelo.Medico;
 import modelo.Usuario;
 
@@ -95,13 +98,13 @@ public class MedicoDAO {
 		s.getTransaction().commit();
 		s.close();
     }
-    /*
+    
     Medico toNegocio(MedicoEntity entity){
-		return new Medico (entity.getMatricula(),entity.getUsuario().getIdUsr(),entity.getUsuario().getUsr(),entity.getUsuario().getPass(), entity.getUsuario().getNombre(), entity.getUsuario().getTelefono(), entity.getUsuario().getDni(), entity.getUsuario().getFechaNac());
+		return new Medico (entity.getUsuario().getIdUsr(),entity.getUsuario().getUsr(),entity.getUsuario().getPass(), entity.getUsuario().getNombre(), entity.getUsuario().getTelefono(), entity.getUsuario().getDni(), entity.getUsuario().getFechaNac(), entity.getMatricula());
 	}
-	
+    
 	MedicoEntity toEntity(Medico medico){
-		return new MedicoEntity(medico.getMatricula(), new UsuarioEntity(medico.getIdUsr(),medico.getUsr(),medico.getPass(), medico.getNombre(), medico.getTelefono(), medico.getDni(), medico.getFechaNac());
-    } */
+		return new MedicoEntity(new UsuarioEntity(medico.getIdUsr(),medico.getUsr(),medico.getPass(), medico.getNombre(), medico.getTelefono(), medico.getDni(), medico.getFechaNac()), medico.getMatricula());
+    } 
 }
 

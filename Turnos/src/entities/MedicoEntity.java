@@ -24,19 +24,13 @@ public class MedicoEntity {
 	@OneToOne
 	@JoinColumn(name="documento")
 	private UsuarioEntity usuario;
-	
-    @ManyToOne
-	@JoinColumn(name= "") //En "name" hay que aclarar el nombre del atributo de la tabla Agenda con el que se va a hacer join. Dejo en blanco por ahora 23/3.
-    private AgendaEntity agenda;
-
 
 	public MedicoEntity() {}    
-    
-	public MedicoEntity(String matricula, Collection<EspecialidadEntity> especialidades, AgendaEntity agenda) {
+	public MedicoEntity(UsuarioEntity usuario, String matricula /*, Collection<EspecialidadEntity> especialidades, AgendaEntity agenda*/) {
 		super();
+		this.usuario = usuario;
 		this.matricula = matricula;
-		this.especialidades = especialidades;
-		this.agenda = agenda;
+		/*this.especialidades = especialidades;*/
 	}
 
 	
@@ -54,14 +48,6 @@ public class MedicoEntity {
 
 	public void setEspecialidades(Collection<EspecialidadEntity> especialidades) {
 		this.especialidades = especialidades;
-	}
-
-	public AgendaEntity getAgenda() {
-		return agenda;
-	}
-
-	public void setAgenda(AgendaEntity agenda) {
-		this.agenda = agenda;
 	}
 
 	public UsuarioEntity getUsuario() {
