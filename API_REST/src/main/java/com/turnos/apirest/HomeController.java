@@ -10,6 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import controlador.Controlador;
+import views.UsuarioView;
 
 /**
  * Handles requests for the application home page.
@@ -35,5 +43,28 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = {"application/json"})
+	public @ResponseBody<json> String login(@RequestParam(value="usuario", required=true) String usuario, @RequestParam(value="password", required=true) String password) throws JsonProcessingException {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			UsuarioView user = Controlador.getInstancia().getUsuarioLogIn(usuario, password);
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writeValueAsString(user);
+
+	}
+	
+	@RequestMapping(value = "/getUsuario", method = RequestMethod.GET, produces = {"application/json"})
+	public @ResponseBody<json> String getUsuario(@RequestParam(value="usuario", required=true) String usuario) throws JsonProcessingException {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			UsuarioView user = Controlador.getInstancia().getUsuario(usuario);
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writeValueAsString(user);
+
+	}
+
 	
 }

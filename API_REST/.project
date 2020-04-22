@@ -3,6 +3,7 @@
 	<name>API_REST</name>
 	<comment></comment>
 	<projects>
+		<project>Turnos</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
