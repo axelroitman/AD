@@ -66,5 +66,39 @@ public class HomeController {
 
 	}
 
+	@RequestMapping(value = "/getTurno", method = RequestMethod.GET, produces = {"application/json"})
 	
+	public @ResponseBody<json> String getTurno(@RequestParam(value="id", required=true) int id) throws JsonProcessingException {
+		
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			TurnoView Turno = Controlador.getInstancia().getTurno(id);	
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writeValueAsString(Turno);
+	}
+
+	
+	/*@RequestMapping(value = "/getMedicos", method = RequestMethod.GET, produces = {"application/json"})
+		
+		public @ResponseBody<json> String getMedicos(@RequestParam(value="matricula", required=true) String matricula) throws JsonProcessingException {	
+			//ResponseBody<json>: Aclara que el String guarda un JSON		
+			//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			MedicoView med = Controlador.getInstancia().getMedico(matricula);
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writeValueAsString(med);
+		}
+	*/
+	
+	@RequestMapping(value = "/eliminarTurno", method = RequestMethod.DELETE)
+	public @ResponseEntity<void> eliminarTurno(@RequestParam(value="id", required=true) int id) {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+		try {
+			controlador.getInstancia().eliminarTurno(id);
+			return new ResponseEntity<void>(HttpStatus.OK);
+		} catch ( TurnoException e) {	
+			return new ResponseEntity<void>(HttpStatus.CONFLICT);
+	}
 }

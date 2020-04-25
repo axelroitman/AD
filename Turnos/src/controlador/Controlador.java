@@ -13,11 +13,11 @@ import views.UsuarioView;
 
 public class Controlador {
 
-	/*La mayoría de los métodos están vacíos, hay que armarlos. 
-	Dejé algunos hechos, quizás convenga modificarlos.
+	/*La mayorï¿½a de los mï¿½todos estï¿½n vacï¿½os, hay que armarlos. 
+	Dejï¿½ algunos hechos, quizï¿½s convenga modificarlos.
 	11/04 - Axel
 	*/
-	//Patrón Singleton para llamar al controller desde Spring.
+	//Patrï¿½n Singleton para llamar al controller desde Spring.
 	private static Controlador instancia;
 	private Controlador() { }
 	
@@ -52,13 +52,49 @@ public class Controlador {
 	public void agregarTurno() {
 		
 	}
+
 	public void modificarTurno()
 	{
 	}
-	public void eliminarTurno() {
-		
-	}
+	
 	public void cambiarEstadoDeTurno() { 	
+	}
+
+	/*public PacienteView get Paciente (int id){
+		PacienteView resul = null;
+		List<Paciente> pacientes = PacienteDAO.getInstancia().getPacientes();
+		for ( Paciente pa : pacientes){
+			if( id = pa.getId()){
+				resul = pa.toView();
+			}
+		}
+		return resul;
+	}
+
+	public MedicoView getMedico(string matricula){
+		MedicoView resul = null;
+		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
+		for ( Medico med : medicos ){
+			if( matricula.equals(med.getMatricula()) ){
+				resul = med.toView();
+			}
+		}
+		return resul;
+	}
+	*/
+
+	public void eliminarTurno(int id) throws TurnoException {
+		Turno aEliminar = null;
+		try {
+			aEliminar = buscarTurno(id);
+			if(aEliminar != null){
+				TurnoDAO.getInstancia().delete(aEliminar);
+			}
+		} catch (TurnoException e) {
+			// TODO Auto-generated catch block
+			throw new TurnoException("no se puede eliminar el turno");
+		}
+		
 	}
 
 	public UsuarioView getUsuarioLogIn(String usuario, String password){ 
@@ -119,6 +155,4 @@ public class Controlador {
 		}
 		return aBuscar;				
 	}
-
-
 }
