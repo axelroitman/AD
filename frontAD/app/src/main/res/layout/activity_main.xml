@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         app:srcCompat="@mipmap/logofinal" />
 
     <TextView
@@ -39,7 +39,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:hint="Ingrese su usuario"
-        android:textColor="#0B0A0A" />
+        android:textColor="#0B0A0A"
+        />
 
     <EditText
         android:id="@+id/txtcontrasena"

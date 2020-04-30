@@ -8,44 +8,61 @@
     tools:context=".signup">
 
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@mipmap/logofinal" />
+
     <TextView
         android:id="@+id/txttituloCambiarContra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Cambio de Contraseña"
         android:textColor="#453333"
-        android:textSize="35dp"
+        android:textSize="30dp"
         android:typeface="sans" />
 
     <EditText
         android:id="@+id/txtusuario"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txttituloCambiarContra"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="ingrese su usuario" />
+        android:layout_marginTop="45dp"
+        android:textColor ="#0B0A0A"
+        android:hint="ingrese su usuario" />
 
     <EditText
         android:id="@+id/txtcontraseña1"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtusuario"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:text="su nueva contraseña" />
+        android:ems="10"
+        android:hint="su nueva contraseña"
+        android:textColor="#0B0A0A"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/txtcontraseña2"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtcontraseña1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:text="repita la contraseña" />
+        android:textColor="#0B0A0A"
+        android:ems="10"
+        android:hint="repita la contraseña"
+        android:inputType="textPassword"/>
 
 
     <Button
@@ -55,7 +72,7 @@
         android:layout_below="@+id/txtcontraseña2"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:textColor="#FFFFFF"
         android:background="#0C084C"
         android:text="guardar" />
