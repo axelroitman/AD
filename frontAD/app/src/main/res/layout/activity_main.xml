@@ -24,6 +24,7 @@
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_light"
         android:gravity="center"
         android:text="ClinicApp"
         android:textColor="#453333"
