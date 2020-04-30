@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class signup extends AppCompatActivity {
-    RadioButton rbmedico, rbpaciente;
-    Button btnregistrarse;
+    //TextView txttituloCambiarContra;
+    EditText txtusuario, txtcontraseña1, txtcontraseña2;
+    Button btnguardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +23,9 @@ public class signup extends AppCompatActivity {
 
     private void vincular(){
 
-        rbmedico = (RadioButton) findViewById(R.id.rbmedico);
-        rbpaciente = (RadioButton) findViewById(R.id.rbpaciente);
-        btnregistrarse = (Button) findViewById(R.id.btnregistrarse);
+        txtusuario = (EditText) findViewById(R.id.txtusuario);
+        txtcontraseña1 = (EditText) findViewById(R.id.txtcontraseña1);
+        txtcontraseña2 = (EditText) findViewById(R.id.txtcontraseña2);
+        btnguardar = (Button) findViewById(R.id.btnguardar);
     }
 }

@@ -4,53 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C084C"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:background="#E8E5E5"
     tools:context=".signup">
 
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="446dp"
-        android:layout_centerVertical="true"
-        android:background="#B3FFFBFB"
+
+    <TextView
+        android:id="@+id/txttituloCambiarContra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:text="Cambio de Contraseña"
+        android:textColor="#453333"
+        android:textSize="35dp"
+        android:typeface="sans" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
+    <EditText
+        android:id="@+id/txtusuario"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txttituloCambiarContra"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="ingrese su usuario" />
 
-            <RadioButton
-                android:id="@+id/rbmedico"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medico  "
-                android:textSize="20dp" />
+    <EditText
+        android:id="@+id/txtcontraseña1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtusuario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="su nueva contraseña" />
 
-            <RadioButton
-                android:id="@+id/rbpaciente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Paciente"
-                android:textSize="20dp" />
-
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btnregistrarse"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="15dp"
-            android:background="@drawable/boton_rectangulo_verde"
-            android:text="Registrarse" />
+    <EditText
+        android:id="@+id/txtcontraseña2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtcontraseña1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="repita la contraseña" />
 
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnguardar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtcontraseña2"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
+        android:background="#0C084C"
+        android:text="guardar" />
+
 
 </RelativeLayout>
