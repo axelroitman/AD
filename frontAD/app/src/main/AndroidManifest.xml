@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".inicioMedPac_Medico"></activity>
         <activity android:name=".pantalla_cargando">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +17,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".inicioPaciente" />
-        <activity android:name=".Carga" />
-        <activity android:name=".signup" />
-        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".inicioPaciente"
+            android:exported="true" />
+        <activity
+            android:name=".Carga"
+            android:exported="true" />
+        <activity
+            android:name=".signup"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <activity
             android:name=".InicialUsuario"
+            android:exported="true"
             android:label="@string/title_activity_inicial_usuario"
             android:theme="@style/AppTheme.NoActionBar" />
 
