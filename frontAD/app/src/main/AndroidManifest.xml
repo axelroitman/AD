@@ -35,7 +35,7 @@
             android:exported="true"
             android:label="@string/title_activity_inicial_usuario"
             android:theme="@style/AppTheme.NoActionBar" />
-        
+
         <activity android:name=".inicio_medico"></activity>
 
         <meta-data

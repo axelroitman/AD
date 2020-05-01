@@ -251,7 +251,7 @@
             android:layout_marginEnd="70dp"
             android:layout_marginBottom="27dp"
             android:fontFamily="@font/roboto_light_italic"
-            android:text="Buen día Dr. Fernandez. Hoy tiene 12 turnos entre las 09:15hs y las 19:45hs. Mañana no tiene turnos."
+            android:text="Buen día Adrián Roccatagiliata. Hoy tiene 12 turnos entre las 09:15hs y las 19:45hs. Mañana no tiene turnos."
             android:textAlignment="center"
             android:textSize="15dp" />
     </RelativeLayout>
