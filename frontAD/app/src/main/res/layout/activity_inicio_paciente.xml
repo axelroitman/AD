@@ -66,26 +66,6 @@
             android:textColor="#FFFFFF" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="424dp"
-        android:layout_toEndOf="@+id/layoutUno"
-        app:srcCompat="@drawable/bookmark" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="425dp"
-        android:layout_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/bookmark" />
-
     <RelativeLayout
         android:id="@+id/layoutCuatro"
         android:layout_width="150dp"
@@ -130,8 +110,28 @@
         android:layout_height="43dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="613dp"
+        android:layout_marginTop="593dp"
         android:layout_marginEnd="117dp"
+        app:srcCompat="@drawable/bookmark" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="404dp"
+        android:layout_toEndOf="@+id/layoutUno"
+        app:srcCompat="@drawable/bookmark" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="405dp"
+        android:layout_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/bookmark" />
 
     <RelativeLayout
@@ -174,50 +174,109 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="97dp"
+        android:layout_width="87dp"
+        android:layout_height="101dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="18dp">
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="309dp"
+        android:background="#498EB8">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewDiaTurno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/roboto_condensed_bold_italic"
-            android:text="Próximo turno:"
-            android:textSize="20dp" />
+            android:text="05"
+            android:textColor="#FFFFFF"
+            android:textSize="40dp" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="251dp"
+            android:id="@+id/textViewMesTurno"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="45dp"
+            android:fontFamily="@font/roboto_condensed_bold_italic"
+            android:text="MAY."
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textViewDiaSemanaTurno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="73dp"
+            android:fontFamily="@font/roboto_condensed_bold_italic"
+            android:text="Martes"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="293dp"
+        android:layout_height="99dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="162dp"
+        android:layout_marginEnd="18dp"
+        android:background="#BCEFEFEF">
+
+        <TextView
+            android:id="@+id/textViewHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="34dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_condensed_regular"
-            android:text="12/05/2020, 15hs - Traumatología"
+            android:text="15:00hs"
             android:textSize="18dp" />
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="47dp"
-            android:layout_height="38dp"
-            android:layout_alignParentTop="true"
+        <TextView
+            android:id="@+id/textViewMedico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewHorario"
+            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="289dp"
-            app:srcCompat="@drawable/appointmenticon" />
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="17dp"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:text="María Fernanda Bustamante"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textViewEspecialidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMedico"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="18dp"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:text="Cardiología"
+            android:textSize="18dp" />
     </RelativeLayout>
+
 
 </RelativeLayout>
