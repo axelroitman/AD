@@ -599,7 +599,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="28dp"
-                    app:srcCompat="@drawable/asistenciaNo" />
+                    app:srcCompat="@drawable/asistenciaPendiente" />
             </RelativeLayout>
 
             <TextView
