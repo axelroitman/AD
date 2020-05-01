@@ -226,15 +226,15 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="293dp"
-        android:layout_height="99dp"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="101dp"
-        android:layout_marginTop="162dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="18dp"
-        android:background="#BCEFEFEF">
+        android:background="#BCFFFFFF">
 
         <TextView
             android:id="@+id/textViewHorario"
