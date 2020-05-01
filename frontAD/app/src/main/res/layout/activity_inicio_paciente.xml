@@ -64,6 +64,7 @@
             android:fontFamily="@font/roboto_light"
             android:text="Solicitar Turno"
             android:textColor="#FFFFFF" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -174,6 +175,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="87dp"
         android:layout_height="101dp"
         android:layout_alignParentStart="true"
@@ -226,6 +228,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="101dp"
         android:layout_alignParentStart="true"
@@ -276,9 +279,11 @@
             android:fontFamily="@font/roboto_condensed_regular"
             android:text="Cardiología"
             android:textSize="18dp" />
+
     </RelativeLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -288,6 +293,36 @@
         android:layout_marginTop="262dp"
         android:fontFamily="@font/roboto_light_italic"
         android:text="Próximo turno" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="115dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="13dp"
+        android:background="#BCFFFFFF"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="245dp"
+            android:layout_height="59dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="71dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="27dp"
+            android:fontFamily="@font/roboto_light_italic"
+            android:text='No ha solicitado ningún turno todavía. Puede agendar uno nuevo desde la opción "Solicitar Turno".'
+            android:textAlignment="center"
+            android:textSize="15dp" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
