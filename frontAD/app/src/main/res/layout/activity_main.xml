@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        app:srcCompat="@mipmap/logofinal" />
+        app:srcCompat="@drawable/applogo" />
 
     <TextView
         android:id="@+id/txtnombreApp"
