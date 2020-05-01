@@ -66,14 +66,4 @@
         android:background="#0C084C"
         android:text="ingresar" />
 
-    <TextView
-        android:id="@+id/tvregistrarse"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btningresar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="¿olvido su contraseña?"
-        android:textColor="#0B0A0A" />
-
 </RelativeLayout>

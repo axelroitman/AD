@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     EditText txtusuario, txtcontrasena;
-    TextView tvregistrarse;
     Button btningresar;
     AlertDialog.Builder builder;
 
@@ -42,13 +41,6 @@ public class MainActivity extends AppCompatActivity {
         vincular();
 
 
-        tvregistrarse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, signup.class);
-                startActivity(intent);
-            }
-        });
 
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private void vincular(){
         txtusuario = (EditText)findViewById(R.id.txtusuario);
         txtcontrasena = (EditText) findViewById(R.id.txtcontrasena);
-        tvregistrarse = (TextView) findViewById(R.id.tvregistrarse);
         btningresar = (Button) findViewById(R.id.btningresar);
     }
 }
