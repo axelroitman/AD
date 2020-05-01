@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+    >
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_inicio"
             android:icon="@drawable/homeicon"
-            android:title="Inicio" />
+            android:title="Inicio"
+            />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_misTurnos"
             android:icon="@drawable/appointmenticon"
-            android:title="Mis turnos" />
+            android:title="Mis turnos"
+            android:visible="false"
+            />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_miAgenda"
+            android:icon="@drawable/appointmenticon"
+            android:title="Mi agenda"
+            />
+        <item
+            android:id="@+id/nav_cerrarSesion"
             android:icon="@drawable/exiticon"
             android:title="Cerrar sesión" />
     </group>
