@@ -8,13 +8,140 @@
     android:orientation="vertical"
     tools:context=".inicioPaciente">
 
+    <TextView
+        android:id="@+id/nombre2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="49dp"
+        android:layout_toEndOf="@+id/logo2"
+        android:fontFamily="@font/roboto_light"
+        android:text="ClinicApp"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <RelativeLayout
+        android:id="@+id/layoutDos"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/layoutCuatro"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="37dp"
+        android:layout_marginBottom="41dp"
+        android:layout_toRightOf="@id/layoutUno"
+        android:background="#74EFBA"
+        android:backgroundTint="#74EFBA"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/add" />
+
+        <Button
+            android:id="@+id/btnNuevoTurno"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView4"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#498EB8"
+            android:fontFamily="@font/roboto_light"
+            android:text="Solicitar Turno"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="424dp"
+        android:layout_toEndOf="@+id/layoutUno"
+        app:srcCompat="@drawable/bookmark" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="425dp"
+        android:layout_toEndOf="@+id/imageView"
+        app:srcCompat="@drawable/bookmark" />
+
+    <RelativeLayout
+        android:id="@+id/layoutCuatro"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="95dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#74EFBA"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/back" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView6"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#4C9DCD"
+            android:fontFamily="@font/roboto_light"
+            android:text="Historial"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="613dp"
+        android:layout_marginEnd="117dp"
+        app:srcCompat="@drawable/bookmark" />
+
     <RelativeLayout
         android:id="@+id/layoutUno"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_above="@+id/layoutCuatro"
         android:layout_centerHorizontal="false"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="35dp"
+        android:layout_marginBottom="41dp"
         android:background="#13AEC6"
         android:backgroundTint="#74EFBA"
         android:foregroundGravity="center"
@@ -32,126 +159,65 @@
 
         <Button
             android:id="@+id/btnVerMisTurnos"
-            android:layout_width="120dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="#0C084C"
+            android:background="#498EB8"
             android:fontFamily="@font/roboto_light"
-            android:text="Mis Turno"
+            android:text="Mis Turnos"
             android:textColor="#FFFFFF" />
 
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layoutDos"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@id/layoutUno"
-        android:background="#74EFBA"
-        android:backgroundTint="#74EFBA"
-        android:foregroundGravity="center"
-        android:gravity="center|center_horizontal"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="97dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="18dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_condensed_bold_italic"
+            android:text="Próximo turno:"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="251dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="34dp"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:text="12/05/2020, 15hs - Traumatología"
+            android:textSize="18dp" />
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/add" />
-
-        <Button
-            android:id="@+id/btnNuevoTurno"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView4"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#0C084C"
-            android:fontFamily="@font/roboto_light"
-            android:text="Nuevo Turno"
-            android:textColor="#FFFFFF" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layoutTres"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/layoutUno"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="30dp"
-        android:background="#74EFBA"
-        android:backgroundTint="#74EFBA"
-        android:foregroundGravity="center"
-        android:gravity="center|center_horizontal"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/close" />
-
-        <Button
-            android:id="@+id/btnConsultasAnteriores"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView5"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#0C084C"
-            android:fontFamily="@font/roboto_light"
-            android:text="Cancelar Turno"
-            android:textColor="#FFFFFF" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layoutCuatro"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_below="@id/layoutDos"
-        android:layout_alignTop="@id/layoutTres"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@id/layoutTres"
-        android:background="#FFFFFF"
-        android:backgroundTint="#74EFBA"
-        android:foregroundGravity="center"
-        android:gravity="center|center_horizontal"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/back" />
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView6"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#0C084C"
-            android:fontFamily="@font/roboto_light"
-            android:text="Ver Consultas Anteriores"
-            android:textColor="#FFFFFF" />
+            android:id="@+id/imageView8"
+            android:layout_width="47dp"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="289dp"
+            app:srcCompat="@drawable/appointmenticon" />
     </RelativeLayout>
 
 </RelativeLayout>
