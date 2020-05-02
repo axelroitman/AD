@@ -172,7 +172,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/cardiología" />
+            app:srcCompat="@drawable/nefrología" />
 
         <ImageView
             android:id="@+id/imageView12"
