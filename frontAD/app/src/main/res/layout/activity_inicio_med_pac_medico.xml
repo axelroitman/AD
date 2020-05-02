@@ -46,7 +46,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-3dp"
         android:layout_marginEnd="48dp"
-        app:srcCompat="@drawable/pacientesel" />
+        app:srcCompat="@drawable/medicosel" />
 
     <ImageView
         android:id="@+id/paciente"
@@ -56,7 +56,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="3dp"
-        app:srcCompat="@drawable/mediconosel" />
+        app:srcCompat="@drawable/pacientenosel" />
     
 
 </RelativeLayout>
