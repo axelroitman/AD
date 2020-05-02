@@ -70,7 +70,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/roboto_light_italic"
-            android:text='Todavía no presenta ningún turno pedido. Puede agendar uno nuevo desde la opción "Solicitar Turno", que se encuentra en su inicio.'
+            android:text='No tiene turnos anteriores a la fecha actual. Puede agendar uno nuevo desde la opción "Solicitar Turno", que se encuentra en su inicio.'
             android:textAlignment="center"
             android:textSize="15dp" />
 
@@ -124,7 +124,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistiré"
+                    android:text="Asistió"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -630,7 +630,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistiré"
+                    android:text="Asistió"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -756,7 +756,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistiré"
+                    android:text="Asistió"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -987,7 +987,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistiré"
+                    android:text="Asistió"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -1039,7 +1039,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="84dp"
                 android:fontFamily="@font/roboto_condensed_regular"
-                android:text="Medica Clínica"
+                android:text="Cardiología"
                 android:textSize="18dp" />
 
             <RelativeLayout
