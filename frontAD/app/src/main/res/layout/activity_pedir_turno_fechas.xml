@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PedirTurnoFechas"
+    android:background="#E8E5E5"
+    >
+    <TextView
+        android:id="@+id/solTurn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/logo"
+        android:fontFamily="@font/roboto_light"
+        android:text="Solicitar Turno"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="541dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="189dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="1dp">
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja2"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="16"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="6dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Sábado"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="139dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja2"
+                android:fontFamily="@font/roboto_light"
+                android:text="4 Turnos disponibles" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="337dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja2"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="15"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Viernes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="139dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja2"
+                android:fontFamily="@font/roboto_light"
+                android:text="5 Turnos disponibles" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="256dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja2"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="14"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Jueves"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="139dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja2"
+                android:fontFamily="@font/roboto_light"
+                android:text="20 Turnos disponibles" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="177dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja2"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="11"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="3dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Lunes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="139dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja2"
+                android:fontFamily="@font/roboto_light"
+                android:text="3 Turnos disponibles" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="96dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja2"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="08"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="37dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Viernes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="139dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja2"
+                android:fontFamily="@font/roboto_light"
+                android:text="5 Turnos disponibles" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:id="@+id/caja0"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="401dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/caja1"
+                android:layout_width="62dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="#498EB8"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDiaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="05"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textViewDiaSemanaTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_marginEnd="14dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="Martes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/textViewMesTurno2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDiaTurno"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/roboto_condensed_bold_italic"
+                    android:text="MAY."
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="141dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/caja1"
+                android:fontFamily="@font/roboto_light"
+                android:text="10 Turnos disponibles" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="145dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Turnos disponibles de Nefrología:"
+        android:textSize="20dp"
+
+        />
+
+</RelativeLayout>
