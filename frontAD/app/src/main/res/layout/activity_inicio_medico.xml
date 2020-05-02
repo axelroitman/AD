@@ -47,23 +47,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView6"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/lapiz" />
+            app:srcCompat="@drawable/add" />
 
         <Button
-            android:id="@+id/btnNuevoTurno"
+            android:id="@+id/btnHistorial"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView4"
+            android:layout_below="@+id/imageView6"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="#498EB8"
             android:fontFamily="@font/roboto_light"
-            android:text="Modificar Agenda"
+            android:text="Añadir Turnos"
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>
@@ -123,23 +123,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/imageView10"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/close" />
 
         <Button
-            android:id="@+id/btnHistorial"
+            android:id="@+id/btnEliminarTurnos"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView6"
+            android:layout_below="@+id/imageView10"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="#498EB8"
             android:fontFamily="@font/roboto_light"
-            android:text="Añadir Turnos"
+            android:text="Eliminar Turnos"
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>

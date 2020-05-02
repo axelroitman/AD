@@ -29,7 +29,7 @@
         android:layout_marginStart="31dp"
         android:layout_marginTop="23dp"
         app:srcCompat="@drawable/applogo" />
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="563dp"

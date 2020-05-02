@@ -2,7 +2,7 @@ package modelo;
 
 public enum Disponibilidad {
 	Disponible, //1
-	Ocupado, //2
+	Programado, //2
 	AConfirmar, //3
 	Confirmado, //4
 	Terminado, //5

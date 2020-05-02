@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Turno">
+    tools:context=".Turno"
+    android:background="#E8E5E5"
+    >
 
     <TextView
         android:id="@+id/textView5"
@@ -37,7 +39,7 @@
         android:layout_marginTop="42dp"
         android:layout_toEndOf="@+id/logo3"
         android:fontFamily="@font/roboto_light"
-        android:text="Turno 25 de Junio"
+        android:text="Turno 29 de Mayo"
         android:textSize="30dp" />
 
     <RelativeLayout
@@ -61,8 +63,8 @@
             android:layout_marginStart="42dp"
             android:layout_marginTop="17dp"
             android:fontFamily="@font/roboto_light"
-            android:text="Asistencia: No  confirmada."
-            android:textSize="18dp" />
+            android:text="Asistencia: No Confirmada."
+            android:textSize="18dp"/>
 
         <ImageView
             android:id="@+id/imageView15"
@@ -82,7 +84,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/asistenciaPendiente" />
+            app:srcCompat="@drawable/asistenciaPendiente"/>
 
         <ImageView
             android:id="@+id/imageView13"
@@ -139,8 +141,8 @@
             android:layout_marginStart="41dp"
             android:layout_marginTop="17dp"
             android:fontFamily="@font/roboto_light"
-            android:text="Profesional : Vanesa Teller."
-            android:textSize="18dp" />
+                android:text="Paciente : Roberto Martinez."
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/textView11"
@@ -150,7 +152,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="42dp"
             android:layout_marginTop="17dp"
-            android:text="Estado: Activo."
+            android:text="Estado: Programado."
             android:textSize="18dp"
             android:fontFamily="@font/roboto_light" />
 
@@ -182,7 +184,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/doctorimage" />
+            app:srcCompat="@drawable/userimage"/>
 
     </RelativeLayout>
 
@@ -194,27 +196,30 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="27dp"
         android:layout_marginEnd="34dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="55dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="31dp"
             android:layout_marginBottom="44dp"
             android:layout_toEndOf="@+id/button4"
-            android:backgroundTint="#07B80A"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#000000"
             android:fontFamily="@font/roboto_light"
             android:text="Asistiré" />
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -222,10 +227,82 @@
             android:layout_marginStart="31dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="46dp"
-            android:backgroundTint="#FF0909"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
             android:fontFamily="@font/roboto_light"
             android:text="No Asistiré" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="44dp"
+            android:layout_toEndOf="@+id/button11"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="Eliminar turno" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#FFC107"
+            android:textColor="#000000"
+            android:fontFamily="@font/roboto_light"
+            android:text="Modificar turno" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#0C084C"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="Pedir turno" />
+    </RelativeLayout>
 
 </RelativeLayout>
