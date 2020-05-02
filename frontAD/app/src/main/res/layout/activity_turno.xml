@@ -39,7 +39,7 @@
         android:layout_marginTop="42dp"
         android:layout_toEndOf="@+id/logo3"
         android:fontFamily="@font/roboto_light"
-        android:text="Turno 29 de Mayo"
+        android:text="Turno 22 de Mayo"
         android:textSize="30dp" />
 
     <RelativeLayout
@@ -63,8 +63,33 @@
             android:layout_marginStart="42dp"
             android:layout_marginTop="17dp"
             android:fontFamily="@font/roboto_light"
-            android:text="Asistencia: No Confirmada."
+            android:text="Asistencia: No asistirá."
             android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView13"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelado por: Paciente."
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView14"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Motivo de cancelación: No puedo llegar porque hay paro de transporte."
+            android:textSize="18dp"/>
+
 
         <ImageView
             android:id="@+id/imageView15"
@@ -84,7 +109,27 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/asistenciaPendiente"/>
+            app:srcCompat="@drawable/asistenciaNo"/>
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView16"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/person"/>
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView24"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/pregunta"/>
 
         <ImageView
             android:id="@+id/imageView13"
@@ -139,10 +184,10 @@
             android:layout_below="@+id/textView8"
             android:layout_alignParentStart="true"
             android:layout_marginStart="41dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_light"
-                android:text="Paciente : Roberto Martinez."
-            android:textSize="18dp"/>
+            android:text="Profesional : Guido Ramirez."
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/textView11"
@@ -152,7 +197,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="42dp"
             android:layout_marginTop="17dp"
-            android:text="Estado: Programado."
+            android:text="Estado: Cancelado."
             android:textSize="18dp"
             android:fontFamily="@font/roboto_light" />
 
@@ -164,7 +209,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ok" />
+            app:srcCompat="@drawable/notOk" />
 
         <ImageView
             android:id="@+id/imageView11"
@@ -184,7 +229,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
-            app:srcCompat="@drawable/userimage"/>
+            app:srcCompat="@drawable/doctorimage"/>
 
     </RelativeLayout>
 
