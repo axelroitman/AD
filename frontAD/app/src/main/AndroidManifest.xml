@@ -18,6 +18,7 @@
         <activity android:name=".Turno" />
         <activity android:name=".MisTurnos" />
         <activity android:name=".inicioMedPac_Medico" />
+        <activity android:name=".eliminarTurnos"></activity>
         <activity android:name=".pantalla_cargando">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -16,7 +16,7 @@
         android:layout_marginTop="42dp"
         android:layout_toEndOf="@+id/logo3"
         android:fontFamily="@font/roboto_light"
-        android:text="Historial de Turnos"
+        android:text="Mi Agenda"
         android:textSize="30dp" />
 
     <ImageView
@@ -59,15 +59,59 @@
             android:layout_marginLeft="25dp"
             android:layout_toRightOf="@id/btnfecha"
             android:ems="10"
-            android:hint="dd/mm/aaaa"
             android:fontFamily="@font/roboto_light"
             android:foregroundGravity="center|center_horizontal"
             android:gravity="center"
-            android:inputType="textPersonName" />
+            android:hint="dd/mm/aaaa"
+            android:inputType="textPersonName"
+            android:text="04/05/2020" />
 
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="43dp"
+        android:visibility="visible">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="115dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="13dp"
+            android:background="#BCFFFFFF"
+            android:textAlignment="center"
+            android:id="@+id/LayoutMensaje">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="245dp"
+                android:layout_height="59dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="27dp"
+                android:fontFamily="@font/roboto_light_italic"
+                android:text='No tiene turnos el día seleccionado. Puede añadir uno desde la opción "Añadir turnos" que se encuentra en el inicio.'
+                android:textAlignment="center"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -80,7 +124,7 @@
         android:layout_marginTop="185dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="43dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -107,14 +151,15 @@
 
                 <TextView
                     android:id="@+id/txt4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="0dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistió"
+                    android:gravity="center_horizontal"
+                    android:text="Asistencia"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -228,7 +273,7 @@
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="-4dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="21"
+                android:text="04"
                 android:textColor="#FFFFFF"
                 android:textSize="40dp" />
 
@@ -241,7 +286,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="65dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="Viernes"
+                android:text="Lunes"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
@@ -254,7 +299,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="37dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="FEB."
+                android:text="MAY."
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
@@ -556,7 +601,7 @@
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="-4dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="09"
+                android:text="04"
                 android:textColor="#FFFFFF"
                 android:textSize="40dp" />
 
@@ -569,7 +614,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="65dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="Jueves"
+                android:text="Lunes"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
@@ -582,7 +627,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="37dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="ABR."
+                android:text="MAY."
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
@@ -613,14 +658,15 @@
 
                 <TextView
                     android:id="@+id/txtasistire"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="0dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistió"
+                    android:gravity="center_horizontal"
+                    android:text="Asistiencia"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -645,7 +691,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/roboto_condensed_regular"
-                android:text="08:00hs"
+                android:text="12:40hs"
                 android:textSize="18dp" />
 
             <TextView
@@ -672,7 +718,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="84dp"
                 android:fontFamily="@font/roboto_condensed_regular"
-                android:text="Nefrología"
+                android:text="Cardiología"
                 android:textSize="18dp" />
 
             <RelativeLayout
@@ -739,14 +785,15 @@
 
                 <TextView
                     android:id="@+id/txt2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="0dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistió"
+                    android:gravity="center_horizontal"
+                    android:text="Asistencia"
                     android:textSize="15dp" />
 
                 <ImageView
@@ -771,7 +818,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/roboto_condensed_regular"
-                android:text="14:00hs"
+                android:text="12:20hs"
                 android:textSize="18dp" />
 
             <TextView
@@ -798,7 +845,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="84dp"
                 android:fontFamily="@font/roboto_condensed_regular"
-                android:text="Traumatología"
+                android:text="Cardiología"
                 android:textSize="18dp" />
 
             <RelativeLayout
@@ -860,7 +907,7 @@
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="-4dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="28"
+                android:text="04"
                 android:textColor="#FFFFFF"
                 android:textSize="40dp" />
 
@@ -873,7 +920,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="65dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="Martes"
+                android:text="Lunes"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
@@ -886,7 +933,7 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="37dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="ABR."
+                android:text="MAY."
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
@@ -913,7 +960,7 @@
                 android:layout_marginStart="21dp"
                 android:layout_marginTop="-4dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="01"
+                android:text="04"
                 android:textColor="#FFFFFF"
                 android:textSize="40dp" />
 
@@ -926,7 +973,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="65dp"
                 android:fontFamily="@font/roboto_condensed_bold_italic"
-                android:text="Viernes"
+                android:text="Lunes"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
@@ -970,14 +1017,17 @@
 
                 <TextView
                     android:id="@+id/txtasistire1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="false"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="0dp"
                     android:fontFamily="@font/roboto_light_italic"
-                    android:text="Asistió"
+                    android:foregroundGravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="Asistiencia"
                     android:textSize="15dp" />
 
                 <ImageView
