@@ -50,9 +50,9 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="410dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:background="#FFFFFF"
             android:gravity="center">
 
@@ -127,7 +127,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja2"
                 android:fontFamily="@font/roboto_light"
-                android:text="4 Turnos disponibles" />
+                android:text="4 Turnos disponibles"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -139,9 +140,9 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="337dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:background="#FFFFFF"
             android:gravity="center">
 
@@ -216,7 +217,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja2"
                 android:fontFamily="@font/roboto_light"
-                android:text="5 Turnos disponibles" />
+                android:text="5 Turnos disponibles"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -228,9 +230,9 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="256dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:background="#FFFFFF"
             android:gravity="center">
 
@@ -305,7 +307,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja2"
                 android:fontFamily="@font/roboto_light"
-                android:text="20 Turnos disponibles" />
+                android:text="20 Turnos disponibles"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -317,9 +320,9 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="177dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:background="#FFFFFF"
             android:gravity="center">
 
@@ -394,7 +397,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja2"
                 android:fontFamily="@font/roboto_light"
-                android:text="3 Turnos disponibles" />
+                android:text="3 Turnos disponibles"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -406,9 +410,9 @@
 
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="100dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:background="#FFFFFF"
             android:gravity="center">
 
@@ -483,7 +487,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja2"
                 android:fontFamily="@font/roboto_light"
-                android:text="5 Turnos disponibles" />
+                android:text="5 Turnos disponibles"
+                android:gravity="center_horizontal"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -496,9 +501,9 @@
             android:layout_alignParentEnd="true"
 
 
-            android:layout_marginStart="91dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="96dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginBottom="401dp"
             android:background="#FFFFFF"
             android:gravity="center">
@@ -574,6 +579,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_toEndOf="@+id/caja1"
                 android:fontFamily="@font/roboto_light"
+                android:gravity="center_horizontal"
                 android:text="10 Turnos disponibles" />
         </RelativeLayout>
     </RelativeLayout>
@@ -584,7 +590,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="145dp"
         android:fontFamily="@font/roboto_light"
         android:text="Turnos disponibles de Nefrología:"
