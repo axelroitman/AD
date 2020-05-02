@@ -29,6 +29,7 @@
         android:layout_marginStart="31dp"
         android:layout_marginTop="23dp"
         app:srcCompat="@drawable/applogo" />
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="563dp"
@@ -39,7 +40,9 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="125dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="43dp">
+        android:layout_marginBottom="43dp"
+        android:visibility="gone
+">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -88,7 +91,7 @@
         android:layout_marginTop="125dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="43dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <RelativeLayout
             android:layout_width="wrap_content"
