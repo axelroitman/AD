@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PedirTurnoTurnos"></activity>
+        <activity android:name=".modificar_turno"></activity>
+        <activity android:name=".PedirTurnoTurnos" />
         <activity android:name=".PedirTurnoFechas" />
         <activity android:name=".SolicitarTurno" />
         <activity

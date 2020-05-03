@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modificar_turno">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/relative1"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/nombre3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="42dp"
+            android:layout_toEndOf="@+id/logo3"
+            android:fontFamily="@font/roboto_light"
+            android:text="Modificar Turno:"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/logo3"
+            android:layout_width="74dp"
+            android:layout_height="76dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="23dp"
+            app:srcCompat="@drawable/applogo" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtturno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="155dp"
+        android:fontFamily="@font/roboto_light"
+        android:foregroundGravity="center|center_horizontal"
+        android:text="Turno  del 29 de Mayo"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/txtdetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtturno"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="false"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="257dp"
+        android:fontFamily="@font/roboto_light"
+        android:foregroundGravity="center_horizontal"
+        android:text="Detalle:"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtdetalle"
+        android:layout_marginTop="33dp">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Estado:"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/estado"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@id/textView11"
+            android:fontFamily="@font/roboto_light"
+            android:text="Sin Asignar."
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ok" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView10"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/nefrología" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView11"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Especialidad: "
+            android:textSize="18dp" />
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinerespecialidades"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="-24dp"
+            android:layout_toRightOf="@id/textView8"
+            android:hint="Nefrología"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/spinerespecialidades"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/estado"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/textView8" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView11"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/reloj" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Hora: "
+            android:textSize="18dp" />
+
+
+        <EditText
+            android:id="@+id/hora"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinerespecialidades"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="13dp"
+            android:layout_toRightOf="@id/textView6"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:hint="12:00"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView12"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="23dp"
+            app:srcCompat="@drawable/dinero" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Precio:"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/costo"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hora"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/textView7"
+            android:fontFamily="@font/roboto_light"
+            android:text=" $400,00."
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="329dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="101dp"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/cancelar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F44336"
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelar y Volver"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp
+"
+            android:layout_toRightOf="@id/cancelar"
+            android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/roboto_light"
+            android:text="Guardar"
+            android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
