@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PedirTurnoFechas"></activity>
+        <activity android:name=".PedirTurnoTurnos"></activity>
+        <activity android:name=".PedirTurnoFechas" />
         <activity android:name=".SolicitarTurno" />
         <activity
             android:name=".historial_turnos_medico"
