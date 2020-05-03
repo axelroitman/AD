@@ -29,7 +29,53 @@
         android:layout_marginTop="23dp"
         app:srcCompat="@drawable/applogo" />
 
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="145dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Turnos disponibles de Nefrología:"
+        android:textSize="20dp" />
+
+
     <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
+        android:layout_below="@id/solTurn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="211dp"
+        android:layout_marginEnd="21dp"
+        android:background="#BCFFFFFF"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="245dp"
+            android:layout_height="59dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_light_italic"
+            android:text='No hay turnos disponibles para ese día en esta especialidad. Puede volver atras y buscar otra fecha o unirse a la lista de espera.'
+            android:textAlignment="center"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="541dp"
         android:layout_alignParentStart="true"
@@ -584,18 +630,48 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="145dp"
-        android:fontFamily="@font/roboto_light"
-        android:text="Turnos disponibles de Nefrología:"
-        android:textSize="20dp"
 
-        />
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="101dp"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal">
+
+
+
+        <Button
+            android:id="@+id/volver"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtcontrasena"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:textColor="#FFFFFF"
+            android:background="#0C084C"
+            android:text="ingresar" />
+        <Button
+            android:id="@+id/listaespera"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtcontrasena"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto_light"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/volver"
+            android:layout_marginTop="25dp"
+            android:textColor="#FFFFFF"
+            android:background="#0C084C"
+            android:text="Unirme a la lista" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
