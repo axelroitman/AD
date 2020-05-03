@@ -49,9 +49,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="211dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginEnd="25dp"
         android:background="#BCFFFFFF"
         android:visibility="visible">
 
@@ -68,7 +68,7 @@
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="21dp"
             android:fontFamily="@font/roboto_light_italic"
-            android:text='No hay fechas disponibles para esa especialidad, desea unirse a la lista de espera?.'
+            android:text='No hay fechas disponibles para la especialidad que está buscando. Puede unirse a la lista de espera, y se le informará cuando haya disponibilidad.'
             android:textAlignment="center"
             android:textSize="15dp" />
 
@@ -633,27 +633,37 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="101dp"
         android:foregroundGravity="center"
         android:gravity="center_horizontal">
 
 
         <Button
-            android:id="@+id/volver"
-            android:layout_width="143dp"
+            android:id="@+id/volver2"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtcontrasena"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:textColor="#FFFFFF"
             android:background="#0C084C"
             android:text="volver"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/volver"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="#0C084C"
+            android:fontFamily="@font/roboto_light"
+            android:text="Volver"
             android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/listaespera"
-            android:layout_width="190dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/roboto_light"
