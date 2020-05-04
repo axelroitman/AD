@@ -145,7 +145,7 @@
             android:textSize="18dp"
             android:gravity="center_horizontal" />
 
-        <Spinner
+        <TextView
             android:id="@+id/spinerespecialidades"
             android:layout_width="190dp"
             android:layout_marginStart="5dp"
