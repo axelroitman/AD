@@ -1,9 +1,12 @@
 package controlador;
 
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 import daos.TurnoDAO;
 import daos.UsuarioDAO;
+import exceptions.ListaDeEsperaException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
 import modelo.Turno;
@@ -83,6 +86,21 @@ public class Controlador {
 	}
 	*/
 
+	public void agregarTurno(Date fecha, LocalTime hora, int idEspecialidad, String matricula, int idPaciente) throws TurnoException
+	{
+		
+	}
+	
+	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException
+	{
+		
+	}
+	
+	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException 
+	{
+		
+	}
+	
 	public void eliminarTurno(int id) throws TurnoException {
 		Turno aEliminar = null;
 		try {
