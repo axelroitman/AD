@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import entities.EspecialidadEntity;
 import entities.MedicoEntity;
 import entities.UsuarioEntity;
 import exceptions.MedicoException;
@@ -100,7 +101,13 @@ public class MedicoDAO {
     }
     
     Medico toNegocio(MedicoEntity entity){
-		return new Medico (entity.getUsuario().getIdUsr(),entity.getUsuario().getUsr(),entity.getUsuario().getPass(), entity.getUsuario().getNombre(), entity.getUsuario().getTelefono(), entity.getUsuario().getDni(), entity.getUsuario().getFechaNac(), entity.getMatricula());
+    	Collection<Especialidad> rdoEsp = new ArrayList<Especialidad>();
+    	Collection<EspecialidadEntity> esp = entity.getEspecialidades();
+    	for(EspecialidadEntity e : esp) {
+    		rdoEsp.add(EspecialidadDAO.getInstancia().toNegocio(e));
+    	}
+    	
+    	return new Medico (entity.getUsuario().getIdUsr(),entity.getUsuario().getUsr(),entity.getUsuario().getPass(), entity.getUsuario().getNombre(), entity.getUsuario().getTelefono(), entity.getUsuario().getDni(), entity.getUsuario().getFechaNac(), entity.getMatricula(),rdoEsp);
 	}
     
 	MedicoEntity toEntity(Medico medico){

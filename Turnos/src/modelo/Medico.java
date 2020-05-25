@@ -10,11 +10,11 @@ import views.MedicoView;
 public class Medico extends Usuario {
 
 	public Medico(int idUsr, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac,
-			String matricula) {
+			String matricula, Collection<Especialidad> especialidades) {
 		
 		super(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 		this.matricula = matricula;
-		//this.especialidades = especialidades;
+		this.especialidades = especialidades;
 		//this.agenda = agenda;
 	}
 	
@@ -30,9 +30,9 @@ public class Medico extends Usuario {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	/*public Collection<Especialidad> getEspecialidades() {
+	public Collection<Especialidad> getEspecialidades() {
 		return especialidades;
-	}
+	}/*
 	public void setEspecialidades(Collection<Especialidad> especialidades) {
 		this.especialidades = especialidades;
 	}*/

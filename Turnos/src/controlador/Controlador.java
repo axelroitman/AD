@@ -1,6 +1,7 @@
 package controlador;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,23 +34,35 @@ public class Controlador {
 	
 	public List<TurnoView> buscarAgendaMedico(int idMedico)
 	{
-		return null;
+		List<Turno> turnos = TurnoDAO.getInstancia().findByMedico(idMedico);
+		List<TurnoView> rdo = new ArrayList<TurnoView>();
+		for(Turno t : turnos) {
+			rdo.add(t.toView());
+		}
+		
+		return rdo;		
 	}
 	
-	public List<TurnoView> buscarAgendaEspecialidad(int idEspecialid)
+	public List<TurnoView> buscarAgendaEspecialidad(int idEspecialidad)
 	{
-		return null;
+		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidad(idEspecialidad);
+		List<TurnoView> rdo = new ArrayList<TurnoView>();
+		for(Turno t : turnos) {
+			rdo.add(t.toView());
+		}
+		
+		return rdo;		
 	}
 	
 	public List<TurnoView> buscarTurnosPaciente(int idPaciente)
 	{
-		return null;
-	}
-	public void registrarUsuario() {
+		List<Turno> turnos = TurnoDAO.getInstancia().findByPaciente(idPaciente);
+		List<TurnoView> rdo = new ArrayList<TurnoView>();
+		for(Turno t : turnos) {
+			rdo.add(t.toView());
+		}
 		
-	}
-	public void modificarUsuario()
-	{
+		return rdo;	
 	}
 	
 	public void agregarTurno() {
@@ -110,7 +123,7 @@ public class Controlador {
 			}
 		} catch (TurnoException e) {
 			// TODO Auto-generated catch block
-			throw new TurnoException("no se puede eliminar el turno");
+			throw new TurnoException("No se puede eliminar el turno");
 		}
 		
 	}

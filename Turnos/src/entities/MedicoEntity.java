@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,11 +20,15 @@ public class MedicoEntity {
 	@Id
 	private String matricula;
 	
-	@Transient
+	
+    @OneToMany
+    @JoinTable(name="medico_especialidades",
+    joinColumns={@JoinColumn(name="idMedico", referencedColumnName="matricula")},
+    inverseJoinColumns={@JoinColumn(name="idEspecialidad", referencedColumnName="id")})
     private Collection<EspecialidadEntity> especialidades;
     
 	@OneToOne
-	@JoinColumn(name="documento")
+	@JoinColumn(name="idUsuario")
 	private UsuarioEntity usuario;
 
 	public MedicoEntity() {}    
