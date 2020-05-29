@@ -7,11 +7,11 @@ import retrofit2.http.POST;
 
 public interface LoginService {
 
-    String API_ROUTE = "/login";
+    String API_ROUTE = "/apirest/login";
     @FormUrlEncoded
     @POST(API_ROUTE)
     Call<Usuario> getUsuario(
-            @Field("usr") String usr,
-            @Field("pass") String pass
+            @Field("usuario") String usr,
+            @Field("password") String pass
     );
 }

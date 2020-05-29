@@ -2,6 +2,7 @@ package com.example.loginclinicapp;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         builder = new AlertDialog.Builder(this);
         vincular();
+        Log.d("loginresp", "Existo.");
 
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,24 +45,33 @@ public class Login extends AppCompatActivity {
                     call.enqueue(new Callback<Usuario>() {
                                      @Override
                                      public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                                         if(response.isSuccessful()) {
+                                         Log.d("loginresp", response.toString());
 
-                                             Toast.makeText(Login.this, "Logueado con éxito", Toast.LENGTH_LONG).show();
+                                         if(response.code() == 200)
+                                         {
+
+                                             if(response.body() != null) {
+                                                 Log.d("logiresp", "" + response.body().getIdUsr());
+                                                 Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
+                                             }
+                                             else{
+                                                 builder.setTitle("Error");
+                                                 builder.setMessage("Usuario y/o contraseña incorrectos.");
+                                                 builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                     @Override
+                                                     public void onClick(DialogInterface dialog, int which) {
+                                                         dialog.cancel();
+                                                     }
+                                                 });
+
+                                                 AlertDialog alert = builder.create();
+                                                 //Setting the title manually
+                                                 alert.show();
+                                                 //Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrectos.", Toast.LENGTH_LONG).show();
+                                             }
                                          }
                                          else{
-                                             builder.setTitle("Error");
-                                             builder.setMessage("Usuario y/o contraseña incorrectos.");
-                                             builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(DialogInterface dialog, int which) {
-                                                     dialog.cancel();
-                                                 }
-                                             });
-
-                                             AlertDialog alert = builder.create();
-                                             //Setting the title manually
-                                             alert.show();
-                                             //Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrectos.", Toast.LENGTH_LONG).show();
+                                             Toast.makeText(Login.this, "Error del servidor, por favor vuelva a intentarlo.", Toast.LENGTH_LONG).show();
                                          }
                                      }
 
