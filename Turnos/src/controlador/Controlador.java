@@ -32,8 +32,7 @@ public class Controlador {
 	}
 
 	
-	public List<TurnoView> buscarAgendaMedico(int idMedico)
-	{
+	public List<TurnoView> buscarAgendaMedico(int idMedico) {
 		List<Turno> turnos = TurnoDAO.getInstancia().findByMedico(idMedico);
 		List<TurnoView> rdo = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
@@ -43,8 +42,7 @@ public class Controlador {
 		return rdo;		
 	}
 	
-	public List<TurnoView> buscarAgendaEspecialidad(int idEspecialidad)
-	{
+	public List<TurnoView> buscarAgendaEspecialidad(int idEspecialidad) {
 		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidad(idEspecialidad);
 		List<TurnoView> rdo = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
@@ -54,8 +52,7 @@ public class Controlador {
 		return rdo;		
 	}
 	
-	public List<TurnoView> buscarTurnosPaciente(int idPaciente)
-	{
+	public List<TurnoView> buscarTurnosPaciente(int idPaciente) {
 		List<Turno> turnos = TurnoDAO.getInstancia().findByPaciente(idPaciente);
 		List<TurnoView> rdo = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
@@ -64,19 +61,15 @@ public class Controlador {
 		
 		return rdo;	
 	}
-	
-	public void agregarTurno() {
-		
-	}
 
-	public void modificarTurno()
-	{
+	public void modificarTurno(int idTurno, int idEspecialidad, LocalTime horaInicial){
+		
 	}
 	
 	public void cambiarEstadoDeTurno() { 	
 	}
 
-	/*public PacienteView get Paciente (int id){
+	public PacienteView getPaciente (int id) {
 		PacienteView resul = null;
 		List<Paciente> pacientes = PacienteDAO.getInstancia().getPacientes();
 		for ( Paciente pa : pacientes){
@@ -87,7 +80,7 @@ public class Controlador {
 		return resul;
 	}
 
-	public MedicoView getMedico(string matricula){
+	public MedicoView getMedico(String matricula) {
 		MedicoView resul = null;
 		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
 		for ( Medico med : medicos ){
@@ -97,21 +90,40 @@ public class Controlador {
 		}
 		return resul;
 	}
-	*/
 
-	public void agregarTurno(Date fecha, LocalTime hora, int idEspecialidad, String matricula, int idPaciente) throws TurnoException
-	{
+	public void getInfoMedico(String matricula) {
+
+	}
+
+	public void getTurnosMedicoPorDia(int idMedico, int idEspecialidad) {
+
+	}
+
+	public void agregarTurno(Date fecha, LocalTime hora, int idEspecialidad, String matricula, int idPaciente) throws TurnoException {
 		
 	}
 	
-	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException
-	{
+	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
 		
 	}
 	
-	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException 
-	{
+	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
 		
+	}
+
+	public void getTurnosPaciente(int idPaciente, boolean proximos) {
+	}
+
+	public void getTurnosMedico(int idMedico, int estado) {
+	}
+
+	public void getTurnosMedicoPorEspecialidad(int idMedico, int idEspecialidad, int estado) {
+	}
+
+	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+	}
+
+	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
 	}
 	
 	public void eliminarTurno(int id) throws TurnoException {
@@ -126,6 +138,10 @@ public class Controlador {
 			throw new TurnoException("No se puede eliminar el turno");
 		}
 		
+	}
+
+	public void eliminarTurnos(LocalTime hora_inicial, LocalTime hora_final, Date fecha_inicial, Date fecha_final, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) {
+
 	}
 
 	public UsuarioView getUsuarioLogIn(String usuario, String password){ 
