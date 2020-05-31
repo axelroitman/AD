@@ -125,7 +125,15 @@ public class Controlador {
 
 	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
 	}
+
+	public void getEspecialidades() {
+	}
+
+	public void obtenerAgendaMedico(String matricula) {
+	}
 	
+	public void getMedicosPorEspecialidad(int idEspecialidad) {
+	}
 	public void eliminarTurno(int id) throws TurnoException {
 		Turno aEliminar = null;
 		try {
@@ -168,6 +176,11 @@ public class Controlador {
 			}
 		}
 		return resultado;
+	}
+	public void getTurnosPacientePorEstado(int idPaciente, int estado){
+	}
+
+	public void cambiarEstadoDeTurno(int idTurno){
 	}
 
 	public TurnoView getTurno(int id){ 
