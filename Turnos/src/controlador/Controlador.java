@@ -148,7 +148,7 @@ public class Controlador {
 		
 	}
 
-	public void eliminarTurnos(LocalTime hora_inicial, LocalTime hora_final, Date fecha_inicial, Date fecha_final, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) {
+	public void eliminarTurnos(LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) {
 
 	}
 
