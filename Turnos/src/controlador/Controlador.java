@@ -5,13 +5,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import daos.MedicoDAO;
+import daos.PacienteDAO;
 import daos.TurnoDAO;
 import daos.UsuarioDAO;
 import exceptions.ListaDeEsperaException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
+import modelo.Medico;
+import modelo.Paciente;
 import modelo.Turno;
 import modelo.Usuario;
+import views.EspecialidadView;
+import views.MedicoView;
+import views.PacienteView;
 import views.TurnoView;
 import views.UsuarioView;
 
@@ -73,7 +80,7 @@ public class Controlador {
 		PacienteView resul = null;
 		List<Paciente> pacientes = PacienteDAO.getInstancia().getPacientes();
 		for ( Paciente pa : pacientes){
-			if( id = pa.getId()){
+			if(id == pa.getId()){
 				resul = pa.toView();
 			}
 		}
@@ -126,13 +133,17 @@ public class Controlador {
 	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
 	}
 
-	public void getEspecialidades() {
+	public List<EspecialidadView> getEspecialidades() {
+		List<EspecialidadView> lista = new ArrayList<EspecialidadView>();
+		return lista;
 	}
 
 	public void obtenerAgendaMedico(String matricula) {
 	}
 	
-	public void getMedicosPorEspecialidad(int idEspecialidad) {
+	public List<MedicoView> getMedicosPorEspecialidad(int idEspecialidad) {
+		List<MedicoView> lista = new ArrayList<MedicoView>();
+		return lista;
 	}
 	public void eliminarTurno(int id) throws TurnoException {
 		Turno aEliminar = null;

@@ -3,6 +3,7 @@ package com.turnos.apirest;
 import java.text.DateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -22,6 +23,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import controlador.Controlador;
 import exceptions.ListaDeEsperaException;
 import exceptions.TurnoException;
+import views.EspecialidadView;
+import views.MedicoView;
+import views.PacienteView;
 import views.TurnoView;
 import views.UsuarioView;
 
@@ -109,7 +113,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			EspecialidadView especialidades = Controlador.getInstancia().getEspecialidades();
+			List<EspecialidadView> especialidades = Controlador.getInstancia().getEspecialidades();
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(especialidades);
 
