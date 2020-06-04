@@ -124,7 +124,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			MedicoView medicoPorEspecialidad = Controlador.getInstancia().getMedicosPorEspecialidad(idEspecialidad);
+			List<MedicoView> medicoPorEspecialidad = Controlador.getInstancia().getMedicosPorEspecialidad(idEspecialidad);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(medicoPorEspecialidad);
 
@@ -221,11 +221,11 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/getTurnosPaciente", method = RequestMethod.GET, produces = {"application/json"})
-	public @ResponseBody<json> String getTurnosPaciente(@RequestParam(value="idPaciente", required=true) int id, @RequestParam(value="viernes", required=true) boolean proximos) throws JsonProcessingException {
+	public @ResponseBody<json> String getTurnosPaciente(@RequestParam(value="idPaciente", required=true) int idPaciente, @RequestParam(value="viernes", required=true) boolean proximos) throws JsonProcessingException {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosPac = Controlador.getInstancia().getTurnosPaciente(idPaciente, proximos);
+			List<TurnoView> turnosPac = Controlador.getInstancia().getTurnosPaciente(idPaciente, proximos);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosPac);
 	}
@@ -251,9 +251,9 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView ProxTurnosPac = Controlador.getInstancia().buscarTurnosPaciente(idPaciente);
+			TurnoView ProxTurnoPac = Controlador.getInstancia().buscarProxTurnoPaciente(idPaciente);
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(ProxTurnosPac);
+			return mapper.writeValueAsString(ProxTurnoPac);
 	}
 
 	@RequestMapping(value = "/getTurnosPacientePorEstado", method = RequestMethod.GET, produces = {"application/json"})
@@ -261,7 +261,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView Turnos = Controlador.getInstancia().getTurnosPacientePorEstado(idPaciente, estado);
+			List<TurnoView> Turnos = Controlador.getInstancia().getTurnosPacientePorEstado(idPaciente, estado);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(Turnos);
 	}
@@ -271,7 +271,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosMed = Controlador.getInstancia().getTurnosMedico(idMedico, estado);
+			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedico(idMedico, estado);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosMed);
 	}
@@ -281,7 +281,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON		
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-		TurnoView turnosDelMedico = Controlador.getInstancia().obtenerAgendaMedico(matricula);
+		List<TurnoView> turnosDelMedico = Controlador.getInstancia().obtenerAgendaMedico(matricula);
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(turnosDelMedico);	
 	}
@@ -291,7 +291,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosMed = Controlador.getInstancia().getTurnosMedicoPorDia(idMedico, idEspecialidad);
+			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedicoPorDia(idMedico, idEspecialidad);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosMed);
 	}
@@ -301,7 +301,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosMedPorEsp = Controlador.getInstancia().getTurnosMedicoPorEspecialidad(idMedico,idEspecialidad,estado);
+			List<TurnoView> turnosMedPorEsp = Controlador.getInstancia().getTurnosMedicoPorEspecialidad(idMedico,idEspecialidad,estado);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosMedPorEsp);
 	}
@@ -321,7 +321,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEspecialidad);
+			List<TurnoView> turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEspecialidad);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosDisponibles);
 	}
@@ -331,7 +331,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(idEspecialidad, matricula);
+			List<TurnoView> turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(idEspecialidad, matricula);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosDisponibles);
 	}

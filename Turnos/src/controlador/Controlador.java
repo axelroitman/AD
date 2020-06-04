@@ -69,7 +69,7 @@ public class Controlador {
 		return rdo;	
 	}
 
-	public void modificarTurno(int idTurno, int idEspecialidad, LocalTime horaInicial){
+	public void modificarTurno(int idTurno, int idEspecialidad, LocalTime horaInicial) throws TurnoException{
 		
 	}
 	
@@ -98,11 +98,15 @@ public class Controlador {
 		return resul;
 	}
 
-	public void getInfoMedico(String matricula) {
+	public MedicoView getInfoMedico(String matricula) {
+		MedicoView medico = null;
+		return medico;
 
 	}
 
-	public void getTurnosMedicoPorDia(int idMedico, int idEspecialidad) {
+	public List<TurnoView> getTurnosMedicoPorDia(int idMedico, int idEspecialidad) {
+		List<TurnoView> turnosPorDia = new ArrayList<TurnoView>();
+		return turnosPorDia;
 
 	}
 
@@ -118,19 +122,29 @@ public class Controlador {
 		
 	}
 
-	public void getTurnosPaciente(int idPaciente, boolean proximos) {
+	public List<TurnoView> getTurnosPaciente(int idPaciente, boolean proximos) {
+		List<TurnoView> lista = new ArrayList<TurnoView>();
+		return lista;
 	}
 
-	public void getTurnosMedico(int idMedico, int estado) {
+	public List<TurnoView> getTurnosMedico(int idMedico, int estado) {
+		List<TurnoView> turnosMedico = new ArrayList<TurnoView>();
+		return turnosMedico;
 	}
 
-	public void getTurnosMedicoPorEspecialidad(int idMedico, int idEspecialidad, int estado) {
+	public List<TurnoView> getTurnosMedicoPorEspecialidad(int idMedico, int idEspecialidad, int estado) {
+		List<TurnoView> turnosPorEspecialidad = new ArrayList<TurnoView>();
+		return turnosPorEspecialidad;
 	}
 
-	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+		List<TurnoView> disponibles = new ArrayList<TurnoView>();
+		return disponibles;
 	}
 
-	public void getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
+	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
+		List<TurnoView> disponibles = new ArrayList<TurnoView>();
+		return disponibles;
 	}
 
 	public List<EspecialidadView> getEspecialidades() {
@@ -138,7 +152,9 @@ public class Controlador {
 		return lista;
 	}
 
-	public void obtenerAgendaMedico(String matricula) {
+	public List<TurnoView> obtenerAgendaMedico(String matricula) {
+		List<TurnoView> agenda = new ArrayList<TurnoView>();
+		return agenda;
 	}
 	
 	public List<MedicoView> getMedicosPorEspecialidad(int idEspecialidad) {
@@ -159,7 +175,7 @@ public class Controlador {
 		
 	}
 
-	public void eliminarTurnos(LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) {
+	public void eliminarTurnos(LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException{
 
 	}
 
@@ -188,10 +204,17 @@ public class Controlador {
 		}
 		return resultado;
 	}
-	public void getTurnosPacientePorEstado(int idPaciente, int estado){
+	public List<TurnoView> getTurnosPacientePorEstado(int idPaciente, int estado){
+		List<TurnoView> turnoPorEstado = new ArrayList<TurnoView>();
+		return turnoPorEstado;
 	}
 
-	public void cambiarEstadoDeTurno(int idTurno){
+	public void cambiarEstadoDeTurno(int idTurno)throws TurnoException{
+	}
+	
+	public TurnoView buscarProxTurnoPaciente( int idPaciente) {
+		TurnoView proximo = null;
+		return proximo;
 	}
 
 	public TurnoView getTurno(int id){ 
