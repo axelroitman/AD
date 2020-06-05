@@ -36,7 +36,6 @@ public class MedicoEntity {
 		super();
 		this.usuario = usuario;
 		this.matricula = matricula;
-		/*this.especialidades = especialidades;*/
 	}
 
 	

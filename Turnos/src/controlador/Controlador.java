@@ -10,6 +10,7 @@ import daos.PacienteDAO;
 import daos.TurnoDAO;
 import daos.UsuarioDAO;
 import exceptions.ListaDeEsperaException;
+import exceptions.MedicoException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
 import modelo.Medico;
@@ -98,16 +99,26 @@ public class Controlador {
 		return resul;
 	}
 
-	public MedicoView getInfoMedico(String matricula) {
-		MedicoView medico = null;
+	public MedicoView getInfoMedico(String matricula) { //PROBAR!
+		MedicoView medico;
+		medico = null;
+		try {
+			medico = MedicoDAO.getInstancia().findByMatricula(matricula).toView();
+		} catch (MedicoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return medico;
 
 	}
 
-	public List<TurnoView> getTurnosMedicoPorDia(int idMedico, int idEspecialidad) {
+	public List<TurnoView> getTurnosMedicoPorDia(String matricula, int idEspecialidad) { //PROBAR!
+		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
 		List<TurnoView> turnosPorDia = new ArrayList<TurnoView>();
+		for(Turno t : turnos) {
+			turnosPorDia.add(t.toView());			
+		}
 		return turnosPorDia;
-
 	}
 
 	public void agregarTurno(Date fecha, LocalTime hora, int idEspecialidad, String matricula, int idPaciente) throws TurnoException {

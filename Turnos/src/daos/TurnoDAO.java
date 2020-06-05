@@ -89,6 +89,21 @@ public class TurnoDAO {
 		return resultado;
 	}
 	
+	public List<Turno> findByEspecialidadYMedico(int idEspecialidad, String matricula) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad.id = ? and t.medico = ?")
+				.setInteger(0,idEspecialidad)
+				.setString(0, matricula)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+	
 	public void save(Turno turno){
 		TurnoEntity aGrabar = toEntity(turno);
 		Session s = HibernateUtil.getSessionFactory().openSession();

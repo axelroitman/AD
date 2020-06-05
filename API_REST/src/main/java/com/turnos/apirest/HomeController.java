@@ -287,7 +287,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/getTurnosMedicoPorDia", method = RequestMethod.GET, produces = {"application/json"})
-	public @ResponseBody<json> String getTurnosMedicoPorDia(@RequestParam(value="idMedico", required=true) int idMedico, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad) throws JsonProcessingException {
+	public @ResponseBody<json> String getTurnosMedicoPorDia(@RequestParam(value="idMedico", required=true) String idMedico, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad) throws JsonProcessingException {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 

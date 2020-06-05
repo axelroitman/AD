@@ -46,8 +46,7 @@ public class MedicoDAO {
     public Medico findByMatricula(String matricula) throws MedicoException{
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-               
-        MedicoEntity medico = (MedicoEntity) s.createQuery("from MedicoEntity m where m.matricula = ?")
+               	MedicoEntity medico = (MedicoEntity) s.createQuery("from MedicoEntity m where m.matricula = ?")
                 .setString(0, matricula)
                 .uniqueResult();
         if (medico == null){
