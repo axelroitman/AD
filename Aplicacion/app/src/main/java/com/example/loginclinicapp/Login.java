@@ -1,15 +1,17 @@
 package com.example.loginclinicapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +21,10 @@ public class Login extends AppCompatActivity {
 
     EditText txtusuario, txtcontrasena;
     Button btningresar;
+    RadioButton rbrecordarme;
     AlertDialog.Builder builder;
+
+    boolean estaActivado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,12 @@ public class Login extends AppCompatActivity {
         builder = new AlertDialog.Builder(this);
         vincular();
         Log.d("loginresp", "Existo.");
+
+        if(obtenerEstadoRB()){ // esto es para cuando el RB es true, que se saltee la pantalla de log-in y que comience en el inicio.
+            Intent i = new Intent(Login.this, inicio_paciente.class);
+            startActivity(i);
+            finish();
+        }
 
         btningresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +51,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this,"Introduzca su contraseña.",Toast.LENGTH_LONG).show();
                 }
                 else {
-
                     Call<Usuario> call = RetrofitClient.getInstance().getLoginService().getUsuario(txtusuario.getText().toString(), txtcontrasena.getText().toString());
                     call.enqueue(new Callback<Usuario>() {
                                      @Override
@@ -53,6 +63,11 @@ public class Login extends AppCompatActivity {
                                              if(response.body() != null) {
                                                  Log.d("logiresp", "" + response.body().getIdUsr());
                                                  Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
+
+                                                 guardarEstadoRB();
+                                                 Intent i = new Intent(Login.this, inicio_paciente.class);
+                                                 startActivity(i);
+                                                 finishAffinity(); //hace que cuando estas loggeado y decidis ir para atras, no aparezca la activity de log-in ni la de carga. Va a la pantalla ppl del celu.
                                              }
                                              else{
                                                  builder.setTitle("Error");
@@ -83,14 +98,35 @@ public class Login extends AppCompatActivity {
                                      }
                                  }
                     );
+
                 }
+            }
+        });
+
+        estaActivado = rbrecordarme.isChecked(); //el radio Button NO esta seleccionado.
+        rbrecordarme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (estaActivado){
+                    rbrecordarme.setChecked(false);
+                }
+                estaActivado = rbrecordarme.isChecked();
             }
         });
     }
 
     private void vincular(){
-        txtusuario = (EditText)findViewById(R.id.txtusuario);
+        txtusuario = (EditText) findViewById(R.id.txtusuario);
         txtcontrasena = (EditText) findViewById(R.id.txtcontrasena);
         btningresar = (Button) findViewById(R.id.btningresar);
+        rbrecordarme = (RadioButton) findViewById(R.id.recordarme);
+    }
+    private void guardarEstadoRB(){
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        preferences.edit().putBoolean("estado", rbrecordarme.isChecked()).apply();
+    }
+    private boolean obtenerEstadoRB(){
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        return preferences.getBoolean("estado", false);
     }
 }

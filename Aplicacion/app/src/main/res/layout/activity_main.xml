@@ -54,12 +54,23 @@
         android:fontFamily="@font/roboto_light"
         android:hint="Ingrese su contraseña"
         android:inputType="textPassword" />
+    
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/recordarme"
+        android:hint="Recordar mi cuenta"
+        android:layout_below="@+id/txtcontrasena"
+        />
 
     <Button
         android:id="@+id/btningresar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtcontrasena"
+        android:layout_below="@+id/recordarme"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
