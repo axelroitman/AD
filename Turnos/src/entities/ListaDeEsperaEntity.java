@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -21,40 +22,40 @@ public class ListaDeEsperaEntity {
 	
 	@OneToOne
 	@JoinColumn(name= "id")
-	private EspecialidadEntity esp;
+	private EspecialidadEntity idEspecialidad;
 	
-	@OneToOne
-	@JoinColumn(name="matricula")
-	private MedicoEntity medico;
+	@ManyToOne
+	@JoinColumn(name="idMedico")
+	private MedicoEntity idMedico;
 	
 	@OneToOne
 	@JoinColumn(name="id")
-	private PacienteEntity paciente;
+	private PacienteEntity idPaciente;
 
 	public ListaDeEsperaEntity() {}
 		
 	public ListaDeEsperaEntity(int id, EspecialidadEntity esp, PacienteEntity paciente, MedicoEntity medico) {
 		super();
 		this.id = id;
-		this.esp = esp;
-		this.paciente = paciente;
-		this.medico = medico;
+		this.idEspecialidad = esp;
+		this.idPaciente = paciente;
+		this.idMedico = medico;
 	}
 
 	public EspecialidadEntity getEsp() {
-		return esp;
+		return idEspecialidad;
 	}
 
 	public void setEsp(EspecialidadEntity esp) {
-		this.esp = esp;
+		this.idEspecialidad = esp;
 	}
 
 	public PacienteEntity getPaciente() {
-		return paciente;
+		return idPaciente;
 	}
 
 	public void setPaciente(PacienteEntity paciente) {
-		this.paciente = paciente;
+		this.idPaciente = paciente;
 	}
 
 	public int getId() {
@@ -62,11 +63,11 @@ public class ListaDeEsperaEntity {
 	}
 
 	public MedicoEntity getMedico() {
-		return medico;
+		return idMedico;
 	}
 
 	public void setMedico(MedicoEntity medico) {
-		this.medico = medico;
+		this.idMedico = medico;
 	}
 
 }

@@ -16,7 +16,7 @@ public class ListaDeEspera {
 	private Medico medico;
 	
 	
-	public ListaDeEspera(int id, Especialidad esp, Paciente paciente, Medico medico) {
+	public ItemListaDeEspera(int id, Especialidad esp, Paciente paciente, Medico medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
@@ -24,6 +24,13 @@ public class ListaDeEspera {
 		this.medico = medico;
 	}
 	
+	
+	public ItemListaDeEspera(Especialidad esp, Paciente paciente, Medico medico) {
+		super();
+		this.esp = esp;
+		this.paciente = paciente;
+		this.medico = medico;
+	}
 	
 	public Medico getMedico() {
 		return medico;
@@ -50,12 +57,5 @@ public class ListaDeEspera {
 	public ListaDeEsperaView toView() {
 		return new ListaDeEsperaView(id, esp.toView(), paciente.toView(), medico.toView());
 	}
-
-
-	/*public void agregarALista(Paciente p) {
-		this.pacientes.add(p);
-		ListaDeEsperaDAO.getInstancia().agregarALista(this);		
-	}*/
-
 
 }

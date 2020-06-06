@@ -32,7 +32,7 @@ public class MedicoEntity {
 	private UsuarioEntity usuario;
 
 	public MedicoEntity() {}    
-	public MedicoEntity(UsuarioEntity usuario, String matricula /*, Collection<EspecialidadEntity> especialidades, AgendaEntity agenda*/) {
+	public MedicoEntity(UsuarioEntity usuario, String matricula) {
 		super();
 		this.usuario = usuario;
 		this.matricula = matricula;

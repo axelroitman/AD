@@ -10,7 +10,7 @@ import entities.ListaDeEsperaEntity;
 import entities.PacienteEntity;
 import hibernate.HibernateUtil;
 import modelo.Especialidad;
-import modelo.ListaDeEspera;
+import modelo.ItemListaDeEspera;
 import modelo.Medico;
 import modelo.Paciente;
 
@@ -24,8 +24,8 @@ public class ListaDeEsperaDAO {
 		return instancia;
 	}
     
-    public Collection<ListaDeEspera> findByEspecialidad(int idEspecialidad) {
-		Collection<ListaDeEspera> resultado = null;
+    public Collection<ItemListaDeEspera> findByEspecialidad(int idEspecialidad) {
+		Collection<ItemListaDeEspera> resultado = null;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.especialidad")
@@ -39,8 +39,8 @@ public class ListaDeEsperaDAO {
 		return resultado;
 	}
     
-    public Collection<ListaDeEspera> findByEspecialidadYMedico(int idEspecialidad, String matricula) {
-    	Collection<ListaDeEspera> resultado = null;
+    public Collection<ItemListaDeEspera> findByEspecialidadYMedico(int idEspecialidad, String matricula) {
+    	Collection<ItemListaDeEspera> resultado = null;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.especialidad = ? and l.medico = ?")
@@ -56,12 +56,12 @@ public class ListaDeEsperaDAO {
 		return resultado;
 	}
 
-	private ListaDeEspera toNegocio(ListaDeEsperaEntity le) {
+	private ItemListaDeEspera toNegocio(ListaDeEsperaEntity le) {
 		Especialidad e = EspecialidadDAO.getInstancia().toNegocio(le.getEsp());
 		Medico m = MedicoDAO.getInstancia().toNegocio(le.getMedico());
 		Paciente p = PacienteDAO.getInstancia().toNegocio(le.getPaciente());
 		
-		return new ListaDeEspera(le.getId(), e, p,m);
+		return new ItemListaDeEspera(le.getId(), e, p,m);
 	}
 	
 	public boolean existeE(int idEspecialidad) {
@@ -106,7 +106,7 @@ public class ListaDeEsperaDAO {
 		s.close();
 	}*/
 	
-	public void agregarALista(ListaDeEspera l) {
+	public void agregarALista(ItemListaDeEspera l) {
 		ListaDeEsperaEntity aGrabar = toEntity(l);
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
@@ -116,10 +116,13 @@ public class ListaDeEsperaDAO {
 	}
 	
 
-	private ListaDeEsperaEntity toEntity(ListaDeEspera l) {
-		
-		return new ListaDeEsperaEntity(l.getId(), EspecialidadDAO.getInstancia().toEntity(l.getEsp()), PacienteDAO.getInstancia().toEntity(l.getPaciente()), MedicoDAO.getInstancia().toEntity(l.getMedico()));
+	private ListaDeEsperaEntity toEntity(ItemListaDeEspera l) {
+		if(l.getMedico() == null) {
+			return new ListaDeEsperaEntity(l.getId(), EspecialidadDAO.getInstancia().toEntity(l.getEsp()), PacienteDAO.getInstancia().toEntity(l.getPaciente()),null);
+		}
+		else {
+			return new ListaDeEsperaEntity(l.getId(), EspecialidadDAO.getInstancia().toEntity(l.getEsp()), PacienteDAO.getInstancia().toEntity(l.getPaciente()), MedicoDAO.getInstancia().toEntity(l.getMedico()));
+		}
 	}
-
     
 }

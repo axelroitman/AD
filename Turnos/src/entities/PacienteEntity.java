@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -20,9 +22,10 @@ public class PacienteEntity {
 	private int id;
 	
 	@OneToOne
-	@JoinColumn(name="documento")
+	@JoinColumn(name="idUsuario")
 	private UsuarioEntity usuario;
 	
+	@Temporal(TemporalType.DATE)
 	private Date fechaVtoCuota;
 	
 	public PacienteEntity() {}

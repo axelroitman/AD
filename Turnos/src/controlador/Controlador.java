@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import daos.EspecialidadDAO;
 import daos.ListaDeEsperaDAO;
 import daos.MedicoDAO;
 import daos.PacienteDAO;
 import daos.TurnoDAO;
 import daos.UsuarioDAO;
+import exceptions.EspecialidadException;
 import exceptions.ListaDeEsperaException;
 import exceptions.MedicoException;
 import exceptions.PacienteException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
-import modelo.ListaDeEspera;
+import modelo.Especialidad;
+import modelo.ItemListaDeEspera;
 import modelo.Medico;
 import modelo.Paciente;
 import modelo.Turno;
@@ -126,34 +129,41 @@ public class Controlador {
 		
 	}
 	
-	/*public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
-		ListaDeEspera le = null;
+	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
+		ItemListaDeEspera le = null;
 		Paciente p = null;
+		Especialidad e = null;
+		try {
+			e = EspecialidadDAO.getInstancia().findById(idEspecialidad);
+		} catch (EspecialidadException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		try {
 			p = PacienteDAO.getInstancia().findById(idPaciente);
-		} catch (PacienteException e) {
-			e.printStackTrace();
+		} catch (PacienteException exc) {
+			exc.printStackTrace();
 		}
 		if (matricula == null) {
-			if(ListaDeEsperaDAO.getInstancia().existeE(idEspecialidad)) {
-				le = ListaDeEsperaDAO.getInstancia().findByEspecialidad(idEspecialidad);
-			}
-			else {
-				//CREAR LISTA DE ESPERA PARA ESPECIALIDAD
-			}
+			le = new ItemListaDeEspera(e, p, null);
+			
 			
 		}
 		else {
-			if(ListaDeEsperaDAO.getInstancia().existeEyM(idEspecialidad, matricula)) {
-				le = ListaDeEsperaDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
+			Medico m = null;
+
+			try {
+				m = MedicoDAO.getInstancia().findByMatricula(matricula);
+			} catch (MedicoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			else {
-				//CREAR LISTA DE ESPERA PARA ESPECIALIDAD Y MEDICO
-			}
+			le = new ItemListaDeEspera(e, p, m);
 		}
-		le.agregarALista(p);
+		ListaDeEsperaDAO.getInstancia().agregarALista(le);		
 	}
-	*/
+	
 
 	public List<TurnoView> getTurnosPaciente(int idPaciente, boolean proximos) {
 		List<TurnoView> lista = new ArrayList<TurnoView>();
