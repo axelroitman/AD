@@ -12,15 +12,15 @@ public class ListaDeEspera {
 	
 	private int id;
 	private Especialidad esp;
-	private List<Paciente> pacientes;
+	private Paciente paciente;
 	private Medico medico;
 	
 	
-	public ListaDeEspera(int id, Especialidad esp, List<Paciente> pacientes, Medico medico) {
+	public ListaDeEspera(int id, Especialidad esp, Paciente paciente, Medico medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
-		this.pacientes = pacientes;
+		this.paciente = paciente;
 		this.medico = medico;
 	}
 	
@@ -40,28 +40,22 @@ public class ListaDeEspera {
 	public void setEsp(Especialidad esp) {
 		this.esp = esp;
 	}
-	public List<Paciente> getPacientes() {
-		return pacientes;
+	public Paciente getPaciente() {
+		return paciente;
 	}
-	public void setPacientes(List<Paciente> pacientes) {
-		this.pacientes = pacientes;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	
 	public ListaDeEsperaView toView() {
-		List<PacienteView> pac = new ArrayList<PacienteView>();
-		for(Paciente p : pacientes) 
-		{
-			pac.add(p.toView());
-		}
-
-		return new ListaDeEsperaView(id, esp.toView(), pac, medico.toView());
+		return new ListaDeEsperaView(id, esp.toView(), paciente.toView(), medico.toView());
 	}
 
 
-	public void agregarALista(Paciente p) {
+	/*public void agregarALista(Paciente p) {
 		this.pacientes.add(p);
-		ListaDeEsperaDAO.getInstancia().update(this);		
-	}
+		ListaDeEsperaDAO.getInstancia().agregarALista(this);		
+	}*/
 
 
 }

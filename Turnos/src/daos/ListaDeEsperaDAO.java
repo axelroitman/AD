@@ -24,42 +24,43 @@ public class ListaDeEsperaDAO {
 		return instancia;
 	}
     
-    public ListaDeEspera findByEspecialidad(int idEspecialidad) {
-		ListaDeEspera resultado;
+    public Collection<ListaDeEspera> findByEspecialidad(int idEspecialidad) {
+		Collection<ListaDeEspera> resultado = null;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		ListaDeEsperaEntity listaEsp = (ListaDeEsperaEntity) s.createQuery("from ListaDeEsperaEntity l where l.especialidad")
+		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.especialidad")
 				.setInteger(0,idEspecialidad)
-				.uniqueResult();
+				.list();
 		s.getTransaction().commit();
 		s.close();
-		resultado = toNegocio(listaEsp);
+		for(ListaDeEsperaEntity le : listaEsp) {
+			resultado.add(toNegocio(le));
+		}
 		return resultado;
 	}
     
-    public ListaDeEspera findByEspecialidadYMedico(int idEspecialidad, String matricula) {
-		ListaDeEspera resultado;
+    public Collection<ListaDeEspera> findByEspecialidadYMedico(int idEspecialidad, String matricula) {
+    	Collection<ListaDeEspera> resultado = null;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		ListaDeEsperaEntity listaEsp = (ListaDeEsperaEntity) s.createQuery("from ListaDeEsperaEntity l where l.especialidad = ? and l.medico = ?")
+		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.especialidad = ? and l.medico = ?")
 				.setInteger(0,idEspecialidad)
 				.setString(1, matricula)
-				.uniqueResult();
+				.list();
 		s.getTransaction().commit();
 		s.close();
-		resultado = toNegocio(listaEsp);
+		
+		for(ListaDeEsperaEntity le : listaEsp) {
+			resultado.add(toNegocio(le));
+		}
 		return resultado;
 	}
 
 	private ListaDeEspera toNegocio(ListaDeEsperaEntity le) {
 		Especialidad e = EspecialidadDAO.getInstancia().toNegocio(le.getEsp());
-		List<Paciente> p = new ArrayList<Paciente>();
 		Medico m = MedicoDAO.getInstancia().toNegocio(le.getMedico());
+		Paciente p = PacienteDAO.getInstancia().toNegocio(le.getPaciente());
 		
-		for(PacienteEntity pa : le.getPacientes()) {
-			p.add(PacienteDAO.getInstancia().toNegocio(pa));
-		}
-				
 		return new ListaDeEspera(le.getId(), e, p,m);
 	}
 	
@@ -96,23 +97,28 @@ public class ListaDeEsperaDAO {
 		return res;
 	}
 	
-	public void update (ListaDeEspera l) {
+	/*public void update (ListaDeEspera l) {
 		ListaDeEsperaEntity aGrabar = toEntity(l);
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		s.update(aGrabar);
 		s.getTransaction().commit();
 		s.close();
+	}*/
+	
+	public void agregarALista(ListaDeEspera l) {
+		ListaDeEsperaEntity aGrabar = toEntity(l);
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		s.save(aGrabar);
+		s.getTransaction().commit();
+		s.close();
 	}
 	
 
 	private ListaDeEsperaEntity toEntity(ListaDeEspera l) {
-		Collection<PacienteEntity> pac = null;
 		
-		for(Paciente p : l.getPacientes()) {
-			pac.add(PacienteDAO.instancia.toEntity(p));
-		}
-		return new ListaDeEsperaEntity(l.getId(), EspecialidadDAO.getInstancia().toEntity(l.getEsp()), pac, MedicoDAO.getInstancia().toEntity(l.getMedico()));
+		return new ListaDeEsperaEntity(l.getId(), EspecialidadDAO.getInstancia().toEntity(l.getEsp()), PacienteDAO.getInstancia().toEntity(l.getPaciente()), MedicoDAO.getInstancia().toEntity(l.getMedico()));
 	}
 
     

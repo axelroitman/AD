@@ -126,7 +126,7 @@ public class Controlador {
 		
 	}
 	
-	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
+	/*public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
 		ListaDeEspera le = null;
 		Paciente p = null;
 		try {
@@ -153,6 +153,7 @@ public class Controlador {
 		}
 		le.agregarALista(p);
 	}
+	*/
 
 	public List<TurnoView> getTurnosPaciente(int idPaciente, boolean proximos) {
 		List<TurnoView> lista = new ArrayList<TurnoView>();

@@ -6,14 +6,14 @@ import java.util.List;
 public class ListaDeEsperaView {
 	private int id;
 	private EspecialidadView esp;
-	private List<PacienteView> pacientes;
+	private PacienteView paciente;
 	private MedicoView medico;
 	
-	public ListaDeEsperaView(int id, EspecialidadView esp, List<PacienteView> pacientes, MedicoView medico) {
+	public ListaDeEsperaView(int id, EspecialidadView esp, PacienteView paciente, MedicoView medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
-		this.pacientes = pacientes;
+		this.paciente = paciente;
 		this.medico = medico;
 	}
 	
@@ -27,11 +27,11 @@ public class ListaDeEsperaView {
 	public void setEsp(EspecialidadView esp) {
 		this.esp = esp;
 	}
-	public List<PacienteView> getPacientes() {
-		return pacientes;
+	public PacienteView getPaciente() {
+		return paciente;
 	}
-	public void setPacientes(List<PacienteView> pacientes) {
-		this.pacientes = pacientes;
+	public void setPacientes(PacienteView paciente) {
+		this.paciente = paciente;
 	}
 	public MedicoView getMedico() {
 		return medico;
