@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import daos.ListaDeEsperaDAO;
 import views.ListaDeEsperaView;
 import views.PacienteView;
 
@@ -54,6 +55,12 @@ public class ListaDeEspera {
 		}
 
 		return new ListaDeEsperaView(id, esp.toView(), pac, medico.toView());
+	}
+
+
+	public void agregarALista(Paciente p) {
+		this.pacientes.add(p);
+		ListaDeEsperaDAO.getInstancia().update(this);		
 	}
 
 

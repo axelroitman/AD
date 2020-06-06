@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import daos.ListaDeEsperaDAO;
 import daos.MedicoDAO;
 import daos.PacienteDAO;
 import daos.TurnoDAO;
 import daos.UsuarioDAO;
 import exceptions.ListaDeEsperaException;
 import exceptions.MedicoException;
+import exceptions.PacienteException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
+import modelo.ListaDeEspera;
 import modelo.Medico;
 import modelo.Paciente;
 import modelo.Turno;
@@ -89,17 +92,6 @@ public class Controlador {
 	}
 
 	public MedicoView getMedico(String matricula) {
-		MedicoView resul = null;
-		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
-		for ( Medico med : medicos ){
-			if( matricula.equals(med.getMatricula()) ){
-				resul = med.toView();
-			}
-		}
-		return resul;
-	}
-
-	public MedicoView getInfoMedico(String matricula) { //PROBAR!
 		MedicoView medico;
 		medico = null;
 		try {
@@ -109,10 +101,15 @@ public class Controlador {
 			e.printStackTrace();
 		}
 		return medico;
+	}
+
+	public MedicoView getInfoMedico(String matricula) { //NO DEBERÍA DEVOLVER UN MEDICOVIEW -> VER DEFINICIÓN DE API REST
+		MedicoView medico= null;
+		return medico;
 
 	}
 
-	public List<TurnoView> getTurnosMedicoPorDia(String matricula, int idEspecialidad) { //PROBAR!
+	public List<TurnoView> getTurnosMedicoPorDia(String matricula, int idEspecialidad) {
 		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
 		List<TurnoView> turnosPorDia = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
@@ -130,7 +127,31 @@ public class Controlador {
 	}
 	
 	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
-		
+		ListaDeEspera le = null;
+		Paciente p = null;
+		try {
+			p = PacienteDAO.getInstancia().findById(idPaciente);
+		} catch (PacienteException e) {
+			e.printStackTrace();
+		}
+		if (matricula == null) {
+			if(ListaDeEsperaDAO.getInstancia().existeE(idEspecialidad)) {
+				le = ListaDeEsperaDAO.getInstancia().findByEspecialidad(idEspecialidad);
+			}
+			else {
+				//CREAR LISTA DE ESPERA PARA ESPECIALIDAD
+			}
+			
+		}
+		else {
+			if(ListaDeEsperaDAO.getInstancia().existeEyM(idEspecialidad, matricula)) {
+				le = ListaDeEsperaDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
+			}
+			else {
+				//CREAR LISTA DE ESPERA PARA ESPECIALIDAD Y MEDICO
+			}
+		}
+		le.agregarALista(p);
 	}
 
 	public List<TurnoView> getTurnosPaciente(int idPaciente, boolean proximos) {

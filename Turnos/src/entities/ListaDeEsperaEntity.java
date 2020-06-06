@@ -20,19 +20,24 @@ public class ListaDeEsperaEntity {
 	private int id;
 	
 	@OneToOne
-	@JoinColumn(name= "nombre")
+	@JoinColumn(name= "id")
 	private EspecialidadEntity esp;
+	
+	@OneToOne
+	@JoinColumn(name="matricula")
+	private MedicoEntity medico;
 	
 	@Transient
 	private Collection<PacienteEntity> pacientes;
 
 	public ListaDeEsperaEntity() {}
 		
-	public ListaDeEsperaEntity(int id, EspecialidadEntity esp, Collection<PacienteEntity> pacientes) {
+	public ListaDeEsperaEntity(int id, EspecialidadEntity esp, Collection<PacienteEntity> pacientes, MedicoEntity medico) {
 		super();
 		this.id = id;
 		this.esp = esp;
 		this.pacientes = pacientes;
+		this.medico = medico;
 	}
 
 	public EspecialidadEntity getEsp() {
@@ -53,6 +58,14 @@ public class ListaDeEsperaEntity {
 
 	public int getId() {
 		return id;
+	}
+
+	public MedicoEntity getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoEntity medico) {
+		this.medico = medico;
 	}
 
 }

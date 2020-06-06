@@ -93,9 +93,9 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad.id = ? and t.medico = ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.medico = ?")
 				.setInteger(0,idEspecialidad)
-				.setString(0, matricula)
+				.setString(1, matricula)
 				.list();
 		s.getTransaction().commit();
 		s.close();
