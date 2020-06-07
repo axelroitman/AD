@@ -231,9 +231,17 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedico(matricula);
-		for(Turno t : turnos) {
-			turnosMedico.add(t.toView());
+		if(estado == null) {
+			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedico(matricula);
+			for(Turno t : turnos) {
+				turnosMedico.add(t.toView());
+			}
+		}
+		else {
+			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedicoYEstado(matricula, estado.intValue());
+			for(Turno t : turnos) {
+				turnosMedico.add(t.toView());
+			}
 		}
 		return turnosMedico;
 	}
