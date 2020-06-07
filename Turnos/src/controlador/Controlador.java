@@ -88,9 +88,6 @@ public class Controlador {
 		t.getFecha().setMinutes(horaInicial.getMinute());
 		TurnoDAO.getInstancia().update(t);
 	}
-	
-	public void cambiarEstadoDeTurno() { 	
-	}
 
 	public PacienteView getPaciente (int id) {
 		PacienteView resul = null;
@@ -312,20 +309,28 @@ public class Controlador {
 		return turnoPorEstado;
 	}
 
-	public void cambiarEstadoDeTurno(int idTurno, int idPaciente, int asistencia, int disponibilidad)throws TurnoException{
+	public void cambiarEstadoDeTurno(int idTurno, Integer idPaciente, Integer asistencia, Integer disponibilidad)throws TurnoException{
 		Turno turno = buscarTurno(idTurno);
-		Paciente paciente;
-		if(idPaciente > 0) {
+		Paciente paciente = null;
+		if(idPaciente != null) {
 			try {
-				paciente = buscarPaciente(idPaciente);
+				paciente = buscarPaciente(idPaciente.intValue());
 			} catch (PacienteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		if(asistencia > 0) {
-			
+		if(asistencia != null) {
+			turno.setAsistencia(asistencia.intValue());
 		}
+		if(disponibilidad != null) {
+			turno.setDisponibilidad(disponibilidad.intValue());
+		}
+		if(paciente != null) {
+			turno.setPaciente(paciente);
+		}
+		
+		TurnoDAO.getInstancia().update(turno);
 	}
 	
 	public TurnoView buscarProxTurnoPaciente(int idPaciente) {

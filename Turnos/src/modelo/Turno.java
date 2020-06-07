@@ -60,8 +60,41 @@ public class Turno {
 	public Asistencia getAsistencia() {
 		return asistencia;
 	}
-	public void setAsistencia(Asistencia asistencia) {
-		this.asistencia = asistencia;
+	public void setDisponibilidad(int disponibilidad) {
+		Disponibilidad dis = null;
+		if(disponibilidad == 1) {
+			dis = Disponibilidad.Disponible;
+		}
+		if(disponibilidad == 2) {
+			dis = Disponibilidad.Programado;
+		}
+		if(disponibilidad == 3) {
+			dis = Disponibilidad.AConfirmar;
+		}
+		if(disponibilidad == 4) {
+			dis = Disponibilidad.Confirmado;
+		}
+		if(disponibilidad == 5) {
+			dis = Disponibilidad.Terminado;
+		}
+		if(disponibilidad == 6) {
+			dis = Disponibilidad.Cancelado;
+		}
+		this.disponibilidad = dis;
+	}
+
+public void setAsistencia(int asistencia) {
+		Asistencia as = null;
+		if(asistencia == 1) {
+			as = Asistencia.Asiste;
+		}
+		if(asistencia == 2) {
+			as = Asistencia.NoAsiste;
+		}
+		if(asistencia == 3) {
+			as = Asistencia.NoConfirmo;
+		}
+		this.asistencia = as;
 	}
 	public String getJustifInasistencia() {
 		return justifInasistencia;
@@ -71,9 +104,6 @@ public class Turno {
 	}
 	public Disponibilidad getDisponibilidad() {
 		return disponibilidad;
-	}
-	public void setDisponibilidad(Disponibilidad disponibilidad) {
-		this.disponibilidad = disponibilidad;
 	}
 	public Especialidad getEspecialidad() {
 		return especialidad;

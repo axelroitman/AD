@@ -163,7 +163,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/agregarAListaDeEspera", method = RequestMethod.PUT)
-	public ResponseEntity<Void> agregarAListaDeEspera(@RequestParam(value="idPaciente", required=true) int idPaciente, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula) {
+	public ResponseEntity<Void> agregarAListaDeEspera(@RequestParam(value="idPaciente", required=true) int idPaciente, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=false) String matricula) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 				
@@ -238,7 +238,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/cambiarEstadoDeTurno", method = RequestMethod.PUT)
-	public ResponseEntity<Void> cambiarEstadoDeTurno( @RequestParam(value="idTurno", required=true) int idTurno, @RequestParam(value="idPaciente") int idPaciente, @RequestParam(value="asistencia") int asistencia, @RequestParam(value="disponibilidad") int disponibilidad) {
+	public ResponseEntity<Void> cambiarEstadoDeTurno( @RequestParam(value="idTurno", required=true) int idTurno, @RequestParam(value="idPaciente", required=false) Integer idPaciente, @RequestParam(value="asistencia", required=false) Integer asistencia, @RequestParam(value="disponibilidad", required=false) Integer disponibilidad) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 				
