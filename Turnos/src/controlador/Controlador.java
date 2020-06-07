@@ -120,13 +120,29 @@ public class Controlador {
 		}
 		return turnosPorDia;
 	}
-
+	
 	public void agregarTurno(Date fecha, int idEspecialidad, String matricula, int idPaciente) throws TurnoException 
 	{
-		Especialidad esp = null;
-		Medico med = null;
-		Paciente pac = null;
-		Turno turno = new Turno(fecha, esp, med, pac);
+		Especialidad especialidad = null;
+		Medico medico = null;
+		Paciente paciente = null;
+		
+			try {
+				especialidad = buscarEspecialidad(idEspecialidad);
+				medico = buscarMedico(matricula);
+				paciente = buscarPaciente(idPaciente);				
+			} catch (EspecialidadException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (MedicoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (PacienteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		Turno turno = new Turno(fecha, especialidad, medico, paciente);
 	}
 
 	
@@ -314,6 +330,33 @@ public class Controlador {
 		aBuscar = TurnoDAO.getInstancia().findById(id);
 		if(aBuscar == null) {
 			throw new TurnoException("No existe el turno");
+		}
+		return aBuscar;				
+	}
+	private Especialidad buscarEspecialidad(int id) throws EspecialidadException { 
+		Especialidad aBuscar = null;
+		try {
+			aBuscar = EspecialidadDAO.getInstancia().findById(id);
+		} catch (EspecialidadException e) {
+			throw new EspecialidadException("No existe el turno");
+		}
+		return aBuscar;				
+	}
+	private Medico buscarMedico(String matricula) throws MedicoException { 
+		Medico aBuscar = null;
+		try {
+			aBuscar = MedicoDAO.getInstancia().findByMatricula(matricula);
+		} catch (MedicoException e) {
+			throw new MedicoException("No existe el medico");
+		}
+		return aBuscar;				
+	}
+	private Paciente buscarPaciente(int id) throws PacienteException { 
+		Paciente aBuscar = null;
+		try {
+			aBuscar = PacienteDAO.getInstancia().findById(id);
+		} catch (PacienteException e) {
+			throw new PacienteException("No existe el paciente");
 		}
 		return aBuscar;				
 	}
