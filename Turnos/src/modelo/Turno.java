@@ -23,7 +23,16 @@ public class Turno {
 		this.medico = medico;
 		
 	}
-    
+    public Turno(Date fecha, Especialidad especialidad, Medico medico, Paciente paciente) {
+    	
+		this.fecha = fecha;
+		this.asistencia = Asistencia.NoConfirmo;
+		this.disponibilidad = Disponibilidad.Programado;
+		this.especialidad = especialidad;
+		this.paciente = paciente;
+		this.medico = medico;
+		
+	}   
     private int id;
 	private Date fecha;
     private float precio;

@@ -121,9 +121,14 @@ public class Controlador {
 		return turnosPorDia;
 	}
 
-	public void agregarTurno(Date fecha, LocalTime hora, int idEspecialidad, String matricula, int idPaciente) throws TurnoException {
-		
+	public void agregarTurno(Date fecha, int idEspecialidad, String matricula, int idPaciente) throws TurnoException 
+	{
+		Especialidad esp = null;
+		Medico med = null;
+		Paciente pac = null;
+		Turno turno = new Turno(fecha, esp, med, pac);
 	}
+
 	
 	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
 		

@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -177,13 +179,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/agregarTurno", method = RequestMethod.PUT)
-	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) Date fecha, @RequestParam(value="hora", required=true) LocalTime hora, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idPaciente", required=true) int idPaciente) {
+	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy hh:mm:ss") Date fecha, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idPaciente", required=true) int idPaciente) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 		
+		//
+		//, @RequestParam(value="hora", required=true) LocalTime hora
 		try {
-			
-			Controlador.getInstancia().agregarTurno(fecha, hora, idEspecialidad, matricula, idPaciente);
+			Controlador.getInstancia().agregarTurno(fecha, idEspecialidad, matricula, idPaciente);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);												
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
