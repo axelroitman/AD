@@ -133,23 +133,27 @@ public class Controlador {
 	public void agregarTurno(Date fecha, int idEspecialidad, String matricula) throws TurnoException 
 	{
 		Especialidad especialidad = null;
+		try {
+			especialidad = buscarEspecialidad(idEspecialidad);
+		} catch (EspecialidadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Medico medico = null;
+		try {
+			medico = buscarMedico(matricula);
+		} catch (MedicoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-			try {
-				especialidad = buscarEspecialidad(idEspecialidad);
-				medico = buscarMedico(matricula);
-			} catch (EspecialidadException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (MedicoException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		Turno turno = new Turno(fecha, especialidad, medico);
-		System.out.println(fecha);
-		TurnoDAO.getInstancia().save(turno);		
-
+		if(!TurnoDAO.getInstancia().existeTurno(fecha, idEspecialidad, matricula)) {
+			Turno turno = new Turno(fecha, especialidad, medico);
+			TurnoDAO.getInstancia().save(turno);
+		}
+		else {
+			throw new TurnoException("El turno ya existe");
+		}
 	}
 	
 	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
@@ -295,7 +299,7 @@ public class Controlador {
 	public void cambiarEstadoDeTurno(int idTurno)throws TurnoException{
 	}
 	
-	public TurnoView buscarProxTurnoPaciente( int idPaciente) {
+	public TurnoView buscarProxTurnoPaciente(int idPaciente) {
 		TurnoView proximo = null;
 		return proximo;
 	}
@@ -323,9 +327,8 @@ public class Controlador {
 
 	private Usuario buscarUsuario(String username) throws UsuarioException { 
 		Usuario aBuscar = null;
-		try {
-			aBuscar = UsuarioDAO.getInstancia().findByNombreDeUsuario(username);
-		} catch (UsuarioException e) {
+		aBuscar = UsuarioDAO.getInstancia().findByNombreDeUsuario(username);
+		if(aBuscar == null) {
 			throw new UsuarioException("No existe el usuario");
 		}
 		return aBuscar;				
@@ -341,27 +344,24 @@ public class Controlador {
 	}
 	private Especialidad buscarEspecialidad(int id) throws EspecialidadException { 
 		Especialidad aBuscar = null;
-		try {
-			aBuscar = EspecialidadDAO.getInstancia().findById(id);
-		} catch (EspecialidadException e) {
+		aBuscar = EspecialidadDAO.getInstancia().findById(id);
+		if(aBuscar == null) {
 			throw new EspecialidadException("No existe el turno");
 		}
 		return aBuscar;				
 	}
 	private Medico buscarMedico(String matricula) throws MedicoException { 
 		Medico aBuscar = null;
-		try {
-			aBuscar = MedicoDAO.getInstancia().findByMatricula(matricula);
-		} catch (MedicoException e) {
+		aBuscar = MedicoDAO.getInstancia().findByMatricula(matricula);
+		if(aBuscar == null) {
 			throw new MedicoException("No existe el medico");
 		}
 		return aBuscar;				
 	}
 	private Paciente buscarPaciente(int id) throws PacienteException { 
 		Paciente aBuscar = null;
-		try {
-			aBuscar = PacienteDAO.getInstancia().findById(id);
-		} catch (PacienteException e) {
+		aBuscar = PacienteDAO.getInstancia().findById(id);
+		if(aBuscar == null) {
 			throw new PacienteException("No existe el paciente");
 		}
 		return aBuscar;				

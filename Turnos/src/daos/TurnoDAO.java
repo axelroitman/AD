@@ -2,11 +2,13 @@ package daos;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
 
+import entities.ListaDeEsperaEntity;
 import entities.TurnoEntity;
 import exceptions.TurnoException;
 import hibernate.HibernateUtil;
@@ -126,7 +128,7 @@ public class TurnoDAO {
 	public void delete(Turno turno) throws TurnoException {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		TurnoEntity aEliminar = (TurnoEntity) s.createQuery("from TurnoEntity u where u.id = ?")
+		TurnoEntity aEliminar = (TurnoEntity) s.createQuery("from TurnoEntity t where t.id = ?")
 				.setInteger(0, turno.getId())
 				.uniqueResult();
 		s.delete(aEliminar);
@@ -145,6 +147,24 @@ public class TurnoDAO {
 	Turno toNegocio(TurnoEntity entity){
 		
 		return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+	}
+
+	public boolean existeTurno(Date fecha, int idEspecialidad, String matricula) {
+		boolean res = false;
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		TurnoEntity turEn = (TurnoEntity) s.createQuery("from TurnoEntity t where t.especialidad = ? and t.medico = ? and t.fecha = ?")
+				.setInteger(0, idEspecialidad)
+				.setString(1, matricula)
+				.setDate(2, fecha)
+				.uniqueResult();
+		s.getTransaction().commit();
+		s.close();
+		if (turEn != null) { //No existe el turno
+			res = true;
+		}
+		
+		return res;
 	}
 
 }
