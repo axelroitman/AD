@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#E8E5E5"
+    tools:context=".pedir_turno">
+
+
+    <TextView
+        android:id="@+id/txttitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/logo"
+        android:fontFamily="@font/roboto_light"
+        android:text="Solicitar Turno"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="505dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="167dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="59dp">
+
+
+        <TextView
+            android:id="@+id/txtseleccionarEspecialidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="22dp"
+            android:text="Seleccionar especialidad:"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/spespecialidades"
+            android:layout_width="277dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/txtseleccionarEspecialidad"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="73dp"
+            android:scrollbarStyle="outsideInset" />
+
+        <TextView
+            android:id="@+id/txtseleccionarMedico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spespecialidades"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="46dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Selecciona Médico:"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/spmedicos"
+            android:layout_width="277dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/txtseleccionarMedico"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="31dp" />
+
+        <Button
+            android:id="@+id/btnbuscar"
+            android:layout_width="106dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="65dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toEndOf="@+id/btncancelar"
+            android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/roboto_light"
+            android:text="Buscar" />
+
+        <Button
+            android:id="@+id/btncancelar"
+            android:layout_width="106dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="66dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#F44336"
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelar"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

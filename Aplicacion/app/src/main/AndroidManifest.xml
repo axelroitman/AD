@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".inicio_paciente"></activity>
+        <activity android:name=".historial_turnos_pacientes"></activity>
+        <activity android:name=".historial" />
+        <activity android:name=".pedir_turno" />
+        <activity android:name=".ver_mis_turnos" />
+        <activity android:name=".inicio_paciente" />
         <activity android:name=".inicioPaciente" />
         <activity
             android:name=".pantalla_cargando"
