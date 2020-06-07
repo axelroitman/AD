@@ -8,7 +8,7 @@ import views.ListaDeEsperaView;
 import views.PacienteView;
 
 
-public class ListaDeEspera {
+public class ItemListaDeEspera {
 	
 	private int id;
 	private Especialidad esp;

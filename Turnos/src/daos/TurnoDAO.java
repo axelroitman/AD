@@ -135,12 +135,12 @@ public class TurnoDAO {
 	}
 	
 	TurnoEntity toEntity(Turno turno){
-		return new TurnoEntity(turno.getId(), turno.getFecha(), turno.getHora(), turno.getPrecio(), turno.getAsistencia(), turno.getJustifInasistencia(), turno.getDisponibilidad(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()), MedicoDAO.getInstancia().toEntity(turno.getMedico()), PacienteDAO.getInstancia().toEntity(turno.getPaciente()));
+		return new TurnoEntity(turno.getId(), turno.getFecha(), turno.getPrecio(), turno.getAsistencia(), turno.getJustifInasistencia(), turno.getDisponibilidad(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()), MedicoDAO.getInstancia().toEntity(turno.getMedico()), PacienteDAO.getInstancia().toEntity(turno.getPaciente()));
 	} 
 	
 	Turno toNegocio(TurnoEntity entity){
 		
-		return new Turno(entity.getId(), entity.getFecha(), entity.getHora(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+		return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
 	}
 
 }

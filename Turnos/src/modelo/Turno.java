@@ -9,12 +9,11 @@ import views.TurnoView;
 public class Turno {
 
 
-    public Turno(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
+    public Turno(int id, Date fecha, float precio, Asistencia asistencia,
     		String justifInasistencia, Disponibilidad disponibilidad, Especialidad especialidad, Medico medico, Paciente paciente) {
     	
     	this.id = id;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.precio = precio;
 		this.asistencia = asistencia;
 		this.justifInasistencia = justifInasistencia;
@@ -27,7 +26,6 @@ public class Turno {
     
     private int id;
 	private Date fecha;
-    private LocalTime hora;
     private float precio;
     private Asistencia asistencia;
     private String justifInasistencia;
@@ -45,12 +43,7 @@ public class Turno {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public LocalTime getHora() {
-		return hora;
-	}
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
-	}
+
 	public float getPrecio() {
 		return precio;
 	}
@@ -95,7 +88,7 @@ public class Turno {
 	}
 	
 	public TurnoView toView() {
-		return new TurnoView(id, fecha, hora, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
+		return new TurnoView(id, fecha, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
 	}
     
 }

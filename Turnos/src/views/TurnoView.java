@@ -9,12 +9,11 @@ import modelo.Disponibilidad;
 public class TurnoView {
 
 
-    public TurnoView(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
+    public TurnoView(int id, Date fecha, float precio, Asistencia asistencia,
     		String justifInasistencia, Disponibilidad disponibilidad, EspecialidadView especialidad, MedicoView medico, PacienteView paciente) {
     	
     	this.id = id;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.precio = precio;
 		this.asistencia = asistencia;
 		this.justifInasistencia = justifInasistencia;
@@ -27,7 +26,6 @@ public class TurnoView {
     
     private int id;
 	private Date fecha;
-    private LocalTime hora;
     private float precio;
     private Asistencia asistencia;
     private String justifInasistencia;
@@ -46,12 +44,7 @@ public class TurnoView {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public LocalTime getHora() {
-		return hora;
-	}
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
-	}
+
 	public float getPrecio() {
 		return precio;
 	}

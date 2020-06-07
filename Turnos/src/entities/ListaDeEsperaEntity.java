@@ -21,7 +21,7 @@ public class ListaDeEsperaEntity {
 	private int id;
 	
 	@OneToOne
-	@JoinColumn(name= "id")
+	@JoinColumn(name= "idEspecialidad")
 	private EspecialidadEntity idEspecialidad;
 	
 	@ManyToOne
@@ -29,7 +29,7 @@ public class ListaDeEsperaEntity {
 	private MedicoEntity idMedico;
 	
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="idPaciente")
 	private PacienteEntity idPaciente;
 
 	public ListaDeEsperaEntity() {}

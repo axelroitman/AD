@@ -3,6 +3,7 @@ package entities;
 import java.time.LocalTime;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import modelo.Asistencia;
 import modelo.Disponibilidad;
@@ -23,9 +26,10 @@ public class TurnoEntity {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	
+	@Temporal(TemporalType.TIMESTAMP)	
 	private Date fecha;
-    private LocalTime hora;
-    private float precio;
+	    
+	private float precio;
     private Asistencia asistencia;
     private String justifInasistencia;
     private Disponibilidad disponibilidad;
@@ -45,12 +49,11 @@ public class TurnoEntity {
     
     public TurnoEntity() {}
     
-	public TurnoEntity(int id, Date fecha, LocalTime hora, float precio, Asistencia asistencia,
+	public TurnoEntity(int id, Date fecha, float precio, Asistencia asistencia,
 			String justifInasistencia, Disponibilidad disponibilidad, EspecialidadEntity especialidad, MedicoEntity medico, PacienteEntity paciente) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
-		this.hora = hora;
 		this.precio = precio;
 		this.asistencia = asistencia;
 		this.justifInasistencia = justifInasistencia;
@@ -66,14 +69,6 @@ public class TurnoEntity {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}
-
-	public LocalTime getHora() {
-		return hora;
-	}
-
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
 	}
 
 	public float getPrecio() {

@@ -147,8 +147,6 @@ public class Controlador {
 		}
 		if (matricula == null) {
 			le = new ItemListaDeEspera(e, p, null);
-			
-			
 		}
 		else {
 			Medico m = null;
@@ -192,6 +190,11 @@ public class Controlador {
 
 	public List<EspecialidadView> getEspecialidades() {
 		List<EspecialidadView> lista = new ArrayList<EspecialidadView>();
+		List<Especialidad> especialidades = EspecialidadDAO.getInstancia().getEspecialidades();
+		for(Especialidad e: especialidades) 
+		{
+			lista.add(e.toView());
+		}
 		return lista;
 	}
 
@@ -260,16 +263,24 @@ public class Controlador {
 		return proximo;
 	}
 
-	public TurnoView getTurno(int id){ 
+	public TurnoView getTurno(int id) throws TurnoException{ 
 		TurnoView resultado = null;
-		List<Turno> turnos = TurnoDAO.getInstancia().getTurnos();
-		for(Turno turno : turnos) 
+		try {
+			Turno turno = TurnoDAO.getInstancia().findById(id);
+			if(turno != null)
+			{
+				resultado = turno.toView();
+			}
+		} catch (TurnoException e) {
+			throw new TurnoException("No existe el turno");
+		}
+		/*for(Turno turno : turnos) 
 		{			
 			if(id == turno.getId()) 
 			{
 				resultado = turno.toView();
 			}
-		}
+		}*/
 		return resultado;
 	}
 

@@ -82,7 +82,11 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView Turno = Controlador.getInstancia().getTurno(id);	
+			TurnoView Turno = null;
+			try {
+				Turno = Controlador.getInstancia().getTurno(id);
+			} catch (TurnoException e) {
+			}	
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(Turno);
 	}
