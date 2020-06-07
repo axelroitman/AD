@@ -296,7 +296,20 @@ public class Controlador {
 		return turnoPorEstado;
 	}
 
-	public void cambiarEstadoDeTurno(int idTurno)throws TurnoException{
+	public void cambiarEstadoDeTurno(int idTurno, int idPaciente, int asistencia, int disponibilidad)throws TurnoException{
+		Turno turno = buscarTurno(idTurno);
+		Paciente paciente;
+		if(idPaciente > 0) {
+			try {
+				paciente = buscarPaciente(idPaciente);
+			} catch (PacienteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(asistencia > 0) {
+			
+		}
 	}
 	
 	public TurnoView buscarProxTurnoPaciente(int idPaciente) {
