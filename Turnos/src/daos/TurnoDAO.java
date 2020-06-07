@@ -156,11 +156,11 @@ public class TurnoDAO {
 		TurnoEntity turEn = (TurnoEntity) s.createQuery("from TurnoEntity t where t.especialidad = ? and t.medico = ? and t.fecha = ?")
 				.setInteger(0, idEspecialidad)
 				.setString(1, matricula)
-				.setDate(2, fecha)
+				.setTimestamp(2, fecha)
 				.uniqueResult();
 		s.getTransaction().commit();
 		s.close();
-		if (turEn != null) { //No existe el turno
+		if (turEn != null) {
 			res = true;
 		}
 		
