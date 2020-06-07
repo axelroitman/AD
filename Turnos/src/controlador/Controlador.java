@@ -129,16 +129,14 @@ public class Controlador {
 		return turnosPorDia;
 	}
 	
-	public void agregarTurno(Date fecha, int idEspecialidad, String matricula, int idPaciente) throws TurnoException 
+	public void agregarTurno(Date fecha, int idEspecialidad, String matricula) throws TurnoException 
 	{
 		Especialidad especialidad = null;
 		Medico medico = null;
-		Paciente paciente = null;
 		
 			try {
 				especialidad = buscarEspecialidad(idEspecialidad);
 				medico = buscarMedico(matricula);
-				paciente = buscarPaciente(idPaciente);				
 			} catch (EspecialidadException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -146,13 +144,12 @@ public class Controlador {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			catch (PacienteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		Turno turno = new Turno(fecha, especialidad, medico, paciente);
-	}
 
+		Turno turno = new Turno(fecha, especialidad, medico);
+		System.out.println(turno.getEspecialidad().getNombre());
+		TurnoDAO.getInstancia().save(turno);;		
+
+	}
 	
 	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
 		

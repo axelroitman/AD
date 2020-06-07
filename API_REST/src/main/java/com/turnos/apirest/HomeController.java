@@ -179,14 +179,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/agregarTurno", method = RequestMethod.PUT)
-	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy hh:mm:ss") Date fecha, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idPaciente", required=true) int idPaciente) {
+	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy hh:mm:ss") Date fecha, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
-		
-		//
-		//, @RequestParam(value="hora", required=true) LocalTime hora
+
 		try {
-			Controlador.getInstancia().agregarTurno(fecha, idEspecialidad, matricula, idPaciente);
+			Controlador.getInstancia().agregarTurno(fecha, idEspecialidad, matricula);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);												
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
