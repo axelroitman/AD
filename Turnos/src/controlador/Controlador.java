@@ -146,8 +146,8 @@ public class Controlador {
 			}
 
 		Turno turno = new Turno(fecha, especialidad, medico);
-		System.out.println(turno.getEspecialidad().getNombre());
-		TurnoDAO.getInstancia().save(turno);;		
+		System.out.println(fecha);
+		TurnoDAO.getInstancia().save(turno);		
 
 	}
 	

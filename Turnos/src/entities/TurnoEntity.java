@@ -30,9 +30,9 @@ public class TurnoEntity {
 	private Date fecha;
 	    
 	private float precio;
-    private Asistencia asistencia;
+    private int asistencia;
     private String justifInasistencia;
-    private Disponibilidad disponibilidad;
+    private int disponibilidad;
     
     @OneToOne
 	@JoinColumn(name="idEspecialidad")
@@ -55,12 +55,21 @@ public class TurnoEntity {
 		this.id = id;
 		this.fecha = fecha;
 		this.precio = precio;
-		this.asistencia = asistencia;
 		this.justifInasistencia = justifInasistencia;
-		this.disponibilidad = disponibilidad;
 		this.especialidad = especialidad;
 		this.medico = medico;
 		this.paciente = paciente;
+		setAsistencia(asistencia);
+		setDisponibilidad(disponibilidad);
+	}
+
+	public TurnoEntity(Date fecha, EspecialidadEntity especialidad, MedicoEntity medico) {
+		super();
+		this.fecha = fecha;
+		this.especialidad = especialidad;
+		this.medico = medico;
+		this.asistencia = 3;
+		this.disponibilidad = 1;
 	}
 
 	public Date getFecha() {
@@ -80,11 +89,29 @@ public class TurnoEntity {
 	}
 
 	public Asistencia getAsistencia() {
-		return asistencia;
+		Asistencia as = null;
+		if(asistencia == 1) {
+			as = Asistencia.Asiste;
+		}
+		if(asistencia == 2) {
+			as = Asistencia.NoAsiste;
+		}
+		if(asistencia == 3) {
+			as = Asistencia.NoConfirmo;
+		}
+		return as;
 	}
 
 	public void setAsistencia(Asistencia asistencia) {
-		this.asistencia = asistencia;
+		if(Asistencia.Asiste == asistencia) {
+			this.asistencia = 1;
+		}
+		if(Asistencia.NoAsiste == asistencia) {
+			this.asistencia = 2;
+		}
+		if(Asistencia.NoConfirmo == asistencia) {
+			this.asistencia = 3;
+		}
 	}
 
 	public String getJustifInasistencia() {
@@ -96,11 +123,48 @@ public class TurnoEntity {
 	}
 
 	public Disponibilidad getDisponibilidad() {
-		return disponibilidad;
+		Disponibilidad dis = null;
+		if(disponibilidad == 1) {
+			dis = Disponibilidad.Disponible;
+		}
+		if(disponibilidad == 2) {
+			dis = Disponibilidad.Programado;
+		}
+		if(disponibilidad == 3) {
+			dis = Disponibilidad.AConfirmar;
+		}
+		if(disponibilidad == 4) {
+			dis = Disponibilidad.Confirmado;
+		}
+		if(disponibilidad == 5) {
+			dis = Disponibilidad.Terminado;
+		}
+		if(disponibilidad == 6) {
+			dis = Disponibilidad.Cancelado;
+		}
+		return dis;		
 	}
 
 	public void setDisponibilidad(Disponibilidad disponibilidad) {
-		this.disponibilidad = disponibilidad;
+		if(Disponibilidad.Disponible == disponibilidad) {
+			this.disponibilidad = 1;
+		}
+		if(Disponibilidad.Programado == disponibilidad) {
+			this.disponibilidad = 2;
+		}
+		if(Disponibilidad.AConfirmar == disponibilidad) {
+			this.disponibilidad = 3;
+		}
+		if(Disponibilidad.Confirmado == disponibilidad) {
+			this.disponibilidad = 4;
+		}
+		if(Disponibilidad.Terminado == disponibilidad) {
+			this.disponibilidad = 5;
+		}
+		if(Disponibilidad.Cancelado == disponibilidad) {
+			this.disponibilidad = 6;
+		}
+
 	}
 
 	public EspecialidadEntity getEspecialidad() {
