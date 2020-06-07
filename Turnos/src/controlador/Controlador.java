@@ -311,9 +311,8 @@ public class Controlador {
 	
 	private Turno buscarTurno(int id) throws TurnoException { 
 		Turno aBuscar = null;
-		try {
-			aBuscar = TurnoDAO.getInstancia().findById(id);
-		} catch (TurnoException e) {
+		aBuscar = TurnoDAO.getInstancia().findById(id);
+		if(aBuscar == null) {
 			throw new TurnoException("No existe el turno");
 		}
 		return aBuscar;				
