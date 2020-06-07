@@ -86,6 +86,7 @@ public class Controlador {
 		}
 		t.getFecha().setHours(horaInicial.getHour());
 		t.getFecha().setMinutes(horaInicial.getMinute());
+		TurnoDAO.getInstancia().update(t);
 	}
 	
 	public void cambiarEstadoDeTurno() { 	
