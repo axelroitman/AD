@@ -259,6 +259,20 @@ public class Controlador {
 	
 	public List<MedicoView> getMedicosPorEspecialidad(int idEspecialidad) {
 		List<MedicoView> lista = new ArrayList<MedicoView>();
+		
+		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
+		
+		for(Medico m: medicos) 
+		{
+			for(Especialidad esp: m.getEspecialidades()) 
+			{
+				if(esp.getId() == idEspecialidad) 
+				{
+					lista.add(m.toView());
+				}
+			}
+		}
+		
 		return lista;
 	}
 	public void eliminarTurno(int id) throws TurnoException {
