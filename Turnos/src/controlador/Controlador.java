@@ -77,7 +77,15 @@ public class Controlador {
 	}
 
 	public void modificarTurno(int idTurno, int idEspecialidad, LocalTime horaInicial) throws TurnoException{
-		
+		Turno t = buscarTurno(idTurno);
+		try {
+			Especialidad e = buscarEspecialidad(idEspecialidad);
+		} catch (EspecialidadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		t.getFecha().setHours(horaInicial.getHour());
+		t.getFecha().setMinutes(horaInicial.getMinute());
 	}
 	
 	public void cambiarEstadoDeTurno() { 	
