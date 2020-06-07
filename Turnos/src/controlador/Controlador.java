@@ -145,8 +145,13 @@ public class Controlador {
 		} catch (PacienteException exc) {
 			exc.printStackTrace();
 		}
-		if (matricula == null) {
-			le = new ItemListaDeEspera(e, p, null);
+		if (matricula.isEmpty()) {
+			if(ListaDeEsperaDAO.getInstancia().existePacienteEnListaE(idEspecialidad, idPaciente)) {
+				throw new ListaDeEsperaException("El paciente ya existe en la lista");
+			}
+			else {
+				le = new ItemListaDeEspera(e, p, null);
+			}
 		}
 		else {
 			Medico m = null;
@@ -157,7 +162,12 @@ public class Controlador {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			le = new ItemListaDeEspera(e, p, m);
+			if(ListaDeEsperaDAO.getInstancia().existePacienteEnListaEyM(idEspecialidad, matricula, idPaciente)) {
+				throw new ListaDeEsperaException("El paciente ya existe en la lista");
+			}
+			else {
+				le = new ItemListaDeEspera(e, p, m);
+			}
 		}
 		ListaDeEsperaDAO.getInstancia().agregarALista(le);		
 	}

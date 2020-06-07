@@ -64,33 +64,35 @@ public class ListaDeEsperaDAO {
 		return new ItemListaDeEspera(le.getId(), e, p,m);
 	}
 	
-	public boolean existeE(int idEspecialidad) {
+	public boolean existePacienteEnListaE(int idEspecialidad, int idPaciente) {
 		boolean res = false;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.especialidad = ?")
+		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.idEspecialidad = ? and l.idPaciente = ?")
 				.setInteger(0, idEspecialidad)
+				.setInteger(1, idPaciente)
 				.list();
 		s.getTransaction().commit();
 		s.close();
-		if (!listaEsp.isEmpty()) {
+		if (listaEsp != null && !listaEsp.isEmpty()) {
 			res = true;
 		}
 		
 		return res;
 	}
 	
-	public boolean existeEyM(int idEspecialidad, String matricula) {
+	public boolean existePacienteEnListaEyM(int idEspecialidad, String matricula, int idPaciente) {
 		boolean res = false;
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		ListaDeEsperaEntity listaEsp = (ListaDeEsperaEntity) s.createQuery("from ListaDeEsperaEntity l where l.especialidad = ? and l.medico = ?")
+		Collection<ListaDeEsperaEntity> listaEsp = (Collection<ListaDeEsperaEntity>) s.createQuery("from ListaDeEsperaEntity l where l.idEspecialidad = ? and l.idPaciente = ? and l.idMedico = ?")
 				.setInteger(0, idEspecialidad)
-				.setString(1, matricula)
-				.uniqueResult();
+				.setInteger(1, idPaciente)
+				.setString(2, matricula)
+				.list();
 		s.getTransaction().commit();
 		s.close();
-		if (listaEsp != null) {
+		if (listaEsp != null && !listaEsp.isEmpty()) {
 			res = true;
 		}
 		
