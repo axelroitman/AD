@@ -305,8 +305,15 @@ public class Controlador {
 		return resultado;
 	}
 	public List<TurnoView> getTurnosPacientePorEstado(int idPaciente, int estado){
-		List<TurnoView> turnoPorEstado = new ArrayList<TurnoView>();
-		return turnoPorEstado;
+		List<TurnoView> turnosPorEstado = new ArrayList<TurnoView>();
+		
+		List<Turno> turnos = TurnoDAO.getInstancia().findByPacienteYEstado(idPaciente, estado);
+		for(Turno t: turnos) 
+		{
+			turnosPorEstado.add(t.toView());
+		}
+		
+		return turnosPorEstado;
 	}
 
 	public void cambiarEstadoDeTurno(int idTurno, Integer idPaciente, Integer asistencia, Integer disponibilidad)throws TurnoException{
@@ -335,6 +342,20 @@ public class Controlador {
 	
 	public TurnoView buscarProxTurnoPaciente(int idPaciente) {
 		TurnoView proximo = null;
+		Date fecha = new Date();
+		
+		List<TurnoView> proximosTurnos = getTurnosPaciente(idPaciente, true);
+		
+		int i = 0;
+		
+		for(TurnoView t: proximosTurnos) 
+		{
+			if(i == 0) 
+			{
+				proximo = t;
+			}
+			i++;
+		}
 		return proximo;
 	}
 

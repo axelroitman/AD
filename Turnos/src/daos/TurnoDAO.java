@@ -105,12 +105,26 @@ public class TurnoDAO {
 			resultado.add(toNegocio(tur));
 		return resultado;
 	}
+	public List<Turno> findByPacienteYEstado(int idPaciente, int estado) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.disponibilidad = ?")
+				.setInteger(0,idPaciente)
+				.setInteger(1, estado)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
 	
 	public List<Turno> findByPacienteYFechaAnterior(int idPaciente, Date fecha) {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha < ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha < ? order by t.fecha desc")
 				.setInteger(0,idPaciente)
 				.setTimestamp(1, fecha)
 				.list();
@@ -125,7 +139,7 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha >= ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha >= ? order by t.fecha asc")
 				.setInteger(0,idPaciente)
 				.setTimestamp(1, fecha)
 				.list();
