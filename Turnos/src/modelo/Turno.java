@@ -125,7 +125,14 @@ public void setAsistencia(int asistencia) {
 	}
 	
 	public TurnoView toView() {
-		return new TurnoView(id, fecha, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
+		
+		if(justifInasistencia == null || paciente == null) {
+			return new TurnoView(id, fecha, precio, asistencia, null, disponibilidad, especialidad.toView(), medico.toView(), null);
+		}
+		else {
+			return new TurnoView(id, fecha, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
+		}
+		
 	}
     
 }

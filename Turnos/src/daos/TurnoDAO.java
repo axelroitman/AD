@@ -49,12 +49,12 @@ public class TurnoDAO {
 		return toNegocio(turno);
 	}
 
-	public List<Turno> findByMedico(int idMedico) {
+	public List<Turno> findByMedico(String matricula) {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico.id = ?")
-				.setInteger(0,idMedico)
+				.setString(0,matricula)
 				.list();
 		s.getTransaction().commit();
 		s.close();
