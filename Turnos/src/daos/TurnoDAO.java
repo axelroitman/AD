@@ -189,8 +189,16 @@ public class TurnoDAO {
 	}
 	
 	Turno toNegocio(TurnoEntity entity){
-		
-		return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+		if(entity.getPaciente() == null) 
+		{
+			return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), null);		
+			
+		}
+		else 
+		{
+			return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+			
+		}
 	}
 
 	public boolean existeTurno(Date fecha, int idEspecialidad, String matricula) {
