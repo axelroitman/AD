@@ -206,6 +206,22 @@ public class Controlador {
 
 	public List<TurnoView> getTurnosPaciente(int idPaciente, boolean proximos) {
 		List<TurnoView> lista = new ArrayList<TurnoView>();
+		List<Turno> turnos = null;
+		Date fecha = new Date();
+		if(proximos == true) 
+		{
+			turnos = TurnoDAO.getInstancia().findByPacienteYFechaPosterior(idPaciente, fecha);
+		}
+		else 
+		{
+			turnos = TurnoDAO.getInstancia().findByPacienteYFechaAnterior(idPaciente, fecha);
+			
+		}
+		
+		for(Turno t: turnos) 
+		{
+			lista.add(t.toView());
+		}
 		return lista;
 	}
 

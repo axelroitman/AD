@@ -106,6 +106,36 @@ public class TurnoDAO {
 		return resultado;
 	}
 	
+	public List<Turno> findByPacienteYFechaAnterior(int idPaciente, Date fecha) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha < ?")
+				.setInteger(0,idPaciente)
+				.setTimestamp(1, fecha)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+
+	public List<Turno> findByPacienteYFechaPosterior(int idPaciente, Date fecha) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.paciente = ? and t.fecha >= ?")
+				.setInteger(0,idPaciente)
+				.setTimestamp(1, fecha)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+	
 	public void save(Turno turno){
 		TurnoEntity aGrabar = toEntitySave(turno);
 		Session s = HibernateUtil.getSessionFactory().openSession();
