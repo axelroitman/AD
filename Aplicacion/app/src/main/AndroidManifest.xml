@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".historial_turnos_pacientes"></activity>
+        <activity android:name=".pedir_turnos_fecha"></activity>
+        <activity android:name=".pedir_turno_turnos" />
+        <activity android:name=".historial_turnos_pacientes" />
         <activity android:name=".historial" />
         <activity android:name=".pedir_turno" />
         <activity android:name=".ver_mis_turnos" />

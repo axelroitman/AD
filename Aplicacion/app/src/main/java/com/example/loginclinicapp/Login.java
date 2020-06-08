@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +23,7 @@ public class Login extends AppCompatActivity {
 
     EditText txtusuario, txtcontrasena;
     Button btningresar;
-    RadioButton rbrecordarme;
+    CheckBox rbrecordarme;
     AlertDialog.Builder builder;
 
     boolean estaActivado;
@@ -119,7 +121,7 @@ public class Login extends AppCompatActivity {
         txtusuario = (EditText) findViewById(R.id.txtusuario);
         txtcontrasena = (EditText) findViewById(R.id.txtcontrasena);
         btningresar = (Button) findViewById(R.id.btningresar);
-        rbrecordarme = (RadioButton) findViewById(R.id.recordarme);
+        rbrecordarme = (CheckBox) findViewById(R.id.recordarme);
     }
     private void guardarEstadoRB(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
