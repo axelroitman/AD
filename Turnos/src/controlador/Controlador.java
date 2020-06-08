@@ -520,72 +520,91 @@ public class Controlador {
 			e.printStackTrace();
 		}
 		
-		Calendar c = Calendar.getInstance();
+		//Calendar c = Calendar.getInstance();
 		int diaSemana;
 			
 		for(Date fecha = fechaInicial; fecha.before(fechaFinal) || fecha.equals(fechaFinal) ; fecha.setDate(fecha.getDate()+1)) {
 			List<Turno> turnosDelDia = TurnoDAO.getInstancia().findByMedicoYDia(matricula, fecha);
+			Date fechaInicioDia = new Date();
+			Calendar c = Calendar.getInstance(); 
+			c.setTime(fecha); 
+			c.set(Calendar.HOUR_OF_DAY, horaInicial.getHour());
+			c.set(Calendar.MINUTE, horaInicial.getMinute());
+			c.set(Calendar.SECOND, horaInicial.getSecond());
+			fechaInicioDia = c.getTime();
+			Date fechaFinDia = new Date();			
+			c.setTime(fecha); 
+			c.set(Calendar.HOUR_OF_DAY, horaFinal.getHour());
+			c.set(Calendar.MINUTE, horaFinal.getMinute());
+			c.set(Calendar.SECOND, horaFinal.getSecond());
+			fechaFinDia = c.getTime();
+			
+
 			
 			
-			//ARREGLADO HASTA ACÁ.
-			
-			c.setTime(fecha);
 			diaSemana = c.get(Calendar.DAY_OF_WEEK);
 			
 			if(lunes && diaSemana == Calendar.MONDAY) {				
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(martes && diaSemana == Calendar.TUESDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(miercoles && diaSemana == Calendar.WEDNESDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(jueves && diaSemana == Calendar.THURSDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(viernes && diaSemana == Calendar.FRIDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(sabado && diaSemana == Calendar.SATURDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 			else if(domingo && diaSemana == Calendar.SUNDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
 				}
 			}
 		}
