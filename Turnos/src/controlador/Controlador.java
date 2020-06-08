@@ -119,14 +119,15 @@ public class Controlador {
 
 	}
 
-	public List<TurnoView> getTurnosMedicoPorDia(String matricula, int idEspecialidad) {
-		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
+	public List<TurnoView> getTurnosMedicoPorDia(String matricula, Date fecha) {
+		List<Turno> turnos = TurnoDAO.getInstancia().findByMedicoYDia(matricula, fecha);
 		List<TurnoView> turnosPorDia = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
 			turnosPorDia.add(t.toView());			
 		}
 		return turnosPorDia;
 	}
+	
 	
 	public void agregarTurno(Date fecha, int idEspecialidad, String matricula) throws TurnoException 
 	{
@@ -337,6 +338,7 @@ public class Controlador {
 		}
 		return resultado;
 	}
+	
 	public List<TurnoView> getTurnosPacientePorEstado(int idPaciente, int estado){
 		List<TurnoView> turnosPorEstado = new ArrayList<TurnoView>();
 		
