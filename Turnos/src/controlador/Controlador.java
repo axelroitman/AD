@@ -286,7 +286,7 @@ public class Controlador {
 					TurnoDAO.getInstancia().save(t);
 				}
 			}
-			else {
+			else if(!lunes && !martes && !miercoles && !jueves && !viernes && !sabado && !domingo) {
 				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
 					inicial.setHours(in.getHour());
 					inicial.setMinutes(in.getMinute());
@@ -650,7 +650,7 @@ public class Controlador {
 
 				}
 			}
-			else{
+			else if(!lunes && !martes && !miercoles && !jueves && !viernes && !sabado && !domingo){
 				for(Turno t: turnosDelDia) 
 				{
 					Calendar cal = Calendar.getInstance(); 
