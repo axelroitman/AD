@@ -1,5 +1,6 @@
 package controlador;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import daos.EspecialidadDAO;
 import daos.ListaDeEsperaDAO;
@@ -205,10 +207,40 @@ public class Controlador {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
+		Especialidad esp = null;
+		Medico med = null;
+		try {
+			esp = buscarEspecialidad(idEspecialidad);
+		} catch (EspecialidadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			med = buscarMedico(matricula);
+		} catch (MedicoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		/*Calendar c = Calendar.getInstance();
+		c.setTime(fechaInicial);
+		*/
+		long difMilis = fechaFinal.getTime() - fechaInicial.getTime();
+		//long diasAbarcados = TimeUnit.DAYS.convert(difMilis, TimeUnit.MILLISECONDS);
+		
+		//c.add(Calendar.DAY_OF_MONTH, (int) diasAbarcados);
+		
+		//long minutosAbarcados = Duration.between(horaInicial, horaFinal).toMinutes();
+
+		for(Date inicial = fechaInicial; inicial.before(fechaFinal) || inicial.equals(fechaFinal) ; inicial.setDate(inicial.getDate()+1)) {
+			for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+				Turno t = new Turno(inicial, esp, med);
+				TurnoDAO.getInstancia().save(t);
+			}
+		}
 	}
-	
 	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {
 		ItemListaDeEspera le = null;
 		Paciente p = null;
