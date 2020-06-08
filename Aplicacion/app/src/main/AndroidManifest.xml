@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ver_agenda"></activity>
-        <activity android:name=".eliminar_turnos" />
-        <activity android:name=".aniadir_turnos" />
+        <activity android:name=".ver_agenda" android:exported="true"></activity>
+        <activity android:name=".eliminar_turnos" android:exported="true"/>
+        <activity android:name=".aniadir_turnos" android:exported="true"/>
         <activity android:name=".inicio_medico"
             android:exported="true"/>
-        <activity android:name=".pedir_turnos_fecha" />
-        <activity android:name=".pedir_turno_turnos" />
-        <activity android:name=".historial_turnos_pacientes" />
-        <activity android:name=".pedir_turno" />
-        <activity android:name=".ver_mis_turnos" />
+        <activity android:name=".pedir_turnos_fecha" android:exported="true"/>
+        <activity android:name=".pedir_turno_turnos" android:exported="true"/>
+        <activity android:name=".historial_turnos_pacientes" android:exported="true"/>
+        <activity android:name=".pedir_turno" android:exported="true"/>
+        <activity android:name=".ver_mis_turnos" android:exported="true"/>
         <activity android:name=".inicio_paciente"
             android:exported="true"/>
         <activity
