@@ -1,6 +1,8 @@
 package com.turnos.apirest;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Date;
@@ -196,13 +198,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/agregarTurnos", method = RequestMethod.PUT)
-	public ResponseEntity<Void> agregarTurnos(@RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="duracion", required=true) int duracion, @RequestParam(value="horaInicial", required=true) String horaInicial, @RequestParam(value="horaFinal", required=true) String horaFinal, @RequestParam(value="fechaInicial", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd") Date fechaInicial, @RequestParam(value="fechaFinal", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd") Date fechaFinal, @RequestParam(value="lunes", required=false) boolean lunes, @RequestParam(value="martes", required=false) boolean martes, @RequestParam(value="miercoles", required=false) boolean miercoles, @RequestParam(value="jueves", required=false) boolean jueves, @RequestParam(value="viernes", required=false) boolean viernes, @RequestParam(value="sabado", required=false) boolean sabado, @RequestParam(value="domingo", required=false) boolean domingo) {
+	public ResponseEntity<Void> agregarTurnos(@RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="duracion", required=true) int duracion, @RequestParam(value="horaInicial", required=true) String horaInicial, @RequestParam(value="horaFinal", required=true) String horaFinal, @RequestParam(value="fechaInicial", required=true) String fechaInicial, @RequestParam(value="fechaFinal", required=false) String fechaFinal, @RequestParam(value="lunes", required=true) boolean lunes, @RequestParam(value="martes", required=false) boolean martes, @RequestParam(value="miercoles", required=false) boolean miercoles, @RequestParam(value="jueves", required=false) boolean jueves, @RequestParam(value="viernes", required=false) boolean viernes, @RequestParam(value="sabado", required=false) boolean sabado, @RequestParam(value="domingo", required=false) boolean domingo) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
 		try {
-			
-			Controlador.getInstancia().agregarTurnos(idEspecialidad, matricula, duracion, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), fechaInicial, fechaFinal, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+			try {
+				Controlador.getInstancia().agregarTurnos(idEspecialidad, matricula, duracion, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return new ResponseEntity<Void>(HttpStatus.CREATED);												
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												

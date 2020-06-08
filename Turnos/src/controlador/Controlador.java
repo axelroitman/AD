@@ -226,7 +226,7 @@ public class Controlador {
 		
 		Calendar c = Calendar.getInstance();
 		int diaSemana;
-		long difMilis = fechaFinal.getTime() - fechaInicial.getTime();
+		//long difMilis = fechaFinal.getTime() - fechaInicial.getTime();
 		//long diasAbarcados = TimeUnit.DAYS.convert(difMilis, TimeUnit.MILLISECONDS);
 		
 		//c.add(Calendar.DAY_OF_MONTH, (int) diasAbarcados);
