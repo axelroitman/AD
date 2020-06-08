@@ -49,12 +49,12 @@ public class TurnoDAO {
 		return toNegocio(turno);
 	}
 
-	public List<Turno> findByMedico(int idMedico) {
+	public List<Turno> findByMedico(String matricula) {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico.id = ?")
-				.setInteger(0,idMedico)
+				.setString(0,matricula)
 				.list();
 		s.getTransaction().commit();
 		s.close();
@@ -189,8 +189,16 @@ public class TurnoDAO {
 	}
 	
 	Turno toNegocio(TurnoEntity entity){
-		
-		return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+		if(entity.getPaciente() == null) 
+		{
+			return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), null);		
+			
+		}
+		else 
+		{
+			return new Turno(entity.getId(), entity.getFecha(), entity.getPrecio(), entity.getAsistencia(), entity.getJustifInasistencia(), entity.getDisponibilidad(), EspecialidadDAO.getInstancia().toNegocio(entity.getEspecialidad()), MedicoDAO.getInstancia().toNegocio(entity.getMedico()), PacienteDAO.getInstancia().toNegocio(entity.getPaciente()));		
+			
+		}
 	}
 
 	public boolean existeTurno(Date fecha, int idEspecialidad, String matricula) {
@@ -209,6 +217,21 @@ public class TurnoDAO {
 		}
 		
 		return res;
+	}
+
+	public Collection<Turno> findByMedicoYEstado(String matricula, int estado) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.disponibilidad = ?")
+				.setString(0,matricula)
+				.setInteger(1, estado)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
 	}
 
 }

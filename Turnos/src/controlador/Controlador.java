@@ -2,6 +2,7 @@ package controlador;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -46,8 +47,8 @@ public class Controlador {
 	}
 
 	
-	public List<TurnoView> buscarAgendaMedico(int idMedico) {
-		List<Turno> turnos = TurnoDAO.getInstancia().findByMedico(idMedico);
+	public List<TurnoView> buscarAgendaMedico(String matricula) {
+		List<Turno> turnos = TurnoDAO.getInstancia().findByMedico(matricula);
 		List<TurnoView> rdo = new ArrayList<TurnoView>();
 		for(Turno t : turnos) {
 			rdo.add(t.toView());
@@ -222,8 +223,26 @@ public class Controlador {
 		return lista;
 	}
 
-	public List<TurnoView> getTurnosMedico(int idMedico, int estado) {
+	public List<TurnoView> getTurnosMedico(String matricula, Integer estado) {
 		List<TurnoView> turnosMedico = new ArrayList<TurnoView>();
+		try {
+			Medico m = buscarMedico(matricula);
+		} catch (MedicoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(estado == null) {
+			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedico(matricula);
+			for(Turno t : turnos) {
+				turnosMedico.add(t.toView());
+			}
+		}
+		else {
+			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedicoYEstado(matricula, estado.intValue());
+			for(Turno t : turnos) {
+				turnosMedico.add(t.toView());
+			}
+		}
 		return turnosMedico;
 	}
 
@@ -259,6 +278,20 @@ public class Controlador {
 	
 	public List<MedicoView> getMedicosPorEspecialidad(int idEspecialidad) {
 		List<MedicoView> lista = new ArrayList<MedicoView>();
+		
+		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
+		
+		for(Medico m: medicos) 
+		{
+			for(Especialidad esp: m.getEspecialidades()) 
+			{
+				if(esp.getId() == idEspecialidad) 
+				{
+					lista.add(m.toView());
+				}
+			}
+		}
+		
 		return lista;
 	}
 	public void eliminarTurno(int id) throws TurnoException {

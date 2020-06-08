@@ -2,7 +2,7 @@ package entities;
 import java.util.Collection;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,7 +21,7 @@ public class MedicoEntity {
 	private String matricula;
 	
 	
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER) 
     @JoinTable(name="medico_especialidades",
     joinColumns={@JoinColumn(name="idMedico", referencedColumnName="matricula")},
     inverseJoinColumns={@JoinColumn(name="idEspecialidad", referencedColumnName="id")})
