@@ -226,19 +226,18 @@ public class Controlador {
 		
 		Calendar c = Calendar.getInstance();
 		int diaSemana;
-		//long difMilis = fechaFinal.getTime() - fechaInicial.getTime();
-		//long diasAbarcados = TimeUnit.DAYS.convert(difMilis, TimeUnit.MILLISECONDS);
 		
-		//c.add(Calendar.DAY_OF_MONTH, (int) diasAbarcados);
-		
-		//long minutosAbarcados = Duration.between(horaInicial, horaFinal).toMinutes();
-
+		System.out.println(lunes);
+	
 		if(lunes) {
 			for(Date inicial = fechaInicial; inicial.before(fechaFinal) || inicial.equals(fechaFinal) ; inicial.setDate(inicial.getDate()+1)) {
 				c.setTime(inicial);
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
+
 				if(diaSemana == Calendar.MONDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -251,6 +250,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.TUESDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -263,6 +264,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.WEDNESDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -275,6 +278,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.THURSDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -287,6 +292,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.FRIDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -299,6 +306,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.SATURDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -311,6 +320,8 @@ public class Controlador {
 				diaSemana = c.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.SUNDAY) {
 					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
 						Turno t = new Turno(inicial, esp, med);
 						TurnoDAO.getInstancia().save(t);
 					}
@@ -320,6 +331,8 @@ public class Controlador {
 		else {
 			for(Date inicial = fechaInicial; inicial.before(fechaFinal) || inicial.equals(fechaFinal) ; inicial.setDate(inicial.getDate()+1)) {
 				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+					inicial.setHours(in.getHour());
+					inicial.setMinutes(in.getMinute());
 					Turno t = new Turno(inicial, esp, med);
 					TurnoDAO.getInstancia().save(t);
 				}
