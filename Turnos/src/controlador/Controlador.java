@@ -4,7 +4,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import daos.EspecialidadDAO;
 import daos.ListaDeEsperaDAO;
@@ -278,9 +280,22 @@ public class Controlador {
 		return turnosPorEspecialidadyMedico;
 	}
 
-	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
-		List<TurnoView> disponibles = new ArrayList<TurnoView>();
-		return disponibles;
+	public Map<Integer,Date> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+		int disponibles = 0;
+		Map<Integer,Date> resultado = new HashMap<Integer,Date>();
+		try {
+			Especialidad e = buscarEspecialidad(idEspecialidad);
+		} catch (EspecialidadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstado(idEspecialidad, 1);
+		for(Turno t : turnos) {
+			t.getFecha();
+			
+		}
+		
+		return resultado;
 	}
 
 	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
