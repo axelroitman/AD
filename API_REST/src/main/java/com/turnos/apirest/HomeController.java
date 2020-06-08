@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -88,13 +89,15 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			TurnoView Turno = null;
+			TurnoView turno = null;
 			try {
-				Turno = Controlador.getInstancia().getTurno(id);
+				turno = Controlador.getInstancia().getTurno(id);
 			} catch (TurnoException e) {
 			}	
+			
 			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(Turno);
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+			return mapper.writeValueAsString(turno);
 	}
 
 	@RequestMapping(value = "/getPaciente", method = RequestMethod.GET, produces = {"application/json"})	
@@ -247,6 +250,7 @@ public class HomeController {
 
 			List<TurnoView> turnosPac = Controlador.getInstancia().getTurnosPaciente(idPaciente, proximos);
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(turnosPac);
 	}
 
@@ -273,6 +277,7 @@ public class HomeController {
 
 			TurnoView ProxTurnoPac = Controlador.getInstancia().buscarProxTurnoPaciente(idPaciente);
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(ProxTurnoPac);
 	}
 
@@ -283,6 +288,7 @@ public class HomeController {
 
 			List<TurnoView> Turnos = Controlador.getInstancia().getTurnosPacientePorEstado(idPaciente, estado);
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(Turnos);
 	}
 
@@ -293,17 +299,8 @@ public class HomeController {
 
 			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedico(matricula, estado);
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(turnosMed);
-	}
-
-	@RequestMapping(value = "/getAgendaMedico", method = RequestMethod.GET, produces = {"application/json"})	
-	public @ResponseBody<json> String getAgendaMedico(@RequestParam(value="matricula", required=true) String matricula) throws JsonProcessingException {	
-		//ResponseBody<json>: Aclara que el String guarda un JSON		
-		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
-
-		List<TurnoView> turnosDelMedico = Controlador.getInstancia().obtenerAgendaMedico(matricula);
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(turnosDelMedico);	
 	}
 
 	@RequestMapping(value = "/getTurnosMedicoPorDia", method = RequestMethod.GET, produces = {"application/json"})
@@ -313,6 +310,7 @@ public class HomeController {
 
 			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedicoPorDia(idMedico, fecha);
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(turnosMed);
 	}
 	

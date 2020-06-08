@@ -11,7 +11,7 @@ public class Turno {
 
     public Turno(int id, Date fecha, float precio, Asistencia asistencia,
     		String justifInasistencia, Disponibilidad disponibilidad, Especialidad especialidad, Medico medico, Paciente paciente) {
-    	
+		
     	this.id = id;
 		this.fecha = fecha;
 		this.precio = precio;

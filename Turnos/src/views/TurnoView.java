@@ -1,6 +1,7 @@
 package views;
 
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Date;
 
 import modelo.Asistencia;
@@ -11,7 +12,7 @@ public class TurnoView {
 
     public TurnoView(int id, Date fecha, float precio, Asistencia asistencia,
     		String justifInasistencia, Disponibilidad disponibilidad, EspecialidadView especialidad, MedicoView medico, PacienteView paciente) {
-    	
+				
     	this.id = id;
 		this.fecha = fecha;
 		this.precio = precio;
