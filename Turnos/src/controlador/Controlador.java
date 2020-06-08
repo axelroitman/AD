@@ -116,9 +116,56 @@ public class Controlador {
 		return medico;
 	}
 
-	public MedicoView getInfoMedico(String matricula) { //NO DEBERÍA DEVOLVER UN MEDICOVIEW -> VER DEFINICIÓN DE API REST
-		MedicoView medico= null;
-		return medico;
+	public Map<String, String> getInfoMedico(String matricula) {
+		
+		Map<String, String> infoMedico = new HashMap<String, String>();
+		Date fecha = new Date();
+		
+		int cantTurnosHoy = 0;
+		int cantTurnosMan = 0;
+		String primerTurnoHoy = "";
+		String ultimoTurnoHoy = "";
+		String primerTurnoMan = "";
+		String ultimoTurnoMan = "";
+		
+		List<Turno> turnosHoy = TurnoDAO.getInstancia().findByMedicoYDia(matricula, fecha);
+		
+		for(Turno t: turnosHoy)
+		{
+			if(cantTurnosHoy == 0) 
+			{
+				primerTurnoHoy = t.getFecha().toString();
+			}
+			ultimoTurnoHoy = t.getFecha().toString();
+			cantTurnosHoy++;
+		}
+
+		Date fechaMan = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(fecha); 
+		c.add(Calendar.DATE, 1);
+		fechaMan = c.getTime();
+		
+		List<Turno> turnosMan = TurnoDAO.getInstancia().findByMedicoYDia(matricula, fechaMan);
+
+		for(Turno t: turnosMan)
+		{
+			if(cantTurnosMan == 0) 
+			{
+				primerTurnoMan = t.getFecha().toString();
+			}
+			ultimoTurnoMan = t.getFecha().toString();
+			cantTurnosMan++;
+		}
+		
+		infoMedico.put("cantTurnosHoy", Integer.toString(cantTurnosHoy));
+		infoMedico.put("horaPrimerTurnoHoy", primerTurnoHoy);
+		infoMedico.put("horaUltimoTurnoHoy", ultimoTurnoHoy);
+		infoMedico.put("cantTurnosMan", Integer.toString(cantTurnosMan));
+		infoMedico.put("horaPrimerTurnoMan", primerTurnoMan);
+		infoMedico.put("horaUltimoTurnoMan", ultimoTurnoMan);
+		
+		return infoMedico;
 
 	}
 
