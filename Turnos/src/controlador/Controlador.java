@@ -247,9 +247,35 @@ public class Controlador {
 		return turnosMedico;
 	}
 
-	public List<TurnoView> getTurnosMedicoPorEspecialidad(int idMedico, int idEspecialidad, int estado) {
-		List<TurnoView> turnosPorEspecialidad = new ArrayList<TurnoView>();
-		return turnosPorEspecialidad;
+	public Collection<TurnoView> getTurnosMedicoPorEspecialidad(String matricula, int idEspecialidad, Integer estado) {
+		Collection<TurnoView> turnosPorEspecialidadyMedico = new ArrayList<TurnoView>();
+		try {
+			Medico m = buscarMedico(matricula);
+		} catch (MedicoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Especialidad e = buscarEspecialidad(idEspecialidad);
+		} catch (EspecialidadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(estado==null)
+		{
+			Collection<Turno> ts = TurnoDAO.getInstancia().findByEspecialidadYMedico(idEspecialidad, matricula);
+			for(Turno t : ts) {
+				turnosPorEspecialidadyMedico.add(t.toView());
+			}
+		}
+		else {
+			Collection<Turno> ts = TurnoDAO.getInstancia().findByEspecialidadMedicoYEstado(idEspecialidad, matricula,estado.intValue());
+			for(Turno t : ts) {
+				turnosPorEspecialidadyMedico.add(t.toView());
+			}
+		}
+		
+		return turnosPorEspecialidadyMedico;
 	}
 
 	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){

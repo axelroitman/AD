@@ -2,6 +2,7 @@ package com.turnos.apirest;
 
 import java.text.DateFormat;
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -303,12 +304,11 @@ public class HomeController {
 			return mapper.writeValueAsString(turnosMed);
 	}
 
-	@RequestMapping(value = "/getTurnosMedicoPorEspecialidad", method = RequestMethod.GET, produces = {"application/json"})
-	public @ResponseBody<json> String getTurnosMedicoPorEspecialidad(@RequestParam(value="idMedico", required=true) int idMedico, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="estado", required=true) int estado) throws JsonProcessingException {
+	public @ResponseBody<json> String getTurnosMedicoPorEspecialidad(@RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="estado", required=false) Integer estado) throws JsonProcessingException {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
-		//ObjectMapper: Es una clase de Jackson que permite convertir una colecciÃ³n a un JSON usando el mÃ©todo writeValueAsString
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			List<TurnoView> turnosMedPorEsp = Controlador.getInstancia().getTurnosMedicoPorEspecialidad(idMedico,idEspecialidad,estado);
+			Collection<TurnoView> turnosMedPorEsp = Controlador.getInstancia().getTurnosMedicoPorEspecialidad(matricula,idEspecialidad,estado);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosMedPorEsp);
 	}
