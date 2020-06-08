@@ -547,15 +547,18 @@ public class Controlador {
 			c.set(Calendar.SECOND, horaFinal.getSecond());
 			fechaFinDia = c.getTime();
 			
-
-			
 			
 			diaSemana = c.get(Calendar.DAY_OF_WEEK);
 			
 			if(lunes && diaSemana == Calendar.MONDAY) {				
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
@@ -564,7 +567,12 @@ public class Controlador {
 			else if(martes && diaSemana == Calendar.TUESDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
@@ -573,7 +581,12 @@ public class Controlador {
 			else if(miercoles && diaSemana == Calendar.WEDNESDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
@@ -582,7 +595,12 @@ public class Controlador {
 			else if(jueves && diaSemana == Calendar.THURSDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
@@ -591,25 +609,42 @@ public class Controlador {
 			else if(viernes && diaSemana == Calendar.FRIDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
 				}
+
 			}
 			else if(sabado && diaSemana == Calendar.SATURDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
 				}
+
 			}
 			else if(domingo && diaSemana == Calendar.SUNDAY) {
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
@@ -618,7 +653,12 @@ public class Controlador {
 			else{
 				for(Turno t: turnosDelDia) 
 				{
-					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTime(t.getFecha()); 
+					Date fechaAComparar = cal.getTime();
+
+					
+					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
 						TurnoDAO.getInstancia().delete(t);
 					}
 
