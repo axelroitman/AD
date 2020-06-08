@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".inicio_paciente">
 
+    <!--- logo e imagen -->
     <TextView
         android:id="@+id/nombreApp"
         android:layout_width="wrap_content"
@@ -30,6 +31,56 @@
         android:layout_marginTop="30dp"
         app:srcCompat="@drawable/applogo" />
 
+    <!--- MIS TURNOS-->
+    <RelativeLayout
+        android:id="@+id/layoutMisTurnos"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/layoutHistorial"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="41dp"
+        android:background="#13AEC6"
+        android:backgroundTint="#74EFBA"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical"
+        tools:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/imageMisTurnos"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/agenda"  />
+
+        <Button
+            android:id="@+id/btnVerMisTurnos"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageMisTurnos"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#498EB8"
+            android:fontFamily="@font/roboto_light"
+            android:text="Mis Turnos"
+            android:textColor="#FFFFFF"/>
+
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/imageBookMarkMisTurnos"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="442dp"
+        android:layout_toEndOf="@+id/layoutMisTurnos"
+        app:srcCompat="@drawable/bookmark" />
+
+    <!---SOLICITAR TURNO -->
     <RelativeLayout
         android:id="@+id/layoutPedirTurno"
         android:layout_width="150dp"
@@ -37,7 +88,7 @@
         android:layout_above="@+id/layoutHistorial"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="37dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="41dp"
         android:layout_toRightOf="@id/layoutMisTurnos"
         android:background="#74EFBA"
         android:backgroundTint="#74EFBA"
@@ -50,7 +101,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/add"/>
 
         <Button
             android:id="@+id/btnPedirTurno"
@@ -66,72 +117,24 @@
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layoutMisTurnos"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_above="@+id/layoutHistorial"
-        android:layout_centerHorizontal="false"
-        android:layout_marginLeft="35dp"
-        android:layout_marginBottom="21dp"
-        android:background="#13AEC6"
-        android:backgroundTint="#74EFBA"
-        android:foregroundGravity="center"
-        android:gravity="center|center_horizontal"
-        android:orientation="vertical"
-        tools:visibility="visible">
-
-
-        <ImageView
-            android:id="@+id/imageMisTurnos"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/agenda" />
-
-        <Button
-            android:id="@+id/btnVerMisTurnos"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageMisTurnos"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#498EB8"
-            android:fontFamily="@font/roboto_light"
-            android:text="Mis Turnos"
-            android:textColor="#FFFFFF" />
-
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageBookMarkMisTurnos"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="485dp"
-        android:layout_toEndOf="@+id/layoutMisTurnos"
-        app:srcCompat="@drawable/bookmark" />
-
     <ImageView
         android:id="@+id/imageBookMarkSolicituar"
         android:layout_width="25dp"
         android:layout_height="43dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="485dp"
+        android:layout_marginTop="443dp"
         android:layout_toEndOf="@+id/imageBookMarkMisTurnos"
         app:srcCompat="@drawable/bookmark" />
 
+    <!---HISTORIAL -->
     <ImageView
         android:id="@+id/imageBookMarkHistorial"
         android:layout_width="25dp"
-        android:layout_height="63dp"
+        android:layout_height="43dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="655dp"
+        android:layout_marginTop="631dp"
         android:layout_marginEnd="118dp"
         app:srcCompat="@drawable/bookmark" />
 
@@ -145,7 +148,7 @@
         android:layout_marginStart="130dp"
         android:layout_marginLeft="30dp"
         android:layout_marginEnd="143dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="57dp"
         android:background="#FFFFFF"
         android:backgroundTint="#74EFBA"
         android:foregroundGravity="center"
@@ -173,6 +176,7 @@
             android:textColor="#FFFFFF" />
     </RelativeLayout>
 
+    <!--- CUANDO TIENE PROXIMO TURNO-->
     <RelativeLayout
         android:layout_width="87dp"
         android:layout_height="101dp"
@@ -224,7 +228,6 @@
             android:textSize="25dp" />
 
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="101dp"
@@ -278,7 +281,6 @@
             android:textSize="18dp" />
 
     </RelativeLayout>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -292,6 +294,7 @@
         android:text="Próximo turno"
         android:textColor="#000000" />
 
+    <!--- CUANDO NO TIENE PROXIMO TURNO -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="115dp"
@@ -322,6 +325,5 @@
             android:textAlignment="center"
             android:textSize="15dp" />
     </RelativeLayout>
-
 
 </RelativeLayout>
