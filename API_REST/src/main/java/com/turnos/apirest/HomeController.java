@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -328,7 +329,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			int turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEspecialidad);
+			Map<Date,Integer> turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEspecialidad);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosDisponibles);
 	}
@@ -338,7 +339,7 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
-			List<TurnoView> turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(idEspecialidad, matricula);
+			Map<Date,Integer> turnosDisponibles = Controlador.getInstancia().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(idEspecialidad, matricula);
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosDisponibles);
 	}

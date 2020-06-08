@@ -246,7 +246,7 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.especialidad = ? and t.disponibilidad = ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.especialidad = ? and t.disponibilidad = ? order by t.fecha")
 				.setString(0,matricula)
 				.setInteger(1,idEspecialidad)
 				.setInteger(2, estado)
@@ -277,7 +277,7 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.disponibilidad = ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.disponibilidad = ? order by t.fecha")
 				.setInteger(0,idEspecialidad)
 				.setInteger(1, estado)
 				.list();

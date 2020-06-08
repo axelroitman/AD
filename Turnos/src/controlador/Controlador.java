@@ -2,6 +2,7 @@ package controlador;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -280,27 +281,60 @@ public class Controlador {
 		return turnosPorEspecialidadyMedico;
 	}
 
-	public Map<Integer,Date> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
-		int disponibles = 0;
-		Map<Integer,Date> resultado = new HashMap<Integer,Date>();
-		try {
-			Especialidad e = buscarEspecialidad(idEspecialidad);
-		} catch (EspecialidadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public Map<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+		Map<Date,Integer> resultado = new HashMap<Date,Integer>();
+		
 		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstado(idEspecialidad, 1);
 		for(Turno t : turnos) {
-			t.getFecha();
+			Date fechaSinHora = new Date();
+			Calendar c = Calendar.getInstance(); 
+			c.setTime(t.getFecha()); 
+			c.set(Calendar.HOUR_OF_DAY, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 0);
 			
+			fechaSinHora = c.getTime();
+
+			if(!resultado.containsKey(fechaSinHora))
+			{
+				resultado.put(fechaSinHora, 1);	
+			}
+			else 
+			{
+				int disponibles = resultado.get(fechaSinHora) + 1;
+				resultado.put(fechaSinHora, disponibles);
+			}			
 		}
 		
 		return resultado;
 	}
 
-	public List<TurnoView> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
-		List<TurnoView> disponibles = new ArrayList<TurnoView>();
-		return disponibles;
+	public Map<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
+		Map<Date,Integer> resultado = new HashMap<Date,Integer>();
+		
+		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadMedicoYEstado(idEspecialidad, matricula, 1);
+		for(Turno t : turnos) {
+			Date fechaSinHora = new Date();
+			Calendar c = Calendar.getInstance(); 
+			c.setTime(t.getFecha()); 
+			c.set(Calendar.HOUR_OF_DAY, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 0);
+			
+			fechaSinHora = c.getTime();
+
+			if(!resultado.containsKey(fechaSinHora))
+			{
+				resultado.put(fechaSinHora, 1);	
+			}
+			else 
+			{
+				int disponibles = resultado.get(fechaSinHora) + 1;
+				resultado.put(fechaSinHora, disponibles);
+			}			
+		}
+		
+		return resultado;
 	}
 
 	public List<EspecialidadView> getEspecialidades() {
