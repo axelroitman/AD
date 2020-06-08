@@ -313,7 +313,7 @@ public class Controlador {
 		} catch (PacienteException exc) {
 			exc.printStackTrace();
 		}
-		if (matricula.isEmpty()) {
+		if (matricula != null && matricula.isEmpty()) {
 			if(ListaDeEsperaDAO.getInstancia().existePacienteEnListaE(idEspecialidad, idPaciente)) {
 				throw new ListaDeEsperaException("El paciente ya existe en la lista");
 			}
