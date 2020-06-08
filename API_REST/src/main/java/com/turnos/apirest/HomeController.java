@@ -154,9 +154,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/eliminarTurnos", method = RequestMethod.DELETE)
-	public ResponseEntity<Void>  eliminarTurnos(@RequestParam(value="hora_inicial", required=true) String horaInicial, @RequestParam(value="hora_final", required=true) String horaFinal, @RequestParam(value="fecha_inicial", required=true) Date fechaInicial, @RequestParam(value="fecha_final", required=true) Date fechaFinal, @RequestParam(value="lunes", required=true) boolean lunes, @RequestParam(value="martes", required=true) boolean martes, @RequestParam(value="miercoles", required=true) boolean miercoles, @RequestParam(value="jueves", required=true) boolean jueves, @RequestParam(value="viernes", required=true) boolean viernes, @RequestParam(value="sabado", required=true) boolean sabado, @RequestParam(value="domingo", required=true) boolean domingo) {
+	public ResponseEntity<Void>  eliminarTurnos(@RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="horaInicial", required=true) String horaInicial, @RequestParam(value="horaFinal", required=true) String horaFinal, @RequestParam(value="fechaInicial", required=true) String fechaInicial, @RequestParam(value="fechaFinal", required=true) String fechaFinal, @RequestParam(value="lunes", required=false) boolean lunes, @RequestParam(value="martes", required=false) boolean martes, @RequestParam(value="miercoles", required=false) boolean miercoles, @RequestParam(value="jueves", required=false) boolean jueves, @RequestParam(value="viernes", required=false) boolean viernes, @RequestParam(value="sabado", required=false) boolean sabado, @RequestParam(value="domingo", required=false) boolean domingo) {
 		try {
-			Controlador.getInstancia().eliminarTurnos(LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), fechaInicial, fechaFinal, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+			try {
+				Controlador.getInstancia().eliminarTurnos(matricula, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return new ResponseEntity<Void>(HttpStatus.OK);						
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
