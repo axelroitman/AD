@@ -232,7 +232,7 @@ public class HomeController {
 		try {
 			
 			Controlador.getInstancia().modificarTurno(idTurno, idEspecialidad,hora);
-			return new ResponseEntity<Void>(HttpStatus.CREATED);												
+			return new ResponseEntity<Void>(HttpStatus.OK);												
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
 			
@@ -315,7 +315,8 @@ public class HomeController {
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(turnosMed);
 	}
-
+	
+	@RequestMapping(value = "/getTurnosMedicoPorEspecialidad", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getTurnosMedicoPorEspecialidad(@RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="estado", required=false) Integer estado) throws JsonProcessingException {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
