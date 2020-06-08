@@ -286,6 +286,14 @@ public class Controlador {
 					TurnoDAO.getInstancia().save(t);
 				}
 			}
+			else {
+				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+					inicial.setHours(in.getHour());
+					inicial.setMinutes(in.getMinute());
+					Turno t = new Turno(inicial, esp, med);
+					TurnoDAO.getInstancia().save(t);
+				}
+			}			
 		}
 
 	}
@@ -599,6 +607,15 @@ public class Controlador {
 				}
 			}
 			else if(domingo && diaSemana == Calendar.SUNDAY) {
+				for(Turno t: turnosDelDia) 
+				{
+					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
+						TurnoDAO.getInstancia().delete(t);
+					}
+
+				}
+			}
+			else{
 				for(Turno t: turnosDelDia) 
 				{
 					if(t.getFecha().after(fechaInicioDia) && t.getFecha().before(fechaFinDia)) {
