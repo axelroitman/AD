@@ -2,6 +2,7 @@ package entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class PacienteEntity {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int id;
+	@Column(name="id")
+	private int idPaciente;
 	
 	@OneToOne
 	@JoinColumn(name="idUsuario")
@@ -32,7 +34,7 @@ public class PacienteEntity {
 	
 	public PacienteEntity(int id, UsuarioEntity usuario, Date fechaVtoCuota) {
 		super();
-		this.id = id;
+		this.idPaciente = id;
 		this.usuario = usuario;
 		this.fechaVtoCuota = fechaVtoCuota;
 	}
@@ -54,6 +56,6 @@ public class PacienteEntity {
 	}
 
 	public int getId() {
-		return id;
+		return idPaciente;
 	}
 }

@@ -22,7 +22,7 @@ public class UsuarioView {
 		private String dni;
 		private Date fechaNac;
 	    
-		public int getId() {
+		public int getIdUsr() {
 			return idUsr;
 		}
 		public String getUsr() {

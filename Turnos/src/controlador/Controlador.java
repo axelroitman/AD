@@ -99,7 +99,7 @@ public class Controlador {
 		PacienteView resul = null;
 		List<Paciente> pacientes = PacienteDAO.getInstancia().getPacientes();
 		for ( Paciente pa : pacientes){
-			if(id == pa.getId()){
+			if(id == pa.getIdPaciente()){
 				resul = pa.toView();
 			}
 		}

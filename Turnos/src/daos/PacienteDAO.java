@@ -87,7 +87,7 @@ public class PacienteDAO {
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		PacienteEntity aEliminar = (PacienteEntity) s.createQuery("from PacienteEntity p where p.id = ?")
-				.setInteger(0, paciente.getId())
+				.setInteger(0, paciente.getIdPaciente())
 				.uniqueResult();
 		s.delete(aEliminar);
 		s.getTransaction().commit();
@@ -99,7 +99,7 @@ public class PacienteDAO {
 	}
 	
 	PacienteEntity toEntity(Paciente paciente){
-		return new PacienteEntity(paciente.getId(), new UsuarioEntity(paciente.getIdUsr(),paciente.getUsr(),paciente.getPass(), paciente.getNombre(), paciente.getTelefono(), paciente.getDni(), paciente.getFechaNac()),paciente.getFechaVtoCuota());
+		return new PacienteEntity(paciente.getIdPaciente(), new UsuarioEntity(paciente.getIdUsr(),paciente.getUsr(),paciente.getPass(), paciente.getNombre(), paciente.getTelefono(), paciente.getDni(), paciente.getFechaNac()),paciente.getFechaVtoCuota());
 	} 
 	
 	
