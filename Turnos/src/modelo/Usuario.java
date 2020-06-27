@@ -5,7 +5,7 @@ import views.UsuarioView;
 
 public class Usuario {
 
-	private int id;
+	private int idUsr;
 	private String usr;
 	private String pass;
 	private String nombre;
@@ -14,8 +14,8 @@ public class Usuario {
 	private Date fechaNac;
 	
 	
-    public Usuario(int id, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
-    	this.id = id;
+    public Usuario(int idUsr, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
+    	this.idUsr = idUsr;
     	this.usr = usr;
 		this.pass = pass;
 		this.nombre = nombre;
@@ -27,7 +27,7 @@ public class Usuario {
    
     
 	public int getIdUsr() {
-		return id;
+		return idUsr;
 	}
 	public String getUsr() {
 		return usr;
@@ -68,7 +68,7 @@ public class Usuario {
 
 	public UsuarioView toView() {
 		
-		return new UsuarioView(id, usr, pass, nombre, telefono, dni, fechaNac);
+		return new UsuarioView(idUsr, usr, pass, nombre, telefono, dni, fechaNac);
 	}
 
 }

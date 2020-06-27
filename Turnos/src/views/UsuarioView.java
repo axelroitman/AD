@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class UsuarioView {
 	 
-		public UsuarioView(int id, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
+		public UsuarioView(int idUsr, String usr, String pass, String nombre, String telefono, String dni, Date fechaNac) {
 		    	this.usr = usr;
 				this.pass = pass;
 				this.nombre = nombre;
 				this.telefono = telefono;
 				this.dni = dni;
 				this.fechaNac = fechaNac;
-				this.id = id;
+				this.idUsr = idUsr;
 			}
 		
-		private int id;
+		private int idUsr;
 		private String usr;
 		private String pass;
 		private String nombre;
@@ -23,7 +23,7 @@ public class UsuarioView {
 		private Date fechaNac;
 	    
 		public int getId() {
-			return id;
+			return idUsr;
 		}
 		public String getUsr() {
 			return usr;

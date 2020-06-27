@@ -133,6 +133,7 @@ public class HomeController {
 
 			PacienteView Paciente = Controlador.getInstancia().getPaciente(id);	
 			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 			return mapper.writeValueAsString(Paciente);
 	}
 	

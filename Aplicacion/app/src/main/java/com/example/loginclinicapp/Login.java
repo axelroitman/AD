@@ -64,9 +64,25 @@ public class Login extends AppCompatActivity {
 
                                              if(response.body() != null) {
                                                  Log.d("logiresp", "" + response.body().getIdUsr());
-                                                 Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
+                                                 //Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
 
                                                  guardarEstadoRB();
+                                                 Call<Paciente> paciente = RetrofitClient.getInstance().getPacientePorIdUsuarioService().getPacientePorIdUsuario(response.body().getIdUsr());
+                                                 paciente.enqueue(new Callback<Paciente>() {
+                                                     @Override
+                                                     public void onResponse(Call<Paciente> paciente, Response<Paciente> responsePac) {
+                                                         if(responsePac.code()==200 && responsePac.body() != null) {
+                                                             //Es Paciente
+                                                         }
+
+                                                     }
+
+                                                     @Override
+                                                     public void onFailure(Call<Paciente> call, Throwable t) {
+
+                                                     }
+                                                 });
+
                                                  Intent i = new Intent(Login.this, inicio_paciente.class);
                                                  startActivity(i);
                                                  finishAffinity(); //hace que cuando estas loggeado y decidis ir para atras, no aparezca la activity de log-in ni la de carga. Va a la pantalla ppl del celu.

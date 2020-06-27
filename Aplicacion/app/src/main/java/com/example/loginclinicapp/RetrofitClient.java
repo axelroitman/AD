@@ -26,4 +26,7 @@ public class RetrofitClient {
     public LoginService getLoginService(){
         return retrofit.create(LoginService.class);
     }
+    public PacientePorIdUsuarioService getPacientePorIdUsuarioService() {
+        return retrofit.create(PacientePorIdUsuarioService.class);
+    }
 }
