@@ -73,6 +73,30 @@ public class HomeController {
 
 	}
 	
+	@RequestMapping(value = "/getPacientePorIdUsuario", method = RequestMethod.GET, produces = {"application/json"})
+	public @ResponseBody<json> String getPacientePorIdUsuario(@RequestParam(value="idUsuario", required=true) int idUsuario) throws JsonProcessingException {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			PacienteView paciente = Controlador.getInstancia().getPacientePorIdUsuario(idUsuario);
+			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+			return mapper.writeValueAsString(paciente);
+
+	}
+	
+	@RequestMapping(value = "/getMedicoPorIdUsuario", method = RequestMethod.GET, produces = {"application/json"})
+	public @ResponseBody<json> String getMedicoPorIdUsuario(@RequestParam(value="idUsuario", required=true) int idUsuario) throws JsonProcessingException {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			MedicoView medico = Controlador.getInstancia().getMedicoPorIdUsuario(idUsuario);
+			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+			return mapper.writeValueAsString(medico);
+
+	}
+	
 	@RequestMapping(value = "/getUsuario", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getUsuario(@RequestParam(value="usuario", required=true) String usuario) throws JsonProcessingException {
 		//ResponseBody<json>: Aclara que el String guarda un JSON

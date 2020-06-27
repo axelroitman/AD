@@ -105,6 +105,17 @@ public class Controlador {
 		}
 		return resul;
 	}
+	
+	public PacienteView getPacientePorIdUsuario (int idUsuario) {
+		PacienteView resul = null;
+		List<Paciente> pacientes = PacienteDAO.getInstancia().getPacientes();
+		for ( Paciente pa : pacientes){
+			if(idUsuario == pa.getIdUsr()){
+				resul = pa.toView();
+			}
+		}
+		return resul;
+	}
 
 	public MedicoView getMedico(String matricula) {
 		MedicoView medico;
@@ -116,6 +127,17 @@ public class Controlador {
 			e.printStackTrace();
 		}
 		return medico;
+	}
+	
+	public MedicoView getMedicoPorIdUsuario (int idUsuario) {
+		MedicoView resul = null;
+		List<Medico> medicos = MedicoDAO.getInstancia().getMedicos();
+		for ( Medico m : medicos){
+			if(idUsuario == m.getIdUsr()){
+				resul = m.toView();
+			}
+		}
+		return resul;
 	}
 
 	public Map<String, String> getInfoMedico(String matricula) {
