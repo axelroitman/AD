@@ -105,6 +105,13 @@ public class inicio_medico extends AppCompatActivity {
                     {
                         textoInfo += " Hoy no tiene turnos.";
                     }
+                    else if(infoMedico.getCantTurnosHoy() == 1)
+                    {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+                        LocalDateTime fechaPrimerTurno = LocalDateTime.parse(infoMedico.getHoraPrimerTurnoHoy(), formatter);
+
+                        textoInfo += " Hoy tiene " + infoMedico.getCantTurnosHoy() + " turno las " + fechaPrimerTurno.getHour() + ":" + (fechaPrimerTurno.getMinute() < 10 ? "0" : "") + fechaPrimerTurno.getMinute() + "hs.";
+                    }
                     else {
 
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
@@ -117,6 +124,13 @@ public class inicio_medico extends AppCompatActivity {
                     if(infoMedico.getCantTurnosMan() == 0)
                     {
                         textoInfo += " Mañana no tiene turnos.";
+                    }
+                    else if(infoMedico.getCantTurnosMan() == 1)
+                    {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+                        LocalDateTime fechaPrimerTurno = LocalDateTime.parse(infoMedico.getHoraPrimerTurnoMan(), formatter);
+
+                        textoInfo += " Hoy tiene " + infoMedico.getCantTurnosMan() + " turno las " + fechaPrimerTurno.getHour() + ":" + (fechaPrimerTurno.getMinute() < 10 ? "0" : "") + fechaPrimerTurno.getMinute() + "hs.";
                     }
                     else {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
