@@ -31,6 +31,47 @@
         android:layout_marginTop="30dp"
         app:srcCompat="@drawable/applogo" />
 
+    <RelativeLayout
+        android:id="@+id/pacMed"
+        android:visibility="invisible"
+        android:layout_width="129dp"
+        android:layout_height="141dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="129dp"
+            android:layout_height="153dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/bordeswitch" />
+
+        <ImageView
+            android:id="@+id/seleccionado"
+
+            android:layout_width="38dp"
+            android:layout_height="55dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="48dp"
+            app:srcCompat="@drawable/pacientesel" />
+
+        <ImageView
+            android:id="@+id/noSeleccionado"
+            android:layout_width="40dp"
+            android:layout_height="79dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="3dp"
+            app:srcCompat="@drawable/mediconosel" />
+    </RelativeLayout>
     <!--- MIS TURNOS-->
     <RelativeLayout
         android:id="@+id/layoutMisTurnos"

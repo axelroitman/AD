@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,7 +33,9 @@ public class inicio_paciente extends AppCompatActivity {
 
     Button btnVerMisTurnos, btnPedirTurno, btnHistorial;
     TextView textViewDiaTurno, textViewMesTurno, textViewDiaSemanaTurno, textViewHorario, textViewMedico, textViewEspecialidad, textViewProxTurno;
-    RelativeLayout cuadroFecha, cuadroTurno, cuadroSinProximosTurnos;
+    RelativeLayout cuadroFecha, cuadroTurno, cuadroSinProximosTurnos, pacMed;
+    ImageView seleccionado, noSeleccionado;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,24 @@ public class inicio_paciente extends AppCompatActivity {
         Intent i = getIntent();
         final int idUsr = i.getIntExtra("idUsr",0);
         final int idPaciente = i.getIntExtra("idPaciente", 0);
-        final int matricula = i.getIntExtra("idPaciente", 0);
+        final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        if(matricula != null){
+            pacMed.setVisibility(View.VISIBLE);
+        }
+
+        noSeleccionado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_paciente.this , inicio_medico.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
 
         btnVerMisTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +165,9 @@ public class inicio_paciente extends AppCompatActivity {
         btnVerMisTurnos = (Button) findViewById(R.id.btnVerMisTurnos);
         btnPedirTurno = (Button) findViewById(R.id.btnPedirTurno);
         btnHistorial = (Button) findViewById(R.id.btnHistorial);
+        pacMed = (RelativeLayout) findViewById(R.id.pacMed);
+        seleccionado = (ImageView) findViewById(R.id.seleccionado);
+        noSeleccionado = (ImageView) findViewById(R.id.noSeleccionado);
     }
 }
 
