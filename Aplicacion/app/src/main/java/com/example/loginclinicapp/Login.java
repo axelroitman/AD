@@ -121,7 +121,7 @@ public class Login extends AppCompatActivity {
                                                                  i = new Intent(Login.this, inicio_paciente.class);
                                                                  i.putExtra("idUsr",usuario.getIdUsr());
                                                                  i.putExtra("idPaciente",usuario.getIdPaciente());
-                                                                 i.putExtra("matricula",  "null");
+                                                                 i.putExtra("matricula", usuario.getMatricula());
                                                                  i.putExtra("nombre",usuario.getNombre());
                                                                  startActivity(i);
                                                              }

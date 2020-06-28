@@ -101,7 +101,7 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
-        final Call<ProximoTurno> proximoTurno = RetrofitClient.getInstance().getProximoTurnoPaciente().getProximoTurno(idPaciente);
+        Call<ProximoTurno> proximoTurno = RetrofitClient.getInstance().getProximoTurnoPaciente().getProximoTurno(idPaciente);
         proximoTurno.enqueue(new Callback<ProximoTurno>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override

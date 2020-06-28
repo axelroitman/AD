@@ -39,6 +39,9 @@ public class RetrofitClient {
     public ProximoTurnoService getProximoTurnoPaciente() {
         return retrofit.create(ProximoTurnoService.class);
     }
+    public InfoMedicoService getInfoMedico() {
+        return retrofit.create(InfoMedicoService.class);
+    }
 
     public Turno getTurnoPaciente() {
         return retrofit.create(Turno.class);

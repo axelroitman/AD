@@ -33,7 +33,7 @@
 
     <RelativeLayout
         android:id="@+id/pacMed"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_width="129dp"
         android:layout_height="141dp"
         android:layout_alignParentTop="true"
@@ -111,15 +111,6 @@
 
 
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/imageBookMarkMisTurnos"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="442dp"
-        android:layout_toEndOf="@+id/layoutMisTurnos"
-        app:srcCompat="@drawable/bookmark" />
 
     <!---SOLICITAR TURNO -->
     <RelativeLayout
@@ -158,26 +149,8 @@
             android:textColor="#FFFFFF" />
 
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/imageBookMarkSolicituar"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="443dp"
-        android:layout_toEndOf="@+id/imageBookMarkMisTurnos"
-        app:srcCompat="@drawable/bookmark" />
 
     <!---HISTORIAL -->
-    <ImageView
-        android:id="@+id/imageBookMarkHistorial"
-        android:layout_width="25dp"
-        android:layout_height="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="631dp"
-        android:layout_marginEnd="118dp"
-        app:srcCompat="@drawable/bookmark" />
 
     <RelativeLayout
         android:id="@+id/layoutHistorial"
