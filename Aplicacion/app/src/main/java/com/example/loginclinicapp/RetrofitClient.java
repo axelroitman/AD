@@ -29,7 +29,4 @@ public class RetrofitClient {
     public PacientePorIdUsuarioService getPacientePorIdUsuarioService() {
         return retrofit.create(PacientePorIdUsuarioService.class);
     }
-    public MedicoPorIdUsuarioService getMedicoPorIdUsuarioService() {
-        return retrofit.create(MedicoPorIdUsuarioService.class);
-    }
 }
