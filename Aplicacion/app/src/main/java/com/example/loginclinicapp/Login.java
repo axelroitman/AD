@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,24 +72,27 @@ public class Login extends AppCompatActivity {
                                                  usuario.setFechaNac(response.body().getFechaNac());
                                                  usuario.setNombre(response.body().getNombre());
                                                  usuario.setTelefono(response.body().getTelefono());
+                                                 usuario.setIdUsr(response.body().getIdUsr());
 
                                                  Log.d("logiresp", "" + response.body().getIdUsr());
                                                  //Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
 
-                                                 guardarEstadoRB();
+                                                 //guardarEstadoRB();
                                                  Call<Paciente> paciente = RetrofitClient.getInstance().getPacientePorIdUsuarioService().getPacientePorIdUsuario(response.body().getIdUsr());
                                                  paciente.enqueue(new Callback<Paciente>() {
                                                      @Override
                                                      public void onResponse(Call<Paciente> call, Response<Paciente> responsePac) {
-                                                         if(responsePac.code() == 200 && responsePac.body() != null) {
-                                                             pacMed = 1;
-                                                             usuario.setIdPaciente(responsePac.body().getId());
-                                                             usuario.setFechaVtoCuota(responsePac.body().getFechaVtoCuota());
+
+                                                         if(responsePac.code() == 200) {
+                                                             if(responsePac.body() != null){
+                                                                 pacMed = 1;
+                                                                 usuario.setIdPaciente(responsePac.body().getIdPaciente());
+                                                                 usuario.setFechaVtoCuota(responsePac.body().getFechaVtoCuota());
+                                                             }
                                                          }
                                                      }
                                                      @Override
                                                      public void onFailure(Call<Paciente> call, Throwable t) {
-                                                         Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_LONG).show();
                                                      }
                                                  });
 
@@ -98,17 +100,26 @@ public class Login extends AppCompatActivity {
                                                  medico.enqueue(new Callback<Medico>() {
                                                      @Override
                                                      public void onResponse(Call<Medico> call, Response<Medico> responseMed) {
-                                                         if(responseMed.code()==200 && responseMed.body() != null) {
-                                                             usuario.setMatricula(responseMed.body().getMatricula());
-                                                             usuario.setEspecialidades(responseMed.body().getEspecialidades());
-                                                             if(usuario.getIdPaciente() > 0){
-                                                                 pacMed = 3;
+                                                         if(responseMed.code()==200) {
+                                                             if (responseMed.body() != null) {
+                                                                 usuario.setMatricula(responseMed.body().getMatricula());
+                                                                 usuario.setEspecialidades(responseMed.body().getEspecialidades());
+                                                                 if (usuario.getIdPaciente() > 0) {
+                                                                     /*
+                                                                     Intent a Paciente y médico!!!!!!! EJ:
+                                                                     i = new Intent(Login.this, inicio_med_pac_medico.class);
+                                                                     startActivity(i);
+                                                                     */
+                                                                 } else {
+                                                                     i = new Intent(Login.this, inicio_medico.class);
+                                                                     startActivity(i);
+                                                                 }
                                                              }
                                                              else{
-                                                                 pacMed=2;
+                                                                 i = new Intent(Login.this, inicio_paciente.class);
+                                                                 startActivity(i);
                                                              }
                                                          }
-
                                                      }
 
                                                      @Override
@@ -117,18 +128,18 @@ public class Login extends AppCompatActivity {
                                                      }
                                                  });
 
-                                                 if(pacMed == 1){
-                                                     Intent i = new Intent(Login.this, inicio_paciente.class);
+                                               /*  if(pacMed == 1){
+                                                     i = new Intent(Login.this, inicio_paciente.class);
                                                  }
                                                  else if (pacMed == 2){
-                                                     Intent i = new Intent(Login.this, inicio_medico.class);
+                                                     i = new Intent(Login.this, inicio_medico.class);
                                                  }
                                                  else{
                                                      //Intent hacia el inicio de medico que es tambien paciente.
-                                                 }
+                                                 }*/
 
 
-                                                 startActivity(i);
+                                                // startActivity(i);
                                                  finishAffinity(); //hace que cuando estas loggeado y decidis ir para atras, no aparezca la activity de log-in ni la de carga. Va a la pantalla ppl del celu.
                                              }
                                              else{
