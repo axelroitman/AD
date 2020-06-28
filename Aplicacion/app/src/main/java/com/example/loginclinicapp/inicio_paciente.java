@@ -23,6 +23,10 @@ public class inicio_paciente extends AppCompatActivity {
         setContentView(R.layout.activity_inicio_paciente);
 
         vincular();
+        Intent i = getIntent();
+        int idUsr = i.getIntExtra("idUsr",0);
+        int idPaciente = i.getIntExtra("idPaciente", 0);
+        String nombre = i.getStringExtra("nombre");
 
         btnVerMisTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +53,7 @@ public class inicio_paciente extends AppCompatActivity {
         });
 
         Log.d("proximoTurno", "Hola");
-
-        Call<ProximoTurno> proximoTurno = RetrofitClient.getInstance().getProximoTurnoPaciente().getProximoTurno(obtenerIdPaciente());
+        Call<ProximoTurno> proximoTurno = RetrofitClient.getInstance().getProximoTurnoPaciente().getProximoTurno(idPaciente);
         proximoTurno.enqueue(new Callback<ProximoTurno>() {
             @Override
             public void onResponse(Call<ProximoTurno> call, Response<ProximoTurno> response) {

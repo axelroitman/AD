@@ -118,7 +118,9 @@ public class Login extends AppCompatActivity {
                                                              else{
                                                                  guardarEstadoRB();
                                                                  i = new Intent(Login.this, inicio_paciente.class);
-                                                                 i.putExtra("usuario",usuario.getIdUsr());
+                                                                 i.putExtra("idUsr",usuario.getIdUsr());
+                                                                 i.putExtra("idPaciente",usuario.getIdPaciente());
+                                                                 i.putExtra("nombre",usuario.getNombre());
                                                                  startActivity(i);
                                                              }
                                                          }
@@ -199,11 +201,11 @@ public class Login extends AppCompatActivity {
     private void guardarEstadoRB(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         preferences.edit().putBoolean("estado", rbrecordarme.isChecked()).apply();
-        preferences.edit().putInt("idUsuario", usuario.getIdUsr());
+        /*preferences.edit().putInt("idUsuario", usuario.getIdUsr());
         preferences.edit().putString("matricula", usuario.getMatricula());
         preferences.edit().putInt("idPaciente", usuario.getIdPaciente());
         preferences.edit().putString("nombre", usuario.getNombre());
-
+*/
     }
     private boolean obtenerEstadoRB(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
