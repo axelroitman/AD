@@ -77,7 +77,6 @@ public class Login extends AppCompatActivity {
                                                  Log.d("logiresp", "" + response.body().getIdUsr());
                                                  //Toast.makeText(Login.this, "Logueado con éxito. Id de usuario: " + response.body().getIdUsr(), Toast.LENGTH_LONG).show();
 
-                                                 //guardarEstadoRB();
                                                  Call<Paciente> paciente = RetrofitClient.getInstance().getPacientePorIdUsuarioService().getPacientePorIdUsuario(response.body().getIdUsr());
                                                  paciente.enqueue(new Callback<Paciente>() {
                                                      @Override
@@ -104,6 +103,7 @@ public class Login extends AppCompatActivity {
                                                              if (responseMed.body() != null) {
                                                                  usuario.setMatricula(responseMed.body().getMatricula());
                                                                  usuario.setEspecialidades(responseMed.body().getEspecialidades());
+                                                                 guardarEstadoRB();
                                                                  if (usuario.getIdPaciente() > 0) {
                                                                      /*
                                                                      Intent a Paciente y médico!!!!!!! EJ:
@@ -116,7 +116,9 @@ public class Login extends AppCompatActivity {
                                                                  }
                                                              }
                                                              else{
+                                                                 guardarEstadoRB();
                                                                  i = new Intent(Login.this, inicio_paciente.class);
+                                                                 i.putExtra("usuario",usuario.getIdUsr());
                                                                  startActivity(i);
                                                              }
                                                          }
@@ -197,6 +199,11 @@ public class Login extends AppCompatActivity {
     private void guardarEstadoRB(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         preferences.edit().putBoolean("estado", rbrecordarme.isChecked()).apply();
+        preferences.edit().putInt("idUsuario", usuario.getIdUsr());
+        preferences.edit().putString("matricula", usuario.getMatricula());
+        preferences.edit().putInt("idPaciente", usuario.getIdPaciente());
+        preferences.edit().putString("nombre", usuario.getNombre());
+
     }
     private boolean obtenerEstadoRB(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);

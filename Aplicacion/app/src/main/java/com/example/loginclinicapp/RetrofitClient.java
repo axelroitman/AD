@@ -32,4 +32,9 @@ public class RetrofitClient {
     public MedicoPorIdUsuarioService getMedicoPorIdUsuarioService() {
         return retrofit.create(MedicoPorIdUsuarioService.class);
     }
+
+    public ProximoTurnoService getProximoTurnoPaciente() {
+        return retrofit.create(ProximoTurnoService.class);
+    }
+
 }
