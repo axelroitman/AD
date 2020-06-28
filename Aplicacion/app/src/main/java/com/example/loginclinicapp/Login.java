@@ -104,22 +104,24 @@ public class Login extends AppCompatActivity {
                                                                  usuario.setMatricula(responseMed.body().getMatricula());
                                                                  usuario.setEspecialidades(responseMed.body().getEspecialidades());
                                                                  guardarEstadoRB();
-                                                                 if (usuario.getIdPaciente() > 0) {
-                                                                     /*
-                                                                     Intent a Paciente y médico!!!!!!! EJ:
-                                                                     i = new Intent(Login.this, inicio_med_pac_medico.class);
-                                                                     startActivity(i);
-                                                                     */
-                                                                 } else {
-                                                                     i = new Intent(Login.this, inicio_medico.class);
-                                                                     startActivity(i);
-                                                                 }
+
+                                                                 //Es medico y puede o no ser paciente.
+
+                                                                 i = new Intent(Login.this, inicio_medico.class);
+                                                                 i.putExtra("idUsr",usuario.getIdUsr());
+                                                                 i.putExtra("idPaciente",usuario.getIdPaciente());
+                                                                 i.putExtra("nombre",usuario.getNombre());
+                                                                 i.putExtra("matricula", usuario.getMatricula());
+
+
+                                                                 startActivity(i);
                                                              }
                                                              else{
                                                                  guardarEstadoRB();
                                                                  i = new Intent(Login.this, inicio_paciente.class);
                                                                  i.putExtra("idUsr",usuario.getIdUsr());
                                                                  i.putExtra("idPaciente",usuario.getIdPaciente());
+                                                                 i.putExtra("matricula",  "null");
                                                                  i.putExtra("nombre",usuario.getNombre());
                                                                  startActivity(i);
                                                              }

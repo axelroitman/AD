@@ -1,21 +1,24 @@
 package com.example.loginclinicapp;
 
+import android.util.Log;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ProximoTurno {
 
-    private Date fecha;
+    private String fecha;
     private Especialidad especialidad;
     private Medico medico;
 
-    public ProximoTurno(Date fecha, Especialidad especialidad, Medico medico) {
+    public ProximoTurno(String fecha, Especialidad especialidad, Medico medico) {
         this.fecha = fecha;
         this.especialidad = especialidad;
         this.medico = medico;
     }
 
-    public Date getFecha() {return fecha;}
-    public void setFecha(Date fecha) {this.fecha = fecha;}
+    public String getFecha() {return fecha;}
+    public void setFecha(String fecha) {this.fecha = fecha;}
     public Especialidad getEspecialidad() {return especialidad;}
     public void setEspecialidad(Especialidad especialidad) {this.especialidad = especialidad;}
     public Medico getMedico() {return medico;}
