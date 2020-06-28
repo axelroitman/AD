@@ -33,7 +33,7 @@ public class inicio_paciente extends AppCompatActivity {
 
     Button btnVerMisTurnos, btnPedirTurno, btnHistorial;
     TextView textViewDiaTurno, textViewMesTurno, textViewDiaSemanaTurno, textViewHorario, textViewMedico, textViewEspecialidad, textViewProxTurno;
-    RelativeLayout cuadroFecha, cuadroTurno, cuadroSinProximosTurnos, pacMed;
+    RelativeLayout cuadroFecha, cuadroTurno, cuadroSinProximosTurnos, pacMed, layoutMisTurnos, layoutPedirTurno, layoutHistorial;
     ImageView seleccionado, noSeleccionado;
 
 
@@ -65,7 +65,7 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
-        btnVerMisTurnos.setOnClickListener(new View.OnClickListener() {
+        layoutMisTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_paciente.this, ver_mis_turnos.class);
@@ -77,7 +77,7 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
-        btnPedirTurno.setOnClickListener(new View.OnClickListener() {
+        layoutPedirTurno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_paciente.this, pedir_turno.class);
@@ -89,7 +89,7 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
-        btnHistorial.setOnClickListener(new View.OnClickListener() {
+        layoutHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_paciente.this, historial_turnos_pacientes.class);
@@ -168,6 +168,9 @@ public class inicio_paciente extends AppCompatActivity {
         pacMed = (RelativeLayout) findViewById(R.id.pacMed);
         seleccionado = (ImageView) findViewById(R.id.seleccionado);
         noSeleccionado = (ImageView) findViewById(R.id.noSeleccionado);
+        layoutMisTurnos = (RelativeLayout) findViewById(R.id.layoutMisTurnos);
+        layoutPedirTurno= (RelativeLayout) findViewById(R.id.layoutPedirTurno);
+        layoutHistorial= (RelativeLayout) findViewById(R.id.layoutHistorial);
     }
 }
 

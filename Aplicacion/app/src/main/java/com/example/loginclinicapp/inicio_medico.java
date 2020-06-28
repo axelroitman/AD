@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class inicio_medico extends AppCompatActivity {
 
     Button btnVerMiAgenda,btnAgregarTurnos, btnBorrarTurnos;
     TextView textViewInfo;
+    RelativeLayout pacMed, verAgenda, añadirTurnos, cancelarTurno;
+    ImageView seleccionado, noSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,24 @@ public class inicio_medico extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
 
-        btnAgregarTurnos.setOnClickListener(new View.OnClickListener() {
+        if(idPaciente > 0){
+            pacMed.setVisibility(View.VISIBLE);
+        }
+
+        noSeleccionado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_medico.this , inicio_paciente.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+
+
+        añadirTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_medico.this, aniadir_turnos.class);
@@ -48,7 +68,7 @@ public class inicio_medico extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnVerMiAgenda.setOnClickListener(new View.OnClickListener() {
+        verAgenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_medico.this, ver_agenda.class);
@@ -59,7 +79,7 @@ public class inicio_medico extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnBorrarTurnos.setOnClickListener(new View.OnClickListener() {
+        cancelarTurno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(inicio_medico.this, eliminar_turnos.class);
@@ -123,5 +143,12 @@ public class inicio_medico extends AppCompatActivity {
         btnVerMiAgenda = (Button) findViewById(R.id.btnVerMiAgenda);
         btnBorrarTurnos = (Button) findViewById(R.id.btnEliminarTurnos);
         btnAgregarTurnos = (Button) findViewById(R.id.btnAddTurnos);
+        pacMed = (RelativeLayout) findViewById(R.id.pacMed);
+        seleccionado = (ImageView) findViewById(R.id.seleccionado);
+        noSeleccionado = (ImageView) findViewById(R.id.noSeleccionado);
+        verAgenda =(RelativeLayout) findViewById(R.id.verAgenda);
+        añadirTurnos =(RelativeLayout) findViewById(R.id.añadirTurnos);
+        cancelarTurno =(RelativeLayout) findViewById(R.id.cancelarTurno);
+
     }
 }
