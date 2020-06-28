@@ -1,5 +1,7 @@
 package com.example.loginclinicapp;
 
+import com.example.loginclinicapp.modelos.Turno;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -26,6 +28,7 @@ public class RetrofitClient {
     public LoginService getLoginService(){
         return retrofit.create(LoginService.class);
     }
+
     public PacientePorIdUsuarioService getPacientePorIdUsuarioService() {
         return retrofit.create(PacientePorIdUsuarioService.class);
     }
@@ -35,6 +38,10 @@ public class RetrofitClient {
 
     public ProximoTurnoService getProximoTurnoPaciente() {
         return retrofit.create(ProximoTurnoService.class);
+    }
+
+    public Turno getTurnoPaciente() {
+        return retrofit.create(Turno.class);
     }
 
 }
