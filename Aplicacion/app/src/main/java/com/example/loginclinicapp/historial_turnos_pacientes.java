@@ -1,23 +1,16 @@
 package com.example.loginclinicapp;
 
-import androidx.appcompat.app.AlertDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,7 +19,6 @@ import retrofit2.Response;
 
 public class historial_turnos_pacientes extends AppCompatActivity {
 
-    AlertDialog.Builder builder;
     RelativeLayout txtMensajeError;
     RecyclerView recyclerView;
     GroupAdp adaptador_items;
@@ -51,8 +43,6 @@ public class historial_turnos_pacientes extends AppCompatActivity {
 
     private void traerDatosTurnos(int idPaciente){
         Log.d("historial", "ENTRO AL METODO");
-
-       // boolean proximos = true;
 
         Log.d("historial",""+idPaciente);
         Call<List<Turno>> call = RetrofitClient.getInstance().getTurnoPaciente().getTurnosPaciente(idPaciente, false);

@@ -176,7 +176,7 @@
                 <RelativeLayout
                     android:id="@+id/infoTurnoAsistencia"
                     android:layout_height="49dp"
-                    android:layout_width="80dp"
+                    android:layout_width="85dp"
                     android:layout_alignParentStart="@+id/infoTurnoEstado"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
@@ -192,10 +192,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_centerHorizontal="false"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="7dp"
                         android:fontFamily="@font/roboto_light_italic"
-                        android:text="Asistió"
+                        android:gravity="center_vertical"
+                        android:text="Asistencia"
                         android:textSize="15dp" />
 
                     <ImageView
