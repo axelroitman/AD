@@ -1,6 +1,5 @@
 package com.example.loginclinicapp;
 
-import com.example.loginclinicapp.modelos.Turno;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

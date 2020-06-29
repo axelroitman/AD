@@ -1,6 +1,5 @@
 package com.example.loginclinicapp;
 
-import com.example.loginclinicapp.modelos.Turno;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public interface GetTurnosPaciente {
 
     String API_ROUTE = "/apirest/getTurnosPaciente";
     @GET(API_ROUTE)
-    Call<List<Turno>> getTurnos(
+    Call<List<Turno>> getTurnosPaciente(
         @Query("idPaciente") int idPaciente,
         @Query("proximos") boolean proximos
     );

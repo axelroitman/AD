@@ -1,6 +1,7 @@
 package com.example.loginclinicapp;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,24 +9,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.loginclinicapp.modelos.Turno;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Callback;
 
 public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
     private LayoutInflater layoutInflater;
-    private List<String> data;
+    private List<Turno> turnos;
 
 
     //constructor
-    GroupAdp(Context context, List<String> data){
+    GroupAdp(Context context, List<Turno> turnos){
         this.layoutInflater = layoutInflater.from(context);
-        this.data = data;
+        this.turnos = turnos;
     }
 
 
@@ -56,29 +61,35 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         return new GroupAdp.ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        String horario = data.get(i);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime fecha = LocalDateTime.parse(turnos.get(i).getFecha(), formato);
+        String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
+        String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
+
+
+        String horario = fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.";
         viewHolder.txtHorario1.setText(horario);
-        /*String dia = data.get(i);
+
+        String dia = ""+fecha.getDayOfMonth();
         viewHolder.txtDiaTurno1.setText(dia);
 
-        String mes = data.get(i);
-        viewHolder.txtMesTurno1.setText(mes);
+        viewHolder.txtMesTurno1.setText(mesEnPalabras.toUpperCase().substring(0,3) + ".");
 
-        String diaSemana = data.get(i);
-        viewHolder.txtDiaSemanaTurno1.setText(diaSemana);
+        viewHolder.txtDiaSemanaTurno1.setText(diaEnPalabras.toUpperCase().substring(0,1) + diaEnPalabras.substring(1));
 
 
 
-        String medico = data.get(i);
+        String medico = turnos.get(i).getMedico().getNombre();
         viewHolder.txtMedico1.setText(medico);
 
-        String especialidad = data.get(i);
-        viewHolder.txtDiaTurno1.setText(especialidad);
+        String especialidad = turnos.get(i).getEspecialidad().getNombre();
+        viewHolder.txtEspecialidad1.setText(especialidad);
 
-        String estado = data.get(i);
+        /*String estado = data.get(i);
         viewHolder.txtestado4.setText(estado);
 
         String asistencia = data.get(i);
@@ -90,6 +101,6 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return turnos.size();
     }
 }

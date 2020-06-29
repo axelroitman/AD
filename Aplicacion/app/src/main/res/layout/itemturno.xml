@@ -37,40 +37,43 @@
 
                     <TextView
                         android:id="@+id/txtDiaTurno1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="21dp"
+                        android:layout_marginStart="0dp"
                         android:layout_marginTop="-4dp"
                         android:fontFamily="@font/roboto_condensed_bold_italic"
                         android:text="04"
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF"
                         android:textSize="40dp" />
 
                     <TextView
                         android:id="@+id/txtDiaSemanaTurno1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="0dp"
                         android:layout_marginTop="65dp"
                         android:fontFamily="@font/roboto_condensed_bold_italic"
-                        android:text="Lunes"
+                        android:text="Martes"
                         android:textColor="#FFFFFF"
-                        android:textSize="20dp" />
+                        android:textSize="20dp"
+                        android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/txtMesTurno1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="86dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="17dp"
+                        android:layout_marginStart="2dp"
                         android:layout_marginTop="37dp"
                         android:fontFamily="@font/roboto_condensed_bold_italic"
                         android:text="MAY."
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF"
                         android:textSize="25dp" />
 
@@ -133,7 +136,7 @@
                 <!---contenedor asistencia-->
 
                 <RelativeLayout
-                    android:id="@+id/infoTurnoFecha"
+                    android:id="@+id/infoTurnoEstado"
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="@+id/infoTurnoMedico"
@@ -172,13 +175,15 @@
 
                 <RelativeLayout
                     android:id="@+id/infoTurnoAsistencia"
+                    android:layout_height="49dp"
                     android:layout_width="80dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentStart="@+id/infoTurnoMedico"
+                    android:layout_alignParentStart="@+id/infoTurnoEstado"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="53dp"
-                    android:layout_marginEnd="13dp"
+                    android:layout_marginTop="54dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_alignLeft="@+id/infoTurnoEstado"
+                    android:layout_alignRight="@+id/infoTurnoEstado"
                     android:background="#91D2FA">
 
                     <TextView
@@ -190,7 +195,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="15dp"
                         android:fontFamily="@font/roboto_light_italic"
-                        android:text="AsistiÃ³"
+                        android:text="Asistió"
                         android:textSize="15dp" />
 
                     <ImageView

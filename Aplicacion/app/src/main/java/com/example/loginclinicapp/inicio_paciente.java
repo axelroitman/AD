@@ -124,9 +124,9 @@ public class inicio_paciente extends AppCompatActivity {
 
                         textViewDiaSemanaTurno = (TextView) findViewById(R.id.textViewDiaSemanaTurno);
                         textViewDiaSemanaTurno.setText(diaEnPalabras.toUpperCase().substring(0,1) + diaEnPalabras.substring(1));
-
+                        
                         textViewHorario = (TextView) findViewById(R.id.textViewHorario);
-                        textViewHorario.setText(fecha.getHour() + ":" + fecha.getMinute() + "hs.");
+                        textViewHorario.setText(fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.");
 
                         textViewMedico = (TextView) findViewById(R.id.textViewMedico);
                         textViewMedico.setText(response.body().getMedico().getNombre());

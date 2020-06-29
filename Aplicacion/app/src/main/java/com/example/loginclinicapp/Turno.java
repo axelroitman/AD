@@ -1,4 +1,4 @@
-package com.example.loginclinicapp.modelos;
+package com.example.loginclinicapp;
 
 import com.example.loginclinicapp.Especialidad;
 import com.example.loginclinicapp.Medico;
@@ -9,33 +9,33 @@ import java.util.Date;
 public class Turno {
 
     private int id ;
-    private Date fecha;
+    private String fecha;
     private float precio;
     //private Asistencia asistencia;
     private String justifInasistencia;
     //private Disponibilidad disponibilidad;
-    private Especialidad idEspecialidad;
-    private Paciente idPaciente;
-    private Medico idMedico;
+    private Especialidad especialidad;
+    private Paciente paciente;
+    private Medico medico;
 
-    public Turno(int id, Especialidad idEspecialidad, Paciente idPaciente, Medico idMedico) {
+    public Turno(int id, Especialidad especialidad, Paciente paciente, Medico medico) {
         this.id = id;
-        this.idPaciente = idPaciente;
-        this.idEspecialidad = idEspecialidad;
-        this.idMedico = idMedico;
+        this.paciente = paciente;
+        this.especialidad = especialidad;
+        this.medico = medico;
     }
 
      public int getId() { return id; }
-     public Date getFecha() { return fecha; }
+     public String getFecha() { return fecha; }
      public float getPrecio() { return precio; }
      public String getJustifInasistencia() { return justifInasistencia; }
-     public void setFecha(Date fecha) { this.fecha = fecha; }
+     public void setFecha(String fecha) { this.fecha = fecha; }
      public void setPrecio(float precio) { this.precio = precio; }
      public void setJustifInasistencia(String justifInasistencia) { this.justifInasistencia = justifInasistencia; }
-    public Especialidad getIdEspecialidad() { return idEspecialidad; }
-    public void setIdEspecialidad(Especialidad idEspecialidad) { this.idEspecialidad = idEspecialidad; }
-    public Paciente getIdPaciente() { return idPaciente; }
-    public void setIdPaciente(Paciente idPaciente) { this.idPaciente = idPaciente; }
-    public Medico getIdMedico() { return idMedico; }
-    public void setIdMedico(Medico idMedico) { this.idMedico = idMedico; }
+    public Especialidad getEspecialidad() { return especialidad; }
+    public void setEspecialidad(Especialidad especialidad) { this.especialidad = especialidad; }
+    public Paciente getPaciente() { return paciente; }
+    public void setPaciente(Paciente idPaciente) { this.paciente = paciente; }
+    public Medico getMedico() { return medico; }
+    public void setMedico(Medico medico) { this.medico = medico; }
 }
