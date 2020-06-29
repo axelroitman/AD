@@ -91,6 +91,39 @@ public class inicio_medico extends AppCompatActivity {
             }
         });
 
+        btnAgregarTurnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_medico.this, aniadir_turnos.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+        btnVerMiAgenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_medico.this, ver_agenda.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+        btnBorrarTurnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_medico.this, eliminar_turnos.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
 
         Call<InfoMedico> infoMedico = RetrofitClient.getInstance().getInfoMedico().getInfoInicioMedico(matricula);
         infoMedico.enqueue(new Callback<InfoMedico>() {

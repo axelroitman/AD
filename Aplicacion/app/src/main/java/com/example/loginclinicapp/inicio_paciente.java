@@ -101,6 +101,44 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
+
+        btnVerMisTurnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_paciente.this, ver_mis_turnos.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+
+        btnPedirTurno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_paciente.this, pedir_turno.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+
+        btnHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(inicio_paciente.this, historial_turnos_pacientes.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                startActivity(i);
+            }
+        });
+
+
         Call<ProximoTurno> proximoTurno = RetrofitClient.getInstance().getProximoTurnoPaciente().getProximoTurno(idPaciente);
         proximoTurno.enqueue(new Callback<ProximoTurno>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -124,7 +162,7 @@ public class inicio_paciente extends AppCompatActivity {
 
                         textViewDiaSemanaTurno = (TextView) findViewById(R.id.textViewDiaSemanaTurno);
                         textViewDiaSemanaTurno.setText(diaEnPalabras.toUpperCase().substring(0,1) + diaEnPalabras.substring(1));
-                        
+
                         textViewHorario = (TextView) findViewById(R.id.textViewHorario);
                         textViewHorario.setText(fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.");
 
