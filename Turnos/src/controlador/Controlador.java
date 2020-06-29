@@ -230,9 +230,11 @@ public class Controlador {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public void agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
+	public boolean agregarTurnos(int idEspecialidad, String matricula, int duracion, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException {
 		Especialidad esp = null;
 		Medico med = null;
+		boolean agregaTodos = true;
+		
 		try {
 			esp = buscarEspecialidad(idEspecialidad);
 		} catch (EspecialidadException e) {
@@ -253,70 +255,320 @@ public class Controlador {
 			c.setTime(inicial);
 			diaSemana = c.get(Calendar.DAY_OF_WEEK);
 			if(lunes && diaSemana == Calendar.MONDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(martes && diaSemana == Calendar.TUESDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(miercoles && diaSemana == Calendar.WEDNESDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(jueves && diaSemana == Calendar.THURSDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(viernes && diaSemana == Calendar.FRIDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(sabado && diaSemana == Calendar.SATURDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(domingo && diaSemana == Calendar.SUNDAY) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
+				}
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
 				}
 			}
 			else if(!lunes && !martes && !miercoles && !jueves && !viernes && !sabado && !domingo) {
-				for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
-					inicial.setHours(in.getHour());
-					inicial.setMinutes(in.getMinute());
-					Turno t = new Turno(inicial, esp, med);
-					TurnoDAO.getInstancia().save(t);
+				List<TurnoView> turnosActuales = getTurnosMedicoPorDia(matricula, inicial);
+				boolean puedeAgregar = true;
+				if(!turnosActuales.isEmpty()) 
+				{
+					if(turnosActuales.get(0).getEspecialidad().getIdEspecialidad() != idEspecialidad) 
+					{
+						puedeAgregar = false;
+					}
 				}
-			}			
+				
+				if(puedeAgregar)
+				{
+					for(LocalTime in = horaInicial; in.isBefore(horaFinal) ; in = in.plusMinutes(duracion)) {
+						inicial.setHours(in.getHour());
+						inicial.setMinutes(in.getMinute());
+
+						for(TurnoView t : turnosActuales) 
+						{
+							if(t.getFecha() != inicial) 
+							{
+								puedeAgregar = false;
+							}
+						}
+						
+						if(puedeAgregar)
+						{
+							Turno t = new Turno(inicial, esp, med);
+							TurnoDAO.getInstancia().save(t);
+						}
+						else{
+							agregaTodos = false; 
+						}
+					}
+				}
+				else{
+					agregaTodos = false; 
+				}
+			}
 		}
+		
+		return agregaTodos;
 
 	}
 	public void agregarAListaDeEspera(int idPaciente, int idEspecialidad, String matricula) throws ListaDeEsperaException {

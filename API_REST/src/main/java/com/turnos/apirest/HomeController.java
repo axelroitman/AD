@@ -232,15 +232,24 @@ public class HomeController {
 	public ResponseEntity<Void> agregarTurnos(@RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="duracion", required=true) int duracion, @RequestParam(value="horaInicial", required=true) String horaInicial, @RequestParam(value="horaFinal", required=true) String horaFinal, @RequestParam(value="fechaInicial", required=true) String fechaInicial, @RequestParam(value="fechaFinal", required=true) String fechaFinal, @RequestParam(value="lunes", required=false) boolean lunes, @RequestParam(value="martes", required=false) boolean martes, @RequestParam(value="miercoles", required=false) boolean miercoles, @RequestParam(value="jueves", required=false) boolean jueves, @RequestParam(value="viernes", required=false) boolean viernes, @RequestParam(value="sabado", required=false) boolean sabado, @RequestParam(value="domingo", required=false) boolean domingo) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
-
+		boolean agregaTodos = false;
 		try {
 			try {
-				Controlador.getInstancia().agregarTurnos(idEspecialidad, matricula, duracion, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+				agregaTodos = Controlador.getInstancia().agregarTurnos(idEspecialidad, matricula, duracion, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return new ResponseEntity<Void>(HttpStatus.CREATED);												
+			
+			if(agregaTodos)
+			{
+				return new ResponseEntity<Void>(HttpStatus.CREATED);												
+			}
+			else {
+				return new ResponseEntity<Void>(HttpStatus.I_AM_A_TEAPOT);												
+				
+			}
+			
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
 			
