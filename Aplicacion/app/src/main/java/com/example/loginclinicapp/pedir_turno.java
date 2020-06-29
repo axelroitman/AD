@@ -106,11 +106,16 @@ public class pedir_turno extends AppCompatActivity {
                                         public void onResponse(Call<Collection<Medico>> call, Response<Collection<Medico>> response) {
                                             if(response.code() == 200){
                                                 if(response.body() != null){
-                                                    for (Medico m : response.body()){
-                                                        if(matricula != null){
-                                                            if(! matricula.equals(m.getMatricula())){
+                                                    if(matricula != null){
+                                                        for (Medico m : response.body()){
+                                                                if(! matricula.equals(m.getMatricula())){
+                                                                    medNombreyMatricula.put(m.getNombre(),m.getMatricula());
+                                                                }
+                                                        }
+                                                    }
+                                                    else{
+                                                        for (Medico m : response.body()){
                                                                 medNombreyMatricula.put(m.getNombre(),m.getMatricula());
-                                                            }
                                                         }
                                                     }
                                                     medNombres.add("Seleccione un médico");
@@ -186,18 +191,6 @@ public class pedir_turno extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-        //Harcodeo solo el caso en que selecciono "Nefrología"
-
-        /*ArrayAdapter<String> aa = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,med);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spmedicos.setAdapter(aa);*/
-
         btncancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,10 +210,8 @@ public class pedir_turno extends AppCompatActivity {
                 i.putExtra("matriculaSeleccionado", matriculaSeleccionado); //MEDICO SELECCIONADO, O NULL SI NO SELECCIONÓ (IF)
 
                 startActivity(i);
-
             }
         });
-
     }
 
     private void vincular(){
@@ -228,7 +219,6 @@ public class pedir_turno extends AppCompatActivity {
         btncancelar = (Button) findViewById(R.id.btncancelar);
         spmedicos = (Spinner) findViewById(R.id.spmedicos);
         spespecialidades = (Spinner) findViewById(R.id.spespecialidades);
-
         txtseleccionarMedico = (TextView) findViewById(R.id.txtseleccionarMedico);
         txtseleccionarEspecialidad =  (TextView) findViewById(R.id.txtseleccionarEspecialidad);
     }
