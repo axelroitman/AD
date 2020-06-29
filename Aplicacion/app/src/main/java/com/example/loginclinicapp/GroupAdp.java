@@ -89,14 +89,29 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         String especialidad = turnos.get(i).getEspecialidad().getNombre();
         viewHolder.txtEspecialidad1.setText(especialidad);
 
-        /*String estado = data.get(i);
-        viewHolder.txtestado4.setText(estado);
+        if(turnos.get(i).getAsistencia() == "NoAsiste") {
+            viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciano);
+        }
+        if(turnos.get(i).getAsistencia() == "Asiste") {
+            viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciaok);
+        }
+        else {
+            viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciapendiente);
+        }
 
-        String asistencia = data.get(i);
-        viewHolder.txtasistencia4.setText(asistencia);*/
-
-        //me faltarian poner las imagenes.
-
+        if(turnos.get(i).getDisponibilidad() == "AConfirmar") {
+            viewHolder.imgestado4.setImageResource(R.drawable.ok);
+        }
+        if(turnos.get(i).getDisponibilidad() == "Confirmado") {
+            viewHolder.imgestado4.setImageResource(R.drawable.ok);
+        }
+        if(turnos.get(i).getDisponibilidad() == "Terminado") {
+            viewHolder.imgestado4.setImageResource(R.drawable.ok);
+        }
+        else{
+           //Cancelado
+            viewHolder.imgestado4.setImageResource(R.drawable.notok);
+        }
     }
 
     @Override

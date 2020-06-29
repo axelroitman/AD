@@ -11,9 +11,9 @@ public class Turno {
     private int id ;
     private String fecha;
     private float precio;
-    //private Asistencia asistencia;
+    private String asistencia;
     private String justifInasistencia;
-    //private Disponibilidad disponibilidad;
+    private String disponibilidad;
     private Especialidad especialidad;
     private Paciente paciente;
     private Medico medico;
@@ -38,4 +38,10 @@ public class Turno {
     public void setPaciente(Paciente idPaciente) { this.paciente = paciente; }
     public Medico getMedico() { return medico; }
     public void setMedico(Medico medico) { this.medico = medico; }
+
+    public String getAsistencia() { return asistencia; }
+    public void setAsistencia(String asistencia) { this.asistencia = asistencia; }
+    public String getDisponibilidad() { return disponibilidad; }
+    public void setDisponibilidad(String disponibilidad) { this.disponibilidad = disponibilidad; }
+
 }
