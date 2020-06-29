@@ -25,14 +25,18 @@
                 tools:ignore="MissingConstraints">
 
                 <!---contenedor fecha-->
+
+                <!---contenedor especialidad-->
+
                 <RelativeLayout
-                    android:layout_width="184dp"
+                    android:layout_width="94dp"
                     android:layout_height="102dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="297dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="302dp"
                     android:background="#498EB8">
 
                     <TextView
@@ -42,7 +46,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="0dp"
-                        android:layout_marginTop="-4dp"
+                        android:layout_marginTop="0dp"
                         android:fontFamily="@font/roboto_condensed_bold_italic"
                         android:text="04"
                         android:textAlignment="center"
@@ -59,9 +63,9 @@
                         android:layout_marginTop="65dp"
                         android:fontFamily="@font/roboto_condensed_bold_italic"
                         android:text="Martes"
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF"
-                        android:textSize="20dp"
-                        android:textAlignment="center" />
+                        android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/txtMesTurno1"
@@ -79,7 +83,6 @@
 
                 </RelativeLayout>
 
-                <!---contenedor especialidad-->
                 <RelativeLayout
                     android:id="@+id/infoTurnoMedico"
                     android:layout_width="216dp"
@@ -137,14 +140,14 @@
 
                 <RelativeLayout
                     android:id="@+id/infoTurnoEstado"
-                    android:layout_width="80dp"
-                    android:layout_height="50dp"
+                    android:layout_width="82dp"
+                    android:layout_height="51dp"
                     android:layout_alignParentStart="@+id/infoTurnoMedico"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginEnd="13dp"
                     android:background="#498EB8">
 
                     <TextView
@@ -175,15 +178,17 @@
 
                 <RelativeLayout
                     android:id="@+id/infoTurnoAsistencia"
-                    android:layout_height="49dp"
-                    android:layout_width="85dp"
+                    android:layout_width="82dp"
+                    android:layout_height="52dp"
+                    android:layout_alignLeft="@+id/infoTurnoEstado"
+                    android:layout_alignRight="@+id/infoTurnoEstado"
                     android:layout_alignParentStart="@+id/infoTurnoEstado"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="54dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_alignLeft="@+id/infoTurnoEstado"
-                    android:layout_alignRight="@+id/infoTurnoEstado"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="49dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginRight="-3dp"
                     android:background="#91D2FA">
 
                     <TextView
