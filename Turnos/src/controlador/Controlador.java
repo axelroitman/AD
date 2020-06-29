@@ -518,7 +518,7 @@ public class Controlador {
 		{
 			for(Especialidad esp: m.getEspecialidades()) 
 			{
-				if(esp.getId() == idEspecialidad) 
+				if(esp.getIdEspecialidad() == idEspecialidad) 
 				{
 					lista.add(m.toView());
 				}

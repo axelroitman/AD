@@ -51,6 +51,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="26dp"
             android:layout_marginTop="22dp"
+            android:fontFamily="@font/roboto_light"
             android:text="Seleccionar especialidad:"
             android:textSize="18dp" />
 
@@ -60,6 +61,7 @@
             android:layout_height="43dp"
             android:layout_below="@+id/txtseleccionarEspecialidad"
             android:layout_alignParentStart="true"
+            android:fontFamily="@font/roboto_light"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="61dp"
             android:layout_marginTop="31dp"
@@ -69,6 +71,7 @@
         <TextView
             android:id="@+id/txtseleccionarMedico"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spespecialidades"
             android:layout_alignParentStart="true"
@@ -81,8 +84,10 @@
         <Spinner
             android:id="@+id/spmedicos"
             android:layout_width="277dp"
+            android:visibility="gone"
             android:layout_height="43dp"
             android:layout_below="@+id/txtseleccionarMedico"
+            android:fontFamily="@font/roboto_light"
             android:layout_alignParentStart="true"
             android:layout_marginStart="61dp"
             android:layout_marginTop="31dp" />

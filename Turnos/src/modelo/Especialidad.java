@@ -6,16 +6,16 @@ import views.EspecialidadView;
 
 public class Especialidad {
 	
-   	private int id;
+   	private int idEspecialidad;
 	private String nombre;
     
     public Especialidad(int id, String nombre) {
-		this.id = id;
+		this.idEspecialidad = id;
 		this.nombre = nombre;
 	}
     
-	public int getId() {
-		return id;
+	public int getIdEspecialidad() {
+		return idEspecialidad;
 	}
 	public String getNombre() {
 		return nombre;
@@ -25,7 +25,7 @@ public class Especialidad {
 	}
 	
 	public EspecialidadView toView() {
-		return new EspecialidadView(id, nombre);
+		return new EspecialidadView(idEspecialidad, nombre);
 	}
 
 }

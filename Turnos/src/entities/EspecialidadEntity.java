@@ -1,5 +1,6 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +13,14 @@ public class EspecialidadEntity {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int id;
+	@Column(name="id")
+	private int idEspecialidad;
 	
 	private String nombre;
 	
     public EspecialidadEntity(int id, String nombre) {
 		super();
-		this.id = id;
+		this.idEspecialidad = id;
 		this.nombre = nombre;
 	}
     
@@ -32,8 +34,8 @@ public class EspecialidadEntity {
 		this.nombre = nombre;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdEspecialidad() {
+		return idEspecialidad;
 	}
     
 }

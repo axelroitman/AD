@@ -149,9 +149,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/getEspecialidades", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getEspecialidades() throws JsonProcessingException {
-		//ResponseBody<json>: Aclara que el String guarda un JSON
-		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
-
 			List<EspecialidadView> especialidades = Controlador.getInstancia().getEspecialidades();
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writeValueAsString(especialidades);

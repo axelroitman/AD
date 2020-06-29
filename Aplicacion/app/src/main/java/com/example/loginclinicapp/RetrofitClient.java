@@ -47,4 +47,8 @@ public class RetrofitClient {
         return retrofit.create(GetTurnosPaciente.class);
     }
 
+    public EspecialidadesService getEspecialidadesService() {return retrofit.create(EspecialidadesService.class);}
+
+    public MedicoPorEspecialidadService getMedicoPorEspecialidadService() {return retrofit.create(MedicoPorEspecialidadService.class);}
+
 }

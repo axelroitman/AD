@@ -52,11 +52,11 @@ public class EspecialidadDAO {
 		return toNegocio(especialidad);
     }
 	EspecialidadEntity toEntity(Especialidad especialidad){
-		return new EspecialidadEntity(especialidad.getId(), especialidad.getNombre());
+		return new EspecialidadEntity(especialidad.getIdEspecialidad(), especialidad.getNombre());
 	} 
 	
     Especialidad toNegocio(EspecialidadEntity entity){
-        return new Especialidad(entity.getId(), entity.getNombre());
+        return new Especialidad(entity.getIdEspecialidad(), entity.getNombre());
     }
 
 
