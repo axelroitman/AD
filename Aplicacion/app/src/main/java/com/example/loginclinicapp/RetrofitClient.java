@@ -43,8 +43,8 @@ public class RetrofitClient {
         return retrofit.create(InfoMedicoService.class);
     }
 
-    public Turno getTurnoPaciente() {
-        return retrofit.create(Turno.class);
+    public GetTurnosPaciente getTurnoPaciente() {
+        return retrofit.create(GetTurnosPaciente.class);
     }
 
 }

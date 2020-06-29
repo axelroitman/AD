@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.loginclinicapp.modelos.Turno;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +41,44 @@ public class historial_turnos_pacientes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_turnos_pacientes);
         vincular();
-        // traerDatosTurnos();
+        Log.d("historial", "ANTES DEL METODO");
+        traerDatosTurnos();
+    }
+
+    private void traerDatosTurnos(){
+        Log.d("historial", "ENTRO AL METODO");
+
+       // boolean proximos = true;
+        Call<List<Turno>> call = RetrofitClient.getInstance().getTurnoPaciente().getTurnos(2, true);
+        call.enqueue(new Callback<List<Turno>>() {
+            @Override
+            public void onResponse(Call<List<Turno>> call, Response<List<Turno>> response) {
+                Log.d("historial", response.toString());
+                if (response.code() == 200) {
+                    Log.d("historial", "ES 200");
+                    if ( ! response.body().isEmpty()) {
+                        Log.d("historial", response.toString());
+                        Log.d("historial", "NO ESTOY VACIO");
+                        recyclerView.setVisibility(View.GONE);
+                        txtMensajeError.setVisibility(View.VISIBLE);
+
+                        //completarCards();
+                        //Toast.makeText(historial_turnos_pacientes.this, response.body().getId(), Toast.LENGTH_LONG).show();
+                    } else {
+                        Log.d("historial", "ESTOY VACIO");
+                        txtMensajeError.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Turno>> call, Throwable t) {
+                Toast.makeText(historial_turnos_pacientes.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    private void completarCards(){
 
         items = new ArrayList<>();
         items.add("primera cardview item");
@@ -52,46 +91,8 @@ public class historial_turnos_pacientes extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adaptador_items = new GroupAdp(this, items);
         recyclerView.setAdapter(adaptador_items);
+
     }
-
-    private void traerDatosTurnos(){
-        builder = new AlertDialog.Builder(this);
-
-        Call<Turno> call = (Call<Turno>) RetrofitClient.getInstance().getTurnoPaciente();
-        call.enqueue(new Callback<Turno>() {
-                         @Override
-                         public void onResponse(Call<Turno> call, Response<Turno> response) {
-                             Log.d("historialturnos", response.toString());
-                             if (response.code() == 200) {
-                                 if (response.body() != null) {
-                                     //Log.d("historialturnos", "" + response.body().getId());
-                                     //Toast.makeText(historial_turnos_pacientes.this, response.body().getId(), Toast.LENGTH_LONG).show();
-                                 }
-                                 else{
-                                     txtMensajeError.setVisibility(View.VISIBLE);
-                                     /*builder.setTitle("No tiene turnos");
-                                     builder.setMessage("No tiene ningÃºn turno.");
-                                     builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                         @Override
-                                         public void onClick(DialogInterface dialog, int which) {
-                                             dialog.cancel();
-                                         }
-                                     });
-
-                                     AlertDialog alert = builder.create();
-                                     alert.show();*/
-                                 }
-                             }
-                         }
-
-                         @Override
-                         public void onFailure(Call<Turno> call, Throwable t) {
-                             Toast.makeText(historial_turnos_pacientes.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                         }
-                     }
-        );
-    }
-
 
 
     private void vincular(){

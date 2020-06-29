@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.loginclinicapp.modelos.Turno;
+
 import java.util.List;
+
+import retrofit2.Callback;
 
 public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
