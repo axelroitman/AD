@@ -3,8 +3,10 @@ package com.example.loginclinicapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,21 +56,49 @@ public class pedir_turno extends AppCompatActivity {
                         for (Especialidad e : response.body()){
                             espNombreyId.put(e.getNombre(),e.getIdEspecialidad());
                         }
+                        espNombres.add("Seleccione una especialidad");
                         espNombres.addAll(espNombreyId.keySet());
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item, espNombres);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item, espNombres){
+                            @Override
+                            public boolean isEnabled(int position){
+                                if(position == 0)
+                                {
+                                    // Disable the second item from Spinner
+                                    return false;
+                                }
+                                else
+                                {
+                                    return true;
+                                }
+                            }
+
+                            @Override
+                            public View getDropDownView(int position, View convertView,
+                                                        ViewGroup parent) {
+                                View view = super.getDropDownView(position, convertView, parent);
+                                TextView tv = (TextView) view;
+                                if(position == 0) {
+                                    // Set the disable item text color
+                                    tv.setTextColor(Color.GRAY);
+                                }
+                                else {
+                                    tv.setTextColor(Color.BLACK);
+                                }
+                                return view;
+                            }
+                        };
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spespecialidades.setAdapter(adapter);
 
                         spespecialidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                medNombreyMatricula.clear();
+                                medNombres.clear();
                                 if(spespecialidades.getSelectedItemPosition() != 0) {
                                     txtseleccionarMedico.setVisibility(View.VISIBLE);
                                     spmedicos.setVisibility(View.VISIBLE);
                                     idEsp = espNombreyId.get(spespecialidades.getSelectedItem().toString());
-                                    medNombreyMatricula.clear();
-                                    spmedicos.clear
-
 
                                     Call<Collection<Medico>> medicos = RetrofitClient.getInstance().getMedicoPorEspecialidadService().getMedicosPorEspecialidad(idEsp);
                                     medicos.enqueue(new Callback<Collection<Medico>>() {
@@ -83,8 +113,37 @@ public class pedir_turno extends AppCompatActivity {
                                                             }
                                                         }
                                                     }
+                                                    medNombres.add("Seleccione un médico");
                                                     medNombres.addAll(medNombreyMatricula.keySet());
-                                                    ArrayAdapter<String> adapterMedicos = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item,medNombres);
+                                                    ArrayAdapter<String> adapterMedicos = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item,medNombres){
+                                                        @Override
+                                                        public boolean isEnabled(int position){
+                                                            if(position == 0)
+                                                            {
+                                                                // Disable the second item from Spinner
+                                                                return false;
+                                                            }
+                                                            else
+                                                            {
+                                                                return true;
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public View getDropDownView(int position, View convertView,
+                                                                                    ViewGroup parent) {
+                                                            View view = super.getDropDownView(position, convertView, parent);
+                                                            TextView tv = (TextView) view;
+                                                            if(position == 0) {
+                                                                // Set the disable item text color
+                                                                tv.setTextColor(Color.GRAY);
+                                                            }
+                                                            else {
+                                                                tv.setTextColor(Color.BLACK);
+                                                            }
+                                                            return view;
+                                                        }
+                                                    };
                                                     adapterMedicos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                                     spmedicos.setAdapter(adapterMedicos);
                                                     spmedicos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
