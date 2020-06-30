@@ -13,18 +13,37 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ver_agenda" android:exported="true"></activity>
-        <activity android:name=".eliminar_turnos" android:exported="true"/>
-        <activity android:name=".aniadir_turnos" android:exported="true"/>
-        <activity android:name=".inicio_medico"
-            android:exported="true"/>
-        <activity android:name=".pedir_turnos_fecha" android:exported="true"/>
-        <activity android:name=".pedir_turno_turnos" android:exported="true"/>
-        <activity android:name=".historial_turnos_pacientes" android:exported="true"/>
-        <activity android:name=".pedir_turno" android:exported="true"/>
-        <activity android:name=".ver_mis_turnos" android:exported="true"/>
-        <activity android:name=".inicio_paciente"
-            android:exported="true"/>
+        <activity android:name=".DetalleTurno"></activity>
+        <activity
+            android:name=".ver_agenda"
+            android:exported="true" />
+        <activity
+            android:name=".eliminar_turnos"
+            android:exported="true" />
+        <activity
+            android:name=".aniadir_turnos"
+            android:exported="true" />
+        <activity
+            android:name=".inicio_medico"
+            android:exported="true" />
+        <activity
+            android:name=".pedir_turnos_fecha"
+            android:exported="true" />
+        <activity
+            android:name=".pedir_turno_turnos"
+            android:exported="true" />
+        <activity
+            android:name=".historial_turnos_pacientes"
+            android:exported="true" />
+        <activity
+            android:name=".pedir_turno"
+            android:exported="true" />
+        <activity
+            android:name=".ver_mis_turnos"
+            android:exported="true" />
+        <activity
+            android:name=".inicio_paciente"
+            android:exported="true" />
         <activity
             android:name=".pantalla_cargando"
             android:exported="true">

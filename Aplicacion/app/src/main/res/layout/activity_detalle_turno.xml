@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Turno"
+    android:background="#E8E5E5"
+    >
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="132dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Detalle:"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/txtFechaTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/logo3"
+        android:fontFamily="@font/roboto_light"
+        android:text="Turno 22 de Mayo"
+        android:textSize="30dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="257dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="169dp">
+
+        <TextView
+            android:id="@+id/txtAsistencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPrecio"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Asistencia: No confirmada."
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/txtCancela"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAsistencia"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelado por: Paciente."
+            android:textSize="18dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txtMotivoCancela"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtCancela"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Motivo de cancelación: No puedo llegar porque hay paro de transporte."
+            android:textSize="18dp"
+            android:visibility="gone"/>
+
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView13"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/dinero" />
+
+        <ImageView
+            android:id="@+id/imgAsistencia"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView15"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/asistenciapendiente"/>
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imgAsistencia"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/person"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView24"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/pregunta"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imgProfesionalPaciente"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/reloj" />
+
+        <TextView
+            android:id="@+id/txtPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHorario"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Precio: $400,00."
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtProfesionalPaciente"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Hora: 12:00."
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtEspecialidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEstado"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Especialidad: Nefrología."
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtProfesionalPaciente"
+            android:layout_width="336dp"
+            android:layout_height="27dp"
+            android:layout_below="@+id/txtEspecialidad"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Profesional : Guido Ramirez."
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="17dp"
+            android:text="Estado: Programado."
+            android:textSize="18dp"
+            android:fontFamily="@font/roboto_light" />
+
+        <ImageView
+            android:id="@+id/imgEstado"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ok" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imgEstado"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="13dp"
+            app:srcCompat="@drawable/nefrologia" />
+
+        <ImageView
+            android:id="@+id/imgProfesionalPaciente"
+            android:layout_width="19dp"
+            android:layout_height="16dp"
+            android:layout_below="@+id/imageView11"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="25dp"
+            app:srcCompat="@drawable/doctorimage" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutConfirmarAsistencia"
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/btnAsistire"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="44dp"
+            android:layout_toEndOf="@+id/btnNoAsistire"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#000000"
+            android:fontFamily="@font/roboto_light"
+            android:text="Asistiré" />
+
+        <Button
+            android:id="@+id/btnNoAsistire"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="No Asistiré" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutMedicoTurnoSinConfirmar"
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/btnEliminarTurno"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="44dp"
+            android:layout_toEndOf="@+id/btnModificarTurno"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="Eliminar turno" />
+
+        <Button
+            android:id="@+id/btnModificarTurno"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#FFC107"
+            android:textColor="#000000"
+            android:fontFamily="@font/roboto_light"
+            android:text="Modificar turno" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutTurnoLibre"
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:id="@+id/btnPedirTurno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#0C084C"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="Pedir turno" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutPacienteCancelarTurno"
+        android:layout_width="329dp"
+        android:layout_height="138dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="16dp"
+        >
+
+        <Button
+            android:id="@+id/btnCancelarTurnoPaciente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelar turno" />
+    </RelativeLayout>
+
+</RelativeLayout>

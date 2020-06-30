@@ -36,10 +36,10 @@ public class historial_turnos_pacientes extends AppCompatActivity {
         final String nombre = i.getStringExtra("nombre");
 
         Log.d("historial", "ANTES DEL METODO");
-        traerDatosTurnos(idPaciente);
+        traerDatosTurnos(idUsr, idPaciente, matricula, nombre);
     }
 
-    private void traerDatosTurnos(int idPaciente){
+    private void traerDatosTurnos(final int idUsr, final int idPaciente, final String matricula, final String nombre){
         Log.d("historial", "ENTRO AL METODO");
 
         Log.d("historial",""+idPaciente);
@@ -58,7 +58,7 @@ public class historial_turnos_pacientes extends AppCompatActivity {
                         recyclerView.setVisibility(View.VISIBLE);
                         //txtMensajeError.setVisibility(View.VISIBLE);
 
-                        completarCards(response.body());
+                        completarCards(response.body(), idUsr, idPaciente, matricula, nombre);
                         //Toast.makeText(historial_turnos_pacientes.this, response.body().getId(), Toast.LENGTH_LONG).show();
                     } else {
                         Log.d("historial", "ESTOY VACIO");
@@ -75,10 +75,10 @@ public class historial_turnos_pacientes extends AppCompatActivity {
             }
         });
     }
-    private void completarCards(List<Turno> items){
+    private void completarCards(List<Turno> items, int idUsr, int idPaciente, String matricula, String nombre){
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adaptador_items = new GroupAdp(this, items);
+        adaptador_items = new GroupAdp(this, items, idUsr, idPaciente, matricula, nombre);
         recyclerView.setAdapter(adaptador_items);
 
     }

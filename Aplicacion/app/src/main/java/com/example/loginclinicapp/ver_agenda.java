@@ -51,12 +51,12 @@ public class ver_agenda extends AppCompatActivity {
 
         java.util.Date fechaHoy = Calendar.getInstance().getTime();
         try {
-            metodosSobreSeleccionarFecha(matricula);
+            metodosSobreSeleccionarFecha(idUsr, idPaciente, matricula, nombre);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        traerProximosTurnosMedico(matricula, fechaHoy);
+        traerProximosTurnosMedico(idUsr, idPaciente, matricula, nombre, fechaHoy);
 
 
     }
@@ -68,7 +68,7 @@ public class ver_agenda extends AppCompatActivity {
         recyclerViewItem = (RecyclerView) findViewById(R.id.recyclerViewItem);
     }
 
-    private void metodosSobreSeleccionarFecha(String matricula) throws ParseException {
+    private void metodosSobreSeleccionarFecha(final int idUsr, final int idPaciente, final String matricula, final String nombre) throws ParseException {
         Log.d("agenda", "ENTRO AL METODO DE LA FECHA");
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("seleccionar una fecha");
@@ -96,10 +96,10 @@ public class ver_agenda extends AppCompatActivity {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaElegida = new Date(formato.parse(String.valueOf(txtfecha)).getTime());
 
-        traerProximosTurnosMedico( matricula, fechaElegida);
+        traerProximosTurnosMedico(idUsr, idPaciente, matricula, nombre, fechaElegida);
     }
 
-    private void traerProximosTurnosMedico(String matricula, Date fechaHoy){
+    private void traerProximosTurnosMedico(final int idUsr, final int idPaciente, final String matricula, final String nombre, Date fechaHoy){
         Log.d("agenda", "ENTRO AL METODO");
 
         Log.d("agenda",""+matricula);
@@ -118,7 +118,7 @@ public class ver_agenda extends AppCompatActivity {
                         recyclerViewItem.setVisibility(View.VISIBLE);
                         mensajeNotieneTurnos.setVisibility(View.GONE);
 
-                        completarCards(response.body());
+                        completarCards(response.body(), idUsr, idPaciente, matricula, nombre);
                     } else {
                         Log.d("agenda", "ESTOY VACIO");
                         mensajeNotieneTurnos.setVisibility(View.VISIBLE);
@@ -135,10 +135,10 @@ public class ver_agenda extends AppCompatActivity {
         });
     }
 
-    private void completarCards(List<Turno> items){
+    private void completarCards(List<Turno> items, int idUsr, int idPaciente, String matricula, String nombre){
 
         recyclerViewItem.setLayoutManager(new LinearLayoutManager(this));
-        adaptador_items = new GroupAdp(this, items);
+        adaptador_items = new GroupAdp(this, items, idUsr, idPaciente, matricula, nombre);
         recyclerViewItem.setAdapter(adaptador_items);
 
     }

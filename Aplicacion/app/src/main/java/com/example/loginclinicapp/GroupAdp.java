@@ -1,7 +1,9 @@
 package com.example.loginclinicapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +27,13 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<Turno> turnos;
-
+    int idUsr;
+    int idPaciente;
+    String matricula;
+    String nombre;
 
     //constructor
-    GroupAdp(Context context, List<Turno> turnos){
+    GroupAdp(Context context, List<Turno> turnos, int idUsr, int idPaciente, String matricula, String nombre){
         this.layoutInflater = layoutInflater.from(context);
         this.turnos = turnos;
     }
@@ -63,7 +68,19 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula",  matricula);
+                i.putExtra("nombre",nombre);
+                viewHolder.itemView.getContext().startActivity(i);
+            }
+        });
+
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fecha = LocalDateTime.parse(turnos.get(i).getFecha(), formato);
@@ -99,6 +116,12 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciapendiente);
         }
 
+        if(turnos.get(i).getDisponibilidad() == "Disponible") {
+            viewHolder.imgestado4.setImageResource(R.drawable.ok);
+        }
+        if(turnos.get(i).getDisponibilidad() == "Programado") {
+            viewHolder.imgestado4.setImageResource(R.drawable.ok);
+        }
         if(turnos.get(i).getDisponibilidad() == "AConfirmar") {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }

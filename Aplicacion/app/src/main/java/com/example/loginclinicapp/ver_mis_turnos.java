@@ -36,7 +36,7 @@ public class ver_mis_turnos extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
 
-        traerDatosTurnos(idPaciente);
+        traerDatosTurnos(idUsr, idPaciente, matricula, nombre);
     }
 
 
@@ -45,7 +45,7 @@ public class ver_mis_turnos extends AppCompatActivity {
         mensajeSinTurnos = (RelativeLayout) findViewById(R.id.mensajeSinTurnos);
     }
 
-    private void traerDatosTurnos(int idPaciente){
+    private void traerDatosTurnos(final int idUsr, final int idPaciente, final String matricula, final String nombre){
 
         Log.d("misTurnos",""+idPaciente);
         Call<List<Turno>> call = RetrofitClient.getInstance().getTurnoPaciente().getTurnosPaciente(idPaciente, true);
@@ -66,7 +66,7 @@ public class ver_mis_turnos extends AppCompatActivity {
                         recyclerViewItems.setVisibility(View.VISIBLE);
                         mensajeSinTurnos.setVisibility(View.GONE);
 
-                        completarCards(response.body());
+                        completarCards(response.body(), idUsr, idPaciente, matricula, nombre);
 
                     } else {
 
@@ -84,9 +84,9 @@ public class ver_mis_turnos extends AppCompatActivity {
         });
     }
 
-    private void completarCards(List<Turno> items){
+    private void completarCards(List<Turno> items, int idUsr, int idPaciente, String matricula, String nombre){
         recyclerViewItems.setLayoutManager(new LinearLayoutManager(this));
-        adaptador_items = new GroupAdp(this, items);
+        adaptador_items = new GroupAdp(this, items, idUsr, idPaciente, matricula, nombre);
         recyclerViewItems.setAdapter(adaptador_items);
     }
 
