@@ -26,19 +26,17 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/Turnos"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/jtds-1.2.5.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="D:/Proyectos Github/AD/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AD"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="E:/Docs/GitHub/AD/lib/jtds-1.2.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
