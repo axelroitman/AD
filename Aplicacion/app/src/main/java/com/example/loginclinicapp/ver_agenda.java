@@ -5,22 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,11 +26,22 @@ import retrofit2.Response;
 
 public class ver_agenda extends AppCompatActivity {
 
-    Button btnfecha;
-    EditText txtfecha;
+    TextView txtfecha;
     RelativeLayout mensajeNotieneTurnos;
     RecyclerView recyclerViewItem;
     GroupAdp adaptador_items;
+
+    public final Calendar c = Calendar.getInstance();
+
+    int año = c.get(java.util.Calendar.YEAR);
+    int mes = c.get(java.util.Calendar.MONTH);
+    int dia = c.get(Calendar.DAY_OF_MONTH);
+
+    String diaTxt;
+    String mesTxt;
+    String añoTxt;
+
+    Date fecha;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -49,33 +56,71 @@ public class ver_agenda extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
 
-        java.util.Date fechaHoy = Calendar.getInstance().getTime();
+
+        txtfecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dp = new DatePickerDialog(ver_agenda.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        año = year;
+                        mes = month;
+                        dia = dayOfMonth;
+                        diaTxt = String.valueOf(dayOfMonth);
+                        mesTxt = String.valueOf(month + 1);
+                        añoTxt = String.valueOf(year);
+                        if(dayOfMonth < 10){
+                            diaTxt = "0" + dayOfMonth;
+                        }
+                        if((month + 1) < 10){
+                            mesTxt = "0" + (month+1);
+                        }
+                        txtfecha.setText(diaTxt + "/" + mesTxt + "/" + añoTxt);
+                    }
+                },año,mes,dia);
+                Calendar limSup = Calendar.getInstance();
+                limSup.add(Calendar.MONTH,+2);
+                DatePicker datePicker = dp.getDatePicker();
+                datePicker.setMaxDate(limSup.getTimeInMillis());
+                dp.show();
+
+                dp.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        Calendar fechaCal = Calendar.getInstance();
+                        fechaCal.set(Calendar.YEAR,year);
+                        fechaCal.set(Calendar.MONTH,month);
+                        fechaCal.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                        fecha = fechaCal.getTime();
+                        traerProximosTurnosMedico(idUsr,idPaciente,matricula,nombre,fecha);
+
+
+                    }
+                });
+            }
+
+        });
+        /*java.util.Date fechaHoy = Calendar.getInstance().getTime();
         try {
             metodosSobreSeleccionarFecha(idUsr, idPaciente, matricula, nombre);
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        traerProximosTurnosMedico(idUsr, idPaciente, matricula, nombre, fechaHoy);
+        //traerProximosTurnosMedico(idUsr, idPaciente, matricula, nombre, fechaHoy);
 
 
     }
 
-    private void vincular(){
-        btnfecha = (Button) findViewById(R.id.btnfecha);
-        txtfecha = (EditText) findViewById(R.id.txtfecha);
-        mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.mensajeNotieneTurnos);
-        recyclerViewItem = (RecyclerView) findViewById(R.id.recyclerViewItem);
-    }
 
-    private void metodosSobreSeleccionarFecha(final int idUsr, final int idPaciente, final String matricula, final String nombre) throws ParseException {
+    /*private void metodosSobreSeleccionarFecha(final int idUsr, final int idPaciente, final String matricula, final String nombre) throws ParseException {
         Log.d("agenda", "ENTRO AL METODO DE LA FECHA");
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("seleccionar una fecha");
 
         final MaterialDatePicker materialDatePicker = builder.build();
 
-        btnfecha.setOnClickListener(new View.OnClickListener() {
+        txtfecha.setOnClickListener(new View.OnClickListener() {
             private Object tag;
 
             @Override
@@ -97,7 +142,7 @@ public class ver_agenda extends AppCompatActivity {
         Date fechaElegida = new Date(formato.parse(String.valueOf(txtfecha)).getTime());
 
         traerProximosTurnosMedico(idUsr, idPaciente, matricula, nombre, fechaElegida);
-    }
+    }*/
 
     private void traerProximosTurnosMedico(final int idUsr, final int idPaciente, final String matricula, final String nombre, Date fechaHoy){
         Log.d("agenda", "ENTRO AL METODO");
@@ -140,6 +185,12 @@ public class ver_agenda extends AppCompatActivity {
         recyclerViewItem.setLayoutManager(new LinearLayoutManager(this));
         adaptador_items = new GroupAdp(this, items, idUsr, idPaciente, matricula, nombre);
         recyclerViewItem.setAdapter(adaptador_items);
-
     }
+
+    private void vincular(){
+        txtfecha = (TextView) findViewById(R.id.txtfecha);
+        mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.mensajeNotieneTurnos);
+        recyclerViewItem = (RecyclerView) findViewById(R.id.recyclerViewItem);
+    }
+
 }

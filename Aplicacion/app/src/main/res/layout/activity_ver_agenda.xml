@@ -19,54 +19,69 @@
         android:fontFamily="@font/roboto_light"
         android:text="Mi Agenda"
         android:textSize="30dp" />
+
     <ImageView
         android:id="@+id/logo3"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
+        android:layout_width="83dp"
+        android:layout_height="77dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
         app:srcCompat="@drawable/applogo" />
 
     <!--calendario y un edittext -->
+
+    <!-- Mensaje cuando NO hay un historial de turnos-->
+
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="100dp"
+        android:layout_width="388dp"
+        android:id="@+id/relativeFechas"
+        android:layout_height="97dp"
         android:layout_below="@id/logo3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="#F1D8D8">
 
-        <Button
-            android:id="@+id/btnfecha"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="#74EFBA"
-            android:fontFamily="@font/roboto_light"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center"
-            android:text="seleccione una fecha"
-            android:textColor="#0B0A0A" />
-        <EditText
+        <TextView
             android:id="@+id/txtfecha"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="161dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="25dp"
-            android:layout_toRightOf="@id/btnfecha"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="32dp"
+            android:layout_toEndOf="@+id/seleccione"
             android:ems="10"
             android:fontFamily="@font/roboto_light"
             android:foregroundGravity="center|center_horizontal"
             android:gravity="center"
             android:hint="dd/mm/aaaa"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/seleccione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="Seleccione una fecha:"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
-    <!-- Mensaje cuando NO hay un historial de turnos-->
     <RelativeLayout
         android:id="@+id/mensajeNotieneTurnos"
         android:layout_width="match_parent"
@@ -116,10 +131,17 @@
     <!-- lista de componentes -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:visibility="gone">
+        android:layout_width="match_parent"
+        android:layout_height="496dp"
+        android:layout_below="@+id/relativeFechas"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
