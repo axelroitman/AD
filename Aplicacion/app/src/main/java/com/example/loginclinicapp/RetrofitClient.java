@@ -52,7 +52,5 @@ public class RetrofitClient {
 
     public getTurnosMedicoPorDia getTurnosMedicoPorDia() { return retrofit.create(getTurnosMedicoPorDia.class); }
     public getTurno getTurno() { return retrofit.create(getTurno.class); }
-    public AniadirTurnosService getAniadirTurnosService() {return retrofit.create(AniadirTurnosService.class);}
-
 
 }
