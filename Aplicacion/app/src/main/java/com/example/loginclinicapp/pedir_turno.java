@@ -206,53 +206,67 @@ public class pedir_turno extends AppCompatActivity {
         btnbuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Paciente> paciente = RetrofitClient.getInstance().getPacientePorIdUsuarioService().getPacientePorIdUsuario(idUsr);
-                paciente.enqueue(new Callback<Paciente>() {
-                    @Override
-                    public void onResponse(Call<Paciente> call, Response<Paciente> responsePac) {
 
-                        if(responsePac.code() == 200) {
-                            if(responsePac.body() != null){
-                                if(responsePac.body().getFechaVtoCuota() .before(new Date()))
-                                {
-                                    Log.d("cuota","vencida");
-                                    //Cuota vencida
-                                    builder.setTitle("Error");
-                                    builder.setMessage("Tiene una o más cuotas impagas. No podrá solicitar turnos hasta que se acredite su pago en el centro médico.");
-                                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                        }
-                                    });
+                if(spespecialidades.getSelectedItem().toString() == "Seleccione una especialidad")
+                {
+                    builder.setTitle("Error");
+                    builder.setMessage("Debe seleccionar una especialidad antes de iniciar su búsqueda.");
+                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
 
-                                    AlertDialog alert = builder.create();
-                                    alert.show();
+                    AlertDialog alert = builder.create();
+                    alert.show();
 
-                                }
-                                else{
-                                    Log.d("cuota","paga");
+                }
+                else {
 
-                                    Intent i = new Intent(pedir_turno.this, pedir_turnos_fecha.class);
-                                    i.putExtra("idUsr", idUsr);
-                                    i.putExtra("idPaciente",idPaciente);
-                                    i.putExtra("matricula",  matricula);
-                                    i.putExtra("nombre",nombre);
-                                    i.putExtra("idEspecialidad", idEsp); //ID ESPECIALIDAD SELECCIONADA
-                                    i.putExtra("matriculaSeleccionado", matriculaSeleccionado); //MEDICO SELECCIONADO, O NULL SI NO SELECCIONÓ (IF)
+                    Call<Paciente> paciente = RetrofitClient.getInstance().getPacientePorIdUsuarioService().getPacientePorIdUsuario(idUsr);
+                    paciente.enqueue(new Callback<Paciente>() {
+                        @Override
+                        public void onResponse(Call<Paciente> call, Response<Paciente> responsePac) {
 
-                                    startActivity(i);
+                            if (responsePac.code() == 200) {
+                                if (responsePac.body() != null) {
+                                    if (responsePac.body().getFechaVtoCuota().before(new Date())) {
+                                        //Cuota vencida
+                                        builder.setTitle("Error");
+                                        builder.setMessage("Tiene una o más cuotas impagas. No podrá solicitar turnos hasta que se acredite su pago en el centro médico.");
+                                        builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        });
 
+                                        AlertDialog alert = builder.create();
+                                        alert.show();
+
+                                    } else {
+
+                                        Intent i = new Intent(pedir_turno.this, pedir_turnos_fecha.class);
+                                        i.putExtra("idUsr", idUsr);
+                                        i.putExtra("idPaciente", idPaciente);
+                                        i.putExtra("matricula", matricula);
+                                        i.putExtra("nombre", nombre);
+                                        i.putExtra("idEspecialidad", idEsp); //ID ESPECIALIDAD SELECCIONADA
+                                        i.putExtra("matriculaSeleccionado", matriculaSeleccionado); //MEDICO SELECCIONADO, O NULL SI NO SELECCIONÓ (IF)
+
+                                        startActivity(i);
+
+                                    }
                                 }
                             }
                         }
-                    }
-                    @Override
-                    public void onFailure(Call<Paciente> call, Throwable t) {
-                    }
-                });
 
-
+                        @Override
+                        public void onFailure(Call<Paciente> call, Throwable t) {
+                        }
+                    });
+                }
             }
         });
     }
