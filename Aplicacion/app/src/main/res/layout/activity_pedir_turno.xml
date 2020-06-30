@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#E8E5E5"
+    android:background="#E8E5E5"
     tools:context=".pedir_turno">
 
 
