@@ -2,9 +2,6 @@ package com.example.loginclinicapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,13 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,38 +27,16 @@ import retrofit2.Response;
 public class aniadir_turnos extends AppCompatActivity {
 
     Spinner spinnerespecialidades, spinnerDuracion;
-    TextView tvHoraInicio, tvHoraFin, tvFechaInicial, tvFechaFinal;
+    EditText edTextHoraInicio, edTextHoraFin, edTextFechaInicial, edTextFechaFinal;
     CheckBox checkbox_lunes,checkbox_martes,checkbox_miercoles,checkbox_jueves,checkbox_viernes,checkbox_sabado,checkbox_domingo;
     Button btnaniadir;
 
     Collection<Especialidad> especialidades = new ArrayList<Especialidad>();
     ArrayList<String> espsNombres = new ArrayList<String>();
     Map<String, Integer> duraciones = new HashMap<String,Integer>();
-    Map<String, Integer> especialidadesConId = new HashMap<String,Integer>();
-
     ArrayList<String> durSpinner = new ArrayList<String>();
 
-    boolean lunes = false, martes = false, miercoles = false, jueves = false, viernes = false, sabado = false, domingo = false;
 
-
-    public final Calendar c = Calendar.getInstance();
-    int horaI = c.get(Calendar.HOUR_OF_DAY);
-    int minutoI = c.get(Calendar.MINUTE);
-    String horaIni,minutoIni;
-
-    int añoI = c.get(Calendar.YEAR);
-    int mesI = c.get(Calendar.MONTH);
-    int diaI = c.get(Calendar.DAY_OF_MONTH);
-    String añoIni, mesIni,diaIni;
-
-    int horaF = c.get(Calendar.HOUR_OF_DAY);
-    int minutoF = c.get(Calendar.MINUTE);
-    String horaFin, minutoFin;
-
-    int añoF = c.get(Calendar.YEAR);
-    int mesF = c.get(Calendar.MONTH);
-    int diaF = c.get(Calendar.DAY_OF_MONTH);
-    String añoFin,mesFin,diaFin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,108 +48,6 @@ public class aniadir_turnos extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
-
-        tvHoraInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog tp = new TimePickerDialog(aniadir_turnos.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        minutoIni = String.valueOf(minute);
-                        horaIni = String.valueOf(hourOfDay);
-
-                        horaI = hourOfDay;
-                        minutoI = minute;
-
-                        if(minute<10){
-                            minutoIni = "0" + minute;
-                        }
-                        if(Math.floor(hourOfDay/10) == 0){
-                            horaIni = "0" + hourOfDay;
-                        }
-                        tvHoraInicio.setText(horaIni + ":" + minutoIni);
-                    }
-                },horaI,minutoI,false);
-                tp.show();
-            }
-        });
-
-        tvHoraFin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog tp = new TimePickerDialog(aniadir_turnos.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        horaF = hourOfDay;
-                        minutoF = minute;
-                        horaFin = String.valueOf(hourOfDay);
-                        minutoFin = String.valueOf(minute);
-
-                        if(minute<10){
-                            minutoFin = "0" + minute;
-                        }
-                        if(Math.floor(hourOfDay/10) == 0){
-                            horaFin = "0" + String.valueOf(hourOfDay);
-                        }
-                        tvHoraFin.setText(horaFin + ":" + minutoFin);
-
-                    }
-                },horaF,minutoF,false);
-                tp.show();
-            }
-        });
-
-        tvFechaInicial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog dp = new DatePickerDialog(aniadir_turnos.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        añoI = year;
-                        mesI = month;
-                        diaI = dayOfMonth;
-                        diaIni = String.valueOf(dayOfMonth);
-                        mesIni = String.valueOf(month + 1);
-                        añoIni = String.valueOf(year);
-                        if(dayOfMonth < 10){
-                            diaIni = "0" + dayOfMonth;
-                        }
-                        if(month < 10){
-                            mesIni = "0" + (month+1);
-                        }
-                        tvFechaInicial.setText(diaIni + "/" + mesIni + "/" + añoIni);
-                    }
-                },añoI,mesI,diaI);
-                dp.show();
-            }
-        });
-
-        tvFechaFinal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog dp = new DatePickerDialog(aniadir_turnos.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        añoF = year;
-                        mesF = month;
-                        diaF = dayOfMonth;
-                        diaFin = String.valueOf(dayOfMonth);
-                        mesFin = String.valueOf(month + 1);
-                        añoFin = String.valueOf(year);
-                        if(dayOfMonth < 10){
-                            diaFin = "0" + dayOfMonth;
-                        }
-                        if(month < 10){
-                            mesFin = "0" + (month+1);
-                        }
-                        tvFechaFinal.setText(diaFin + "/" + mesFin + "/" + añoFin);
-                    }
-                },añoF,mesF,diaF);
-                dp.show();
-            }
-        });
-
-
 
         duraciones.put("10 minutos", 10);
         duraciones.put("15 minutos", 15);
@@ -228,7 +99,6 @@ public class aniadir_turnos extends AppCompatActivity {
                         especialidades = response.body().getEspecialidades();
                         espsNombres.add("Seleccione una especialidad");
                         for(Especialidad e : especialidades){
-                            especialidadesConId.put(e.getNombre(),e.getIdEspecialidad());
                             espsNombres.add(e.getNombre());
                         }
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(aniadir_turnos.this,android.R.layout.simple_spinner_item, espsNombres){
@@ -276,45 +146,8 @@ public class aniadir_turnos extends AppCompatActivity {
         btnaniadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lunes = checkbox_lunes.isActivated();
-                martes = checkbox_martes.isActivated();
-                miercoles = checkbox_miercoles.isActivated();
-                jueves = checkbox_jueves.isActivated();
-                viernes = checkbox_viernes.isActivated();
-                sabado = checkbox_sabado.isActivated();
-                domingo = checkbox_domingo.isActivated();
-                int d = duraciones.get(spinnerDuracion.getSelectedItem().toString()); //Duracion
-                int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
-                String fechaInicial = diaIni + mesIni + añoIni;
-                String fechaFinal = diaFin + mesFin + añoFin;
-                String horaInicial = horaIni + ":" + minutoIni;
-                String horaFinal = horaFin + ":" + minutoFin;
-
-                Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad,matricula,d,horaInicial,horaFinal,fechaInicial,fechaFinal,lunes,martes,miercoles,jueves,viernes,sabado,domingo);
-                an.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.code() == 201){
-                            Log.d("Aniadir","Se agregaron bien");
-                        }
-                        else if (response.code() == 418){
-                            Log.d("Aniadir","No se agregaron todos");
-                        }
-                        else{
-                            Log.d("Aniadir","Cosas raras");
-                            Log.d("Aniadir", String.valueOf(response.code()));
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.d("Aniadir","Todo falla.");
-
-                    }
-                });
-
-                /*Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
-                startActivity(i);*/
+                Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                startActivity(i);
             }
         });
     }
@@ -322,10 +155,10 @@ public class aniadir_turnos extends AppCompatActivity {
     private void vincular(){
         spinnerDuracion = (Spinner) findViewById(R.id.spinnerDuracion);
         spinnerespecialidades = (Spinner) findViewById(R.id.spinnerespecialidades);
-        tvFechaFinal = (TextView) findViewById(R.id.TvFechaFinal);
-        tvFechaInicial = (TextView) findViewById(R.id.TvFechaInicial);
-        tvHoraFin = (TextView) findViewById(R.id.TvHoraFin);
-        tvHoraInicio = (TextView) findViewById(R.id.TvHoraInicio);
+        edTextFechaFinal = (EditText) findViewById(R.id.edTextFechaFinal);
+        edTextFechaInicial = (EditText) findViewById(R.id.edTextFechaInicial);
+        edTextHoraFin = (EditText) findViewById(R.id.edTextHoraFin);
+        edTextHoraInicio = (EditText) findViewById(R.id.edTextHoraInicio);
         checkbox_lunes = (CheckBox) findViewById(R.id.checkbox_lunes);
         checkbox_martes = (CheckBox) findViewById(R.id.checkbox_martes);
         checkbox_miercoles = (CheckBox) findViewById(R.id.checkbox_miercoles);

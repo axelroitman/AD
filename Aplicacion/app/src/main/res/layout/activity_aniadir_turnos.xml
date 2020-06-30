@@ -11,7 +11,6 @@
 
 
     <!--titulo y logo -->
-
     <TextView
         android:id="@+id/nombre3"
         android:layout_width="wrap_content"
@@ -46,26 +45,22 @@
         android:text="Especialidad: "
         android:textAlignment="textStart"
         android:textSize="20dp" />
-
-    <!--duracion-->
-
     <Spinner
         android:id="@+id/spinnerespecialidades"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_toRightOf="@id/txtEspecialidad"
         android:layout_below="@+id/nombre3"
         android:layout_alignBottom="@+id/txtEspecialidad"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toRightOf="@id/txtEspecialidad"
         android:foregroundGravity="center|center_horizontal"
+        android:layout_marginTop="114dp"
         android:gravity="center"
-        android:scrollbarSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--duracion-->
     <TextView
         android:id="@+id/txtDuracionTurnos"
         android:layout_width="190dp"
@@ -77,26 +72,22 @@
         android:text="Duración: "
         android:textSize="20dp"
         android:textAlignment="textStart"/>
-
-    <!--hora inicial-->
-
     <Spinner
         android:id="@+id/spinnerDuracion"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinnerespecialidades"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
         android:layout_alignBottom="@+id/txtDuracionTurnos"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="5dp"
         android:layout_toRightOf="@id/txtDuracionTurnos"
         android:foregroundGravity="center|center_horizontal"
         android:gravity="center"
-        android:scrollbarSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--hora inicial-->
     <TextView
         android:id="@+id/txtHoraInicio"
         android:layout_width="190dp"
@@ -108,27 +99,20 @@
         android:text="Hora inicial: "
         android:textSize="20dp"
         android:textAlignment="textStart" />
-
-    <!--hora final-->
-
-    <TextView
-        android:id="@+id/TvHoraInicio"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="189dp"
+    <EditText
+        android:id="@+id/edTextHoraInicio"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtHoraInicio"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="-5dp"
-        android:layout_toEndOf="@+id/txtHoraInicio"
+        android:layout_marginBottom="-8dp"
         android:layout_toRightOf="@+id/txtHoraInicio"
-        android:editable="false"
         android:hint="hh:mm"
         android:inputType="time"
-        android:maxLines="1"
-        android:textSize="18sp" />
+        android:maxLines="1" />
 
+    <!--hora final-->
     <TextView
         android:id="@+id/txtHoraFin"
         android:layout_width="190dp"
@@ -140,25 +124,20 @@
         android:text="Hora final: "
         android:textSize="20dp"
         android:textAlignment="textStart" />
-
-    <!--desde-->
-
-    <TextView
-        android:id="@+id/TvHoraFin"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="188dp"
+    <EditText
+        android:id="@+id/edTextHoraFin"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtHoraFin"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="-2dp"
+        android:layout_marginBottom="-7dp"
         android:layout_toRightOf="@+id/txtHoraFin"
-        android:editable="false"
         android:hint="hh:mm"
         android:inputType="time"
-        android:maxLines="1"
-        android:textSize="18sp" />
+        android:maxLines="1" />
 
+    <!--desde-->
     <TextView
         android:id="@+id/txtFechaInicial"
         android:layout_width="190dp"
@@ -170,24 +149,20 @@
         android:text="Desde el: "
         android:textSize="20dp"
         android:textAlignment="textStart" />
-
-    <!--hasta-->
-
-    <TextView
-        android:id="@+id/TvFechaInicial"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
+    <EditText
+        android:id="@+id/edTextFechaInicial"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtFechaInicial"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="-4dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="-9dp"
         android:layout_toRightOf="@+id/txtFechaInicial"
         android:hint="dd/mm/aaaa"
         android:inputType="date"
         android:maxLines="1"
-        android:textSize="18sp" />
+        android:layout_marginTop="20dp" />
 
+    <!--hasta-->
     <TextView
         android:id="@+id/txtFechaFinal"
         android:layout_width="190dp"
@@ -199,24 +174,20 @@
         android:text="Hasta el: "
         android:textSize="20dp"
         android:textAlignment="textStart"/>
-
-    <!--dias de la semana-->
-
-    <TextView
-        android:id="@+id/TvFechaFinal"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
+    <EditText
+        android:id="@+id/edTextFechaFinal"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtFechaFinal"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="-11dp"
+        android:layout_marginBottom="-8dp"
         android:layout_toRightOf="@+id/txtFechaFinal"
         android:hint="dd/mm/aaaa"
         android:inputType="date"
-        android:maxLines="1"
-        android:textSize="18sp" />
+        android:maxLines="1" />
 
+    <!--dias de la semana-->
     <TextView
         android:id="@+id/txtDiasTurnos"
         android:layout_width="wrap_content"
@@ -292,6 +263,7 @@
         android:textColor="#FFFFFF"
         android:background="#0C084C"
         android:text="Añadir turnos" />
+
 
 
 </RelativeLayout>
