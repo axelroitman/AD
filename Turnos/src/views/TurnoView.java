@@ -22,7 +22,7 @@ public class TurnoView {
 		this.especialidad = especialidad;
 		this.medico = medico;
 		this.paciente = paciente;
-		
+
 	}
     
     private int id;

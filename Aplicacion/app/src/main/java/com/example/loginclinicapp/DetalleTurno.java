@@ -60,7 +60,7 @@ public class DetalleTurno extends AppCompatActivity {
                         LocalDateTime fecha = LocalDateTime.parse(response.body().getFecha(), formato);
                         String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
 
-                        if(response.body().getMedico().getMatricula() == matricula) {
+                        if(response.body().getMedico().getMatricula().equals(matricula)) {
                             //OPCIONES DEL MEDICO
                             if(response.body().getPaciente() == null){
                                 layoutMedicoTurnoSinConfirmar.setVisibility(View.VISIBLE);
@@ -100,7 +100,7 @@ public class DetalleTurno extends AppCompatActivity {
                             else{
                                 LocalDateTime fechaActual = LocalDateTime.now();
                                 long diferenciaHoras = HOURS.between(fecha, fechaActual);
-                                if(diferenciaHoras > 12 && response.body().getDisponibilidad() != "Cancelado") {
+                                if(diferenciaHoras > 12 && !response.body().getDisponibilidad().equals("Cancelado")) {
                                     layoutPacienteCancelarTurno.setVisibility(View.VISIBLE);
                                     btnCancelarTurnoPaciente.setOnClickListener(new View.OnClickListener() {
                                         @Override
@@ -109,7 +109,7 @@ public class DetalleTurno extends AppCompatActivity {
                                         }
                                     });
                                 }
-                                else if(diferenciaHoras <= 12 &&diferenciaHoras >= 0 && response.body().getDisponibilidad() != "Cancelado" && response.body().getAsistencia() == "NoConfirmo"){
+                                else if(diferenciaHoras <= 12 &&diferenciaHoras >= 0 && !response.body().getDisponibilidad().equals("Cancelado") && response.body().getAsistencia().equals("NoConfirmo")){
                                     layoutConfirmarAsistencia.setVisibility(View.VISIBLE);
                                     btnAsistire.setOnClickListener(new View.OnClickListener() {
                                         @Override

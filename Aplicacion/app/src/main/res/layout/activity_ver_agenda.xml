@@ -37,7 +37,7 @@
     <RelativeLayout
         android:layout_width="388dp"
         android:id="@+id/relativeFechas"
-        android:layout_height="97dp"
+        android:layout_height="92dp"
         android:layout_below="@id/logo3"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -57,7 +57,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="17dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="32dp"
             android:layout_toEndOf="@+id/seleccione"
@@ -138,9 +138,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="-20dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="2dp"
         android:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>

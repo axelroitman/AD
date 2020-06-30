@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +56,7 @@ public class ver_agenda extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+        traerProximosTurnosMedico(idUsr,idPaciente,matricula,nombre,new Date());
 
 
         txtfecha.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +147,12 @@ public class ver_agenda extends AppCompatActivity {
     }*/
 
     private void traerProximosTurnosMedico(final int idUsr, final int idPaciente, final String matricula, final String nombre, Date fechaHoy){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy");
+        String year = df.format(fechaHoy);
+
+        String fechaTexto = (fechaHoy.getDate() < 10 ? "0" : "") + fechaHoy.getDate() + "/" + (fechaHoy.getMonth() + 1 < 10 ? "0" : "") + (fechaHoy.getMonth()+1) + "/" + year;
+        txtfecha.setText(fechaTexto);
+
         Log.d("agenda", "ENTRO AL METODO");
 
         Log.d("agenda",""+matricula);

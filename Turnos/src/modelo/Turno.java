@@ -4,7 +4,6 @@ import java.util.*;
 
 import views.TurnoView;
 
-//Faltan métodos (16/03)
 
 public class Turno {
 

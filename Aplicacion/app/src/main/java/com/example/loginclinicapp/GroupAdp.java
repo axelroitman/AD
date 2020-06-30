@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,10 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
     GroupAdp(Context context, List<Turno> turnos, int idUsr, int idPaciente, String matricula, String nombre){
         this.layoutInflater = layoutInflater.from(context);
         this.turnos = turnos;
+        this.idUsr = idUsr;
+        this.idPaciente = idPaciente;
+        this.matricula = matricula;
+        this.nombre = nombre;
     }
 
 
@@ -102,11 +107,20 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
         viewHolder.txtDiaSemanaTurno1.setText(diaEnPalabras.toUpperCase().substring(0,1) + diaEnPalabras.substring(1));
 
-
-
-        String medico = turnos.get(i).getMedico().getNombre();
-        viewHolder.txtMedico1.setText(medico);
-
+        if(turnos.get(i).getMedico().getMatricula().equals(matricula))
+        {
+            if(turnos.get(i).getPaciente() != null) {
+                String paciente = turnos.get(i).getPaciente().getNombre();
+                viewHolder.txtMedico1.setText(paciente);
+            }
+            else{
+                viewHolder.txtMedico1.setText("Sin paciente");
+            }
+        }
+        else {
+            String medico = turnos.get(i).getMedico().getNombre();
+            viewHolder.txtMedico1.setText(medico);
+        }
         String especialidad = turnos.get(i).getEspecialidad().getNombre();
         viewHolder.txtEspecialidad1.setText(especialidad);
 

@@ -68,7 +68,7 @@ public class HomeController {
 
 			UsuarioView user = Controlador.getInstancia().getUsuarioLogIn(usuario, password);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(user);
 
 	}
@@ -80,7 +80,7 @@ public class HomeController {
 
 			PacienteView paciente = Controlador.getInstancia().getPacientePorIdUsuario(idUsuario);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(paciente);
 
 	}
@@ -92,7 +92,7 @@ public class HomeController {
 
 			MedicoView medico = Controlador.getInstancia().getMedicoPorIdUsuario(idUsuario);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(medico);
 
 	}
@@ -121,7 +121,7 @@ public class HomeController {
 			}	
 			
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(turno);
 	}
 
@@ -133,7 +133,7 @@ public class HomeController {
 
 			PacienteView Paciente = Controlador.getInstancia().getPaciente(id);	
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(Paciente);
 	}
 	
@@ -224,7 +224,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/agregarTurno", method = RequestMethod.PUT)
-	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd hh:mm:ss") Date fecha, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula) {
+	public ResponseEntity<Void> agregarTurno(@RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd HH:mm:ss") Date fecha, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="matricula", required=true) String matricula) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 
@@ -295,7 +295,7 @@ public class HomeController {
 
 			List<TurnoView> turnosPac = Controlador.getInstancia().getTurnosPaciente(idPaciente, proximos);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(turnosPac);
 	}
 
@@ -322,7 +322,7 @@ public class HomeController {
 
 			TurnoView ProxTurnoPac = Controlador.getInstancia().buscarProxTurnoPaciente(idPaciente);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(ProxTurnoPac);
 	}
 
@@ -333,7 +333,7 @@ public class HomeController {
 
 			List<TurnoView> Turnos = Controlador.getInstancia().getTurnosPacientePorEstado(idPaciente, estado);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(Turnos);
 	}
 
@@ -344,7 +344,7 @@ public class HomeController {
 
 			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedico(matricula, estado);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(turnosMed);
 	}
 
@@ -355,7 +355,7 @@ public class HomeController {
 
 			List<TurnoView> turnosMed = Controlador.getInstancia().getTurnosMedicoPorDia(idMedico, fecha);
 			ObjectMapper mapper = new ObjectMapper();
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 			return mapper.writeValueAsString(turnosMed);
 	}
 	
