@@ -4,26 +4,27 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface AniadirTurnosService {
 
     String API_ROUTE = "/apirest/agregarTurnos";
-    @FormUrlEncoded
     @PUT(API_ROUTE)
     Call<Void> aniadirTurnos(
-            @Field("idEspecialidad") int idEspecialidad,
-            @Field("matricula") String matricula,
-            @Field("duracion") int duracion,
-            @Field("horaInicial") String horaInicial,
-            @Field("horaFinal") String horaFinal,
-            @Field("fechaInicial") String fechaInicial,
-            @Field("fechaFinal") String fechaFinal,
-            @Field("lunes") boolean lunes,
-            @Field("martes") boolean martes,
-            @Field("miercoles") boolean miercoles,
-            @Field("jueves") boolean jueves,
-            @Field("viernes") boolean viernes,
-            @Field("sabado") boolean sabado,
-            @Field("domingo") boolean domingo
+            @Query("idEspecialidad") int idEspecialidad,
+            @Query("matricula") String matricula,
+            @Query("duracion") int duracion,
+            @Query("horaInicial") String horaInicial,
+            @Query("horaFinal") String horaFinal,
+            @Query("fechaInicial") String fechaInicial,
+            @Query("fechaFinal") String fechaFinal,
+            @Query("lunes") boolean lunes,
+            @Query("martes") boolean martes,
+            @Query("miercoles") boolean miercoles,
+            @Query("jueves") boolean jueves,
+            @Query("viernes") boolean viernes,
+            @Query("sabado") boolean sabado,
+            @Query("domingo") boolean domingo
     );
 }
