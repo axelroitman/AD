@@ -243,6 +243,9 @@ public class HomeController {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 		boolean agregaTodos = false;
+		System.out.println("AGREGAR TURNOS -> idEspecialidad=" + idEspecialidad);
+		System.out.println("AGREGAR TURNOS -> matricula=" + matricula);
+
 		try {
 			try {
 				agregaTodos = Controlador.getInstancia().agregarTurnos(idEspecialidad, matricula, duracion, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);

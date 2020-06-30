@@ -287,8 +287,20 @@ public class aniadir_turnos extends AppCompatActivity {
                 int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
                 String fechaInicial = diaIni +"/"+ mesIni +"/"+ añoIni;
                 String fechaFinal = diaFin +"/"+ mesFin +"/"+ añoFin;
-                String horaInicial = horaIni + ":" + minutoIni;
-                String horaFinal = horaFin + ":" + minutoFin;
+                String horaInicial = horaIni + ":" + minutoIni + ":00";
+                String horaFinal = horaFin + ":" + minutoFin + ":00";
+
+                Log.d("AniadirVARIABLES",String.valueOf(d));
+                Log.d("AniadirVARIABLES",String.valueOf(idEspecialidad));
+                Log.d("AniadirVARIABLES",fechaInicial);
+                Log.d("AniadirVARIABLES",fechaFinal);
+                Log.d("AniadirVARIABLES",horaInicial);
+                Log.d("AniadirVARIABLES",horaFinal);
+                Log.d("AniadirVARIABLES",matricula);
+
+
+
+
 
                 Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad,matricula,d,horaInicial,horaFinal,fechaInicial,fechaFinal,lunes,martes,miercoles,jueves,viernes,sabado,domingo);
                 an.enqueue(new Callback<Void>() {
@@ -303,6 +315,8 @@ public class aniadir_turnos extends AppCompatActivity {
                         else{
                             Log.d("Aniadir","Cosas raras");
                             Log.d("Aniadir", String.valueOf(response.code()));
+                            Log.d("Aniadir", String.valueOf(response.errorBody()));
+
                         }
                     }
 
