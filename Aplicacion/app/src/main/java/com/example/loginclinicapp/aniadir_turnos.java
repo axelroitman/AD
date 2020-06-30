@@ -204,16 +204,30 @@ public class aniadir_turnos extends AppCompatActivity {
         });
 
 
+        durSpinner.add("Seleccione una duración");
 
         duraciones.put("10 minutos", 10);
+        durSpinner.add("10 minutos");
+
         duraciones.put("15 minutos", 15);
+        durSpinner.add("15 minutos");
+
         duraciones.put("20 minutos", 20);
+        durSpinner.add("20 minutos");
+
         duraciones.put("30 minutos", 30);
+        durSpinner.add("30 minutos");
+
         duraciones.put("40 minutos", 40);
+        durSpinner.add("40 minutos");
+
         duraciones.put("45 minutos", 45);
+        durSpinner.add("45 minutos");
+
         duraciones.put("1 hora", 60);
-        durSpinner.add("Seleccione duración");
-        durSpinner.addAll(duraciones.keySet());
+        durSpinner.add("1 hora");
+
+        //    durSpinner.addAll(duraciones.keySet());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, durSpinner){
             @Override
             public boolean isEnabled(int position){
