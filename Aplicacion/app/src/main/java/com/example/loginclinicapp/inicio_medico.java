@@ -163,7 +163,7 @@ public class inicio_medico extends AppCompatActivity {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
                         LocalDateTime fechaPrimerTurno = LocalDateTime.parse(infoMedico.getHoraPrimerTurnoMan(), formatter);
 
-                        textoInfo += " Hoy tiene " + infoMedico.getCantTurnosMan() + " turno las " + fechaPrimerTurno.getHour() + ":" + (fechaPrimerTurno.getMinute() < 10 ? "0" : "") + fechaPrimerTurno.getMinute() + "hs.";
+                        textoInfo += " Mañana tiene " + infoMedico.getCantTurnosMan() + " turno las " + fechaPrimerTurno.getHour() + ":" + (fechaPrimerTurno.getMinute() < 10 ? "0" : "") + fechaPrimerTurno.getMinute() + "hs.";
                     }
                     else {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");

@@ -58,7 +58,6 @@ public class DetalleTurno extends AppCompatActivity {
                     if (response.body() != null) {
                         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                         LocalDateTime fecha = LocalDateTime.parse(response.body().getFecha(), formato);
-                        String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
                         String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
 
                         if(response.body().getMedico().getMatricula() == matricula) {

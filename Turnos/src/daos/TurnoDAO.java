@@ -116,7 +116,7 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.fecha >= ? and t.fecha < ?")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.fecha >= ? and t.fecha < ? ORDER BY t.fecha")
 				.setString(0, matricula)
 				.setDate(1, fecha)
 				.setDate(2, fechaFin)				
