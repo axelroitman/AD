@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.SearchManager;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -302,29 +303,29 @@ public class aniadir_turnos extends AppCompatActivity {
         btnaniadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lunes = checkbox_lunes.isActivated();
-                martes = checkbox_martes.isActivated();
-                miercoles = checkbox_miercoles.isActivated();
-                jueves = checkbox_jueves.isActivated();
-                viernes = checkbox_viernes.isActivated();
-                sabado = checkbox_sabado.isActivated();
-                domingo = checkbox_domingo.isActivated();
+                lunes = checkbox_lunes.isChecked();
+                martes = checkbox_martes.isChecked();
+                miercoles = checkbox_miercoles.isChecked();
+                jueves = checkbox_jueves.isChecked();
+                viernes = checkbox_viernes.isChecked();
+                sabado = checkbox_sabado.isChecked();
+                domingo = checkbox_domingo.isChecked();
                 int d = duraciones.get(spinnerDuracion.getSelectedItem().toString()); //Duracion
                 int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
-                String fechaInicial = diaIni +"/"+ mesIni +"/"+ añoIni;
-                String fechaFinal = diaFin +"/"+ mesFin +"/"+ añoFin;
+                String fechaInicial = diaIni + "/" + mesIni + "/" + añoIni;
+                String fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
                 String horaInicial = horaIni + ":" + minutoIni + ":00";
                 String horaFinal = horaFin + ":" + minutoFin + ":00";
 
-                Log.d("AniadirVARIABLES",String.valueOf(d));
-                Log.d("AniadirVARIABLES",String.valueOf(idEspecialidad));
-                Log.d("AniadirVARIABLES",fechaInicial);
-                Log.d("AniadirVARIABLES",fechaFinal);
-                Log.d("AniadirVARIABLES",horaInicial);
-                Log.d("AniadirVARIABLES",horaFinal);
-                Log.d("AniadirVARIABLES",matricula);
+                Log.d("AniadirVARIABLES", String.valueOf(d));
+                Log.d("AniadirVARIABLES", String.valueOf(idEspecialidad));
+                Log.d("AniadirVARIABLES", fechaInicial);
+                Log.d("AniadirVARIABLES", fechaFinal);
+                Log.d("AniadirVARIABLES", horaInicial);
+                Log.d("AniadirVARIABLES", horaFinal);
+                Log.d("AniadirVARIABLES", matricula);
 
-                if(mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI < c.get(Calendar.HOUR) || minutoI < c.get(Calendar.MINUTE))){
+                if ((mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI < c.get(Calendar.HOUR) || minutoI < c.get(Calendar.MINUTE))) || (mesI > mesF) || (mesI == mesF && diaI > diaF) || (añoI > añoF)) {
                     builder.setTitle("Error");
                     builder.setMessage("Introduzca un horario válido.");
                     builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
@@ -339,37 +340,72 @@ public class aniadir_turnos extends AppCompatActivity {
                     alert.show();
                 }
 
+                else {
 
+                    Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad, matricula, d, horaInicial, horaFinal, fechaInicial, fechaFinal, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+                    an.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.code() == 201) {
+                                builder.setTitle("Agregar Turnos");
+                                builder.setMessage("Los turnos se crearon correctamente.");
+                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
 
+                                AlertDialog alert = builder.create();
+                                //Setting the title manually
+                                alert.show();
+                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                                        i.putExtra("idUsr", idUsr);
+                                        i.putExtra("idPaciente",idPaciente);
+                                        i.putExtra("matricula",  matricula);
+                                        i.putExtra("nombre",nombre);
+                                        startActivity(i);
+                                    }
+                                });
+                            } else if (response.code() == 418) {
+                                builder.setTitle("Agregar Turnos");
+                                builder.setMessage("No fue posible crear todos los turnos, por favor verifique su agenda. Los turnos sin incompatibilidades se crearon correctamente.");
+                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
 
-
-                Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad,matricula,d,horaInicial,horaFinal,fechaInicial,fechaFinal,lunes,martes,miercoles,jueves,viernes,sabado,domingo);
-                an.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.code() == 201){
-                            Log.d("Aniadir","Se agregaron bien");
+                                AlertDialog alert = builder.create();
+                                //Setting the title manually
+                                alert.show();
+                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                                        i.putExtra("idUsr", idUsr);
+                                        i.putExtra("idPaciente",idPaciente);
+                                        i.putExtra("matricula",  matricula);
+                                        i.putExtra("nombre",nombre);
+                                        startActivity(i);
+                                    }
+                                });
+                            }
+                            /*Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                            startActivity(i);*/
                         }
-                        else if (response.code() == 418){
-                            Log.d("Aniadir","No se agregaron todos");
-                        }
-                        else{
-                            Log.d("Aniadir","Cosas raras");
-                            Log.d("Aniadir", String.valueOf(response.code()));
-                            Log.d("Aniadir", String.valueOf(response.errorBody()));
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Log.d("Aniadir", "Todo falla.");
 
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.d("Aniadir","Todo falla.");
-
-                    }
-                });
-
-                /*Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
-                startActivity(i);*/
+                    });
+                }
             }
         });
     }
