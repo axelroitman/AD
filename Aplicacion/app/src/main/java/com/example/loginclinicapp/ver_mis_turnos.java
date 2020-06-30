@@ -47,22 +47,22 @@ public class ver_mis_turnos extends AppCompatActivity {
 
     private void traerDatosTurnos(int idPaciente){
 
-        Log.d("historial",""+idPaciente);
+        Log.d("misTurnos",""+idPaciente);
         Call<List<Turno>> call = RetrofitClient.getInstance().getTurnoPaciente().getTurnosPaciente(idPaciente, true);
 
-        Log.d("historial", ""+call.request());
+        Log.d("misTurnos", ""+call.request());
         call.enqueue(new Callback<List<Turno>>() {
             @Override
             public void onResponse(Call<List<Turno>> call, Response<List<Turno>> response) {
 
-                Log.d("historial", response.toString());
+                Log.d("misTurnos", response.toString());
                 if (response.code() == 200) {
 
-                    Log.d("historial", "ES 200");
+                    Log.d("misTurnos", "ES 200");
                     if (!response.body().isEmpty()) {
 
-                        Log.d("historial", response.toString());
-                        Log.d("historial", "NO ESTOY VACIO");
+                        Log.d("misTurnos", response.toString());
+                        Log.d("misTurnos", "NO ESTOY VACIO");
                         recyclerViewItems.setVisibility(View.VISIBLE);
                         mensajeSinTurnos.setVisibility(View.GONE);
 
@@ -70,7 +70,7 @@ public class ver_mis_turnos extends AppCompatActivity {
 
                     } else {
 
-                        Log.d("historial", "ESTOY VACIO");
+                        Log.d("misTurnos", "ESTOY VACIO");
                         mensajeSinTurnos.setVisibility(View.VISIBLE);
                         recyclerViewItems.setVisibility(View.GONE);
                     }
@@ -78,7 +78,7 @@ public class ver_mis_turnos extends AppCompatActivity {
             }
 
             public void onFailure(Call<List<Turno>> call, Throwable t) {
-                Log.d("historial","falla :(");
+                Log.d("misTurnos","falla :(");
                 Toast.makeText(ver_mis_turnos.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

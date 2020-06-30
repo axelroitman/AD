@@ -22,8 +22,6 @@ public class historial_turnos_pacientes extends AppCompatActivity {
     RelativeLayout txtMensajeError;
     RecyclerView recyclerView;
     GroupAdp adaptador_items;
-    LinearLayoutManager linearLayoutManager;
-
 
 
     @Override
