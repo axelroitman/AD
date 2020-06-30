@@ -70,6 +70,8 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
+        final int idTurno = turnos.get(i).getId();
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
@@ -77,6 +79,8 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
                 i.putExtra("idPaciente",idPaciente);
                 i.putExtra("matricula",  matricula);
                 i.putExtra("nombre",nombre);
+                i.putExtra("idTurno", idTurno);
+
                 viewHolder.itemView.getContext().startActivity(i);
             }
         });
