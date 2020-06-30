@@ -793,8 +793,10 @@ public class Controlador {
 		
 	}
 
-	public void eliminarTurnos(String matricula, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException{
+	public boolean eliminarTurnos(String matricula, LocalTime horaInicial, LocalTime horaFinal, Date fechaInicial, Date fechaFinal, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes, boolean sabado, boolean domingo) throws TurnoException{
 		Medico med = null;
+		boolean seEliminaronTodos = true;
+
 		try {
 			med = buscarMedico(matricula);
 		} catch (MedicoException e) {
@@ -830,10 +832,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -844,10 +859,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -858,10 +886,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -872,10 +913,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -886,14 +940,26 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
-
 			}
 			else if(sabado && diaSemana == Calendar.SATURDAY) {
 				for(Turno t: turnosDelDia) 
@@ -901,10 +967,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -916,10 +995,23 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
@@ -930,15 +1022,29 @@ public class Controlador {
 					Calendar cal = Calendar.getInstance(); 
 					cal.setTime(t.getFecha()); 
 					Date fechaAComparar = cal.getTime();
-
+					boolean turnosSinEliminar = false;
 					
 					if((fechaAComparar.after(fechaInicioDia) && fechaAComparar.before(fechaFinDia)) || fechaAComparar.equals(fechaInicioDia)  || fechaAComparar.equals(fechaFinDia)) {
-						TurnoDAO.getInstancia().delete(t);
+						if(t.getPaciente() == null)
+						{
+							TurnoDAO.getInstancia().delete(t);	
+						}
+						else 
+						{
+							turnosSinEliminar = true;
+						}
+						
+					}
+					
+					if(turnosSinEliminar) 
+					{
+						seEliminaronTodos = false;
 					}
 
 				}
 			}
 		}
+		return seEliminaronTodos;
 	}
 
 	public UsuarioView getUsuarioLogIn(String usuario, String password){ 

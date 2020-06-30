@@ -181,14 +181,24 @@ public class HomeController {
 
 	@RequestMapping(value = "/eliminarTurnos", method = RequestMethod.DELETE)
 	public ResponseEntity<Void>  eliminarTurnos(@RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="horaInicial", required=true) String horaInicial, @RequestParam(value="horaFinal", required=true) String horaFinal, @RequestParam(value="fechaInicial", required=true) String fechaInicial, @RequestParam(value="fechaFinal", required=true) String fechaFinal, @RequestParam(value="lunes", required=false) boolean lunes, @RequestParam(value="martes", required=false) boolean martes, @RequestParam(value="miercoles", required=false) boolean miercoles, @RequestParam(value="jueves", required=false) boolean jueves, @RequestParam(value="viernes", required=false) boolean viernes, @RequestParam(value="sabado", required=false) boolean sabado, @RequestParam(value="domingo", required=false) boolean domingo) {
+		boolean seEliminaronTodos = true;
 		try {
 			try {
-				Controlador.getInstancia().eliminarTurnos(matricula, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+				seEliminaronTodos = Controlador.getInstancia().eliminarTurnos(matricula, LocalTime.parse(horaInicial), LocalTime.parse(horaFinal), new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicial), new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinal), lunes, martes, miercoles, jueves, viernes, sabado, domingo);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return new ResponseEntity<Void>(HttpStatus.OK);						
+			if(seEliminaronTodos)
+			{
+				return new ResponseEntity<Void>(HttpStatus.OK);						
+			}
+			else 
+			{
+				return new ResponseEntity<Void>(HttpStatus.I_AM_A_TEAPOT);						
+				
+			}
+			
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
 			// TODO Auto-generated catch block
