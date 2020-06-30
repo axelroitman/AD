@@ -94,7 +94,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/imgPrecio"
             android:layout_width="30dp"
             android:layout_height="28dp"
             android:layout_below="@+id/imageView13"
@@ -107,14 +107,14 @@
             android:id="@+id/imgAsistencia"
             android:layout_width="30dp"
             android:layout_height="28dp"
-            android:layout_below="@+id/imageView15"
+            android:layout_below="@+id/imgPrecio"
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
             app:srcCompat="@drawable/asistenciapendiente"/>
 
         <ImageView
-            android:id="@+id/imageView24"
+            android:id="@+id/imgCanceladoPor"
             android:layout_width="30dp"
             android:layout_height="28dp"
             android:layout_below="@+id/imgAsistencia"
@@ -125,10 +125,10 @@
             android:visibility="gone"/>
 
         <ImageView
-            android:id="@+id/imageView25"
+            android:id="@+id/imgMotivoCancela"
             android:layout_width="30dp"
             android:layout_height="28dp"
-            android:layout_below="@+id/imageView24"
+            android:layout_below="@+id/imgCanceladoPor"
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
@@ -227,12 +227,12 @@
 
         <ImageView
             android:id="@+id/imgProfesionalPaciente"
-            android:layout_width="19dp"
-            android:layout_height="16dp"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
             android:layout_below="@+id/imageView11"
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="13dp"
             app:srcCompat="@drawable/doctorimage" />
 
     </RelativeLayout>
@@ -367,6 +367,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="16dp"
+        android:visibility="gone"
         >
 
         <Button

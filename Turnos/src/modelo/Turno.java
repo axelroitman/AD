@@ -22,6 +22,8 @@ public class Turno {
 		this.paciente = paciente;
 		this.medico = medico;
 		
+
+		
 	}
     public Turno(Date fecha, Especialidad especialidad, Medico medico) {
     	
@@ -126,8 +128,18 @@ public void setAsistencia(int asistencia) {
 	
 	public TurnoView toView() {
 		
-		if(justifInasistencia == null || paciente == null) {
+		if(justifInasistencia == null && paciente == null) 
+		{
 			return new TurnoView(id, fecha, precio, asistencia, null, disponibilidad, especialidad.toView(), medico.toView(), null);
+
+		}
+		else if(justifInasistencia == null && paciente != null) {
+			return new TurnoView(id, fecha, precio, asistencia, null, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());
+		}
+		else if(justifInasistencia != null && paciente == null) 
+		{
+			return new TurnoView(id, fecha, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), null);
+
 		}
 		else {
 			return new TurnoView(id, fecha, precio, asistencia, justifInasistencia, disponibilidad, especialidad.toView(), medico.toView(), paciente.toView());

@@ -7,6 +7,7 @@ public class Paciente {
     private int idPaciente;
     private Date fechaVtoCuota;
     private int idUsr;
+    private String nombre;
 
     public Paciente(int idPaciente, Date fechaVtoCuota, int idUsr) {
         this.idPaciente = idPaciente;
@@ -20,4 +21,6 @@ public class Paciente {
     public void setFechaVtoCuota(Date fechaVtoCuota) {this.fechaVtoCuota = fechaVtoCuota;}
     public int getidUsuario() {return idUsr;}
     public void setidUsuario(int idUsuario) {this.idUsr = idUsuario;}
+    public String getNombre(){ return nombre; }
+
 }

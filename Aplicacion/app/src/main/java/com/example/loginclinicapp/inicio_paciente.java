@@ -65,6 +65,7 @@ public class inicio_paciente extends AppCompatActivity {
             }
         });
 
+
         layoutMisTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,6 +172,35 @@ public class inicio_paciente extends AppCompatActivity {
 
                         textViewEspecialidad  = (TextView) findViewById(R.id.textViewEspecialidad);
                         textViewEspecialidad.setText(response.body().getEspecialidad().getNombre());
+
+                        cuadroFecha = (RelativeLayout) findViewById(R.id.cuadroFecha);
+                        cuadroTurno = (RelativeLayout) findViewById(R.id.cuadroTurno);
+
+                        final int idTurno = proximoTurno.getId();
+                        cuadroFecha.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(inicio_paciente.this , DetalleTurno.class);
+                                i.putExtra("idUsr", idUsr);
+                                i.putExtra("idPaciente",idPaciente);
+                                i.putExtra("matricula",  matricula);
+                                i.putExtra("nombre",nombre);
+                                i.putExtra("idTurno", idTurno);
+                                startActivity(i);
+                            }
+                        });
+                        cuadroTurno.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(inicio_paciente.this , DetalleTurno.class);
+                                i.putExtra("idUsr", idUsr);
+                                i.putExtra("idPaciente",idPaciente);
+                                i.putExtra("matricula",  matricula);
+                                i.putExtra("nombre",nombre);
+                                i.putExtra("idTurno", idTurno);
+                                startActivity(i);
+                            }
+                        });
 
                     }
                     else {

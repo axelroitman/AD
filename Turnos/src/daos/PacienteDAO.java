@@ -95,6 +95,7 @@ public class PacienteDAO {
 	}
 	
 	Paciente toNegocio(PacienteEntity entity){
+
 		return new Paciente (entity.getId(),entity.getUsuario().getIdUsr(),entity.getUsuario().getUsr(),entity.getUsuario().getPass(), entity.getUsuario().getNombre(), entity.getUsuario().getTelefono(), entity.getUsuario().getDni(), entity.getUsuario().getFechaNac(), entity.getFechaVtoCuota());
 	}
 	
