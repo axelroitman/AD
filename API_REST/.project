@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>Turnos</project>
+		<project>AD</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 public class eliminar_turnos extends AppCompatActivity {
 
@@ -31,10 +30,10 @@ public class eliminar_turnos extends AppCompatActivity {
         });
     }
     private void vincular(){
-        edTextFechaFinal = (EditText) findViewById(R.id.edTextFechaFinal);
-        edTextFechaInicial = (EditText) findViewById(R.id.edTextFechaInicial);
-        edTextHoraFin = (EditText) findViewById(R.id.edTextHoraFin);
-        edTextHoraInicio = (EditText) findViewById(R.id.edTextHoraInicio);
+        edTextFechaFinal = (EditText) findViewById(R.id.TvFechaFinal);
+        edTextFechaInicial = (EditText) findViewById(R.id.TvFechaInicial);
+        edTextHoraFin = (EditText) findViewById(R.id.TvHoraFin);
+        edTextHoraInicio = (EditText) findViewById(R.id.TvHoraInicio);
         checkbox_lunes = (CheckBox) findViewById(R.id.checkbox_lunes);
         checkbox_martes = (CheckBox) findViewById(R.id.checkbox_martes);
         checkbox_miercoles = (CheckBox) findViewById(R.id.checkbox_miercoles);
