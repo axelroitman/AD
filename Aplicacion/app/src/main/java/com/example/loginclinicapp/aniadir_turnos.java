@@ -1,10 +1,11 @@
 package com.example.loginclinicapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,9 +20,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +38,8 @@ public class aniadir_turnos extends AppCompatActivity {
     TextView tvHoraInicio, tvHoraFin, tvFechaInicial, tvFechaFinal;
     CheckBox checkbox_lunes,checkbox_martes,checkbox_miercoles,checkbox_jueves,checkbox_viernes,checkbox_sabado,checkbox_domingo;
     Button btnaniadir;
+    AlertDialog.Builder builder;
+
 
     Collection<Especialidad> especialidades = new ArrayList<Especialidad>();
     ArrayList<String> espsNombres = new ArrayList<String>();
@@ -76,6 +81,8 @@ public class aniadir_turnos extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
 
+        builder = new AlertDialog.Builder(this);
+
         tvHoraInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +104,9 @@ public class aniadir_turnos extends AppCompatActivity {
                         tvHoraInicio.setText(horaIni + ":" + minutoIni);
                     }
                 },horaI,minutoI,false);
+                //TimePicker t = tp.
+
+
                 tp.show();
             }
         });
@@ -147,6 +157,13 @@ public class aniadir_turnos extends AppCompatActivity {
                         tvFechaInicial.setText(diaIni + "/" + mesIni + "/" + añoIni);
                     }
                 },añoI,mesI,diaI);
+                Calendar limSup = Calendar.getInstance();
+                limSup.add(Calendar.MONTH,+2);
+                DatePicker datePicker = dp.getDatePicker();
+                datePicker.setMaxDate(limSup.getTimeInMillis());
+
+                Calendar limInf = Calendar.getInstance();
+                datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
             }
         });
@@ -172,6 +189,15 @@ public class aniadir_turnos extends AppCompatActivity {
                         tvFechaFinal.setText(diaFin + "/" + mesFin + "/" + añoFin);
                     }
                 },añoF,mesF,diaF);
+                Calendar limSup = Calendar.getInstance();
+                limSup.add(Calendar.MONTH,+2);
+                DatePicker datePicker = dp.getDatePicker();
+                datePicker.setMaxDate(limSup.getTimeInMillis());
+
+                Calendar limInf = Calendar.getInstance();
+                datePicker.setMinDate(limInf.getTimeInMillis());
+                dp.show();
+
                 dp.show();
             }
         });
@@ -297,6 +323,21 @@ public class aniadir_turnos extends AppCompatActivity {
                 Log.d("AniadirVARIABLES",horaInicial);
                 Log.d("AniadirVARIABLES",horaFinal);
                 Log.d("AniadirVARIABLES",matricula);
+
+                if(mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI < c.get(Calendar.HOUR) || minutoI < c.get(Calendar.MINUTE))){
+                    builder.setTitle("Error");
+                    builder.setMessage("Introduzca un horario válido.");
+                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    AlertDialog alert = builder.create();
+                    //Setting the title manually
+                    alert.show();
+                }
 
 
 
