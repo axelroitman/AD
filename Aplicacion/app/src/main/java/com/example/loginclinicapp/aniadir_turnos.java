@@ -141,7 +141,7 @@ public class aniadir_turnos extends AppCompatActivity {
                         if(dayOfMonth < 10){
                             diaIni = "0" + dayOfMonth;
                         }
-                        if(month < 10){
+                        if((month + 1) < 10){
                             mesIni = "0" + (month+1);
                         }
                         tvFechaInicial.setText(diaIni + "/" + mesIni + "/" + añoIni);
@@ -166,7 +166,7 @@ public class aniadir_turnos extends AppCompatActivity {
                         if(dayOfMonth < 10){
                             diaFin = "0" + dayOfMonth;
                         }
-                        if(month < 10){
+                        if((month + 1) < 10){
                             mesFin = "0" + (month+1);
                         }
                         tvFechaFinal.setText(diaFin + "/" + mesFin + "/" + añoFin);
@@ -285,8 +285,8 @@ public class aniadir_turnos extends AppCompatActivity {
                 domingo = checkbox_domingo.isActivated();
                 int d = duraciones.get(spinnerDuracion.getSelectedItem().toString()); //Duracion
                 int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
-                String fechaInicial = diaIni + mesIni + añoIni;
-                String fechaFinal = diaFin + mesFin + añoFin;
+                String fechaInicial = diaIni +"/"+ mesIni +"/"+ añoIni;
+                String fechaFinal = diaFin +"/"+ mesFin +"/"+ añoFin;
                 String horaInicial = horaIni + ":" + minutoIni;
                 String horaFinal = horaFin + ":" + minutoFin;
 
