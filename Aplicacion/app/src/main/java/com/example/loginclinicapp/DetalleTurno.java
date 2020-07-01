@@ -168,7 +168,7 @@ public class DetalleTurno extends AppCompatActivity {
 
                         txtEspecialidad.setText("Especialidad: " + response.body().getEspecialidad().getNombre());
 
-                        if(response.body().getMedico().getMatricula() == matricula) {
+                        if(response.body().getMedico().getMatricula().equals(matricula)) {
                             //Vista del medico
 
                             if(response.body().getPaciente() == null)
