@@ -45,9 +45,6 @@
             android:name=".inicio_paciente"
             android:exported="true" />
         <activity
-            android:name=".modificar_turno"
-            android:exported="true" />
-        <activity
             android:name=".pantalla_cargando"
             android:exported="true">
             <intent-filter>

@@ -12,10 +12,11 @@ public class ProximoTurno {
     private Medico medico;
     private int id;
 
-    public ProximoTurno(String fecha, Especialidad especialidad, Medico medico) {
+    public ProximoTurno(String fecha, Especialidad especialidad, Medico medico, int id) {
         this.fecha = fecha;
         this.especialidad = especialidad;
         this.medico = medico;
+        this.id = id;
     }
 
     public int getId() {return id;}

@@ -204,9 +204,15 @@ public class TurnoDAO {
 	}	
 	
 	TurnoEntity toEntity(Turno turno){
-		return new TurnoEntity(turno.getId(), turno.getFecha(), turno.getPrecio(), turno.getAsistencia(), turno.getJustifInasistencia(), turno.getDisponibilidad(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()), MedicoDAO.getInstancia().toEntity(turno.getMedico()), PacienteDAO.getInstancia().toEntity(turno.getPaciente()));
-	} 
-	
+		if(turno.getPaciente() == null)
+		{
+			return new TurnoEntity(turno.getId(), turno.getFecha(), turno.getPrecio(), turno.getAsistencia(), turno.getJustifInasistencia(), turno.getDisponibilidad(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()), MedicoDAO.getInstancia().toEntity(turno.getMedico()), null);			
+		}
+		else 
+		{
+			return new TurnoEntity(turno.getId(), turno.getFecha(), turno.getPrecio(), turno.getAsistencia(), turno.getJustifInasistencia(), turno.getDisponibilidad(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()), MedicoDAO.getInstancia().toEntity(turno.getMedico()), PacienteDAO.getInstancia().toEntity(turno.getPaciente()));
+		} 
+	}
 	TurnoEntity toEntitySave(Turno turno) {
 		return new TurnoEntity(turno.getFecha(), EspecialidadDAO.getInstancia().toEntity(turno.getEspecialidad()),MedicoDAO.getInstancia().toEntity(turno.getMedico()));
 	}

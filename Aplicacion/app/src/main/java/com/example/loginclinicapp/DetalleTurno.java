@@ -34,7 +34,7 @@ public class DetalleTurno extends AppCompatActivity {
     TextView txtFechaTurno, txtAsistencia, txtCancela, txtMotivoCancela, txtPrecio, txtHorario, txtEspecialidad, txtProfesionalPaciente, txtEstado;
     ImageView imgAsistencia, imgEstado, imgProfesionalPaciente, imgMotivoCancela, imgCanceladoPor, imgPrecio;
     RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno;
-    Button btnCancelarTurnoPaciente, btnPedirTurno, btnModificarTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
+    Button btnCancelarTurnoPaciente, btnPedirTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
     AlertDialog.Builder builder, builder2;
 
     @Override
@@ -129,18 +129,7 @@ public class DetalleTurno extends AppCompatActivity {
 
                                     }
                                 });
-                                btnModificarTurno.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Intent i = new Intent(DetalleTurno.this, modificar_turno.class);
-                                        i.putExtra("idUsr", idUsr);
-                                        i.putExtra("idPaciente",idPaciente);
-                                        i.putExtra("matricula",  matricula);
-                                        i.putExtra("nombre",nombre);
-                                        i.putExtra("idTurno", idTurno);
-                                        startActivity(i);
-                                    }
-                                });
+
                             }
                         }
                         else {
@@ -163,10 +152,60 @@ public class DetalleTurno extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             //Hace la call cancelar el turno
+                                            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    switch (which){
+                                                        case DialogInterface.BUTTON_POSITIVE:
+                                                            Call<Void> eliminar = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, null, 3, 1);
+                                                            Log.d("cambiarEstado","Paso1");
+                                                            eliminar.enqueue(new Callback<Void>() {
+                                                                @Override
+                                                                public void onResponse(Call<Void> call, Response<Void> response) {
+                                                                    if(response.code() == 201){
+                                                                        Log.d("cambiarEstado","Paso2");
+                                                                        builder2.setTitle("Turno");
+                                                                        builder2.setMessage("El turno se ha cancelado.");
+                                                                        builder2.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                                Intent i = new Intent(DetalleTurno.this, inicio_paciente.class);
+                                                                                i.putExtra("idUsr", idUsr);
+                                                                                i.putExtra("idPaciente",idPaciente);
+                                                                                i.putExtra("matricula",  matricula);
+                                                                                i.putExtra("nombre",nombre);
+                                                                                startActivity(i);
+                                                                            }
+                                                                        });
+
+                                                                        AlertDialog alert = builder2.create();
+                                                                        //Setting the title manually
+                                                                        alert.show();
+                                                                    }
+                                                                }
+
+                                                                @Override
+                                                                public void onFailure(Call<Void> call, Throwable t) {
+                                                                    Log.d("cambiarEstado",":(");
+
+                                                                }
+                                                            });
+                                                            break;
+
+                                                        case DialogInterface.BUTTON_NEGATIVE:
+                                                            dialog.cancel();
+                                                            break;
+                                                    }
+                                                }
+                                            };
+
+                                            builder.setMessage("¿Está seguro de que desea cancelar el turno?").setPositiveButton("Sí", dialogClickListener)
+                                                    .setNegativeButton("No", dialogClickListener).show();
+
                                         }
                                     });
                                 }
-                                else if(diferenciaHoras <= 12 &&diferenciaHoras >= 0 && !response.body().getDisponibilidad().equals("Cancelado") && response.body().getAsistencia().equals("NoConfirmo")){
+                                else if(diferenciaHoras <= 12 && diferenciaHoras >= 0 && !response.body().getDisponibilidad().equals("Cancelado") && response.body().getAsistencia().equals("NoConfirmo")){
                                     layoutConfirmarAsistencia.setVisibility(View.VISIBLE);
                                     btnAsistire.setOnClickListener(new View.OnClickListener() {
                                         @Override
@@ -325,7 +364,6 @@ public class DetalleTurno extends AppCompatActivity {
 
         btnCancelarTurnoPaciente = (Button) findViewById(R.id.btnCancelarTurnoPaciente);
         btnPedirTurno = (Button) findViewById(R.id.btnPedirTurno);
-        btnModificarTurno = (Button) findViewById(R.id.btnModificarTurno);
         btnEliminarTurno = (Button) findViewById(R.id.btnEliminarTurno);
         btnNoAsistire = (Button) findViewById(R.id.btnNoAsistire);
         btnAsistire = (Button) findViewById(R.id.btnAsistire);

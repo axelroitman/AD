@@ -1096,14 +1096,20 @@ public class Controlador {
 				e.printStackTrace();
 			}
 		}
+		
 		if(asistencia != null) {
 			turno.setAsistencia(asistencia.intValue());
 		}
 		if(disponibilidad != null) {
 			turno.setDisponibilidad(disponibilidad.intValue());
 		}
+		
 		if(paciente != null) {
 			turno.setPaciente(paciente);
+		}
+		else 
+		{
+			turno.setPaciente(null);
 		}
 		
 		TurnoDAO.getInstancia().update(turno);

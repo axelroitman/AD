@@ -147,7 +147,7 @@ public class inicio_paciente extends AppCompatActivity {
             public void onResponse(Call<ProximoTurno> call, Response<ProximoTurno> response) {
                 if(response.code()==200) {
                     if (response.body() != null) {
-                        ProximoTurno proximoTurno = new ProximoTurno(response.body().getFecha(), response.body().getEspecialidad(), response.body().getMedico());
+                        ProximoTurno proximoTurno = new ProximoTurno(response.body().getFecha(), response.body().getEspecialidad(), response.body().getMedico(), response.body().getId());
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                         LocalDateTime fecha = LocalDateTime.parse(proximoTurno.getFecha(), formatter);
 
