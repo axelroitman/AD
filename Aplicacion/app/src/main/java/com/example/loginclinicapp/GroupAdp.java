@@ -124,29 +124,29 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         String especialidad = turnos.get(i).getEspecialidad().getNombre();
         viewHolder.txtEspecialidad1.setText(especialidad);
 
-        if(turnos.get(i).getAsistencia() == "NoAsiste") {
+        if(turnos.get(i).getAsistencia().equals("NoAsiste")) {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciano);
         }
-        if(turnos.get(i).getAsistencia() == "Asiste") {
+        if(turnos.get(i).getAsistencia().equals("Asiste")) {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciaok);
         }
         else {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciapendiente);
         }
 
-        if(turnos.get(i).getDisponibilidad() == "Disponible") {
+        if(turnos.get(i).getDisponibilidad().equals("Disponible")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad() == "Programado") {
+        if(turnos.get(i).getDisponibilidad().equals("Programado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad() == "AConfirmar") {
+        if(turnos.get(i).getDisponibilidad().equals("AConfirmar")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad() == "Confirmado") {
+        if(turnos.get(i).getDisponibilidad().equals("Confirmado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad() == "Terminado") {
+        if(turnos.get(i).getDisponibilidad().equals("Terminado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
         else{

@@ -1,8 +1,10 @@
 package com.example.loginclinicapp;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -33,6 +35,7 @@ public class DetalleTurno extends AppCompatActivity {
     ImageView imgAsistencia, imgEstado, imgProfesionalPaciente, imgMotivoCancela, imgCanceladoPor, imgPrecio;
     RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno;
     Button btnCancelarTurnoPaciente, btnPedirTurno, btnModificarTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,9 @@ public class DetalleTurno extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
         final int idTurno = i.getIntExtra("idTurno", 0);
+
+        builder = new AlertDialog.Builder(this);
+
 
         Log.d("turnoDet","Estoy por hacer la call");
         Call<Turno> turno = RetrofitClient.getInstance().getTurno().getTurno(idTurno);
@@ -67,7 +73,31 @@ public class DetalleTurno extends AppCompatActivity {
                                 btnEliminarTurno.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        //Hace la call para eliminar el turno
+                                        Call<Void> eliminar = RetrofitClient.getInstance().getEliminarTurnoService().eliminarTurno(idTurno);
+                                        eliminar.enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                                if(response.code() == 200){
+                                                    builder.setTitle("Turno");
+                                                    builder.setMessage("El turno se ha eliminado.");
+                                                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.cancel();
+                                                        }
+                                                    });
+
+                                                    AlertDialog alert = builder.create();
+                                                    //Setting the title manually
+                                                    alert.show();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+
+                                            }
+                                        });
                                     }
                                 });
                                 btnModificarTurno.setOnClickListener(new View.OnClickListener() {
@@ -139,23 +169,23 @@ public class DetalleTurno extends AppCompatActivity {
 
                         txtFechaTurno.setText("Turno " + fecha.getDayOfMonth() + " de " + mesEnPalabras.toUpperCase().substring(0,1) + mesEnPalabras.substring(1));
 
-                        if(response.body().getDisponibilidad() == "Disponible") {
+                        if(response.body().getDisponibilidad().equals("Disponible")) {
                             txtEstado.setText("Estado: Disponible");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad() == "Programado") {
+                        if(response.body().getDisponibilidad().equals("Programado")) {
                             txtEstado.setText("Estado: Programado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad() == "AConfirmar") {
+                        if(response.body().getDisponibilidad().equals("AConfirmar")) {
                             txtEstado.setText("Estado: A Confirmar");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad() == "Confirmado") {
+                        if(response.body().getDisponibilidad().equals("Confirmado")) {
                             txtEstado.setText("Estado: Confirmado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad() == "Terminado") {
+                        if(response.body().getDisponibilidad().equals("Terminado")) {
                             txtEstado.setText("Estado: Terminado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
@@ -198,11 +228,11 @@ public class DetalleTurno extends AppCompatActivity {
                             txtPrecio.setVisibility(View.GONE);
                         }
 
-                        if(response.body().getAsistencia() == "NoAsiste") {
+                        if(response.body().getAsistencia().equals("NoAsiste")) {
                             txtAsistencia.setText("Asistencia: No asiste");
                             imgAsistencia.setImageResource(R.drawable.asistenciano);
                         }
-                        if(response.body().getAsistencia() == "Asiste") {
+                        if(response.body().getAsistencia().equals("Asiste")) {
                             txtAsistencia.setText("Asistencia: Asiste");
                             imgAsistencia.setImageResource(R.drawable.asistenciaok);
                         }
