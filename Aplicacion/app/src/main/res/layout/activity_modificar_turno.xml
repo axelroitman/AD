@@ -102,7 +102,7 @@
             android:gravity="center_horizontal" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imgEstado"
             android:layout_width="30dp"
             android:layout_height="28dp"
             android:layout_alignParentStart="true"
@@ -112,10 +112,10 @@
             app:srcCompat="@drawable/ok" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/imgEspecialidad"
             android:layout_width="30dp"
             android:layout_height="28dp"
-            android:layout_below="@+id/imageView10"
+            android:layout_below="@+id/imgEstado"
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
@@ -137,7 +137,7 @@
         <TextView
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinerespecialidades"
+            android:layout_below="@+id/especialidad"
             android:layout_marginStart="5dp"
             android:layout_marginTop="-24dp"
             android:layout_toRightOf="@id/textView8"
@@ -146,7 +146,7 @@
             android:gravity="center_horizontal" />
 
         <TextView
-            android:id="@+id/spinerespecialidades"
+            android:id="@+id/especialidad"
             android:layout_width="190dp"
             android:layout_marginStart="5dp"
             android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
             android:id="@+id/imageView12"
             android:layout_width="30dp"
             android:layout_height="28dp"
-            android:layout_below="@+id/imageView11"
+            android:layout_below="@+id/imgEspecialidad"
             android:layout_alignParentStart="true"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
@@ -179,12 +179,12 @@
             android:textSize="18dp" />
 
 
-        <EditText
+        <TextView
             android:id="@+id/hora"
             android:layout_width="190dp"
             android:layout_marginStart="5dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinerespecialidades"
+            android:layout_below="@+id/especialidad"
             android:layout_marginLeft="29dp"
             android:layout_marginTop="13dp"
             android:layout_toRightOf="@id/textView6"
