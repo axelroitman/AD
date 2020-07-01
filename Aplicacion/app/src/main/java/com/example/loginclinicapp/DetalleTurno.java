@@ -35,7 +35,7 @@ public class DetalleTurno extends AppCompatActivity {
     ImageView imgAsistencia, imgEstado, imgProfesionalPaciente, imgMotivoCancela, imgCanceladoPor, imgPrecio;
     RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno;
     Button btnCancelarTurnoPaciente, btnPedirTurno, btnModificarTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
-    AlertDialog.Builder builder;
+    AlertDialog.Builder builder, builder2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class DetalleTurno extends AppCompatActivity {
         final int idTurno = i.getIntExtra("idTurno", 0);
 
         builder = new AlertDialog.Builder(this);
+        builder2 = new AlertDialog.Builder(this);
 
 
         Log.d("turnoDet","Estoy por hacer la call");
@@ -68,42 +69,70 @@ public class DetalleTurno extends AppCompatActivity {
 
                         if(response.body().getMedico().getMatricula().equals(matricula)) {
                             //OPCIONES DEL MEDICO
-                            if(response.body().getPaciente() == null){
+                            LocalDateTime fechaActual = LocalDateTime.now();
+                            long diferenciaHoras = HOURS.between(fechaActual, fecha);
+                            if(response.body().getPaciente() == null && diferenciaHoras >= 0){
                                 layoutMedicoTurnoSinConfirmar.setVisibility(View.VISIBLE);
                                 btnEliminarTurno.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Call<Void> eliminar = RetrofitClient.getInstance().getEliminarTurnoService().eliminarTurno(idTurno);
-                                        eliminar.enqueue(new Callback<Void>() {
-                                            @Override
-                                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                                if(response.code() == 200){
-                                                    builder.setTitle("Turno");
-                                                    builder.setMessage("El turno se ha eliminado.");
-                                                    builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.cancel();
-                                                        }
-                                                    });
 
-                                                    AlertDialog alert = builder.create();
-                                                    //Setting the title manually
-                                                    alert.show();
+
+                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which){
+                                                    case DialogInterface.BUTTON_POSITIVE:
+                                                        Call<Void> eliminar = RetrofitClient.getInstance().getEliminarTurnoService().eliminarTurno(idTurno);
+                                                        eliminar.enqueue(new Callback<Void>() {
+                                                            @Override
+                                                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                                                if(response.code() == 200){
+
+
+                                                                    builder2.setTitle("Turno");
+                                                                    builder2.setMessage("El turno se ha eliminado.");
+                                                                    builder2.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                            Intent i = new Intent(DetalleTurno.this, inicio_medico.class);
+                                                                            i.putExtra("idUsr", idUsr);
+                                                                            i.putExtra("idPaciente",idPaciente);
+                                                                            i.putExtra("matricula",  matricula);
+                                                                            i.putExtra("nombre",nombre);
+                                                                            startActivity(i);
+                                                                        }
+                                                                    });
+
+                                                                    AlertDialog alert = builder2.create();
+                                                                    //Setting the title manually
+                                                                    alert.show();
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onFailure(Call<Void> call, Throwable t) {
+
+                                                            }
+                                                        });
+                                                        break;
+
+                                                    case DialogInterface.BUTTON_NEGATIVE:
+                                                        dialog.cancel();
+                                                        break;
                                                 }
                                             }
+                                        };
 
-                                            @Override
-                                            public void onFailure(Call<Void> call, Throwable t) {
+                                        builder.setMessage("¿Está seguro de que quiere eliminar el turno?").setPositiveButton("Si", dialogClickListener)
+                                                .setNegativeButton("No", dialogClickListener).show();
 
-                                            }
-                                        });
                                     }
                                 });
                                 btnModificarTurno.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent i = new Intent(DetalleTurno.this , modificar_turno.class);
+                                        Intent i = new Intent(DetalleTurno.this, modificar_turno.class);
                                         i.putExtra("idUsr", idUsr);
                                         i.putExtra("idPaciente",idPaciente);
                                         i.putExtra("matricula",  matricula);
@@ -127,7 +156,7 @@ public class DetalleTurno extends AppCompatActivity {
                             }
                             else{
                                 LocalDateTime fechaActual = LocalDateTime.now();
-                                long diferenciaHoras = HOURS.between(fecha, fechaActual);
+                                long diferenciaHoras = HOURS.between(fechaActual, fecha);
                                 if(diferenciaHoras > 12 && !response.body().getDisponibilidad().equals("Cancelado")) {
                                     layoutPacienteCancelarTurno.setVisibility(View.VISIBLE);
                                     btnCancelarTurnoPaciente.setOnClickListener(new View.OnClickListener() {

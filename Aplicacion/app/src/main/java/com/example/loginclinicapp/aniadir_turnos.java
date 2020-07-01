@@ -39,7 +39,7 @@ public class aniadir_turnos extends AppCompatActivity {
     TextView tvHoraInicio, tvHoraFin, tvFechaInicial, tvFechaFinal;
     CheckBox checkbox_lunes,checkbox_martes,checkbox_miercoles,checkbox_jueves,checkbox_viernes,checkbox_sabado,checkbox_domingo;
     Button btnaniadir;
-    AlertDialog.Builder builder;
+    AlertDialog.Builder builder, builder2;
 
 
     Collection<Especialidad> especialidades = new ArrayList<Especialidad>();
@@ -83,6 +83,7 @@ public class aniadir_turnos extends AppCompatActivity {
         final String nombre = i.getStringExtra("nombre");
 
         builder = new AlertDialog.Builder(this);
+        builder2 = new AlertDialog.Builder(this);
 
         tvHoraInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -324,20 +325,13 @@ public class aniadir_turnos extends AppCompatActivity {
                 viernes = checkbox_viernes.isChecked();
                 sabado = checkbox_sabado.isChecked();
                 domingo = checkbox_domingo.isChecked();
-                int d = duraciones.get(spinnerDuracion.getSelectedItem().toString()); //Duracion
-                int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
-                String fechaInicial = diaIni + "/" + mesIni + "/" + añoIni;
-                String fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
-                String horaInicial = horaIni + ":" + minutoIni + ":00";
-                String horaFinal = horaFin + ":" + minutoFin + ":00";
+                final int d = duraciones.get(spinnerDuracion.getSelectedItem().toString()); //Duracion
+                final int idEspecialidad = especialidadesConId.get(spinnerespecialidades.getSelectedItem().toString());
+                final String fechaInicial = diaIni + "/" + mesIni + "/" + añoIni;
+                final String fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
+                final String horaInicial = horaIni + ":" + minutoIni + ":00";
+                final String horaFinal = horaFin + ":" + minutoFin + ":00";
 
-                Log.d("AniadirVARIABLES", String.valueOf(d));
-                Log.d("AniadirVARIABLES", String.valueOf(idEspecialidad));
-                Log.d("AniadirVARIABLES", fechaInicial);
-                Log.d("AniadirVARIABLES", fechaFinal);
-                Log.d("AniadirVARIABLES", horaInicial);
-                Log.d("AniadirVARIABLES", horaFinal);
-                Log.d("AniadirVARIABLES", matricula);
 
                 if ((mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI < c.get(Calendar.HOUR) || minutoI < c.get(Calendar.MINUTE))) || (mesI > mesF) || (mesI == mesF && diaI > diaF) || (añoI > añoF)) {
                     builder.setTitle("Error");
@@ -356,69 +350,87 @@ public class aniadir_turnos extends AppCompatActivity {
 
                 else {
 
-                    Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad, matricula, d, horaInicial, horaFinal, fechaInicial, fechaFinal, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
-                    an.enqueue(new Callback<Void>() {
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                         @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            if (response.code() == 201) {
-                                builder.setTitle("Agregar Turnos");
-                                builder.setMessage("Los turnos se crearon correctamente.");
-                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which){
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    //Yes button clicked
+                                    Call<Void> an = RetrofitClient.getInstance().getAniadirTurnosService().aniadirTurnos(idEspecialidad, matricula, d, horaInicial, horaFinal, fechaInicial, fechaFinal, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+                                    an.enqueue(new Callback<Void>() {
+                                        @Override
+                                        public void onResponse(Call<Void> call, Response<Void> response) {
+                                            if (response.code() == 201) {
+                                                builder.setTitle("Agregar Turnos");
+                                                builder.setMessage("Los turnos se crearon correctamente.");
+                                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
 
-                                AlertDialog alert = builder.create();
-                                //Setting the title manually
-                                alert.show();
-                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
-                                        i.putExtra("idUsr", idUsr);
-                                        i.putExtra("idPaciente",idPaciente);
-                                        i.putExtra("matricula",  matricula);
-                                        i.putExtra("nombre",nombre);
-                                        startActivity(i);
-                                    }
-                                });
-                            } else if (response.code() == 418) {
-                                builder.setTitle("Agregar Turnos");
-                                builder.setMessage("No fue posible crear todos los turnos, por favor verifique su agenda. Los turnos sin incompatibilidades se crearon correctamente.");
-                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
+                                                AlertDialog alert = builder.create();
+                                                //Setting the title manually
+                                                alert.show();
+                                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface dialog) {
+                                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                                                        i.putExtra("idUsr", idUsr);
+                                                        i.putExtra("idPaciente",idPaciente);
+                                                        i.putExtra("matricula",  matricula);
+                                                        i.putExtra("nombre",nombre);
+                                                        startActivity(i);
+                                                    }
+                                                });
+                                            } else if (response.code() == 418) {
+                                                builder.setTitle("Agregar Turnos");
+                                                builder.setMessage("No fue posible crear todos los turnos, por favor verifique su agenda. Los turnos sin incompatibilidades se crearon correctamente.");
+                                                builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
 
-                                AlertDialog alert = builder.create();
-                                //Setting the title manually
-                                alert.show();
-                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
-                                        i.putExtra("idUsr", idUsr);
-                                        i.putExtra("idPaciente",idPaciente);
-                                        i.putExtra("matricula",  matricula);
-                                        i.putExtra("nombre",nombre);
-                                        startActivity(i);
-                                    }
-                                });
+                                                AlertDialog alert = builder.create();
+                                                //Setting the title manually
+                                                alert.show();
+                                                alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                    @Override
+                                                    public void onDismiss(DialogInterface dialog) {
+                                                        Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                                                        i.putExtra("idUsr", idUsr);
+                                                        i.putExtra("idPaciente",idPaciente);
+                                                        i.putExtra("matricula",  matricula);
+                                                        i.putExtra("nombre",nombre);
+                                                        startActivity(i);
+                                                    }
+                                                });
+                                            }
+                                            /*Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
+                                            startActivity(i);*/
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<Void> call, Throwable t) {
+                                            Log.d("Aniadir", "Todo falla.");
+
+                                        }
+                                    });
+                                    break;
+
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    dialog.cancel();
+                                    break;
                             }
-                            /*Intent i = new Intent(aniadir_turnos.this, inicio_medico.class);
-                            startActivity(i);*/
                         }
+                    };
 
-                        @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
-                            Log.d("Aniadir", "Todo falla.");
-
-                        }
-                    });
+                    builder2.setMessage("¿Está seguro de hacer un agregado masivo de turnos?").setPositiveButton("Si", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
                 }
             }
         });
