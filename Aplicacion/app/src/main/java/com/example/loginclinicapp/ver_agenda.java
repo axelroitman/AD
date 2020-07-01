@@ -84,6 +84,11 @@ public class ver_agenda extends AppCompatActivity {
                 limSup.add(Calendar.MONTH,+2);
                 DatePicker datePicker = dp.getDatePicker();
                 datePicker.setMaxDate(limSup.getTimeInMillis());
+                String fechaTxt = txtfecha.getText().toString();
+
+                int mes = Integer.parseInt(fechaTxt.substring(3, 5)) - 1;
+                datePicker.updateDate(Integer.parseInt(fechaTxt.substring(6)), mes, Integer.parseInt(fechaTxt.substring(0, 2)));
+
                 dp.show();
 
                 dp.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
@@ -156,8 +161,11 @@ public class ver_agenda extends AppCompatActivity {
         Log.d("agenda", "ENTRO AL METODO");
 
         Log.d("agenda",""+matricula);
-        Call<List<Turno>> call = RetrofitClient.getInstance().getTurnosMedicoPorDia().getTurnosMedicoPorDia(matricula, fechaHoy);
 
+        SimpleDateFormat formatoCall = new SimpleDateFormat("MM/dd/yyyy");
+        String fechaCallString = formatoCall.format(fechaHoy);
+
+        Call<List<Turno>> call = RetrofitClient.getInstance().getTurnosMedicoPorDia().getTurnosMedicoPorDia(matricula, fechaCallString);
         Log.d("agenda", ""+call.request());
         call.enqueue(new Callback<List<Turno>>() {
             @Override

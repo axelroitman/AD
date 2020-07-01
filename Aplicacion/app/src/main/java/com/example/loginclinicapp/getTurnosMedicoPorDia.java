@@ -13,7 +13,7 @@ public interface getTurnosMedicoPorDia {
     @GET(API_ROUTE)
     Call<List<Turno>> getTurnosMedicoPorDia(
             @Query("idMedico") String idMedico,
-            @Query("fecha") Date fecha
+            @Query("fecha") String fecha
     );
 
 }
