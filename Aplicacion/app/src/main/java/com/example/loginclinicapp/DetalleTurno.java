@@ -103,15 +103,13 @@ public class DetalleTurno extends AppCompatActivity {
                                 btnModificarTurno.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        //Llama a la activity de modificar
-
-                                        /*Intent i = new Intent(inicio_paciente.this , DetalleTurno.class);
+                                        Intent i = new Intent(DetalleTurno.this , modificar_turno.class);
                                         i.putExtra("idUsr", idUsr);
                                         i.putExtra("idPaciente",idPaciente);
                                         i.putExtra("matricula",  matricula);
                                         i.putExtra("nombre",nombre);
                                         i.putExtra("idTurno", idTurno);
-                                        startActivity(i);*/
+                                        startActivity(i);
                                     }
                                 });
                             }
