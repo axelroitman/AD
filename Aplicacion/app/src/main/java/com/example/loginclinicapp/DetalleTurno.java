@@ -173,19 +173,19 @@ public class DetalleTurno extends AppCompatActivity {
                             txtEstado.setText("Estado: Disponible");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad().equals("Programado")) {
+                        else if(response.body().getDisponibilidad().equals("Programado")) {
                             txtEstado.setText("Estado: Programado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad().equals("AConfirmar")) {
+                        else if(response.body().getDisponibilidad().equals("AConfirmar")) {
                             txtEstado.setText("Estado: A Confirmar");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad().equals("Confirmado")) {
+                        else if(response.body().getDisponibilidad().equals("Confirmado")) {
                             txtEstado.setText("Estado: Confirmado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
-                        if(response.body().getDisponibilidad().equals("Terminado")) {
+                        else if(response.body().getDisponibilidad().equals("Terminado")) {
                             txtEstado.setText("Estado: Terminado");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
@@ -232,7 +232,7 @@ public class DetalleTurno extends AppCompatActivity {
                             txtAsistencia.setText("Asistencia: No asiste");
                             imgAsistencia.setImageResource(R.drawable.asistenciano);
                         }
-                        if(response.body().getAsistencia().equals("Asiste")) {
+                        else if(response.body().getAsistencia().equals("Asiste")) {
                             txtAsistencia.setText("Asistencia: Asiste");
                             imgAsistencia.setImageResource(R.drawable.asistenciaok);
                         }

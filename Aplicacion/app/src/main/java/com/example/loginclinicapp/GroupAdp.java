@@ -127,7 +127,7 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         if(turnos.get(i).getAsistencia().equals("NoAsiste")) {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciano);
         }
-        if(turnos.get(i).getAsistencia().equals("Asiste")) {
+        else if(turnos.get(i).getAsistencia().equals("Asiste")) {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciaok);
         }
         else {
@@ -137,16 +137,16 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         if(turnos.get(i).getDisponibilidad().equals("Disponible")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad().equals("Programado")) {
+        else if(turnos.get(i).getDisponibilidad().equals("Programado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad().equals("AConfirmar")) {
+        else if(turnos.get(i).getDisponibilidad().equals("AConfirmar")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad().equals("Confirmado")) {
+        else if(turnos.get(i).getDisponibilidad().equals("Confirmado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        if(turnos.get(i).getDisponibilidad().equals("Terminado")) {
+        else if(turnos.get(i).getDisponibilidad().equals("Terminado")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
         else{
