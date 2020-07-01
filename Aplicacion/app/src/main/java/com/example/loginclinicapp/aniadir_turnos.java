@@ -429,7 +429,7 @@ public class aniadir_turnos extends AppCompatActivity {
                         }
                     };
 
-                    builder2.setMessage("¿Está seguro de hacer un agregado masivo de turnos?").setPositiveButton("Si", dialogClickListener)
+                    builder2.setMessage("¿Está seguro de hacer un agregado masivo de turnos?").setPositiveButton("Sí", dialogClickListener)
                             .setNegativeButton("No", dialogClickListener).show();
                 }
             }

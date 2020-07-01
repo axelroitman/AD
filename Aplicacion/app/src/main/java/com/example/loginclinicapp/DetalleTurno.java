@@ -124,7 +124,7 @@ public class DetalleTurno extends AppCompatActivity {
                                             }
                                         };
 
-                                        builder.setMessage("¿Está seguro de que quiere eliminar el turno?").setPositiveButton("Si", dialogClickListener)
+                                        builder.setMessage("¿Está seguro de que quiere eliminar el turno?").setPositiveButton("Sí", dialogClickListener)
                                                 .setNegativeButton("No", dialogClickListener).show();
 
                                     }
