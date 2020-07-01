@@ -207,7 +207,7 @@ public class pedir_turno extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(spespecialidades.getSelectedItem().toString() == "Seleccione una especialidad")
+                if(spespecialidades.getSelectedItem().toString().equals("Seleccione una especialidad"))
                 {
                     builder.setTitle("Error");
                     builder.setMessage("Debe seleccionar una especialidad antes de iniciar su búsqueda.");

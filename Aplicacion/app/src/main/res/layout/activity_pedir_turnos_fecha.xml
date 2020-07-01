@@ -29,7 +29,7 @@
         android:layout_marginTop="23dp"
         app:srcCompat="@drawable/applogo" />
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/turnosDeEspecialidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -87,546 +87,26 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="189dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="1dp">
+        android:layout_marginBottom="1dp" >
 
-        <!---turno1 -->
-        <RelativeLayout
-
-            android:id="@+id/caja0"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCards"
+            android:layout_width="match_parent"
+            android:layout_height="541dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="401dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="3dp"
+            android:visibility="visible">
 
-            <RelativeLayout
-                android:id="@+id/caja0fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="05"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiasem0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="39dp"
-                    android:layout_marginEnd="14dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Martes"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico0"
-                android:layout_width="141dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja0fecha"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="center_horizontal"
-                android:text="10 Turnos disponibles" />
-        </RelativeLayout>
-
-        <!---turno2 -->
-        <RelativeLayout
-            android:id="@+id/caja1"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="25dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
-
-            <RelativeLayout
-                android:id="@+id/caja1fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="08"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiasem1"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="39dp"
-                    android:layout_marginEnd="7dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Viernes"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia1"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico1"
-                android:layout_width="139dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja1fecha"
-                android:fontFamily="@font/roboto_light"
-                android:text="5 Turnos disponibles"
-                android:gravity="center_horizontal"/>
-        </RelativeLayout>
-
-        <!---turno3 -->
-        <RelativeLayout
-            android:id="@+id/caja3"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="177dp"
-            android:layout_marginEnd="25dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
-
-            <RelativeLayout
-                android:id="@+id/caja3fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="11"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiasem3"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="3dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Lunes"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia3"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico3"
-                android:layout_width="139dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja3fecha"
-                android:fontFamily="@font/roboto_light"
-                android:text="3 Turnos disponibles"
-                android:gravity="center_horizontal"/>
-        </RelativeLayout>
-
-        <!---turno4 -->
-        <RelativeLayout
-            android:id="@+id/caja4"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="256dp"
-            android:layout_marginEnd="25dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
-
-            <RelativeLayout
-                android:id="@+id/caja4fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="14"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiames4"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Jueves"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia4"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico4"
-                android:layout_width="139dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja4fecha"
-                android:fontFamily="@font/roboto_light"
-                android:text="20 Turnos disponibles"
-                android:gravity="center_horizontal"/>
-        </RelativeLayout>
-
-        <!---turno5 -->
-        <RelativeLayout
-            android:id="@+id/caja5"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="337dp"
-            android:layout_marginEnd="25dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
-
-            <RelativeLayout
-                android:id="@+id/caja5fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="15"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiasem5"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginEnd="7dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Viernes"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia5"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico5"
-                android:layout_width="139dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja5fecha"
-                android:fontFamily="@font/roboto_light"
-                android:text="5 Turnos disponibles"
-                android:gravity="center_horizontal"/>
-        </RelativeLayout>
-
-        <!---turno6 -->
-        <RelativeLayout
-            android:id="@+id/caja6"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="410dp"
-            android:layout_marginEnd="25dp"
-            android:background="#FFFFFF"
-            android:gravity="center">
-            <RelativeLayout
-                android:id="@+id/caja6fecha"
-                android:layout_width="62dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#498EB8"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtdia6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="-2dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="16"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txtdiasem6"
-                    android:layout_width="37dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginEnd="6dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="Sábado"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/txtmes6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtdia6"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_condensed_bold_italic"
-                    android:text="MAY."
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtmedico6"
-                android:layout_width="139dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/caja6fecha"
-                android:fontFamily="@font/roboto_light"
-                android:text="4 Turnos disponibles"
-                android:gravity="center_horizontal"/>
-        </RelativeLayout>
+        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/layoutSinTurnos"
         android:layout_width="360dp"
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
@@ -637,12 +117,13 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="10dp"
         android:foregroundGravity="center"
+        android:visibility="gone"
         android:gravity="center_horizontal">
 
 
         <!--botones que se usan cuando NO hay turnos dispoibles-->
         <Button
-            android:id="@+id/btnvolver1"
+            android:id="@+id/btnVolverNoTieneTurnos"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -653,14 +134,14 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/btnlistaespera"
+            android:id="@+id/btnAListaDeEsperaSinTurnos"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/roboto_light"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/btnvolver1"
+            android:layout_toRightOf="@id/btnVolverNoTieneTurnos"
             android:layout_marginTop="25dp"
             android:textColor="#FFFFFF"
             android:visibility="gone"
