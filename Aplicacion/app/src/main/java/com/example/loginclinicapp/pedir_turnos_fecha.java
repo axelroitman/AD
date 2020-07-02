@@ -25,7 +25,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
     Button btnvolver1, btnlistaespera;
     RecyclerView recyclerCards;
     TextView turnosDeEspecialidad;
-    RelativeLayout layoutSinTurnos, mensajeNotieneTurnos;
+    RelativeLayout layoutSinTurnos, mensajeNotieneTurnos,sinTurnos;
     GroupAdpPedirTurnosFecha gptf;
 
     @Override
@@ -60,22 +60,26 @@ public class pedir_turnos_fecha extends AppCompatActivity {
             }
         });
 
-        if(matricula == null) {
+        if(matriculaSeleccionado == null) {
             turnosDeEspecialidad.setText("Turnos disponibles de " + nombreEsp + ":");
             Call<TreeMap<Date, Integer>> turnos = RetrofitClient.getInstance().getGetCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEsp);
             turnos.enqueue(new Callback<TreeMap<Date, Integer>>() {
                 @Override
                 public void onResponse(Call<TreeMap<Date, Integer>> call, Response<TreeMap<Date, Integer>> response) {
                     if(response.code() == 200){
-                        if(response.body() != null){
-                            recyclerCards.setVisibility(View.VISIBLE);
-                            completarCards(response.body(), idUsr,idPaciente,matricula,nombre,idEsp,matriculaSeleccionado,nombreEsp, nombreMedico);
+                        if(response.body() != null) {
+                            if (!response.body().isEmpty()) {
+                                recyclerCards.setVisibility(View.VISIBLE);
+                                completarCards(response.body(), idUsr, idPaciente, matricula, nombre, idEsp, matriculaSeleccionado, nombreEsp, nombreMedico);
+                            }
+                            else{
+                                layoutSinTurnos.setVisibility(View.VISIBLE);
+                                btnvolver1.setVisibility(View.VISIBLE);
+                                btnlistaespera.setVisibility(View.VISIBLE);
+                                mensajeNotieneTurnos.setVisibility(View.VISIBLE);
+                            }
                         }
-                        else{
-                            layoutSinTurnos.setVisibility(View.VISIBLE);
-                            btnvolver1.setVisibility(View.VISIBLE);
-                            btnlistaespera.setVisibility(View.VISIBLE);
-                        }
+
                     }
 
                 }
@@ -92,7 +96,20 @@ public class pedir_turnos_fecha extends AppCompatActivity {
             turnos.enqueue(new Callback<TreeMap<Date, Integer>>() {
                 @Override
                 public void onResponse(Call<TreeMap<Date, Integer>> call, Response<TreeMap<Date, Integer>> response) {
-
+                    if(response.code() == 200){
+                        if(response.body() != null) {
+                            if (!response.body().isEmpty()) {
+                                recyclerCards.setVisibility(View.VISIBLE);
+                                completarCards(response.body(), idUsr, idPaciente, matricula, nombre, idEsp, matriculaSeleccionado, nombreEsp, nombreMedico);
+                            }
+                            else{
+                                layoutSinTurnos.setVisibility(View.VISIBLE);
+                                btnvolver1.setVisibility(View.VISIBLE);
+                                btnlistaespera.setVisibility(View.VISIBLE);
+                                mensajeNotieneTurnos.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    }
                 }
 
                 @Override
@@ -102,21 +119,6 @@ public class pedir_turnos_fecha extends AppCompatActivity {
             });
         }
 
-        btnvolver1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pedir_turnos_fecha.this, pedir_turno.class);
-                startActivity(i);
-            }
-        });
-
-        btnlistaespera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent i = new Intent(pedir_turnos_fecha.this, pedir_turno.class);
-                //startActivity(i);
-            }
-        });
 
     }
 
@@ -133,6 +135,6 @@ public class pedir_turnos_fecha extends AppCompatActivity {
         btnlistaespera = (Button) findViewById(R.id.btnAListaDeEsperaSinTurnos);
         layoutSinTurnos = (RelativeLayout) findViewById(R.id.layoutSinTurnos);
         recyclerCards = (RecyclerView) findViewById(R.id.recyclerCards);
-        mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.mensajeNotieneTurnos);
+        mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.sinTurnos);
     }
 }
