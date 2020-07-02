@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
+    android:background="#E8E5E5">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="#E8E5E5"
+            android:layout_height="wrap_content">
+
+            <!--- PRIMER TURNO -->
+            <RelativeLayout
+                android:id="@+id/itemTurno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <!---contenedor fecha-->
+
+                <!---contenedor especialidad-->
+
+                <RelativeLayout
+                    android:layout_width="94dp"
+                    android:layout_height="102dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="302dp"
+                    android:background="#498EB8">
+
+                    <TextView
+                        android:id="@+id/txtDiaTurno1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="@font/roboto_condensed_bold_italic"
+                        android:text="04"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40dp" />
+
+                    <TextView
+                        android:id="@+id/txtDiaSemanaTurno1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="65dp"
+                        android:fontFamily="@font/roboto_condensed_bold_italic"
+                        android:text="Martes"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/txtMesTurno1"
+                        android:layout_width="86dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="37dp"
+                        android:fontFamily="@font/roboto_condensed_bold_italic"
+                        android:text="MAY."
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="25dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/infoTurnoMedico"
+                    android:layout_width="302dp"
+                    android:layout_height="102dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="#BCFFFFFF">
+
+                    <TextView
+                        android:id="@+id/cantidadTurnosDisponibles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="74dp"
+                        android:layout_marginTop="39dp"
+                        android:layout_marginEnd="57dp"
+                        android:layout_marginBottom="34dp"
+                        android:gravity="center"
+                        android:text="10 turnos disponibles"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <!---contenedor estado-->
+
+                <!---contenedor asistencia-->
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

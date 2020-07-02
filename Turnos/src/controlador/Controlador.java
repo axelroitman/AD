@@ -7,8 +7,10 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import daos.EspecialidadDAO;
@@ -690,8 +692,8 @@ public class Controlador {
 		return turnosPorEspecialidadyMedico;
 	}
 
-	public Map<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
-		Map<Date,Integer> resultado = new HashMap<Date,Integer>();
+	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+		Map<Date,Integer> mapTemporal = new HashMap<Date,Integer>();
 		
 		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstado(idEspecialidad, 1);
 		for(Turno t : turnos) {
@@ -704,22 +706,24 @@ public class Controlador {
 			
 			fechaSinHora = c.getTime();
 
-			if(!resultado.containsKey(fechaSinHora))
+			if(!mapTemporal.containsKey(fechaSinHora))
 			{
-				resultado.put(fechaSinHora, 1);	
+				mapTemporal.put(fechaSinHora, 1);	
 			}
 			else 
 			{
-				int disponibles = resultado.get(fechaSinHora) + 1;
-				resultado.put(fechaSinHora, disponibles);
+				int disponibles = mapTemporal.get(fechaSinHora) + 1;
+				mapTemporal.put(fechaSinHora, disponibles);
 			}			
 		}
+		TreeMap<Date,Integer> resultado = new TreeMap<Date,Integer>(mapTemporal);
+
 		
 		return resultado;
 	}
 
-	public Map<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
-		Map<Date,Integer> resultado = new HashMap<Date,Integer>();
+	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
+		Map<Date,Integer> mapTemporal = new HashMap<Date,Integer>();
 		
 		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadMedicoYEstado(idEspecialidad, matricula, 1);
 		for(Turno t : turnos) {
@@ -732,16 +736,18 @@ public class Controlador {
 			
 			fechaSinHora = c.getTime();
 
-			if(!resultado.containsKey(fechaSinHora))
+			if(!mapTemporal.containsKey(fechaSinHora))
 			{
-				resultado.put(fechaSinHora, 1);	
+				mapTemporal.put(fechaSinHora, 1);	
 			}
 			else 
 			{
-				int disponibles = resultado.get(fechaSinHora) + 1;
-				resultado.put(fechaSinHora, disponibles);
+				int disponibles = mapTemporal.get(fechaSinHora) + 1;
+				mapTemporal.put(fechaSinHora, disponibles);
 			}			
 		}
+		TreeMap<Date,Integer> resultado = new TreeMap<Date,Integer>(mapTemporal);
+
 		
 		return resultado;
 	}

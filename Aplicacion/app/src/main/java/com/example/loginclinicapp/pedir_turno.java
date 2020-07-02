@@ -36,7 +36,7 @@ public class pedir_turno extends AppCompatActivity {
     ArrayList<String> espNombres = new ArrayList<String>();
     ArrayList<String> medNombres = new ArrayList<String>();
     int idEsp;
-    String matriculaSeleccionado;
+    String matriculaSeleccionado, nombreEsp, nombreMedico;
     AlertDialog.Builder builder;
 
 
@@ -104,6 +104,7 @@ public class pedir_turno extends AppCompatActivity {
                                     txtseleccionarMedico.setVisibility(View.VISIBLE);
                                     spmedicos.setVisibility(View.VISIBLE);
                                     idEsp = espNombreyId.get(spespecialidades.getSelectedItem().toString());
+                                    nombreEsp = spespecialidades.getSelectedItem().toString();
 
                                     Call<Collection<Medico>> medicos = RetrofitClient.getInstance().getMedicoPorEspecialidadService().getMedicosPorEspecialidad(idEsp);
                                     medicos.enqueue(new Callback<Collection<Medico>>() {
@@ -160,6 +161,7 @@ public class pedir_turno extends AppCompatActivity {
                                                         @Override
                                                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                                             matriculaSeleccionado = medNombreyMatricula.get(spmedicos.getSelectedItem().toString());
+                                                            nombreMedico = spmedicos.getSelectedItem().toString();
                                                         }
 
                                                         @Override
@@ -253,8 +255,9 @@ public class pedir_turno extends AppCompatActivity {
                                         i.putExtra("matricula", matricula);
                                         i.putExtra("nombre", nombre);
                                         i.putExtra("idEspecialidad", idEsp); //ID ESPECIALIDAD SELECCIONADA
+                                        i.putExtra("nombreEsp", nombreEsp);
                                         i.putExtra("matriculaSeleccionado", matriculaSeleccionado); //MEDICO SELECCIONADO, O NULL SI NO SELECCIONÓ (IF)
-
+                                        i.putExtra("nombreMedico", nombreMedico);
                                         startActivity(i);
 
                                     }
