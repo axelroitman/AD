@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,8 +32,8 @@ public class pedir_turno extends AppCompatActivity {
     Button btnbuscar, btncancelar;
     Spinner spmedicos, spespecialidades;
     TextView txtseleccionarEspecialidad, txtseleccionarMedico;
-    Map<String, Integer> espNombreyId = new HashMap<String, Integer>();
-    Map<String, String> medNombreyMatricula = new HashMap<String, String>();
+    Map<String, Integer> espNombreyId = new TreeMap<String, Integer>();
+    Map<String, String> medNombreyMatricula = new TreeMap<String, String>();
     ArrayList<String> espNombres = new ArrayList<String>();
     ArrayList<String> medNombres = new ArrayList<String>();
     int idEsp;
