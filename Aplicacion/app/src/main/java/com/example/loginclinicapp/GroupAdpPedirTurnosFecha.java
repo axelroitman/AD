@@ -73,7 +73,7 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {                     //LEP
-        View view = layoutInflater.inflate(R.layout.itemturnofechas, viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.itemturnoFechas, viewGroup,false);
         return new GroupAdpPedirTurnosFecha.ViewHolder(view);
     }
 
