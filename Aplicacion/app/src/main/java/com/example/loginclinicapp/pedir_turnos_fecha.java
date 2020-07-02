@@ -69,7 +69,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
                     if(response.code() == 200){
                         if(response.body() != null){
                             recyclerCards.setVisibility(View.VISIBLE);
-                            completarCards(response.body());
+                            completarCards(response.body(), idUsr,idPaciente,matricula,nombre,idEsp,matriculaSeleccionado,nombreEsp, nombreMedico);
                         }
                         else{
                             layoutSinTurnos.setVisibility(View.VISIBLE);
@@ -120,10 +120,10 @@ public class pedir_turnos_fecha extends AppCompatActivity {
 
     }
 
-    private void completarCards(TreeMap<Date, Integer> turnos){
+    private void completarCards(TreeMap<Date, Integer> turnos,int idUsr,int idPaciente,String matricula, String nombre, int idEsp, String matriculaSeleccionado, String nombreEsp, String nombreMedico){
 
         recyclerCards.setLayoutManager(new LinearLayoutManager(this));
-        gptf = new GroupAdpPedirTurnosFecha(this, turnos);
+        gptf = new GroupAdpPedirTurnosFecha(this, turnos,idUsr,idPaciente,matricula,nombre,idEsp,matriculaSeleccionado,nombreEsp, nombreMedico);
         recyclerCards.setAdapter(gptf);
     }
 

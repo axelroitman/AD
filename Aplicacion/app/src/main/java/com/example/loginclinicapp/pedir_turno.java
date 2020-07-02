@@ -126,42 +126,20 @@ public class pedir_turno extends AppCompatActivity {
                                                     }
                                                     medNombres.add("Seleccione un médico");
                                                     medNombres.addAll(medNombreyMatricula.keySet());
-                                                    ArrayAdapter<String> adapterMedicos = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item,medNombres){
-                                                        @Override
-                                                        public boolean isEnabled(int position){
-                                                            if(position == 0)
-                                                            {
-                                                                // Disable the second item from Spinner
-                                                                return false;
-                                                            }
-                                                            else
-                                                            {
-                                                                return true;
-                                                            }
-                                                        }
-
-                                                        @Override
-                                                        public View getDropDownView(int position, View convertView,
-                                                                                    ViewGroup parent) {
-                                                            View view = super.getDropDownView(position, convertView, parent);
-                                                            TextView tv = (TextView) view;
-                                                            if(position == 0) {
-                                                                // Set the disable item text color
-                                                                tv.setTextColor(Color.GRAY);
-                                                            }
-                                                            else {
-                                                                tv.setTextColor(Color.BLACK);
-                                                            }
-                                                            return view;
-                                                        }
-                                                    };
+                                                    ArrayAdapter<String> adapterMedicos = new ArrayAdapter<String>(pedir_turno.this,android.R.layout.simple_spinner_item,medNombres);
                                                     adapterMedicos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                                     spmedicos.setAdapter(adapterMedicos);
                                                     spmedicos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                                         @Override
                                                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                                            matriculaSeleccionado = medNombreyMatricula.get(spmedicos.getSelectedItem().toString());
-                                                            nombreMedico = spmedicos.getSelectedItem().toString();
+                                                            if(position != 0) {
+                                                                matriculaSeleccionado = medNombreyMatricula.get(spmedicos.getSelectedItem().toString());
+                                                                nombreMedico = spmedicos.getSelectedItem().toString();
+                                                            }
+                                                            else{
+                                                                matriculaSeleccionado = null;
+                                                                nombreMedico = null;
+                                                            }
                                                         }
 
                                                         @Override

@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -39,9 +42,17 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
     String matriculaSeleccionado;
 
     //constructor
-    GroupAdpPedirTurnosFecha(Context context, TreeMap<Date, Integer> turnos){
+    GroupAdpPedirTurnosFecha(Context context, TreeMap<Date, Integer> turnos,int idUsr,int idPaciente,String matricula, String nombre,int idEsp,String matriculaSeleccionado,String nombreEsp, String nombreMedico){
         this.layoutInflater = layoutInflater.from(context);
         this.turnos = turnos;
+        this.idUsr = idUsr;
+        this.idPaciente = idPaciente;
+        this.matricula = matricula;
+        this.nombre = nombre;
+        this.idEsp = idEsp;
+        this.matriculaSeleccionado = matriculaSeleccionado;
+        this.nombreEsp = nombreEsp;
+        this.nombreMedico = nombreMedico;
     }
 
 
@@ -71,6 +82,7 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         fechas.addAll(turnos.keySet());
         cant.addAll(turnos.values());
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {                                               //LEP
@@ -88,13 +100,11 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
             }
         });
 
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime fecha = LocalDateTime.parse(fechas.get(i).toString(), formato);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fecha = LocalDate.parse(df.format(fechas.get(i)), formato);
         String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
         String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
 
-
-        String horario = fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.";
 
         String dia = ""+fecha.getDayOfMonth();
         viewHolder.txtDiaTurno1.setText(dia);
