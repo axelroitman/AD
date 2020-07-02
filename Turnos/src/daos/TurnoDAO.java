@@ -1,5 +1,6 @@
 package daos;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -293,5 +294,40 @@ public class TurnoDAO {
 			resultado.add(toNegocio(tur));
 		return resultado;		
 	}
+	
+	public List<Turno> findByEspecialidadYEstadoPosteriores(int idEspecialidad, int estado) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.disponibilidad = ? and t.fecha >= ? order by t.fecha")
+				.setInteger(0,idEspecialidad)
+				.setInteger(1, estado)
+				.setTimestamp(2, new Date())
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;		
+	}
+	
+	public Collection<Turno> findByEspecialidadMedicoYEstadoPosteriores(int idEspecialidad, String matricula, int estado) {
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.especialidad = ? and t.disponibilidad = ? and t.fecha >= ? order by t.fecha")
+				.setString(0,matricula)
+				.setInteger(1,idEspecialidad)
+				.setInteger(2, estado)
+				.setTimestamp(3, new Date())
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+
+
 
 }

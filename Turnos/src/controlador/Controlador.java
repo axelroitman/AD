@@ -695,7 +695,7 @@ public class Controlador {
 	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
 		Map<Date,Integer> mapTemporal = new HashMap<Date,Integer>();
 		
-		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstado(idEspecialidad, 1);
+		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstadoPosteriores(idEspecialidad, 1);
 		for(Turno t : turnos) {
 			Date fechaSinHora = new Date();
 			Calendar c = Calendar.getInstance(); 
@@ -725,7 +725,7 @@ public class Controlador {
 	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(int idEspecialidad, String matricula){
 		Map<Date,Integer> mapTemporal = new HashMap<Date,Integer>();
 		
-		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadMedicoYEstado(idEspecialidad, matricula, 1);
+		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadMedicoYEstadoPosteriores(idEspecialidad, matricula, 1);
 		for(Turno t : turnos) {
 			Date fechaSinHora = new Date();
 			Calendar c = Calendar.getInstance(); 
