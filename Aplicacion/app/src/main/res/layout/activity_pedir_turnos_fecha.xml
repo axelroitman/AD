@@ -108,7 +108,7 @@
     <RelativeLayout
         android:id="@+id/layoutSinTurnos"
         android:layout_width="wrap_content"
-        android:layout_height="94dp"
+        android:layout_height="55dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -125,22 +125,21 @@
         <Button
             android:id="@+id/btnVolverNoTieneTurnos"
             android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_height="match_parent"
             android:background="#0C084C"
             android:fontFamily="@font/roboto_light"
+            android:layout_alignBottom="@+id/btnAListaDeEsperaSinTurnos"
             android:text="Volver"
             android:textColor="#FFFFFF"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btnAListaDeEsperaSinTurnos"
             android:layout_width="167dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
             android:layout_toRightOf="@id/btnVolverNoTieneTurnos"
             android:background="#0C084C"
             android:fontFamily="@font/roboto_light"

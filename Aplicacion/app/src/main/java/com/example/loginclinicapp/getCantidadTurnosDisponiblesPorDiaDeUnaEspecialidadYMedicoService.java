@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedicoService {
 
-    String API_ROUTE = "/apirest/getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad";
+    String API_ROUTE = "/apirest/getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico";
     @GET(API_ROUTE)
     Call<TreeMap<Date,Integer>> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedico(
             @Query("idEspecialidad") int idEspecialidad,
