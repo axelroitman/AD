@@ -14,11 +14,12 @@
         android:layout_alignParentBottom="true"
         android:layout_height="match_parent">
 
-        <include
+       <include
             layout="@layout/app_bar_menu_desplegable"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <!---Logo e imagen -->
+
         <TextView
             android:id="@+id/txtsolicitarTurno"
             android:layout_width="wrap_content"
@@ -72,10 +73,12 @@
             android:id="@+id/contenedorTurnos"
             android:layout_width="409dp"
             android:layout_height="481dp"
+            android:layout_below="@+id/turnosDeEspecialidad"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="-1dp"
             android:layout_marginBottom="-1dp"
             android:visibility="visible">
@@ -99,7 +102,7 @@
 
 
     </RelativeLayout>
-   <com.google.android.material.navigation.NavigationView
+  <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
