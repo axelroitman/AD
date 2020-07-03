@@ -128,6 +128,29 @@ public class TurnoDAO {
 			resultado.add(toNegocio(tur));
 		return resultado;
 	}
+	
+	public List<Turno> findByEspecialidadYDia(int idEspecialidad, Date fecha) {
+		Date fechaFin = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(fecha); 
+		c.add(Calendar.DATE, 1);
+		fechaFin = c.getTime();
+
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.fecha >= ? and t.fecha < ? ORDER BY t.fecha")
+				.setInteger(0, idEspecialidad)
+				.setDate(1, fecha)
+				.setDate(2, fechaFin)				
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+	
 	public List<Turno> findByPacienteYEstado(int idPaciente, int estado) {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();

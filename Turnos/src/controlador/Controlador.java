@@ -1161,6 +1161,12 @@ public class Controlador {
 		return resultado;
 	}
 
+	public ArrayList<TurnoView> getTurnosEspecialidadPorDia(int idEspecialidad, Date fecha){
+		
+				
+	}
+	
+	
 	private Usuario buscarUsuario(String username) throws UsuarioException { 
 		Usuario aBuscar = null;
 		aBuscar = UsuarioDAO.getInstancia().findByNombreDeUsuario(username);

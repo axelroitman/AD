@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".pedir_turno_turnos"
     android:background="#E8E5E5">
-    <include
+   <!-- <include
         layout="@layout/nav_activity_inicio_usuario"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
+-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -38,230 +38,60 @@
 
 
         <!--- dia, mes y texto-->
+
         <TextView
-            android:id="@+id/texto"
+            android:id="@+id/turnosDeEspecialidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="191dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="194dp"
             android:fontFamily="@font/roboto_light"
             android:text="Turnos disponibles de Nefrología:"
             android:textSize="20dp" />
-        <TextView
-            android:id="@+id/txtmes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="154dp"
-            android:layout_marginEnd="311dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="MAY."
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="25dp" />
+
         <TextView
             android:id="@+id/txtdia"
-            android:layout_width="wrap_content"
+            android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="154dp"
-            android:layout_marginEnd="373dp"
+            android:layout_marginTop="146dp"
+            android:layout_marginEnd="291dp"
             android:fontFamily="@font/roboto_light"
-            android:text="11"
+            android:text="11 MAY."
             android:textColor="@android:color/holo_blue_light"
             android:textSize="25dp" />
 
-        <!--- turnos disponibles -->
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="414dp"
+            android:id="@+id/contenedorTurnos"
+            android:layout_width="409dp"
+            android:layout_height="481dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="2dp"
-            android:layout_marginEnd="-3dp"
-            android:layout_marginBottom="67dp">
+            android:layout_marginEnd="-1dp"
+            android:layout_marginBottom="-1dp">
 
-            <!---primer turno -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="101dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cardsTurnos"
+                android:layout_width="match_parent"
+                android:layout_height="480dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="19dp"
-                android:layout_marginEnd="17dp"
-                android:background="#BCFFFFFF"
-                android:visibility="visible">
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/txtnombreMedico"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="96dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginBottom="41dp"
-                    android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Vanesa Teller"
-                    android:textSize="18dp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="87dp"
-                android:layout_height="101dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="19dp"
-                android:layout_marginEnd="308dp"
-                android:background="#498EB8"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/txthora1"
-                    android:layout_width="74dp"
-                    android:layout_height="31dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="34dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:text="10:30hs"
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp" />
-            </RelativeLayout>
-
-            <!---segundo turno -->
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="101dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="144dp"
-                android:layout_marginEnd="17dp"
-                android:background="#BCFFFFFF"
-                android:foregroundGravity="center"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/txtMedico2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewHorario"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="94dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginBottom="39dp"
-                    android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Mariana Panza"
-                    android:textSize="18dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="87dp"
-                android:layout_height="101dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="143dp"
-                android:layout_marginEnd="17dp"
-                android:background="#498EB8"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/txtHora2"
-                    android:layout_width="74dp"
-                    android:layout_height="31dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="34dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:text="15:20hs"
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp" />
-            </RelativeLayout>
-
-            <!---tercer turno -->
-            <RelativeLayout
-                android:layout_width="87dp"
-                android:layout_height="101dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="273dp"
-                android:layout_marginEnd="17dp"
-                android:background="#498EB8"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/txthora3"
-                    android:layout_width="74dp"
-                    android:layout_height="31dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="34dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:text="13:10hs"
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="101dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:layout_centerHorizontal="false"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="274dp"
-                android:layout_marginEnd="17dp"
-                android:background="#BCFFFFFF"
-                android:foregroundGravity="center_vertical|center|center_horizontal"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/txtMedico3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="96dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginBottom="41dp"
-                    android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Vanesa Teller"
-                    android:textSize="18dp" />
-            </RelativeLayout>
+            </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
+
+        />
     </RelativeLayout>
 </RelativeLayout>
