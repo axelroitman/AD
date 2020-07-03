@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class pedir_turno_turnos extends AppCompatActivity {
     private String mesEnPalabras;
     private int nroDia;
     private LocalDate fecha;
+    private String fechaString;
     private GroupAdpPedirTurnoTurnosEsp gptte;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -50,10 +52,14 @@ public class pedir_turno_turnos extends AppCompatActivity {
         mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
         mesEnPalabras = mesEnPalabras.substring(0, 3);
         txtDia.setText(nroDia + " " + mesEnPalabras.toUpperCase() + ".");
+        fechaString = fecha.toString().replace("-","/");
 
         if (matriculaSeleccionado == null) {
             turnosDeEspecialidad.setText("Turnos disponibles de " + nombreEsp + ":");
-            Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadYMedicoPorDiaService().getTurnosEspecialidadYMedicoPorDiaService(idEsp, fecha.toString(), matriculaSeleccionado);
+            Log.d("turnoss", "Fecha: " + fecha.toString());
+            Log.d("turnoss","IdEsp: " + idEsp);
+            Log.d("turnoss", "FechaComoString: " + fechaString);
+            Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadPorDiaService().getTurnosEspecialidadPorDiaService(idEsp,fechaString);
             turnos.enqueue(new Callback<List<Turno>>() {
                 @Override
                 public void onResponse(Call<List<Turno>> call, Response<List<Turno>> response) {
@@ -75,7 +81,7 @@ public class pedir_turno_turnos extends AppCompatActivity {
         }
         else{
             turnosDeEspecialidad.setText("Turnos disponibles de " + nombreEsp + " de " + nombreMedico + ":");
-            Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadPorDiaService().getTurnosEspecialidadPorDiaService(idEsp, fecha.toString());
+            Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadYMedicoPorDiaService().getTurnosEspecialidadYMedicoPorDiaService(idEsp, fechaString, matriculaSeleccionado);
             turnos.enqueue(new Callback<List<Turno>>() {
                 @Override
                 public void onResponse(Call<List<Turno>> call, Response<List<Turno>> response) {

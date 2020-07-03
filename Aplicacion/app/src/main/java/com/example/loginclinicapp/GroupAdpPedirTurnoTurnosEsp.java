@@ -86,7 +86,7 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
                 viewHolder.itemView.getContext().startActivity(i);
             }
         });
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
 
         idTurno = turnos.get(i).getId();
@@ -97,7 +97,12 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
 
     @Override
     public int getItemCount() {
-        return turnos.size();
+        if(turnos!=null) {
+            return turnos.size();
+        }
+        else{
+            return 0;
+        }
     }
 }
 
