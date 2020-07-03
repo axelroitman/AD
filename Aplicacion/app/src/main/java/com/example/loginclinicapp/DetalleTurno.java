@@ -140,6 +140,54 @@ public class DetalleTurno extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         //Hace la call pedir el turno
+                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which){
+                                                    case DialogInterface.BUTTON_POSITIVE:
+                                                        Call<Void> pedirTurno = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, idPaciente, 3, 2);
+                                                        pedirTurno.enqueue(new Callback<Void>() {
+                                                            @Override
+                                                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                                                if(response.code() == 201){
+                                                                    builder2.setTitle("Turno");
+                                                                    builder2.setMessage("El turno fue solicitado exitosamente. Recuerde confirmar asistencia a partir de las 12 horas previas al turno.");
+                                                                    builder2.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                            Intent i = new Intent(DetalleTurno.this, inicio_paciente.class);
+                                                                            i.putExtra("idUsr", idUsr);
+                                                                            i.putExtra("idPaciente",idPaciente);
+                                                                            i.putExtra("matricula",  matricula);
+                                                                            i.putExtra("nombre",nombre);
+                                                                            startActivity(i);
+                                                                        }
+                                                                    });
+
+                                                                    AlertDialog alert = builder2.create();
+                                                                    //Setting the title manually
+                                                                    alert.show();
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                                Log.d("cambiarEstado",":(");
+
+                                                            }
+                                                        });
+                                                        break;
+
+                                                    case DialogInterface.BUTTON_NEGATIVE:
+                                                        dialog.cancel();
+                                                        break;
+                                                }
+                                            }
+                                        };
+
+                                        builder.setMessage("¿Está seguro de que desea solicitar el turno?").setPositiveButton("Sí", dialogClickListener)
+                                                .setNegativeButton("No", dialogClickListener).show();
+
                                     }
                                 });
                             }
