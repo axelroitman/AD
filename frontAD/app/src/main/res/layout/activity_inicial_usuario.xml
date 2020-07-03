@@ -12,7 +12,34 @@
         layout="@layout/app_bar_inicial_usuario"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent">
+        <!--- logo e imagen -->
 
+        <TextView
+            android:id="@+id/nombreApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="49dp"
+            android:layout_toEndOf="@+id/logoApp"
+            android:fontFamily="@font/roboto_light"
+            android:text="ClinicApp"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/logoApp"
+            android:layout_width="74dp"
+            android:layout_height="76dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/applogo" />
+    </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -21,5 +48,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_menu_usuario"
         app:menu="@menu/activity_inicial_usuario_drawer" />
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
