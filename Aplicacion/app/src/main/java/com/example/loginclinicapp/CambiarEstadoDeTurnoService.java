@@ -12,6 +12,8 @@ public interface CambiarEstadoDeTurnoService {
             @Query("idTurno") int idTurno,
             @Query("idPaciente") Integer idPaciente,
             @Query("asistencia") Integer asistencia,
-            @Query("disponibilidad") Integer disponibilidad
+            @Query("disponibilidad") Integer disponibilidad,
+            @Query("justificacionInasistencia") String justificacionInasistencia
+
     );
 }

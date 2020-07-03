@@ -145,7 +145,7 @@ public class DetalleTurno extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 switch (which){
                                                     case DialogInterface.BUTTON_POSITIVE:
-                                                        Call<Void> pedirTurno = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, idPaciente, 3, 2);
+                                                        Call<Void> pedirTurno = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, idPaciente, 3, 2, null);
                                                         pedirTurno.enqueue(new Callback<Void>() {
                                                             @Override
                                                             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -205,7 +205,7 @@ public class DetalleTurno extends AppCompatActivity {
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     switch (which){
                                                         case DialogInterface.BUTTON_POSITIVE:
-                                                            Call<Void> eliminar = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, null, 3, 1);
+                                                            Call<Void> eliminar = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, null, 3, 1, null);
                                                             Log.d("cambiarEstado","Paso1");
                                                             eliminar.enqueue(new Callback<Void>() {
                                                                 @Override
@@ -265,7 +265,7 @@ public class DetalleTurno extends AppCompatActivity {
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     switch (which){
                                                         case DialogInterface.BUTTON_POSITIVE:
-                                                            Call<Void> pedirTurno = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, idPaciente, 1, 4);
+                                                            Call<Void> pedirTurno = RetrofitClient.getInstance().getCambiarEstadoDeTurnoService().cambiarEstadoDeTurno(idTurno, idPaciente, 1, 4, null);
                                                             pedirTurno.enqueue(new Callback<Void>() {
                                                                 @Override
                                                                 public void onResponse(Call<Void> call, Response<Void> response) {
@@ -315,13 +315,13 @@ public class DetalleTurno extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             //Abre el intent de la justificacion
-                                             /*Intent i = new Intent(inicio_paciente.this , DetalleTurno.class);
+                                            Intent i = new Intent(DetalleTurno.this , JustificacionInasistencia.class);
                                             i.putExtra("idUsr", idUsr);
                                             i.putExtra("idPaciente",idPaciente);
                                             i.putExtra("matricula",  matricula);
                                             i.putExtra("nombre",nombre);
                                             i.putExtra("idTurno", idTurno);
-                                            startActivity(i);*/
+                                            startActivity(i);
                                         }
                                     });
                                 }

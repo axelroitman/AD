@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E5E5"
+    tools:context=".JustificacionInasistencia">
+
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/txtTituloTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/logo3"
+        android:fontFamily="@font/roboto_light"
+        android:text="Turno 25 de Junio"
+        android:textSize="30dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:id="@+id/txtHoraTurno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="139dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Hora: 12:00."
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="137dp"
+            app:srcCompat="@drawable/reloj" />
+
+        <ImageView
+            android:id="@+id/imageView17"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/imageView13"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="26dp"
+            app:srcCompat="@drawable/justificacion" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHoraTurno"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="29dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="Justificación:"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="154dp"
+            android:layout_height="146dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginBottom="373dp"
+            app:srcCompat="@drawable/asistenciano" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="130dp"
+            android:layout_height="34dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="75dp"
+            android:layout_toStartOf="@+id/imageView14"
+            android:fontFamily="@font/roboto_light"
+            android:text="No Asistiré"
+            android:textSize="25dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:layout_below="@+id/textView10"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="97dp"
+            android:background="@drawable/bordeedittext"
+            android:fontFamily="@font/roboto_light"
+            android:id="@+id/inputJustificacion"
+            android:hint="Escriba aquí" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="66dp"
+            android:layout_marginBottom="29dp"
+            android:backgroundTint="#F44336"
+
+            android:fontFamily="@font/roboto_light"
+            android:text="Cancelar"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnConfirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="66dp"
+            android:layout_marginBottom="29dp"
+            android:layout_toEndOf="@+id/btnCancelar"
+            android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/roboto_light"
+            android:text="Confirmar" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="235dp"
+            android:layout_height="54dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="167dp"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="Advertencia: Esto generará gastos adicionales en su cuenta corriente."
+            android:textColor="#F6F6F6"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -25,6 +25,8 @@ import exceptions.MedicoException;
 import exceptions.PacienteException;
 import exceptions.TurnoException;
 import exceptions.UsuarioException;
+import modelo.Asistencia;
+import modelo.Disponibilidad;
 import modelo.Especialidad;
 import modelo.ItemListaDeEspera;
 import modelo.Medico;
@@ -1105,7 +1107,7 @@ public class Controlador {
 		return turnosPorEstado;
 	}
 
-	public void cambiarEstadoDeTurno(int idTurno, Integer idPaciente, Integer asistencia, Integer disponibilidad)throws TurnoException{
+	public void cambiarEstadoDeTurno(int idTurno, Integer idPaciente, Integer asistencia, Integer disponibilidad, String justificacionInasistencia)throws TurnoException{
 		Turno turno = buscarTurno(idTurno);
 		Paciente paciente = null;
 		if(idPaciente != null) {
@@ -1132,6 +1134,11 @@ public class Controlador {
 			turno.setPaciente(null);
 		}
 		
+		if(justificacionInasistencia != null) 
+		{
+			turno.setJustifInasistencia(justificacionInasistencia);
+		}
+		
 		TurnoDAO.getInstancia().update(turno);
 	}
 	
@@ -1141,15 +1148,15 @@ public class Controlador {
 		
 		List<TurnoView> proximosTurnos = getTurnosPaciente(idPaciente, true);
 		
-		int i = 0;
+		boolean tengoProximoTurno = false;
 		
 		for(TurnoView t: proximosTurnos) 
 		{
-			if(i == 0) 
+			if(!t.getAsistencia().equals(Asistencia.NoAsiste) || !t.getDisponibilidad().equals(Disponibilidad.Cancelado)) 
 			{
 				proximo = t;
+				tengoProximoTurno = true;
 			}
-			i++;
 		}
 		return proximo;
 	}

@@ -301,13 +301,13 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/cambiarEstadoDeTurno", method = RequestMethod.PUT)
-	public ResponseEntity<Void> cambiarEstadoDeTurno( @RequestParam(value="idTurno", required=true) int idTurno, @RequestParam(value="idPaciente", required=false) Integer idPaciente, @RequestParam(value="asistencia", required=false) Integer asistencia, @RequestParam(value="disponibilidad", required=false) Integer disponibilidad) {
+	public ResponseEntity<Void> cambiarEstadoDeTurno( @RequestParam(value="idTurno", required=true) int idTurno, @RequestParam(value="idPaciente", required=false) Integer idPaciente, @RequestParam(value="asistencia", required=false) Integer asistencia, @RequestParam(value="disponibilidad", required=false) Integer disponibilidad, @RequestParam(value="justificacionInasistencia", required=false) String justificacionInasistencia) {
 		//ResponseBody<json>: Aclara que el String guarda un JSON
 		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
 				
 		try {
 			
-			Controlador.getInstancia().cambiarEstadoDeTurno(idTurno, idPaciente, asistencia, disponibilidad);
+			Controlador.getInstancia().cambiarEstadoDeTurno(idTurno, idPaciente, asistencia, disponibilidad, justificacionInasistencia);
 			return new ResponseEntity<Void>(HttpStatus.CREATED);												
 		} catch (TurnoException e) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);												
