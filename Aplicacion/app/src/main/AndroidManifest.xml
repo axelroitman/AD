@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetalleTurno"></activity>
+        <activity
+            android:name=".menu_desplegable"
+            android:label="@string/title_activity_menu_desplegable"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DetalleTurno" />
         <activity
             android:name=".ver_agenda"
             android:exported="true" />
