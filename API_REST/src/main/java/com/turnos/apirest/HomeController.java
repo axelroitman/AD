@@ -388,7 +388,7 @@ public class HomeController {
 			System.out.println("Además, acá en el home también tenemos disponible para usted el idEspecialidad, que es: " + idEspecialidad);
 			List<TurnoView> turnosEsp = null;
 			try {
-				turnosEsp = Controlador.getInstancia().getTurnosEspecialidadPorDia(idEspecialidad,  new SimpleDateFormat("yyyy/MM/dd").parse(fecha));
+				turnosEsp = Controlador.getInstancia().getTurnosEspecialidadYMedicoPorDia(idEspecialidad,  new SimpleDateFormat("yyyy/MM/dd").parse(fecha), matricula);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

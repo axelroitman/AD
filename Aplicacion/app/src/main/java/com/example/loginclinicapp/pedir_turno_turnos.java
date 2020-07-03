@@ -30,6 +30,7 @@ public class pedir_turno_turnos extends AppCompatActivity {
     private LocalDate fecha;
     private String fechaString;
     private GroupAdpPedirTurnoTurnosEsp gptte;
+    private GroupAdpPedirTurnoTurnosEspYMed gptteyM;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +117,9 @@ public class pedir_turno_turnos extends AppCompatActivity {
             cardsTurnos.setAdapter(gptte);
         }
         else{
-            //Hacer otro itemturnoturnos y groupadp en el caso de que se seleccione medico
+            cardsTurnos.setLayoutManager(new LinearLayoutManager(this));
+            gptteyM = new GroupAdpPedirTurnoTurnosEspYMed(this, turnos, idUsr, idPaciente, matricula, nombre, idEsp, matriculaSeleccionado, nombreEsp, nombreMedico);
+            cardsTurnos.setAdapter(gptteyM);
         }
     }
 
