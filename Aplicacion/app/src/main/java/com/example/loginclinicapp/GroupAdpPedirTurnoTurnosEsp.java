@@ -82,6 +82,7 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {                                               //LEP
                     Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
+                    idTurno = turnos.get(viewHolder.getAdapterPosition()).getId();
                     i.putExtra("idUsr", idUsr);
                     i.putExtra("idPaciente", idPaciente);
                     i.putExtra("matricula", matricula);
