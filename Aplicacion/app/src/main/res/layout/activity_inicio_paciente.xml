@@ -10,15 +10,17 @@
         android:background="#E8E5E5"
         tools:context=".inicio_paciente">
 
-    <include
-        layout="@layout/app_bar_menu_desplegable"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="match_parent">
 
+        <include
+            layout="@layout/app_bar_menu_desplegable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/nombreApp"
