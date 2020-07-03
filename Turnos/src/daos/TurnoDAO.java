@@ -139,10 +139,35 @@ public class TurnoDAO {
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
-		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and t.fecha >= ? and t.fecha < ? ORDER BY t.fecha")
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and disponibilidad=? and t.fecha >= ? and t.fecha < ? ORDER BY t.fecha")
 				.setInteger(0, idEspecialidad)
-				.setDate(1, fecha)
-				.setDate(2, fechaFin)				
+				.setInteger(1,1)
+				.setDate(2, fecha)
+				.setDate(3, fechaFin)				
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+	
+	public List<Turno> findByEspecialidadYMedicoYDia(int idEspecialidad, Date fecha, String matricula) {
+		Date fechaFin = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(fecha); 
+		c.add(Calendar.DATE, 1);
+		fechaFin = c.getTime();
+
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.especialidad = ? and disponibilidad=? and t.fecha >= ? and t.fecha < ? and t.medico=? ORDER BY t.fecha")
+				.setInteger(0, idEspecialidad)
+				.setInteger(1,1)
+				.setDate(2, fecha)
+				.setDate(3, fechaFin)
+				.setString(4, matricula)
 				.list();
 		s.getTransaction().commit();
 		s.close();

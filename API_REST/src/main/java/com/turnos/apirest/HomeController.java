@@ -371,6 +371,17 @@ public class HomeController {
 			return mapper.writeValueAsString(turnosEsp);
 	}
 	
+	@RequestMapping(value = "/getTurnosEspecialidadYMedicoPorDia", method = RequestMethod.GET, produces = {"application/json"})
+	public @ResponseBody<json> String getTurnosEspecialidadYMedicoPorDia(@RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="fecha", required=true) @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd") Date fecha, @RequestParam(value="matricula", required=true) String matricula) throws JsonProcessingException {
+		//ResponseBody<json>: Aclara que el String guarda un JSON
+		//ObjectMapper: Es una clase de Jackson que permite convertir una colección a un JSON usando el método writeValueAsString
+
+			List<TurnoView> turnosEspMed = Controlador.getInstancia().getTurnosEspecialidadYMedicoPorDia(idEspecialidad, fecha, matricula);
+			ObjectMapper mapper = new ObjectMapper();
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+			return mapper.writeValueAsString(turnosEspMed);
+	}
+	
 	
 	@RequestMapping(value = "/getTurnosMedicoPorEspecialidad", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getTurnosMedicoPorEspecialidad(@RequestParam(value="matricula", required=true) String matricula, @RequestParam(value="idEspecialidad", required=true) int idEspecialidad, @RequestParam(value="estado", required=false) Integer estado) throws JsonProcessingException {

@@ -1162,8 +1162,23 @@ public class Controlador {
 	}
 
 	public ArrayList<TurnoView> getTurnosEspecialidadPorDia(int idEspecialidad, Date fecha){
+		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYDia(idEspecialidad, fecha);		
+		ArrayList<TurnoView> rdo = new ArrayList<TurnoView>();
 		
-				
+		for(Turno t : turnos) {
+			rdo.add(t.toView());
+		}
+		return rdo;
+	}
+	
+	public ArrayList<TurnoView> getTurnosEspecialidadYMedicoPorDia(int idEspecialidad, Date fecha, String matricula){
+		List<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYMedicoYDia(idEspecialidad, fecha, matricula);		
+		ArrayList<TurnoView> rdo = new ArrayList<TurnoView>();
+		
+		for(Turno t : turnos) {
+			rdo.add(t.toView());
+		}
+		return rdo;
 	}
 	
 	
