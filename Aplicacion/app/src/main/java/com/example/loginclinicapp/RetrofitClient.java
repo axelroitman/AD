@@ -60,6 +60,7 @@ public class RetrofitClient {
     public AgregarAListaDeEspera agregarAListaDeEspera() {return retrofit.create(AgregarAListaDeEspera.class);}
     public TurnosEspecialidadYMedicoPorDiaService getGetTurnosEspecialidadYMedicoPorDiaService() {return retrofit.create(TurnosEspecialidadYMedicoPorDiaService.class);}
     public TurnosEspecialidadPorDiaService getGetTurnosEspecialidadPorDiaService() {return retrofit.create(TurnosEspecialidadPorDiaService.class);}
+    public EliminarTurnosService getEliminarTurnosService() {return retrofit.create(EliminarTurnosService.class);}
 
 
 

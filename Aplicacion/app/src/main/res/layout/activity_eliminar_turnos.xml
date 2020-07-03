@@ -53,8 +53,9 @@
             android:textSize="20dp"
             android:textAlignment="textStart" />
 
-        <EditText
-            android:id="@+id/edTextHoraInicio"
+        <TextView
+            android:id="@+id/tvHoraInicio"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/txtHoraInicio"
@@ -62,8 +63,8 @@
             android:layout_marginBottom="-7dp"
             android:layout_toRightOf="@+id/txtHoraInicio"
             android:hint="hh:mm"
-            android:inputType="time"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:textSize="18sp" />
 
         <!--hora final-->
         <TextView
@@ -77,8 +78,10 @@
             android:text="Hora final: "
             android:textSize="20dp"
             android:textAlignment="textStart" />
-        <EditText
-            android:id="@+id/edTextHoraFin"
+
+        <TextView
+            android:id="@+id/tvHoraFin"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/txtHoraFin"
@@ -87,8 +90,8 @@
             android:layout_marginBottom="-7dp"
             android:layout_toRightOf="@+id/txtHoraFin"
             android:hint="hh:mm"
-            android:inputType="time"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textSize="18sp" />
 
         <!--desde-->
         <TextView
@@ -102,18 +105,20 @@
             android:text="Desde el: "
             android:textSize="20dp"
             android:textAlignment="textStart" />
-        <EditText
-            android:id="@+id/edTextFechaInicial"
+
+        <TextView
+            android:id="@+id/tvFechaInicial"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/txtFechaInicial"
             android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="-9dp"
             android:layout_toRightOf="@+id/txtFechaInicial"
             android:hint="dd/mm/aaaa"
-            android:inputType="date"
             android:maxLines="1"
-            android:layout_marginTop="20dp" />
+            android:textSize="18sp" />
 
         <!--hasta-->
         <TextView
@@ -127,8 +132,10 @@
             android:text="Hasta el: "
             android:textSize="20dp"
             android:textAlignment="textStart"/>
-        <EditText
-            android:id="@+id/edTextFechaFinal"
+
+        <TextView
+            android:id="@+id/tvFechaFinal"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/txtFechaFinal"
@@ -138,7 +145,8 @@
             android:layout_toRightOf="@+id/txtFechaFinal"
             android:hint="dd/mm/aaaa"
             android:inputType="date"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textSize="18sp" />
 
         <!--dias de la semana-->
         <TextView
