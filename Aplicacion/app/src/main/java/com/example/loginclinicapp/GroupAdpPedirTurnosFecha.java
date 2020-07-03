@@ -86,7 +86,10 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {                                               //LEP
+            public void onClick(View v) {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                fecha = LocalDate.parse(df.format(fechas.get(viewHolder.getAdapterPosition())), formato);
                 Intent i = new Intent(viewHolder.itemView.getContext(), pedir_turno_turnos.class);
                 i.putExtra("idUsr", idUsr);
                 i.putExtra("idPaciente", idPaciente);

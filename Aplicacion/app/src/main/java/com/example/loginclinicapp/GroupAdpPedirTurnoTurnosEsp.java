@@ -33,6 +33,8 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
     String nombreMedico;
     String matriculaSeleccionado;
     LocalDateTime dateTime;
+    String hora;
+    String minuto;
 
     //constructor
     GroupAdpPedirTurnoTurnosEsp(Context context, List<Turno> turnos, int idUsr, int idPaciente, String matricula, String nombre, int idEsp, String matriculaSeleccionado, String nombreEsp, String nombreMedico){
@@ -75,23 +77,33 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {                                               //LEP
-                Intent i = new Intent(viewHolder.itemView.getContext(), pedir_turno_turnos.class);
+                Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
                 i.putExtra("idUsr", idUsr);
                 i.putExtra("idPaciente", idPaciente);
                 i.putExtra("matricula", matricula);
                 i.putExtra("nombre", nombre);
                 i.putExtra("idTurno", idTurno);
-
-
                 viewHolder.itemView.getContext().startActivity(i);
             }
         });
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
 
+        if(dateTime.getHour() < 10){
+            hora = "0" + dateTime.getHour();
+        }
+        else{
+            hora = "" + dateTime.getHour();
+        }
+        if(dateTime.getMinute() < 10){
+            minuto = "0" + dateTime.getMinute() + "hs";
+        }
+        else{
+            minuto = "" + dateTime.getMinute() + "hs";
+        }
         idTurno = turnos.get(i).getId();
         viewHolder.tvNombreMedico.setText(turnos.get(i).getMedico().getNombre());
-        viewHolder.txtHorario.setText(dateTime.getHour() + ":" + dateTime.getMinute());
+        viewHolder.txtHorario.setText(hora + ":" + minuto);
 
     }
 
