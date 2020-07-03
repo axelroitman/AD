@@ -1,9 +1,11 @@
 package com.example.loginclinicapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
     TextView turnosDeEspecialidad;
     RelativeLayout layoutSinTurnos, mensajeNotieneTurnos,sinTurnos;
     GroupAdpPedirTurnosFecha gptf;
+    AlertDialog.Builder builder, builder2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +57,73 @@ public class pedir_turnos_fecha extends AppCompatActivity {
         btnlistaespera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent a "agregar a lista de espera" (todavia no esta en este proyecto).
-                 Pasar todos los valores en el intent, y verificar en la otra activity si
-                 selecciono medico o no*/
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                Call<Void> agregarAListaDeEspera = RetrofitClient.getInstance().agregarAListaDeEspera().agregarAListaDeEspera(idPaciente, idEsp, matriculaSeleccionado);
+                                agregarAListaDeEspera.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                                        if (response.code() == 201) {
+                                            //Agrega a la lista
+                                            builder.setTitle("Lista de espera");
+                                            builder.setMessage("Usted fue agregado a la lista de espera solicitada. Cuando se liberen nuevos turnos, nos contactaremos con usted.");
+                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    Intent i = new Intent(pedir_turnos_fecha.this, inicio_paciente.class);
+                                                    i.putExtra("idUsr", idUsr);
+                                                    i.putExtra("idPaciente", idPaciente);
+                                                    i.putExtra("matricula", matricula);
+                                                    i.putExtra("nombre", nombre);
+                                                    startActivity(i);
+                                                }
+                                            });
+
+                                            AlertDialog alert = builder.create();
+                                            alert.show();
+                                        }
+                                        else{
+                                            //Estaba en la lista
+                                            builder.setTitle("Lista de espera");
+                                            builder.setMessage("Ya se había unido a la lista de espera anteriormente. Cuando se liberen nuevos turnos, nos contactaremos con usted.");
+                                            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    Intent i = new Intent(pedir_turnos_fecha.this, inicio_paciente.class);
+                                                    i.putExtra("idUsr", idUsr);
+                                                    i.putExtra("idPaciente", idPaciente);
+                                                    i.putExtra("matricula", matricula);
+                                                    i.putExtra("nombre", nombre);
+                                                    startActivity(i);
+                                                }
+                                            });
+
+                                            AlertDialog alert = builder.create();
+                                            alert.show();
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+                                    }
+                                });
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                dialog.cancel();
+                                break;
+                        }
+                    }
+                };
+
+                builder2.setMessage("¿Está seguro de que quiere unirse a la lista de espera?").setPositiveButton("Sí", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
             }
         });
 
@@ -136,5 +203,8 @@ public class pedir_turnos_fecha extends AppCompatActivity {
         layoutSinTurnos = (RelativeLayout) findViewById(R.id.layoutSinTurnos);
         recyclerCards = (RecyclerView) findViewById(R.id.recyclerCards);
         mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.sinTurnos);
+        builder = new AlertDialog.Builder(this);
+        builder2 = new AlertDialog.Builder(this);
+
     }
 }
