@@ -246,7 +246,7 @@ public class eliminar_turnos extends AppCompatActivity {
                                                     }
                                                 });
                                             } else if (response.code() == 418) {
-                                                builder.setTitle("Agregar Turnos");
+                                                builder.setTitle("Eliminar Turnos");
                                                 builder.setMessage("No fue posible eliminar todos los turnos, por favor verifique su agenda. Los turnos sin incompatibilidades se eliminaron correctamente.");
                                                 builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                                     @Override
@@ -287,7 +287,7 @@ public class eliminar_turnos extends AppCompatActivity {
                         }
 
                     };
-                    builder2.setMessage("¿Está seguro de hacer un agregado masivo de turnos?").setPositiveButton("Sí",dialogClickListener).setNegativeButton("No",dialogClickListener).show();
+                    builder2.setMessage("¿Está seguro de hacer una eliminación masiva de turnos?").setPositiveButton("Sí",dialogClickListener).setNegativeButton("No",dialogClickListener).show();
 
                 }
                 else{
