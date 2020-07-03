@@ -105,7 +105,6 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
                 viewHolder.itemView.getContext().startActivity(i);
             }
         });
-
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         fecha = LocalDate.parse(df.format(fechas.get(i)), formato);
         String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));

@@ -129,7 +129,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
 
         if(matriculaSeleccionado == null) {
             turnosDeEspecialidad.setText("Turnos disponibles de " + nombreEsp + ":");
-            Call<TreeMap<Date, Integer>> turnos = RetrofitClient.getInstance().getGetCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEsp);
+            Call<TreeMap<Date, Integer>> turnos = RetrofitClient.getInstance().getGetCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService().getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(idEsp, matricula);
             turnos.enqueue(new Callback<TreeMap<Date, Integer>>() {
                 @Override
                 public void onResponse(Call<TreeMap<Date, Integer>> call, Response<TreeMap<Date, Integer>> response) {

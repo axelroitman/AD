@@ -14,7 +14,8 @@ public interface getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService {
     String API_ROUTE = "/apirest/getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad";
     @GET(API_ROUTE)
     Call<TreeMap<Date,Integer>> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(
-            @Query("idEspecialidad") int idEspecialidad
+            @Query("idEspecialidad") int idEspecialidad,
+            @Query("matriculaMedPac") String matriculaMedPac
     );
 
 }

@@ -6,6 +6,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,11 +55,13 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
     public class ViewHolder extends RecyclerView.ViewHolder {                                   //LEP
 
         TextView tvNombreMedico, txtHorario;
+        RelativeLayout itemTurno;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombreMedico = itemView.findViewById(R.id.nombreMedico);
             txtHorario = itemView.findViewById(R.id.txtHorario);
+            itemTurno = itemView.findViewById(R.id.itemTurno);
         }
     }
 
@@ -73,38 +76,41 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        if(!turnos.get(i).getMedico().getMatricula().equals(matricula)) {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {                                               //LEP
-                Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
-                i.putExtra("idUsr", idUsr);
-                i.putExtra("idPaciente", idPaciente);
-                i.putExtra("matricula", matricula);
-                i.putExtra("nombre", nombre);
-                i.putExtra("idTurno", idTurno);
-                viewHolder.itemView.getContext().startActivity(i);
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {                                               //LEP
+                    Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
+                    i.putExtra("idUsr", idUsr);
+                    i.putExtra("idPaciente", idPaciente);
+                    i.putExtra("matricula", matricula);
+                    i.putExtra("nombre", nombre);
+                    i.putExtra("idTurno", idTurno);
+                    viewHolder.itemView.getContext().startActivity(i);
+                }
+            });
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
+
+            if (dateTime.getHour() < 10) {
+                hora = "0" + dateTime.getHour();
+            } else {
+                hora = "" + dateTime.getHour();
             }
-        });
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
+            if (dateTime.getMinute() < 10) {
+                minuto = "0" + dateTime.getMinute() + "hs";
+            } else {
+                minuto = "" + dateTime.getMinute() + "hs";
+            }
+            idTurno = turnos.get(i).getId();
 
-        if(dateTime.getHour() < 10){
-            hora = "0" + dateTime.getHour();
+            viewHolder.tvNombreMedico.setText(turnos.get(i).getMedico().getNombre());
+            viewHolder.txtHorario.setText(hora + ":" + minuto);
+            viewHolder.itemTurno.setVisibility(View.VISIBLE);
+            viewHolder.tvNombreMedico.setVisibility(View.VISIBLE);
+            viewHolder.txtHorario.setVisibility(View.VISIBLE);
         }
-        else{
-            hora = "" + dateTime.getHour();
-        }
-        if(dateTime.getMinute() < 10){
-            minuto = "0" + dateTime.getMinute() + "hs";
-        }
-        else{
-            minuto = "" + dateTime.getMinute() + "hs";
-        }
-        idTurno = turnos.get(i).getId();
-        viewHolder.tvNombreMedico.setText(turnos.get(i).getMedico().getNombre());
-        viewHolder.txtHorario.setText(hora + ":" + minuto);
-
     }
 
     @Override

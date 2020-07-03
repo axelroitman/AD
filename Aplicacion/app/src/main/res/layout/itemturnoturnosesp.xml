@@ -19,6 +19,7 @@
 
             <!--- PRIMER TURNO -->
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/itemTurno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,14 +30,45 @@
                 <!---contenedor especialidad-->
 
                 <RelativeLayout
+                    android:id="@+id/infoTurnoMedico"
+                    android:layout_width="302dp"
+                    android:layout_height="102dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="89dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="#BCFFFFFF">
+
+                    <TextView
+                        android:id="@+id/nombreMedico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="74dp"
+                        android:layout_marginTop="39dp"
+                        android:layout_marginEnd="57dp"
+                        android:layout_marginBottom="34dp"
+                        android:fontFamily="@font/roboto_light"
+                        android:gravity="center"
+                        android:text="Nombre profesional"
+                        android:textSize="18dp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="94dp"
                     android:layout_height="102dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="1dp"
-                    android:layout_marginEnd="302dp"
+                    android:layout_marginEnd="303dp"
                     android:background="#498EB8">
 
                     <TextView
@@ -54,37 +86,8 @@
                         android:fontFamily="@font/roboto_light"
                         android:text="10:30hs"
                         android:textColor="@android:color/white"
-                        android:textSize="20dp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/infoTurnoMedico"
-                    android:layout_width="302dp"
-                    android:layout_height="102dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="#BCFFFFFF">
-
-                    <TextView
-                        android:id="@+id/nombreMedico"
-                        android:layout_width="wrap_content"
-                        android:layout_height="29dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="74dp"
-                        android:layout_marginTop="39dp"
-                        android:layout_marginEnd="57dp"
-                        android:layout_marginBottom="34dp"
-                        android:gravity="center"
-                        android:text="Nombre profesional"
-                        android:fontFamily="@font/roboto_light"
-                        android:textSize="18dp" />
+                        android:textSize="20dp"
+                        android:visibility="gone" />
                 </RelativeLayout>
 
                 <!---contenedor estado-->

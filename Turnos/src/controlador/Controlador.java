@@ -692,7 +692,7 @@ public class Controlador {
 		return turnosPorEspecialidadyMedico;
 	}
 
-	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad){
+	public TreeMap<Date,Integer> getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidad(int idEspecialidad, String matriculaMedPac){
 		Map<Date,Integer> mapTemporal = new HashMap<Date,Integer>();
 		
 		Collection<Turno> turnos = TurnoDAO.getInstancia().findByEspecialidadYEstadoPosteriores(idEspecialidad, 1);
@@ -705,16 +705,30 @@ public class Controlador {
 			c.set(Calendar.SECOND, 0);
 			
 			fechaSinHora = c.getTime();
-
-			if(!mapTemporal.containsKey(fechaSinHora))
-			{
-				mapTemporal.put(fechaSinHora, 1);	
+			if(matriculaMedPac != null) {
+				if(!matriculaMedPac.equals(t.getMedico().getMatricula())) {
+					if(!mapTemporal.containsKey(fechaSinHora))
+					{
+						mapTemporal.put(fechaSinHora, 1);	
+					}
+					else 
+					{
+						int disponibles = mapTemporal.get(fechaSinHora) + 1;
+						mapTemporal.put(fechaSinHora, disponibles);
+					}
+				}
 			}
-			else 
-			{
-				int disponibles = mapTemporal.get(fechaSinHora) + 1;
-				mapTemporal.put(fechaSinHora, disponibles);
-			}			
+			else {
+				if(!mapTemporal.containsKey(fechaSinHora))
+				{
+					mapTemporal.put(fechaSinHora, 1);	
+				}
+				else 
+				{
+					int disponibles = mapTemporal.get(fechaSinHora) + 1;
+					mapTemporal.put(fechaSinHora, disponibles);
+				}
+			}
 		}
 		TreeMap<Date,Integer> resultado = new TreeMap<Date,Integer>(mapTemporal);
 
