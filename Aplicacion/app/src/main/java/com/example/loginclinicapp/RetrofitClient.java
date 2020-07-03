@@ -58,6 +58,8 @@ public class RetrofitClient {
     public getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService getGetCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService() {return retrofit.create(getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadService.class);}
     public getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedicoService getGetCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedicoService() {return retrofit.create(getCantidadTurnosDisponiblesPorDiaDeUnaEspecialidadYMedicoService.class);}
     public AgregarAListaDeEspera agregarAListaDeEspera() {return retrofit.create(AgregarAListaDeEspera.class);}
+    public TurnosEspecialidadYMedicoPorDiaService getGetTurnosEspecialidadYMedicoPorDiaService() {return retrofit.create(TurnosEspecialidadYMedicoPorDiaService.class);}
+    public TurnosEspecialidadPorDiaService getGetTurnosEspecialidadPorDiaService() {return retrofit.create(TurnosEspecialidadPorDiaService.class);}
 
 
 

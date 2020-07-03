@@ -40,6 +40,7 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
     String nombreEsp;
     String nombreMedico;
     String matriculaSeleccionado;
+    private LocalDate fecha;
 
     //constructor
     GroupAdpPedirTurnosFecha(Context context, TreeMap<Date, Integer> turnos,int idUsr,int idPaciente,String matricula, String nombre,int idEsp,String matriculaSeleccionado,String nombreEsp, String nombreMedico){
@@ -95,13 +96,15 @@ class GroupAdpPedirTurnosFecha extends RecyclerView.Adapter<GroupAdpPedirTurnosF
                 i.putExtra("nombreEsp", nombreEsp);
                 i.putExtra("matriculaSeleccionado", matriculaSeleccionado);
                 i.putExtra("nombreMedico", nombreMedico);
+                i.putExtra("fecha",fecha);
+
 
                 viewHolder.itemView.getContext().startActivity(i);
             }
         });
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate fecha = LocalDate.parse(df.format(fechas.get(i)), formato);
+        fecha = LocalDate.parse(df.format(fechas.get(i)), formato);
         String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
         String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
 
