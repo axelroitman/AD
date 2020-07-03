@@ -24,6 +24,8 @@ import java.util.Locale;
 
 import retrofit2.Callback;
 
+import static java.time.temporal.ChronoUnit.HOURS;
+
 public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -134,6 +136,10 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
             viewHolder.imgasistencia4.setImageResource(R.drawable.asistenciapendiente);
         }
 
+        LocalDateTime fechaActual = LocalDateTime.now();
+        long diferenciaHoras = HOURS.between(fechaActual, fecha);
+
+
         if(turnos.get(i).getDisponibilidad().equals("Disponible")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
@@ -143,10 +149,10 @@ public class GroupAdp extends RecyclerView.Adapter<GroupAdp.ViewHolder> {
         else if(turnos.get(i).getDisponibilidad().equals("AConfirmar")) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        else if(turnos.get(i).getDisponibilidad().equals("Confirmado")) {
+        else if(turnos.get(i).getDisponibilidad().equals("Confirmado") && diferenciaHoras >= 0) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
-        else if(turnos.get(i).getDisponibilidad().equals("Terminado")) {
+        else if(turnos.get(i).getDisponibilidad().equals("Terminado") || (turnos.get(i).getDisponibilidad().equals("Confirmado") && diferenciaHoras < 0)) {
             viewHolder.imgestado4.setImageResource(R.drawable.ok);
         }
         else{
