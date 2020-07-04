@@ -6,12 +6,12 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface TurnosDeMedicoService {
+public interface TurnosDisponiblesMedicoPorDiaService {
 
-    String API_ROUTE = "/apirest/getTurnosMedico";
+    String API_ROUTE = "/apirest/getTurnosDisponiblesMedicoPorDia";
     @GET(API_ROUTE)
     Call<List<Turno>> getTurnosDeMedico(
             @Query("matricula") String matricula,
-            @Query("estado") Integer estado
+            @Query("fecha") String fecha
     );
 }

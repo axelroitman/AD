@@ -640,7 +640,7 @@ public class Controlador {
 		return lista;
 	}
 
-	public List<TurnoView> getTurnosMedico(String matricula, Integer estado) {
+	public List<TurnoView> getTurnosDisponiblesMedicoPorDia(String matricula, Date fecha) {
 		List<TurnoView> turnosMedico = new ArrayList<TurnoView>();
 		try {
 			Medico m = buscarMedico(matricula);
@@ -648,19 +648,11 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(estado == null) {
-			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedico(matricula);
-			for(Turno t : turnos) {
-				turnosMedico.add(t.toView());
+		Collection<Turno> turnos = TurnoDAO.getInstancia().findDisponibleByMedicoYDia(matricula, fecha);
+		for(Turno t : turnos) {
+			turnosMedico.add(t.toView());
 			}
-		}
-		else {
-			Collection<Turno> turnos = TurnoDAO.getInstancia().findByMedicoYEstado(matricula, estado.intValue());
-			for(Turno t : turnos) {
-				turnosMedico.add(t.toView());
-			}
-		}
-		return turnosMedico;
+		return turnosMedico;			
 	}
 
 	public Collection<TurnoView> getTurnosMedicoPorEspecialidad(String matricula, int idEspecialidad, Integer estado) {

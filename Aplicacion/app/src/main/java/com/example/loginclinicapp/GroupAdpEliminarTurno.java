@@ -18,9 +18,15 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,8 +36,10 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
     int idPaciente;
     String matricula;
     String nombre;
+    LocalDateTime fecha;
     List<Turno> turnos;
-    List<Turno> seleccionados;
+    List<Turno> seleccionados = new ArrayList<Turno>();
+    Calendar c = Calendar.getInstance();
 
     public GroupAdpEliminarTurno(Context context,List<Turno> turnos,int idUsr, int idPaciente, String matricula, String nombre) {
         this.layoutInflater = layoutInflater.from(context);
@@ -72,144 +80,147 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
     @Override
     public void onBindViewHolder(@NonNull final GroupAdpEliminarTurno.ViewHolder viewHolder, int i) {
         final Turno t = turnos.get(i);
-        viewHolder.infoTurnoMedico.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        fecha = LocalDateTime.parse(t.getFecha(), formatter);
 
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+        //if (fecha.getDayOfMonth() == c.get(Calendar.DAY_OF_MONTH) && fecha.getMonthValue() == c.get(Calendar.MONTH) && fecha.getHour() <= c.get(Calendar.HOUR) && fecha.getMinute() <= c.get(Calendar.MINUTE)) {
+            viewHolder.infoTurnoMedico.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                        seleccionados.remove(t);
+                    }
                 }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+            });
+            viewHolder.relativeFechas.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
 
-                    //seleccionados.remove(t);
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                        seleccionados.remove(t);
+                    }
                 }
-            }
-        });
-        viewHolder.relativeFechas.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+            });
 
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+            viewHolder.tvEspecialidad.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                        seleccionados.remove(t);
+                    }
                 }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+            });
 
-                    //seleccionados.remove(t);
+            viewHolder.txtDiaTurno.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                        seleccionados.remove(t);
+                    }
                 }
-            }
-        });
+            });
+            viewHolder.txtMesTurno.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
 
-        viewHolder.tvEspecialidad.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
 
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                        seleccionados.remove(t);
+                    }
                 }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+            });
+            viewHolder.txtDiaSemanaTurno.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                public void onClick(View v) {
+                    t.setSeleccionado(!t.isSeleccionado());
+                    if (t.isSeleccionado()) {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
 
-                    //seleccionados.remove(t);
+                        seleccionados.add(t); 
+                    } else {
+                        viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                        viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                        viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                        seleccionados.remove(t);
+                    }
                 }
-            }
-        });
-
-        viewHolder.txtDiaTurno.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
-
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
-                }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
-
-                    //seleccionados.remove(t);
-                }
-            }
-        });
-        viewHolder.txtMesTurno.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
-
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
-                }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
-
-                    //seleccionados.remove(t);
-                }
-            }
-        });
-        viewHolder.txtDiaSemanaTurno.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void onClick(View v) {
-                t.setSeleccionado(!t.isSeleccionado());
-                if(t.isSeleccionado()){
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
-
-                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
-                }
-                else{
-                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
-                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
-                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
-
-                    //seleccionados.remove(t);
-                }
-            }
-        });
-                DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                LocalDateTime fecha = LocalDateTime.parse(turnos.get(i).getFecha(), formato);
-                String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
-                String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
+            });
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime fecha = LocalDateTime.parse(turnos.get(i).getFecha(), formato);
+            String diaEnPalabras = fecha.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
+            String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
 
 
-                String horario = fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.";
-                viewHolder.tvHorario.setText(horario);
+            String horario = fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute() + "hs.";
+            viewHolder.tvHorario.setText(horario);
 
-                String dia = ""+fecha.getDayOfMonth();
-                viewHolder.txtDiaTurno.setText(dia);
+            String dia = "" + fecha.getDayOfMonth();
+            viewHolder.txtDiaTurno.setText(dia);
 
-                viewHolder.txtMesTurno.setText(mesEnPalabras.toUpperCase().substring(0,3) + ".");
+            viewHolder.txtMesTurno.setText(mesEnPalabras.toUpperCase().substring(0, 3) + ".");
 
-                viewHolder.txtDiaSemanaTurno.setText(diaEnPalabras.toUpperCase().substring(0,1) + diaEnPalabras.substring(1));
+            viewHolder.txtDiaSemanaTurno.setText(diaEnPalabras.toUpperCase().substring(0, 1) + diaEnPalabras.substring(1));
 
+        }
+   // }
+    public List<Turno> getSeleccionados(){
+        return seleccionados;
     }
 
     @Override

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#E8E5E5"
     tools:context=".EliminarTurnosMenu">
+
     <ImageView
         android:id="@+id/logo3"
         android:layout_width="74dp"
@@ -32,20 +33,21 @@
         android:id="@+id/sinTurnos"
         android:layout_width="wrap_content"
         android:layout_height="73dp"
+        android:layout_above="@+id/btnEliminarTurnosDeDia"
+        android:layout_below="@+id/relativeFechasEliminar"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="450dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="304dp"
         android:background="#FFFFFF"
-        android:gravity="center"
         android:fontFamily="@font/roboto_light_italic"
+        android:gravity="center"
         android:text='No hay turnos que puedan ser eliminados en la fecha seleccionada.'
         android:textAlignment="center"
-        android:textSize="15dp"/>
+        android:textSize="18dp" />
+
     <RelativeLayout
         android:layout_width="388dp"
         android:id="@+id/relativeFechasEliminar"
@@ -106,9 +108,24 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="210dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="105dp">
+        android:layout_marginBottom="105dp"
+        android:visibility="gone">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/btnEliminarTurnosDeDia"
+        android:layout_width="202dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="33dp"
+        android:background="#0C084C"
+        android:text="Eliminar turnos"
+        android:textColor="#FFFFFF" />
 
 
 </RelativeLayout>

@@ -107,6 +107,30 @@ public class TurnoDAO {
 			resultado.add(toNegocio(tur));
 		return resultado;
 	}
+	
+	public List<Turno> findDisponibleByMedicoYDia(String matricula, Date fecha) {
+		Date fechaFin = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(fecha); 
+		c.add(Calendar.DATE, 1);
+		fechaFin = c.getTime();
+
+		List<Turno> resultado = new ArrayList<Turno>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		s.beginTransaction();
+		List<TurnoEntity> turnos = s.createQuery("from TurnoEntity t where t.medico = ? and t.fecha >= ? and t.fecha < ? and t.disponibilidad = ? ORDER BY t.fecha")
+				.setString(0, matricula)
+				.setDate(1, fecha)
+				.setDate(2, fechaFin)
+				.setInteger(3,1)
+				.list();
+		s.getTransaction().commit();
+		s.close();
+		for(TurnoEntity tur : turnos)
+			resultado.add(toNegocio(tur));
+		return resultado;
+	}
+	
 	public List<Turno> findByMedicoYDia(String matricula, Date fecha) {
 		Date fechaFin = new Date();
 		Calendar c = Calendar.getInstance(); 
