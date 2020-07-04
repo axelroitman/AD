@@ -1,17 +1,24 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +36,12 @@ public class inicio_medico extends AppCompatActivity {
     RelativeLayout pacMed, verAgenda, añadirTurnos, cancelarTurno;
     ImageView seleccionado, noSeleccionado;
 
+
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +52,51 @@ public class inicio_medico extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+
+        /* Inicio de panel desplegable */
+
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+       //getSupportActionBar().setDisplayHomeAsUpEnabled(true); ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+
+        nv = (NavigationView)findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        break; //En este caso, ya está en el inicio, no tiene que hacer nada.
+                    case R.id.agenda:
+                        Intent i = new Intent(inicio_medico.this, ver_agenda.class);
+                        i.putExtra("idUsr", idUsr);
+                        i.putExtra("idPaciente",idPaciente);
+                        i.putExtra("matricula",  matricula);
+                        i.putExtra("nombre",nombre);
+                        startActivity(i);
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intent = new Intent(inicio_medico.this, Login.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+    /* Fin de panel desplegable */
+
+
 
         if(idPaciente > 0){
             pacMed.setVisibility(View.VISIBLE);
@@ -185,6 +243,16 @@ public class inicio_medico extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void vincular(){
         btnVerMiAgenda = (Button) findViewById(R.id.btnVerMiAgenda);

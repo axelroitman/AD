@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/inicio"
+        android:icon="@drawable/homeicon"
+        android:title="Inicio"
+        android:fontFamily="@font/roboto_light_italic"
+        />
+    <item android:id="@+id/agenda"
+        android:icon="@drawable/agenda"
+        android:title="Mi agenda"
+        android:fontFamily="@font/roboto_light_italic"
+        />
+    <item android:id="@+id/cerrarSesion"
+        android:icon="@drawable/exiticon"
+        android:title="Cerrar sesión"
+        android:fontFamily="@font/roboto_light_italic"
+        />
+
+</menu>
