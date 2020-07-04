@@ -145,6 +145,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
                         } else {
                             Log.d("Turnos", "No hay turnos");
                             cardsTurnos.setVisibility(View.GONE);
+                            btnEliminarTurnosDeDia.setVisibility(View.GONE);
                             sinTurnos.setVisibility(View.VISIBLE);
                         }
                     }
