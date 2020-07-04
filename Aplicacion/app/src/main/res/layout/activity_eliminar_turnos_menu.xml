@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E5E5"
+    tools:context=".EliminarTurnosMenu">
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        app:srcCompat="@drawable/applogo" />
+
+    <TextView
+        android:id="@+id/txtEliminarTurnos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/logo3"
+        android:fontFamily="@font/roboto_light"
+        android:text="Eliminar turnos"
+        android:textSize="30dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/eliminarDeUnDia"
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/txtEliminarTurnos"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="60dp"
+        android:background="#13AEC6"
+        android:backgroundTint="#74EFBA"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical"
+        tools:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/imgElimianrDeUnDia"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/calendariotachado" />
+
+        <Button
+            android:id="@+id/btnEliminarDia"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgElimianrDeUnDia"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#498EB8"
+            android:fontFamily="@font/roboto_light"
+            android:text="Eliminar turnos de un día"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/eliminarMasivo"
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/eliminarDeUnDia"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="60dp"
+        android:background="#13AEC6"
+        android:backgroundTint="#74EFBA"
+        android:foregroundGravity="center"
+        android:gravity="center|center_horizontal"
+        android:orientation="vertical"
+        tools:visibility="visible">
+
+
+        <ImageView
+            android:id="@+id/imgagenEliminarMasivo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/listatachado" />
+
+        <Button
+            android:id="@+id/btnEliminarMasivo"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgagenEliminarMasivo"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#498EB8"
+            android:fontFamily="@font/roboto_light"
+            android:text="Eliminar turnos de forma masiva"
+            android:textColor="#FFFFFF" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

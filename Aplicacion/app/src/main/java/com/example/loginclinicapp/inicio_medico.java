@@ -82,7 +82,7 @@ public class inicio_medico extends AppCompatActivity {
         cancelarTurno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(inicio_medico.this, eliminar_turnos.class);
+                Intent i = new Intent(inicio_medico.this, EliminarTurnosMenu.class);
                 i.putExtra("idUsr", idUsr);
                 i.putExtra("idPaciente",idPaciente);
                 i.putExtra("matricula",  matricula);
@@ -116,7 +116,7 @@ public class inicio_medico extends AppCompatActivity {
         btnBorrarTurnos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(inicio_medico.this, eliminar_turnos.class);
+                Intent i = new Intent(inicio_medico.this, EliminarTurnosMenu.class);
                 i.putExtra("idUsr", idUsr);
                 i.putExtra("idPaciente",idPaciente);
                 i.putExtra("matricula",  matricula);
