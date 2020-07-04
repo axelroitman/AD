@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
 
-class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.ViewHolder> {
+class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.ViewHolder>  {
     private LayoutInflater layoutInflater;
     int idUsr;
     int idPaciente;
@@ -44,7 +45,8 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
     public class ViewHolder extends RecyclerView.ViewHolder {                                   //LEP
 
         TextView txtDiaTurno, txtDiaSemanaTurno, txtMesTurno, tvEspecialidad, tvHorario;
-        RelativeLayout infoTurnoMedico;
+        RelativeLayout infoTurnoMedico, relativeFechas;
+        CardView card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +56,8 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
             tvEspecialidad = itemView.findViewById(R.id.tvEspecialidad);
             tvHorario = itemView.findViewById(R.id.tvHorario);
             infoTurnoMedico = itemView.findViewById(R.id.infoTurnoMedico);
+            card = (CardView) itemView.findViewById(R.id.card);
+            relativeFechas = (RelativeLayout) itemView.findViewById(R.id.relativeFechas);
         }
     }
 
@@ -66,10 +70,9 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull final GroupAdpEliminarTurno.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final GroupAdpEliminarTurno.ViewHolder viewHolder, int i) {
         final Turno t = turnos.get(i);
-        final ColorStateList original = viewHolder.tvEspecialidad.getTextColors();
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+        viewHolder.infoTurnoMedico.setOnClickListener(new View.OnClickListener(){
             @RequiresApi(api = Build.VERSION_CODES.O)
             public void onClick(View v) {
                 t.setSeleccionado(!t.isSeleccionado());
@@ -78,14 +81,116 @@ class GroupAdpEliminarTurno extends RecyclerView.Adapter<GroupAdpEliminarTurno.V
                     viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
                     viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
 
-                    seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
                 }
                 else{
                     viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
                     viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
                     viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
 
-                    seleccionados.remove(t);
+                    //seleccionados.remove(t);
+                }
+            }
+        });
+        viewHolder.relativeFechas.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                t.setSeleccionado(!t.isSeleccionado());
+                if(t.isSeleccionado()){
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                }
+                else{
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                    //seleccionados.remove(t);
+                }
+            }
+        });
+
+        viewHolder.tvEspecialidad.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                t.setSeleccionado(!t.isSeleccionado());
+                if(t.isSeleccionado()){
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                }
+                else{
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                    //seleccionados.remove(t);
+                }
+            }
+        });
+
+        viewHolder.txtDiaTurno.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                t.setSeleccionado(!t.isSeleccionado());
+                if(t.isSeleccionado()){
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                }
+                else{
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                    //seleccionados.remove(t);
+                }
+            }
+        });
+        viewHolder.txtMesTurno.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                t.setSeleccionado(!t.isSeleccionado());
+                if(t.isSeleccionado()){
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                }
+                else{
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                    //seleccionados.remove(t);
+                }
+            }
+        });
+        viewHolder.txtDiaSemanaTurno.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void onClick(View v) {
+                t.setSeleccionado(!t.isSeleccionado());
+                if(t.isSeleccionado()){
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#498EB8"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#FFFFFF"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#FFFFFF"));
+
+                    //seleccionados.add(t); //Si se toca dentro del recycler en un espacio en blanco, esta línea es la que hace que crashee
+                }
+                else{
+                    viewHolder.infoTurnoMedico.setBackgroundColor(Color.parseColor("#BCFFFFFF"));
+                    viewHolder.tvHorario.setTextColor(Color.parseColor("#808080"));
+                    viewHolder.tvEspecialidad.setTextColor(Color.parseColor("#808080"));
+
+                    //seleccionados.remove(t);
                 }
             }
         });
