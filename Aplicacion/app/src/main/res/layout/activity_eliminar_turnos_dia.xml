@@ -37,29 +37,76 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="163dp"
+        android:layout_marginTop="210dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="493dp"
+        android:layout_marginBottom="450dp"
         android:background="#FFFFFF"
+        android:gravity="center"
         android:fontFamily="@font/roboto_light_italic"
-        android:text='No tiene turnos agendados en los próximos dos meses. Puede agregar turnos a su agenda desde la opción "Añadir turnos" en la pantalla de inicio'
+        android:text='No hay turnos que puedan ser eliminados en la fecha seleccionada.'
         android:textAlignment="center"
-        android:textSize="15dp"
-        android:visibility="gone" />
+        android:textSize="15dp"/>
+    <RelativeLayout
+        android:layout_width="388dp"
+        android:id="@+id/relativeFechasEliminar"
+        android:layout_height="92dp"
+        android:layout_below="@id/logo3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#F1D8D8">
+
+        <TextView
+            android:id="@+id/txtfechaEliminar"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="161dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="32dp"
+            android:layout_toEndOf="@+id/seleccione"
+            android:ems="10"
+            android:fontFamily="@font/roboto_light"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center"
+            android:hint="dd/mm/aaaa"
+            android:inputType="textPersonName"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/seleccione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="Seleccione una fecha:"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cardsTurnos"
         android:layout_width="match_parent"
         android:layout_height="480dp"
+        android:layout_below="@+id/relativeFechasEliminar"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="146dp"
+        android:layout_marginTop="210dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="105dp"
-        android:visibility="gone">
+        android:layout_marginBottom="105dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
