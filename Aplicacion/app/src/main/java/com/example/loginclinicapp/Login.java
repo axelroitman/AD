@@ -26,6 +26,11 @@ public class Login extends AppCompatActivity {
     AlertDialog.Builder builder;
     Usuario usuario = null;
     Intent i = null;
+    int idUsr;
+    int idPaciente;
+    String matricula;
+    String nombre;
+
     int pacMed = 0; //1 = Paciente ; 2 = Medico ; 3 = Paciente y medico
 
     boolean estaActivado;
@@ -38,12 +43,30 @@ public class Login extends AppCompatActivity {
         vincular();
         Log.d("loginresp", "Existo.");
 
-        if(obtenerEstadoRB()){ // esto es para cuando el RB es true, que se saltee la pantalla de log-in y que comience en el inicio.
-            /*Intent i = new Intent(Login.this, inicio_paciente.class);
-            startActivity(i);
-            finish();*/
+        if(obtenerInfoLogin()){ // esto es para cuando el RB es true, que se saltee la pantalla de log-in y que comience en el inicio.
+            Log.d("datosRecordarmeNom", ""+nombre);
+            Log.d("datosRecordarmeMat", ""+matricula);
+            Log.d("datosRecordarmePac", ""+idPaciente);
+            Log.d("datosRecordarmeUsr", ""+idUsr);
+            if(matricula != null)
+            {
+                Intent i = new Intent(Login.this, inicio_medico.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula", matricula);
+                i.putExtra("nombre", nombre);
+                startActivity(i);
+            }
+            else{
+                Intent i = new Intent(Login.this, inicio_paciente.class);
+                i.putExtra("idUsr", idUsr);
+                i.putExtra("idPaciente",idPaciente);
+                i.putExtra("matricula", matricula);
+                i.putExtra("nombre", nombre);
+                startActivity(i);
 
-            //HAY QUE REVISAR ESTO PARA CADA CASO (PACIENTE/MÉDICO/PACIENTE-MÉDICO)
+            }
+
         }
 
         btningresar.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +126,7 @@ public class Login extends AppCompatActivity {
                                                              if (responseMed.body() != null) {
                                                                  usuario.setMatricula(responseMed.body().getMatricula());
                                                                  usuario.setEspecialidades(responseMed.body().getEspecialidades());
-                                                                 guardarEstadoRB();
+                                                                 guardarInfoLogin();
 
                                                                  //Es medico y puede o no ser paciente.
 
@@ -117,7 +140,7 @@ public class Login extends AppCompatActivity {
                                                                  startActivity(i);
                                                              }
                                                              else{
-                                                                 guardarEstadoRB();
+                                                                 guardarInfoLogin();
                                                                  i = new Intent(Login.this, inicio_paciente.class);
                                                                  i.putExtra("idUsr",usuario.getIdUsr());
                                                                  i.putExtra("idPaciente",usuario.getIdPaciente());
@@ -200,17 +223,25 @@ public class Login extends AppCompatActivity {
         btningresar = (Button) findViewById(R.id.btningresar);
         rbrecordarme = (CheckBox) findViewById(R.id.recordarme);
     }
-    private void guardarEstadoRB(){
+    private void guardarInfoLogin(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         preferences.edit().putBoolean("estado", rbrecordarme.isChecked()).apply();
-        /*preferences.edit().putInt("idUsuario", usuario.getIdUsr());
-        preferences.edit().putString("matricula", usuario.getMatricula());
-        preferences.edit().putInt("idPaciente", usuario.getIdPaciente());
-        preferences.edit().putString("nombre", usuario.getNombre());
-*/
+        preferences.edit().putInt("idUsuario", usuario.getIdUsr()).apply();
+        preferences.edit().putString("matricula", usuario.getMatricula()).apply();
+        preferences.edit().putInt("idPaciente", usuario.getIdPaciente()).apply();
+        preferences.edit().putString("nombre", usuario.getNombre()).apply();
+
+
+        Log.d("VerPref", preferences.getAll().toString());
+
     }
-    private boolean obtenerEstadoRB(){
+    private boolean obtenerInfoLogin(){
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        idUsr = preferences.getInt("idUsr", 0);
+        idPaciente = preferences.getInt("idPaciente", 0);
+        matricula = preferences.getString("matricula", null);
+        nombre = preferences.getString("nombre", null);
         return preferences.getBoolean("estado", false);
+
     }
 }

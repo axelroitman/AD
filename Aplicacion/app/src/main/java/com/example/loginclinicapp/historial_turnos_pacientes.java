@@ -56,7 +56,7 @@ public class historial_turnos_pacientes extends AppCompatActivity {
                         Log.d("historial", response.toString());
                         Log.d("historial", "NO ESTOY VACIO");
                         recyclerView.setVisibility(View.VISIBLE);
-                        //txtMensajeError.setVisibility(View.VISIBLE);
+                        txtMensajeError.setVisibility(View.GONE);
 
                         completarCards(response.body(), idUsr, idPaciente, matricula, nombre);
                         //Toast.makeText(historial_turnos_pacientes.this, response.body().getId(), Toast.LENGTH_LONG).show();
