@@ -22,6 +22,12 @@
             android:name=".ver_agenda"
             android:exported="true" />
         <activity
+            android:name=".EliminarTurnosMenu"
+            android:exported="true" />
+        <activity
+            android:name=".EliminarTurnosDia"
+            android:exported="true" />
+        <activity
             android:name=".eliminar_turnos"
             android:exported="true" />
         <activity

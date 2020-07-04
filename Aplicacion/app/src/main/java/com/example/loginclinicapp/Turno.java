@@ -18,11 +18,16 @@ public class Turno {
     private Paciente paciente;
     private Medico medico;
 
+
+    //Para eliminarTurno:
+    private boolean seleccionado;
+
     public Turno(int id, Especialidad especialidad, Paciente paciente, Medico medico) {
         this.id = id;
         this.paciente = paciente;
         this.especialidad = especialidad;
         this.medico = medico;
+        seleccionado = false;
     }
 
      public int getId() { return id; }
@@ -43,5 +48,13 @@ public class Turno {
     public void setAsistencia(String asistencia) { this.asistencia = asistencia; }
     public String getDisponibilidad() { return disponibilidad; }
     public void setDisponibilidad(String disponibilidad) { this.disponibilidad = disponibilidad; }
+
+
+    public void setSeleccionado(boolean seleccionado){
+        this.seleccionado = seleccionado;
+    }
+    public boolean isSeleccionado(){
+        return this.seleccionado;
+    }
 
 }
