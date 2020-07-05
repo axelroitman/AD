@@ -455,8 +455,12 @@ public class DetalleTurno extends AppCompatActivity {
                         LocalDateTime fechaActual = LocalDateTime.now();
                         long diferenciaHoras = HOURS.between(fechaActual, fecha);
 
-                        if(response.body().getDisponibilidad().equals("Disponible")) {
+                        if(response.body().getDisponibilidad().equals("Disponible")  && diferenciaHoras >= 0) {
                             txtEstado.setText("Estado: Disponible");
+                            imgEstado.setImageResource(R.drawable.ok);
+                        }
+                        else if(response.body().getDisponibilidad().equals("Disponible")  && diferenciaHoras < 0) {
+                            txtEstado.setText("Estado: Sin ocupar");
                             imgEstado.setImageResource(R.drawable.ok);
                         }
                         else if(response.body().getDisponibilidad().equals("Programado")) {
