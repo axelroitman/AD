@@ -7,40 +7,16 @@
     android:background="#E8E5E5"
     tools:context=".EliminarTurnosMenu">
 
-    <ImageView
-        android:id="@+id/logo3"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="23dp"
-        app:srcCompat="@drawable/applogo" />
-
-    <TextView
-        android:id="@+id/txtEliminarTurnos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="42dp"
-        android:layout_toEndOf="@+id/logo3"
-        android:fontFamily="@font/roboto_light"
-        android:text="Eliminar turnos"
-        android:textSize="30dp" />
-
     <TextView
         android:id="@+id/sinTurnos"
-        android:layout_width="wrap_content"
-        android:layout_height="73dp"
-        android:layout_above="@+id/btnEliminarTurnosDeDia"
-        android:layout_below="@+id/relativeFechasEliminar"
+        android:layout_width="361dp"
+        android:layout_height="92dp"
+        android:layout_below="@+id/txtEliminarTurnos"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="304dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="25dp"
         android:background="#FFFFFF"
         android:fontFamily="@font/roboto_light_italic"
         android:gravity="center"
@@ -48,16 +24,45 @@
         android:textAlignment="center"
         android:textSize="18dp" />
 
-    <RelativeLayout
-        android:layout_width="388dp"
-        android:id="@+id/relativeFechasEliminar"
-        android:layout_height="92dp"
-        android:layout_below="@id/logo3"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cardsTurnos"
+        android:layout_width="match_parent"
+        android:layout_height="441dp"
+        android:layout_below="@+id/relativeFechasEliminar"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="110dp"
+        android:visibility="visible">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/txtEliminarTurnos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@+id/logo3"
+        android:fontFamily="@font/roboto_light"
+        android:text="Eliminar turnos"
+        android:textSize="30dp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeFechasEliminar"
+        android:layout_width="388dp"
+        android:layout_height="92dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="11dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="12dp"
         android:backgroundTint="#F1D8D8">
 
@@ -91,27 +96,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="40dp"
+            android:fontFamily="@font/roboto_light"
             android:text="Seleccione una fecha:"
             android:textSize="18dp" />
 
     </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cardsTurnos"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_below="@+id/relativeFechasEliminar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="105dp"
-        android:visibility="gone">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/btnEliminarTurnosDeDia"
@@ -120,12 +109,23 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginEnd="102dp"
+        android:fontFamily="@font/roboto_light"
+        android:layout_marginBottom="36dp"
         android:background="#0C084C"
         android:text="Eliminar turnos"
         android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/logo3"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="21dp"
+        app:srcCompat="@drawable/applogo" />
 
 
 </RelativeLayout>

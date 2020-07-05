@@ -140,6 +140,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
                             Log.d("ETDia", "" + response.body());
                             sinTurnos.setVisibility(View.GONE);
                             cardsTurnos.setVisibility(View.VISIBLE);
+                            btnEliminarTurnosDeDia.setVisibility(View.VISIBLE);
 
                             completarCards(response.body(), idUsr, idPaciente, matricula, nombre);
                         } else {
