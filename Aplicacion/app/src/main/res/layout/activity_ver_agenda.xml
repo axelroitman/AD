@@ -92,6 +92,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="40dp"
             android:text="Seleccione una fecha:"
+            android:fontFamily="@font/roboto_light"
             android:textSize="18dp" />
 
     </RelativeLayout>

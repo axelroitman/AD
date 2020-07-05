@@ -62,6 +62,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:id="@+id/recordarme"
+        android:fontFamily="@font/roboto_light"
+
         android:hint="Recordar mi cuenta"
         android:layout_below="@+id/txtcontrasena"
         />
