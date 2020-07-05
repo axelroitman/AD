@@ -38,7 +38,6 @@ public class inicio_medico extends AppCompatActivity {
     RelativeLayout pacMed, verAgenda, añadirTurnos, cancelarTurno;
     ImageView seleccionado, noSeleccionado;
 
-    private Toolbar mTopToolbar;
 
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;

@@ -1,18 +1,28 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 public class EliminarTurnosMenu extends AppCompatActivity {
     Button btnEliminarDia,btnEliminarMasivo;
     RelativeLayout eliminarDeUnDia, eliminarMasivo;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,60 @@ public class EliminarTurnosMenu extends AppCompatActivity {
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
 
+        /* Inicio de panel desplegable */
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        Intent intentInicio = new Intent(EliminarTurnosMenu.this, inicio_medico.class);
+                        intentInicio.putExtra("idUsr", idUsr);
+                        intentInicio.putExtra("idPaciente",idPaciente);
+                        intentInicio.putExtra("matricula",  matricula);
+                        intentInicio.putExtra("nombre",nombre);
+                        startActivity(intentInicio);
+
+                        break;
+                    case R.id.agenda:
+                        Intent intentAgenda = new Intent(EliminarTurnosMenu.this, ver_agenda.class);
+                        intentAgenda.putExtra("idUsr", idUsr);
+                        intentAgenda.putExtra("idPaciente",idPaciente);
+                        intentAgenda.putExtra("matricula",  matricula);
+                        intentAgenda.putExtra("nombre",nombre);
+                        startActivity(intentAgenda);
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intentCerrar = new Intent(EliminarTurnosMenu.this, Login.class);
+                        intentCerrar.putExtra("cierraSesion", true);
+                        startActivity(intentCerrar);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+        /* Fin de panel desplegable */
 
         eliminarMasivo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +146,21 @@ public class EliminarTurnosMenu extends AppCompatActivity {
         eliminarDeUnDia = (RelativeLayout) findViewById(R.id.eliminarDeUnDia);
         eliminarMasivo =(RelativeLayout) findViewById(R.id.eliminarMasivo);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/inicioMedDL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.loginclinicapp.inicio_medico"
+    android:theme="@android:style/Theme.Holo.Light">
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_below="@+id/logoApp"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="40dp">
 
         <!--hora inicial-->
         <TextView
@@ -221,8 +233,22 @@
         android:layout_below="@+id/datos"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="#0C084C"
         android:text="Eliminar turnos"
         android:textColor="#FFFFFF" />
 </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu_medico"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        android:id="@+id/nv">
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
