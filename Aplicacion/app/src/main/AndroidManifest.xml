@@ -18,6 +18,9 @@
             android:name=".ver_agenda"
             android:exported="true" />
         <activity
+            android:name=".JustificacionInasistencia"
+            android:exported="true" />
+        <activity
             android:name=".EliminarTurnosMenu"
             android:exported="true" />
         <activity
