@@ -507,7 +507,7 @@ public class DetalleTurno extends AppCompatActivity {
                         txtHorario.setText("Hora: " + fecha.getHour() + ":" + (fecha.getMinute() < 10 ? "0" : "") + fecha.getMinute());
 
                         if(response.body().getPrecio() != 0) {
-                            txtPrecio.setText("Precio: " + response.body().getPrecio());
+                            txtPrecio.setText("Precio: $" + response.body().getPrecio());
                         }
                         else{
                             imgPrecio.setVisibility(View.GONE);

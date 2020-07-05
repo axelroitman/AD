@@ -291,7 +291,7 @@ public class eliminar_turnos extends AppCompatActivity {
                     alert.show();
                 }
 
-                if(diaIni != null && mesIni != null && añoIni != null && diaFin != null && mesFin != null && añoFin != null && horaIni != null && minutoIni != null && horaFin != null && minutoFin != null) {
+                else if(diaIni != null && mesIni != null && añoIni != null && diaFin != null && mesFin != null && añoFin != null && horaIni != null && minutoIni != null && horaFin != null && minutoFin != null) {
                     final String fechaInicial = diaIni + "/" + mesIni + "/" + añoIni;
                     final String fechaFinal = diaFin + "/" + mesFin + "/" + añoFin;
                     final String horaInicial = horaIni + ":" + minutoIni + ":00";

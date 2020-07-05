@@ -160,7 +160,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
                                         if (response.code() == 201) {
                                             //Agrega a la lista
                                             builder.setTitle("Lista de espera");
-                                            builder.setMessage("Usted fue agregado a la lista de espera solicitada. Cuando se liberen nuevos turnos, nos contactaremos con usted.");
+                                            builder.setMessage("Ha sido añadido a la lista de espera solicitada. Cuando surja un turno nuevo, nos contactaremos con usted.");
                                             builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -179,7 +179,7 @@ public class pedir_turnos_fecha extends AppCompatActivity {
                                         else{
                                             //Estaba en la lista
                                             builder.setTitle("Lista de espera");
-                                            builder.setMessage("Ya se había unido a la lista de espera anteriormente. Cuando se liberen nuevos turnos, nos contactaremos con usted.");
+                                            builder.setMessage("Ya se había unido a la lista de espera anteriormente. Cuando surja un turno nuevo, nos contactaremos con usted.");
                                             builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
