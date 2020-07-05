@@ -1144,7 +1144,7 @@ public class Controlador {
 		
 		for(TurnoView t: proximosTurnos) 
 		{
-			if(!t.getAsistencia().equals(Asistencia.NoAsiste) || !t.getDisponibilidad().equals(Disponibilidad.Cancelado)) 
+			if(tengoProximoTurno == false && (!t.getAsistencia().equals(Asistencia.NoAsiste) || !t.getDisponibilidad().equals(Disponibilidad.Cancelado))) 
 			{
 				proximo = t;
 				tengoProximoTurno = true;
