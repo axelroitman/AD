@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--FUNDAMENTAL QUE ESTO ESTÉ ARRIBA, AL INICIO-->
+
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,7 +21,6 @@
     android:background="#E8E5E5"
     android:orientation="vertical"
     tools:context=".inicio_medico">
-
     <!--logo y nombre -->
     <TextView
         android:id="@+id/nombreApp"

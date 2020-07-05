@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDateTime;
@@ -36,6 +38,7 @@ public class inicio_medico extends AppCompatActivity {
     RelativeLayout pacMed, verAgenda, añadirTurnos, cancelarTurno;
     ImageView seleccionado, noSeleccionado;
 
+    private Toolbar mTopToolbar;
 
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
@@ -56,14 +59,17 @@ public class inicio_medico extends AppCompatActivity {
 
         /* Inicio de panel desplegable */
 
-
+       /* mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        mTopToolbar.setTitle("ClinicApp");
+        mTopToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mTopToolbar);*/
         dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
         t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
 
         dl.addDrawerListener(t);
         t.syncState();
 
-       //getSupportActionBar().setDisplayHomeAsUpEnabled(true); ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true); //ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
 
         nv = (NavigationView)findViewById(R.id.nv);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -84,6 +90,7 @@ public class inicio_medico extends AppCompatActivity {
                         break;
                     case R.id.cerrarSesion:
                         Intent intent = new Intent(inicio_medico.this, Login.class);
+                        intent.putExtra("cierraSesion", true);
                         startActivity(intent);
                         break;
                     default:
@@ -253,6 +260,12 @@ public class inicio_medico extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
     private void vincular(){
         btnVerMiAgenda = (Button) findViewById(R.id.btnVerMiAgenda);

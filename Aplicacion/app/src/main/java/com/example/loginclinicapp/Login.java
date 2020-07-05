@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
     int idPaciente;
     String matricula;
     String nombre;
+    boolean cierraSesion = false;
 
     int pacMed = 0; //1 = Paciente ; 2 = Medico ; 3 = Paciente y medico
 
@@ -40,8 +41,17 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         builder = new AlertDialog.Builder(this);
+        getSupportActionBar().hide();
         vincular();
         Log.d("loginresp", "Existo.");
+        Intent intent = getIntent();
+        boolean cierraSesion = intent.getBooleanExtra("cierraSesion", false);
+
+        if(cierraSesion)
+        {
+            SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+            preferences.edit().putBoolean("estado", false).apply();
+        }
 
         if(obtenerInfoLogin()){ // esto es para cuando el RB es true, que se saltee la pantalla de log-in y que comience en el inicio.
             Log.d("datosRecordarmeNom", ""+nombre);
@@ -244,4 +254,13 @@ public class Login extends AppCompatActivity {
         return preferences.getBoolean("estado", false);
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        //finish();
+        moveTaskToBack(true);
+
+    }
+
 }

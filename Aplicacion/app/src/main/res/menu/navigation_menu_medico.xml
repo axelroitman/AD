@@ -7,7 +7,7 @@
         android:fontFamily="@font/roboto_light_italic"
         />
     <item android:id="@+id/agenda"
-        android:icon="@drawable/agenda"
+        android:icon="@drawable/appointmenticon"
         android:title="Mi agenda"
         android:fontFamily="@font/roboto_light_italic"
         />
