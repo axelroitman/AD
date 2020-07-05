@@ -277,7 +277,7 @@ public class eliminar_turnos extends AppCompatActivity {
                 sabado = checkbox_sabado.isChecked();
                 domingo = checkbox_domingo.isChecked();
 
-                if ((mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI < c.get(Calendar.HOUR) || minutoI < c.get(Calendar.MINUTE))) || (mesI > mesF) || (mesI == mesF && diaI > diaF) || (añoI > añoF)) {
+                if ((mesI == c.get(Calendar.MONTH) && diaI == c.get(Calendar.DAY_OF_MONTH) && (horaI <= c.get(Calendar.HOUR) && minutoI < c.get(Calendar.MINUTE))) || (mesI > mesF) || (mesI == mesF && diaI > diaF) || (añoI > añoF) || (horaI > horaF)) {
                     builder.setTitle("Error");
                     builder.setMessage("Introduzca un horario válido.");
                     builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
