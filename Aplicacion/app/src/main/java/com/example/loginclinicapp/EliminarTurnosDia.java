@@ -1,8 +1,11 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,11 +15,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
@@ -37,6 +44,9 @@ public class EliminarTurnosDia extends AppCompatActivity {
     Button btnEliminarTurnosDeDia;
     public final Calendar c = Calendar.getInstance();
     AlertDialog.Builder builder, builder2;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     List<Turno> seleccionados = new ArrayList<Turno>();
     int año = c.get(java.util.Calendar.YEAR);
@@ -60,6 +70,64 @@ public class EliminarTurnosDia extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        /* Inicio de panel desplegable */
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        Intent intentInicio = new Intent(EliminarTurnosDia.this, inicio_medico.class);
+                        intentInicio.putExtra("idUsr", idUsr);
+                        intentInicio.putExtra("idPaciente",idPaciente);
+                        intentInicio.putExtra("matricula",  matricula);
+                        intentInicio.putExtra("nombre",nombre);
+                        startActivity(intentInicio);
+
+                        break;
+                    case R.id.agenda:
+                        Intent intentAgenda = new Intent(EliminarTurnosDia.this, ver_agenda.class);
+                        intentAgenda.putExtra("idUsr", idUsr);
+                        intentAgenda.putExtra("idPaciente",idPaciente);
+                        intentAgenda.putExtra("matricula",  matricula);
+                        intentAgenda.putExtra("nombre",nombre);
+                        startActivity(intentAgenda);
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intentCerrar = new Intent(EliminarTurnosDia.this, Login.class);
+                        intentCerrar.putExtra("cierraSesion", true);
+                        startActivity(intentCerrar);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+        /* Fin de panel desplegable */
+
+
+
         traerTurnosDia(idUsr, idPaciente, matricula, nombre, new Date());
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
@@ -243,5 +311,20 @@ public class EliminarTurnosDia extends AppCompatActivity {
             btnEliminarTurnosDeDia = (Button) findViewById(R.id.btnEliminarTurnosDeDia);
 
         }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
 }

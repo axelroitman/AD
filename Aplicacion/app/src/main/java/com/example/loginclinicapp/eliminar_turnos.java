@@ -1,19 +1,26 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
 
@@ -26,6 +33,9 @@ public class eliminar_turnos extends AppCompatActivity {
     TextView tvHoraInicio, tvHoraFin, tvFechaInicial, tvFechaFinal;
     CheckBox checkbox_lunes,checkbox_martes,checkbox_miercoles,checkbox_jueves,checkbox_viernes,checkbox_sabado,checkbox_domingo;
     Button btneliminar;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     boolean lunes = false, martes = false, miercoles = false, jueves = false, viernes = false, sabado = false, domingo = false;
     AlertDialog.Builder builder, builder2;
@@ -61,6 +71,62 @@ public class eliminar_turnos extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        /* Inicio de panel desplegable */
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        Intent intentInicio = new Intent(eliminar_turnos.this, inicio_medico.class);
+                        intentInicio.putExtra("idUsr", idUsr);
+                        intentInicio.putExtra("idPaciente",idPaciente);
+                        intentInicio.putExtra("matricula",  matricula);
+                        intentInicio.putExtra("nombre",nombre);
+                        startActivity(intentInicio);
+
+                        break;
+                    case R.id.agenda:
+                        Intent intentAgenda = new Intent(eliminar_turnos.this, ver_agenda.class);
+                        intentAgenda.putExtra("idUsr", idUsr);
+                        intentAgenda.putExtra("idPaciente",idPaciente);
+                        intentAgenda.putExtra("matricula",  matricula);
+                        intentAgenda.putExtra("nombre",nombre);
+                        startActivity(intentAgenda);
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intentCerrar = new Intent(eliminar_turnos.this, Login.class);
+                        intentCerrar.putExtra("cierraSesion", true);
+                        startActivity(intentCerrar);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+        /* Fin de panel desplegable */
+
 
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
@@ -321,5 +387,21 @@ public class eliminar_turnos extends AppCompatActivity {
         checkbox_sabado = (CheckBox) findViewById(R.id.checkbox_sabado);
         checkbox_domingo = (CheckBox) findViewById(R.id.checkbox_domingo);
         btneliminar = (Button) findViewById(R.id.btneliminar);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

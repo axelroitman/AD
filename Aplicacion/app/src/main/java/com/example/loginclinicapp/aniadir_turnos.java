@@ -1,7 +1,10 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.app.SearchManager;
@@ -11,6 +14,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,6 +25,8 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -40,6 +47,9 @@ public class aniadir_turnos extends AppCompatActivity {
     CheckBox checkbox_lunes,checkbox_martes,checkbox_miercoles,checkbox_jueves,checkbox_viernes,checkbox_sabado,checkbox_domingo;
     Button btnaniadir;
     AlertDialog.Builder builder, builder2;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
 
     Collection<Especialidad> especialidades = new ArrayList<Especialidad>();
@@ -81,6 +91,62 @@ public class aniadir_turnos extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        /* Inicio de panel desplegable */
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        Intent intentInicio = new Intent(aniadir_turnos.this, inicio_medico.class);
+                        intentInicio.putExtra("idUsr", idUsr);
+                        intentInicio.putExtra("idPaciente",idPaciente);
+                        intentInicio.putExtra("matricula",  matricula);
+                        intentInicio.putExtra("nombre",nombre);
+                        startActivity(intentInicio);
+
+                        break;
+                    case R.id.agenda:
+                        Intent intentAgenda = new Intent(aniadir_turnos.this, ver_agenda.class);
+                        intentAgenda.putExtra("idUsr", idUsr);
+                        intentAgenda.putExtra("idPaciente",idPaciente);
+                        intentAgenda.putExtra("matricula",  matricula);
+                        intentAgenda.putExtra("nombre",nombre);
+                        startActivity(intentAgenda);
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intentCerrar = new Intent(aniadir_turnos.this, Login.class);
+                        intentCerrar.putExtra("cierraSesion", true);
+                        startActivity(intentCerrar);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+        /* Fin de panel desplegable */
+
 
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
@@ -452,4 +518,21 @@ public class aniadir_turnos extends AppCompatActivity {
         checkbox_domingo = (CheckBox) findViewById(R.id.checkbox_domingo);
         btnaniadir = (Button) findViewById(R.id.btnaniadir);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

@@ -1,7 +1,10 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,11 +13,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +38,10 @@ public class ver_agenda extends AppCompatActivity {
     RelativeLayout mensajeNotieneTurnos;
     RecyclerView recyclerViewItem;
     GroupAdp adaptador_items;
+
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     public final Calendar c = Calendar.getInstance();
 
@@ -56,6 +67,62 @@ public class ver_agenda extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        /* Inicio de panel desplegable */
+
+       /* mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        mTopToolbar.setTitle("ClinicApp");
+        mTopToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mTopToolbar);*/
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //ESTA ES LA LÍNEA DE LA DISCORDIA, LA QUE REVIENTA TODA LA APP, Y A LA VEZ LA QUE MOSTRARÍA EL BOTÓN DE HAMBURGUESA.
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.inicio:
+                        Intent i = new Intent(ver_agenda.this, inicio_medico.class);
+                        i.putExtra("idUsr", idUsr);
+                        i.putExtra("idPaciente",idPaciente);
+                        i.putExtra("matricula",  matricula);
+                        i.putExtra("nombre",nombre);
+                        startActivity(i);
+
+                        break;
+                    case R.id.agenda:
+                        //En este caso, ya está en agenda, no tiene que hacer nada.
+                        break;
+                    case R.id.cerrarSesion:
+                        Intent intent = new Intent(ver_agenda.this, Login.class);
+                        intent.putExtra("cierraSesion", true);
+                        startActivity(intent);
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
+
+        /* Fin de panel desplegable */
+
+
         traerProximosTurnosMedico(idUsr,idPaciente,matricula,nombre,new Date());
 
 
@@ -207,6 +274,22 @@ public class ver_agenda extends AppCompatActivity {
         txtfecha = (TextView) findViewById(R.id.txtfecha);
         mensajeNotieneTurnos = (RelativeLayout) findViewById(R.id.mensajeNotieneTurnos);
         recyclerViewItem = (RecyclerView) findViewById(R.id.recyclerViewItem);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
 }
