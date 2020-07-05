@@ -3,9 +3,11 @@ package com.example.loginclinicapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -42,7 +44,7 @@ public class inicio_medico extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
-
+    AlertDialog.Builder builderCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,7 @@ public class inicio_medico extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+        builderCerrar = new AlertDialog.Builder(this);
 
 
         /* Inicio de panel desplegable */
@@ -94,9 +97,25 @@ public class inicio_medico extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.cerrarSesion:
-                        Intent intent = new Intent(inicio_medico.this, Login.class);
-                        intent.putExtra("cierraSesion", true);
-                        startActivity(intent);
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        Intent intent = new Intent(inicio_medico.this, Login.class);
+                                        intent.putExtra("cierraSesion", true);
+                                        startActivity(intent);
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        dialog.cancel();
+                                        break;
+                                }
+                            }
+                        };
+
+                        builderCerrar.setMessage("¿Está seguro de que quiere cerrar sesión?").setPositiveButton("Sí", dialogClickListener)
+                                .setNegativeButton("No", dialogClickListener).show();
                         break;
                     default:
                         return true;

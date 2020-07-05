@@ -38,7 +38,7 @@ public class eliminar_turnos extends AppCompatActivity {
     private NavigationView nv;
 
     boolean lunes = false, martes = false, miercoles = false, jueves = false, viernes = false, sabado = false, domingo = false;
-    AlertDialog.Builder builder, builder2;
+    AlertDialog.Builder builder, builder2, builderCerrar;
 
 
     public final Calendar c = Calendar.getInstance();
@@ -113,9 +113,25 @@ public class eliminar_turnos extends AppCompatActivity {
                         startActivity(intentAgenda);
                         break;
                     case R.id.cerrarSesion:
-                        Intent intentCerrar = new Intent(eliminar_turnos.this, Login.class);
-                        intentCerrar.putExtra("cierraSesion", true);
-                        startActivity(intentCerrar);
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        Intent intent = new Intent(eliminar_turnos.this, Login.class);
+                                        intent.putExtra("cierraSesion", true);
+                                        startActivity(intent);
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        dialog.cancel();
+                                        break;
+                                }
+                            }
+                        };
+
+                        builderCerrar.setMessage("¿Está seguro de que quiere cerrar sesión?").setPositiveButton("Sí", dialogClickListener)
+                                .setNegativeButton("No", dialogClickListener).show();
                         break;
                     default:
                         return true;
@@ -130,6 +146,7 @@ public class eliminar_turnos extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
+        builderCerrar = new AlertDialog.Builder(this);
 
         tvHoraInicio.setOnClickListener(new View.OnClickListener() {
             @Override

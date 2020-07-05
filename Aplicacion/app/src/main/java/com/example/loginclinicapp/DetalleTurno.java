@@ -1,8 +1,11 @@
 package com.example.loginclinicapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,11 +13,15 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
@@ -35,7 +42,10 @@ public class DetalleTurno extends AppCompatActivity {
     ImageView imgAsistencia, imgEstado, imgProfesionalPaciente, imgMotivoCancela, imgCanceladoPor, imgPrecio;
     RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno;
     Button btnCancelarTurnoPaciente, btnPedirTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
-    AlertDialog.Builder builder, builder2;
+    AlertDialog.Builder builder, builder2, builderCerrar;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +62,23 @@ public class DetalleTurno extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
+        builderCerrar = new AlertDialog.Builder(this);
+
+
+        dl = (DrawerLayout)findViewById(R.id.inicioMedDL);
+        t = new ActionBarDrawerToggle(this, dl,R.string.app_name, R.string.app_name);
+
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nv = (NavigationView)findViewById(R.id.nv);
+
+        final View headerView = nv.getHeaderView(0);
+        TextView nombreUsr = (TextView) headerView.findViewById(R.id.nombreUsuario);
+        nombreUsr.setText(nombre);
+        final ImageView imagenUsuario = (ImageView) headerView.findViewById(R.id.imageUser);
 
 
         Log.d("turnoDet","Estoy por hacer la call");
@@ -60,9 +87,102 @@ public class DetalleTurno extends AppCompatActivity {
         turno.enqueue(new Callback<Turno>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
-            public void onResponse(Call<Turno> call, Response<Turno> response) {
+            public void onResponse(Call<Turno> call, final Response<Turno> response) {
                 if(response.code()==200) {
                     if (response.body() != null) {
+
+
+                        /* Inicio de panel desplegable */
+
+
+
+                        if(!response.body().getMedico().getMatricula().equals(matricula)) {
+
+                            imagenUsuario.setImageResource(R.drawable.userimage);
+
+                            Menu menu = nv.getMenu();
+                            MenuItem itemMenu = (MenuItem) menu.findItem(R.id.agenda);
+                            itemMenu.setTitle("Mis turnos");
+                        }
+                        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                            @Override
+                            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                                int id = item.getItemId();
+                                switch(id)
+                                {
+                                    case R.id.inicio:
+                                        if(response.body().getMedico().getMatricula().equals(matricula)) {
+                                            Intent intentInicio = new Intent(DetalleTurno.this, inicio_medico.class);
+                                            intentInicio.putExtra("idUsr", idUsr);
+                                            intentInicio.putExtra("idPaciente", idPaciente);
+                                            intentInicio.putExtra("matricula", matricula);
+                                            intentInicio.putExtra("nombre", nombre);
+                                            startActivity(intentInicio);
+                                        }
+                                        else{
+                                            Intent intentInicio = new Intent(DetalleTurno.this, inicio_paciente.class);
+                                            intentInicio.putExtra("idUsr", idUsr);
+                                            intentInicio.putExtra("idPaciente", idPaciente);
+                                            intentInicio.putExtra("matricula", matricula);
+                                            intentInicio.putExtra("nombre", nombre);
+                                            startActivity(intentInicio);
+
+                                        }
+                                        break;
+                                    case R.id.agenda:
+                                        if(response.body().getMedico().getMatricula().equals(matricula)) {
+                                            Intent i = new Intent(DetalleTurno.this, ver_agenda.class);
+                                            i.putExtra("idUsr", idUsr);
+                                            i.putExtra("idPaciente",idPaciente);
+                                            i.putExtra("matricula",  matricula);
+                                            i.putExtra("nombre",nombre);
+                                            startActivity(i);
+                                        }
+                                        else{
+                                            Intent i = new Intent(DetalleTurno.this, ver_mis_turnos.class);
+                                            i.putExtra("idUsr", idUsr);
+                                            i.putExtra("idPaciente",idPaciente);
+                                            i.putExtra("matricula",  matricula);
+                                            i.putExtra("nombre",nombre);
+                                            startActivity(i);
+
+                                        }
+                                        break;
+                                    case R.id.cerrarSesion:
+
+                                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which){
+                                                    case DialogInterface.BUTTON_POSITIVE:
+                                                        Intent intent = new Intent(DetalleTurno.this, Login.class);
+                                                        intent.putExtra("cierraSesion", true);
+                                                        startActivity(intent);
+                                                        break;
+
+                                                    case DialogInterface.BUTTON_NEGATIVE:
+                                                        dialog.cancel();
+                                                        break;
+                                                }
+                                            }
+                                        };
+
+                                        builderCerrar.setMessage("¿Está seguro de que quiere cerrar sesión?").setPositiveButton("Sí", dialogClickListener)
+                                                .setNegativeButton("No", dialogClickListener).show();
+
+
+                                        break;
+                                    default:
+                                        return true;
+                                }
+                                return true;
+                            }
+                        });
+
+
+                        /* Fin de panel desplegable */
+
                         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                         LocalDateTime fecha = LocalDateTime.parse(response.body().getFecha(), formato);
                         String mesEnPalabras = fecha.getMonth().getDisplayName(TextStyle.FULL, new Locale("es","ES"));
@@ -467,6 +587,21 @@ public class DetalleTurno extends AppCompatActivity {
         btnEliminarTurno = (Button) findViewById(R.id.btnEliminarTurno);
         btnNoAsistire = (Button) findViewById(R.id.btnNoAsistire);
         btnAsistire = (Button) findViewById(R.id.btnAsistire);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(t.onOptionsItemSelected(item))
+            return true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_desplegable, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

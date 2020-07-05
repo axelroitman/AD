@@ -43,7 +43,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
     GroupAdpEliminarTurno groupET;
     Button btnEliminarTurnosDeDia;
     public final Calendar c = Calendar.getInstance();
-    AlertDialog.Builder builder, builder2;
+    AlertDialog.Builder builder, builder2, builderCerrar;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
@@ -112,9 +112,25 @@ public class EliminarTurnosDia extends AppCompatActivity {
                         startActivity(intentAgenda);
                         break;
                     case R.id.cerrarSesion:
-                        Intent intentCerrar = new Intent(EliminarTurnosDia.this, Login.class);
-                        intentCerrar.putExtra("cierraSesion", true);
-                        startActivity(intentCerrar);
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        Intent intent = new Intent(EliminarTurnosDia.this, Login.class);
+                                        intent.putExtra("cierraSesion", true);
+                                        startActivity(intent);
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        dialog.cancel();
+                                        break;
+                                }
+                            }
+                        };
+
+                        builderCerrar.setMessage("¿Está seguro de que quiere cerrar sesión?").setPositiveButton("Sí", dialogClickListener)
+                                .setNegativeButton("No", dialogClickListener).show();
                         break;
                     default:
                         return true;
@@ -131,6 +147,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
         traerTurnosDia(idUsr, idPaciente, matricula, nombre, new Date());
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
+        builderCerrar = new AlertDialog.Builder(this);
 
         txtfechaEliminar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)

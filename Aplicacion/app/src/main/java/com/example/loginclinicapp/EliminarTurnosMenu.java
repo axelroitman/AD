@@ -2,9 +2,11 @@ package com.example.loginclinicapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +25,7 @@ public class EliminarTurnosMenu extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    AlertDialog.Builder builderCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class EliminarTurnosMenu extends AppCompatActivity {
         final int idPaciente = i.getIntExtra("idPaciente", 0);
         final String matricula = i.getStringExtra("matricula");
         final String nombre = i.getStringExtra("nombre");
+
+        builderCerrar = new AlertDialog.Builder(this);
+
 
         /* Inicio de panel desplegable */
 
@@ -78,9 +84,25 @@ public class EliminarTurnosMenu extends AppCompatActivity {
                         startActivity(intentAgenda);
                         break;
                     case R.id.cerrarSesion:
-                        Intent intentCerrar = new Intent(EliminarTurnosMenu.this, Login.class);
-                        intentCerrar.putExtra("cierraSesion", true);
-                        startActivity(intentCerrar);
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        Intent intent = new Intent(EliminarTurnosMenu.this, Login.class);
+                                        intent.putExtra("cierraSesion", true);
+                                        startActivity(intent);
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        dialog.cancel();
+                                        break;
+                                }
+                            }
+                        };
+
+                        builderCerrar.setMessage("¿Está seguro de que quiere cerrar sesión?").setPositiveButton("Sí", dialogClickListener)
+                                .setNegativeButton("No", dialogClickListener).show();
                         break;
                     default:
                         return true;
