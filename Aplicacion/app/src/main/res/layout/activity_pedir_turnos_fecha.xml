@@ -85,7 +85,7 @@
         <!--turnos disponibles para tal especialidad -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="525dp"
+            android:layout_height="494dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -93,20 +93,20 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="205dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="32dp"
             android:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerCards"
                 android:layout_width="match_parent"
-                android:layout_height="522dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="0dp"
-                android:layout_marginBottom="3dp"
-                android:visibility="gone">
+                android:layout_marginBottom="68dp"
+                android:visibility="visible">
 
             </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>

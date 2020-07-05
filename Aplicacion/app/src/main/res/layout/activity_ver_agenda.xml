@@ -13,9 +13,7 @@
 
     <!--ADEMÁS DE LO DE ARRIBA, HAY QUE AGREGAR LOS DOS COMP. QUE ESTÁN AL FINAL-->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8E5E5"
@@ -147,15 +145,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItem"
         android:layout_width="match_parent"
-        android:layout_height="496dp"
+        android:layout_height="483dp"
         android:layout_below="@+id/relativeFechas"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="-18dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="63dp"
         android:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>
