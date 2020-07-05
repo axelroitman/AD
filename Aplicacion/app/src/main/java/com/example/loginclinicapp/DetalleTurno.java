@@ -531,13 +531,13 @@ public class DetalleTurno extends AppCompatActivity {
                             imgAsistencia.setImageResource(R.drawable.asistenciapendiente);
                         }
 
-                        if(response.body().getDisponibilidad() == "Cancelado") {
+                        if(response.body().getDisponibilidad().equals("Cancelado")) {
                             txtCancela.setVisibility(View.VISIBLE);
                             txtMotivoCancela.setVisibility(View.VISIBLE);
                             imgMotivoCancela.setVisibility(View.VISIBLE);
                             imgCanceladoPor.setVisibility(View.VISIBLE);
 
-                            if (response.body().getAsistencia() == "NoAsiste") {
+                            if (response.body().getAsistencia().equals("NoAsiste")) {
                                 txtCancela.setText("Cancelado por: Paciente");
                                 txtMotivoCancela.setText("Motivo de cancelación: " + response.body().getJustifInasistencia());
                             }
