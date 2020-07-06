@@ -534,17 +534,25 @@ public class DetalleTurno extends AppCompatActivity {
                         if(response.body().getDisponibilidad().equals("Cancelado")) {
                             //layoutInfo.setBottom(0);
                             txtCancela.setVisibility(View.VISIBLE);
-                            txtMotivoCancela.setVisibility(View.VISIBLE);
-                            imgMotivoCancela.setVisibility(View.VISIBLE);
                             imgCanceladoPor.setVisibility(View.VISIBLE);
+
+                            if(response.body().getJustifInasistencia() != null) {
+                                txtMotivoCancela.setVisibility(View.VISIBLE);
+                                imgMotivoCancela.setVisibility(View.VISIBLE);
+                            }
 
                             if (response.body().getAsistencia().equals("NoAsiste")) {
                                 txtCancela.setText("Cancelado por: Paciente");
-                                txtMotivoCancela.setText("Motivo de cancelación: " + response.body().getJustifInasistencia());
+                                if(response.body().getJustifInasistencia() != null) {
+                                    txtMotivoCancela.setText("Motivo de cancelación: " + response.body().getJustifInasistencia());
+                                }
+
                             }
                             else{
                                 txtCancela.setText("Cancelado por: Centro médico");
-                                txtMotivoCancela.setText("Motivo de cancelación: " + response.body().getJustifInasistencia());
+                                if(response.body().getJustifInasistencia() != null) {
+                                    txtMotivoCancela.setText("Motivo de cancelación: " + response.body().getJustifInasistencia());
+                                }
 
                             }
 
