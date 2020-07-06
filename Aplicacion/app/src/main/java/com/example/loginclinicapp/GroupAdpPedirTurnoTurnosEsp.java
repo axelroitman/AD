@@ -76,7 +76,6 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        if(!turnos.get(i).getMedico().getMatricula().equals(matricula)) {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +110,7 @@ class GroupAdpPedirTurnoTurnosEsp extends RecyclerView.Adapter<GroupAdpPedirTurn
             viewHolder.itemTurno.setVisibility(View.VISIBLE);
             viewHolder.tvNombreMedico.setVisibility(View.VISIBLE);
             viewHolder.txtHorario.setVisibility(View.VISIBLE);
-        }
+
     }
 
     @Override

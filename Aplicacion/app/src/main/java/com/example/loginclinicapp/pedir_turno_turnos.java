@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,6 +37,7 @@ public class pedir_turno_turnos extends AppCompatActivity {
     TextView txtDia, turnosDeEspecialidad;
     RecyclerView cardsTurnos;
     private String mesEnPalabras;
+    private List<Turno> turnosBody = new ArrayList<Turno>();
     private int nroDia;
     private LocalDate fecha;
     private String fechaString;
@@ -155,15 +157,24 @@ public class pedir_turno_turnos extends AppCompatActivity {
             Log.d("turnoss", "Fecha: " + fecha.toString());
             Log.d("turnoss","IdEsp: " + idEsp);
             Log.d("turnoss", "FechaComoString: " + fechaString);
-            Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadPorDiaService().getTurnosEspecialidadPorDiaService(idEsp,fechaString);
+            final Call<List<Turno>> turnos = RetrofitClient.getInstance().getGetTurnosEspecialidadPorDiaService().getTurnosEspecialidadPorDiaService(idEsp,fechaString);
             turnos.enqueue(new Callback<List<Turno>>() {
                 @Override
                 public void onResponse(Call<List<Turno>> call, Response<List<Turno>> response) {
                     if (response.code() == 200) {
                         if (response != null) {
+                            if(matricula != null) {
+                                for (Turno t : response.body()) {
+                                    if (!t.getMedico().getMatricula().equals(matricula)){
+                                        turnosBody.add(t);
+                                    }
+                                }
+                            }
+                            else{
+                                turnosBody = response.body();
+                            }
                             cardsTurnos.setVisibility(View.VISIBLE);
-                            completarCards(response.body(), idUsr, idPaciente, matricula, nombre, idEsp, matriculaSeleccionado, nombreEsp, nombreMedico);
-
+                            completarCards(turnosBody, idUsr, idPaciente, matricula, nombre, idEsp, matriculaSeleccionado, nombreEsp, nombreMedico);
                         }
                     }
                 }
