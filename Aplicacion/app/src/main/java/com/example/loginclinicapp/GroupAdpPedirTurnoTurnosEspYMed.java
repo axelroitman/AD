@@ -71,37 +71,37 @@ class GroupAdpPedirTurnoTurnosEspYMed extends RecyclerView.Adapter<GroupAdpPedir
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {                                               //LEP
-                Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
-                i.putExtra("idUsr", idUsr);
-                i.putExtra("idPaciente", idPaciente);
-                i.putExtra("matricula", matricula);
-                i.putExtra("nombre", nombre);
-                i.putExtra("idTurno", idTurno);
-                viewHolder.itemView.getContext().startActivity(i);
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {                                               //LEP
+                    Intent i = new Intent(viewHolder.itemView.getContext(), DetalleTurno.class);
+                    idTurno = turnos.get(viewHolder.getAdapterPosition()).getId();
+                    i.putExtra("idUsr", idUsr);
+                    i.putExtra("idPaciente", idPaciente);
+                    i.putExtra("matricula", matricula);
+                    i.putExtra("nombre", nombre);
+                    i.putExtra("idTurno", idTurno);
+                    viewHolder.itemView.getContext().startActivity(i);
+                }
+            });
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
+
+            if (dateTime.getHour() < 10) {
+                hora = "0" + dateTime.getHour();
+            } else {
+                hora = "" + dateTime.getHour();
             }
-        });
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        dateTime = LocalDateTime.parse(turnos.get(i).getFecha(), formatter);
-
-        if(dateTime.getHour() < 10){
-            hora = "0" + dateTime.getHour();
-        }
-        else{
-            hora = "" + dateTime.getHour();
-        }
-        if(dateTime.getMinute() < 10){
-            minuto = "0" + dateTime.getMinute() + "hs";
-        }
-        else{
-            minuto = "" + dateTime.getMinute() + "hs";
-        }
-        idTurno = turnos.get(i).getId();
-        viewHolder.txtHorario.setText(hora + ":" + minuto);
+            if (dateTime.getMinute() < 10) {
+                minuto = "0" + dateTime.getMinute() + "hs";
+            } else {
+                minuto = "" + dateTime.getMinute() + "hs";
+            }
+            idTurno = turnos.get(i).getId();
+            viewHolder.txtHorario.setText(hora + ":" + minuto);
     }
+
 
     @Override
     public int getItemCount() {
