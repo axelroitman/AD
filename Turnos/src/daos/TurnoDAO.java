@@ -160,6 +160,9 @@ public class TurnoDAO {
 		c.add(Calendar.DATE, 1);
 		fechaFin = c.getTime();
 
+		System.out.println(fecha);
+		System.out.println(fechaFin);
+		
 		List<Turno> resultado = new ArrayList<Turno>();
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();

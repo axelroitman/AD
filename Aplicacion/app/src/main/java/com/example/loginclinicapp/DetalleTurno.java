@@ -40,7 +40,7 @@ public class DetalleTurno extends AppCompatActivity {
 
     TextView txtFechaTurno, txtAsistencia, txtCancela, txtMotivoCancela, txtPrecio, txtHorario, txtEspecialidad, txtProfesionalPaciente, txtEstado;
     ImageView imgAsistencia, imgEstado, imgProfesionalPaciente, imgMotivoCancela, imgCanceladoPor, imgPrecio;
-    RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno;
+    RelativeLayout layoutConfirmarAsistencia, layoutMedicoTurnoSinConfirmar, layoutTurnoLibre, layoutPacienteCancelarTurno, layoutInfo;
     Button btnCancelarTurnoPaciente, btnPedirTurno, btnEliminarTurno, btnNoAsistire, btnAsistire;
     AlertDialog.Builder builder, builder2, builderCerrar;
     private DrawerLayout dl;
@@ -532,6 +532,7 @@ public class DetalleTurno extends AppCompatActivity {
                         }
 
                         if(response.body().getDisponibilidad().equals("Cancelado")) {
+                            //layoutInfo.setBottom(0);
                             txtCancela.setVisibility(View.VISIBLE);
                             txtMotivoCancela.setVisibility(View.VISIBLE);
                             imgMotivoCancela.setVisibility(View.VISIBLE);
@@ -567,7 +568,7 @@ public class DetalleTurno extends AppCompatActivity {
         txtFechaTurno = (TextView) findViewById(R.id.txtFechaTurno);
         txtAsistencia = (TextView) findViewById(R.id.txtAsistencia);
         txtCancela = (TextView) findViewById(R.id.txtCancela);
-        txtMotivoCancela = (TextView) findViewById(R.id.txtCancela);
+        txtMotivoCancela = (TextView) findViewById(R.id.txtMotivoCancela);
         txtPrecio = (TextView) findViewById(R.id.txtPrecio);
         txtHorario = (TextView) findViewById(R.id.txtHorario);
         txtEspecialidad = (TextView) findViewById(R.id.txtEspecialidad);
@@ -591,6 +592,8 @@ public class DetalleTurno extends AppCompatActivity {
         btnEliminarTurno = (Button) findViewById(R.id.btnEliminarTurno);
         btnNoAsistire = (Button) findViewById(R.id.btnNoAsistire);
         btnAsistire = (Button) findViewById(R.id.btnAsistire);
+
+        layoutInfo = (RelativeLayout) findViewById(R.id.layoutInfo);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

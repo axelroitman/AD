@@ -63,7 +63,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="175dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="169dp">
+        android:layout_marginBottom="0dp"
+        android:id="@+id/layoutInfo">
 
         <TextView
             android:id="@+id/txtAsistencia"

@@ -1179,6 +1179,8 @@ public class Controlador {
 		ArrayList<TurnoView> rdo = new ArrayList<TurnoView>();
 		
 		for(Turno t : turnos) {
+			System.out.println(t.getId());
+
 			rdo.add(t.toView());
 		}
 		return rdo;
