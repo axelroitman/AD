@@ -191,7 +191,7 @@ public class DetalleTurno extends AppCompatActivity {
                             //OPCIONES DEL MEDICO
                             LocalDateTime fechaActual = LocalDateTime.now();
                             long diferenciaHoras = HOURS.between(fechaActual, fecha);
-                            if(response.body().getPaciente() == null && diferenciaHoras >= 0){
+                            if(response.body().getPaciente() == null && diferenciaHoras >= 168){
                                 layoutMedicoTurnoSinConfirmar.setVisibility(View.VISIBLE);
                                 btnEliminarTurno.setOnClickListener(new View.OnClickListener() {
                                     @Override

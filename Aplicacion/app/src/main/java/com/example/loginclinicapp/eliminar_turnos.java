@@ -226,6 +226,7 @@ public class eliminar_turnos extends AppCompatActivity {
                 datePicker.setMaxDate(limSup.getTimeInMillis());
 
                 Calendar limInf = Calendar.getInstance();
+                limInf.add(Calendar.WEEK_OF_MONTH,1);
                 datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
             }
@@ -258,6 +259,7 @@ public class eliminar_turnos extends AppCompatActivity {
                 datePicker.setMaxDate(limSup.getTimeInMillis());
 
                 Calendar limInf = Calendar.getInstance();
+                limInf.add(Calendar.WEEK_OF_MONTH,1);
                 datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
 

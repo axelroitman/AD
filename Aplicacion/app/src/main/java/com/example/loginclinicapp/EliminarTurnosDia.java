@@ -53,6 +53,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
     int mes = c.get(java.util.Calendar.MONTH);
     int dia = c.get(Calendar.DAY_OF_MONTH);
 
+
     String diaTxt;
     String mesTxt;
     String añoTxt;
@@ -144,7 +145,12 @@ public class EliminarTurnosDia extends AppCompatActivity {
 
 
 
-        traerTurnosDia(idUsr, idPaciente, matricula, nombre, new Date());
+        Date dt = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
+        c.add(Calendar.WEEK_OF_MONTH, 1);
+        dt = c.getTime();
+        traerTurnosDia(idUsr, idPaciente, matricula, nombre, dt);
         builder = new AlertDialog.Builder(this);
         builder2 = new AlertDialog.Builder(this);
         builderCerrar = new AlertDialog.Builder(this);
@@ -180,6 +186,7 @@ public class EliminarTurnosDia extends AppCompatActivity {
                 int mes = Integer.parseInt(fechaTxt.substring(3, 5)) - 1;
                 datePicker.updateDate(Integer.parseInt(fechaTxt.substring(6)), mes, Integer.parseInt(fechaTxt.substring(0, 2)));
                 Calendar limInf = Calendar.getInstance();
+                limInf.add(Calendar.WEEK_OF_MONTH,1);
                 datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
 

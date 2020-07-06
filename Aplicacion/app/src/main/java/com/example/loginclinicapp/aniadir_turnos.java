@@ -247,7 +247,9 @@ public class aniadir_turnos extends AppCompatActivity {
                 DatePicker datePicker = dp.getDatePicker();
                 datePicker.setMaxDate(limSup.getTimeInMillis());
 
+
                 Calendar limInf = Calendar.getInstance();
+                limInf.add(Calendar.WEEK_OF_MONTH,1);
                 datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
             }
@@ -280,6 +282,7 @@ public class aniadir_turnos extends AppCompatActivity {
                 datePicker.setMaxDate(limSup.getTimeInMillis());
 
                 Calendar limInf = Calendar.getInstance();
+                limInf.add(Calendar.WEEK_OF_MONTH,1);
                 datePicker.setMinDate(limInf.getTimeInMillis());
                 dp.show();
 
